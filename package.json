@@ -1,0 +1,24 @@
+{
+  "name": "best-jewelry-retouching-template",
+  "version": "1.0.0",
+  "description": "Luxury B2B Jewelry Photo Retouching Studio HTML Template built with Tailwind CSS, GSAP, and Lenis",
+  "main": "index.html",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./assets/css/style.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./assets/css/style.css --watch"
+  },
+  "keywords": [
+    "jewelry",
+    "retouching",
+    "post-production",
+    "luxury",
+    "tailwindcss",
+    "portfolio",
+    "gsap"
+  ],
+  "author": "Best Jewelry Retouching Studio",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
