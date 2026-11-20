@@ -166,15 +166,15 @@
   }
 
   .brand-logo {
-    @apply inline-flex items-center gap-3.5 shrink-0;
+    @apply inline-flex items-center gap-2.5 sm:gap-3.5 shrink-0;
   }
 
   .brand-mark {
-    @apply w-9 h-9 border border-gold rounded-[2px] grid place-items-center rotate-45 transition-colors duration-300;
+    @apply w-8 h-8 sm:w-9 sm:h-9 border border-gold rounded-[2px] grid place-items-center rotate-45 transition-colors duration-300;
   }
 
   .brand-mark span {
-    @apply -rotate-45 font-serif text-lg font-semibold text-gold-deep leading-none;
+    @apply -rotate-45 font-serif text-base sm:text-lg font-semibold text-gold-deep leading-none;
   }
 
   .brand-logo:hover .brand-mark {
@@ -186,11 +186,11 @@
   }
 
   .brand-name {
-    @apply font-serif text-xl sm:text-2xl font-semibold tracking-wide text-ink-primary;
+    @apply font-serif text-lg sm:text-2xl font-semibold tracking-wide text-ink-primary;
   }
 
   .brand-sub {
-    @apply font-sans text-[0.62rem] font-semibold tracking-[0.2em] uppercase text-ink-muted mt-0.5;
+    @apply font-sans text-[0.58rem] sm:text-[0.62rem] font-semibold tracking-[0.18em] sm:tracking-[0.2em] uppercase text-ink-muted mt-0.5;
   }
 
   .primary-nav {
@@ -433,7 +433,7 @@
   }
 
   .wwc-cols {
-    @apply grid grid-cols-1 md:grid-cols-2 gap-8;
+    @apply grid grid-cols-1 md:grid-cols-3 gap-8;
   }
 
   .wwc-col {
@@ -511,7 +511,12 @@
   }
 
   .pf-card {
-    @apply bg-white border border-stone-200 rounded-2xl overflow-hidden flex flex-col shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-gold hover:shadow-md;
+    @apply bg-white border border-stone-200 rounded-2xl overflow-hidden flex flex-col shadow-sm;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .pf-card:hover {
+    @apply border-gold shadow-md;
   }
 
   .pf-body {
@@ -556,7 +561,12 @@
   }
 
   .step-card {
-    @apply p-8 sm:p-9 border border-stone-200 rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-gold hover:shadow-md relative before:content-[''] before:absolute before:top-0 before:left-7 before:w-11 before:h-[3px] before:bg-gold before:rounded-b;
+    @apply p-8 sm:p-9 border border-stone-200 rounded-2xl bg-white shadow-sm relative before:content-[''] before:absolute before:top-0 before:left-7 before:w-11 before:h-[3px] before:bg-gold before:rounded-b;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .step-card:hover {
+    @apply border-gold shadow-md;
   }
 
   .step-num {
@@ -1024,30 +1034,78 @@
   }
   .macro-loupe-wrap {
     @apply relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-obsidian border border-gold/30 shadow-glass select-none cursor-crosshair;
+    touch-action: none;
   }
   .macro-loupe-img {
     @apply w-full h-full object-cover block pointer-events-none select-none;
   }
   .macro-loupe-lens {
-    @apply absolute w-44 h-44 sm:w-52 sm:h-52 rounded-full border-4 border-gold overflow-hidden pointer-events-none z-20 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-90 transition-opacity duration-200 ring-2 ring-white/60;
-    box-shadow: 0 16px 40px rgba(14, 13, 12, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    border: 3px solid #b59054;
+    background-repeat: no-repeat;
+    background-color: #0e0d0c;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.65), inset 0 0 0 2px rgba(255, 255, 255, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    z-index: 25;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    overflow: hidden;
+    will-change: left, top, background-position;
+  }
+  @media (min-width: 640px) {
+    .macro-loupe-lens {
+      width: 210px;
+      height: 210px;
+      border-width: 4px;
+    }
   }
   .macro-loupe-lens.active {
-    @apply opacity-100 scale-100;
-  }
-  .macro-loupe-zoom-img {
-    @apply absolute w-[350%] h-[350%] max-w-none object-cover pointer-events-none;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
   .macro-loupe-crosshair {
     @apply absolute inset-0 pointer-events-none z-10 flex items-center justify-center;
   }
   .macro-loupe-crosshair::before {
     content: '';
-    @apply absolute w-full h-px bg-gold/40;
+    @apply absolute w-full h-px bg-gold/50;
   }
   .macro-loupe-crosshair::after {
     content: '';
-    @apply absolute h-full w-px bg-gold/40;
+    @apply absolute h-full w-px bg-gold/50;
+  }
+  .macro-loupe-reticle {
+    @apply absolute w-9 h-9 rounded-full border border-gold/70 pointer-events-none z-10;
+  }
+  .macro-loupe-glare {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.05) 45%, transparent 70%);
+    pointer-events: none;
+    z-index: 12;
+  }
+  .macro-loupe-tag {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(14, 13, 12, 0.88);
+    backdrop-filter: blur(4px);
+    color: #b59054;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    border: 1px solid rgba(181, 144, 84, 0.4);
+    pointer-events: none;
+    z-index: 15;
+    white-space: nowrap;
   }
   .macro-loupe-indicator {
     @apply absolute top-3 right-3 z-10 bg-obsidian/85 backdrop-blur-md text-gold px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-wider uppercase border border-gold/30 shadow-sm pointer-events-none flex items-center gap-2;
@@ -1087,8 +1145,8 @@
     @apply bg-obsidian text-ink-light py-20 lg:py-28 relative overflow-hidden border-y border-white/10;
   }
   .artisan-pledge-card {
-    @apply max-w-4xl mx-auto p-8 sm:p-14 rounded-3xl bg-white/[0.04] backdrop-blur-xl border border-gold/30 relative text-center;
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(181, 144, 84, 0.2) inset;
+    @apply max-w-5xl mx-auto p-8 sm:p-12 lg:p-16 rounded-3xl bg-white/[0.04] backdrop-blur-xl border border-gold/40 relative;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(181, 144, 84, 0.25) inset;
   }
   .artisan-quote {
     @apply font-serif text-xl sm:text-2xl lg:text-3xl italic leading-relaxed text-ink-light mb-8 font-normal;
@@ -1154,22 +1212,21 @@
   box-shadow: 0 22px 54px rgba(14, 13, 12, 0.085);
   user-select: none;
   -webkit-user-select: none;
-  touch-action: pan-y;
+  touch-action: none;
   cursor: ew-resize;
-  transform-style: preserve-3d;
-  will-change: transform;
   transition: box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.ba-slider:hover {
+.ba-slider:hover,
+.ba-slider.is-hovered,
+.ba-slider.is-dragging {
   box-shadow:
     0 28px 65px rgba(14, 13, 12, 0.14),
-    0 0 0 1px rgba(181, 144, 84, 0.35);
+    0 0 0 1px rgba(181, 144, 84, 0.4);
 }
 
 .hero-frame,
 .service-media {
-  transform-style: preserve-3d;
   will-change: transform;
 }
 
@@ -1186,7 +1243,8 @@
   border-radius: inherit;
 }
 
-.ba-slider.is-hovered .ba-glare {
+.ba-slider.is-hovered .ba-glare,
+.ba-slider.is-dragging .ba-glare {
   opacity: 1;
 }
 
@@ -1219,7 +1277,6 @@
   z-index: 2;
   clip-path: inset(0 calc(100% - var(--pos)) 0 0);
   will-change: clip-path;
-  transform: translateZ(0);
 }
 
 .ba-divider {
@@ -1229,12 +1286,35 @@
   left: var(--pos);
   width: 2px;
   background-color: #ffffff;
-  z-index: 4;
+  z-index: 10;
   pointer-events: none;
   box-shadow:
     0 0 12px rgba(0, 0, 0, 0.6),
-    0 0 4px rgba(181, 144, 84, 0.7);
+    0 0 4px rgba(181, 144, 84, 0.85);
   transform: translateX(-50%);
+  will-change: left;
+}
+
+.ba-divider::before,
+.ba-divider::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #b59054;
+  border: 1.5px solid #ffffff;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+.ba-divider::before {
+  top: 0;
+}
+
+.ba-divider::after {
+  bottom: 0;
 }
 
 .ba-handle {
@@ -1242,10 +1322,10 @@
   top: 50%;
   left: var(--pos);
   transform: translate(-50%, -50%);
-  width: 46px;
-  height: 46px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #0e0d0c;
@@ -1255,29 +1335,41 @@
     0 0 0 4px rgba(181, 144, 84, 0.2);
   display: grid;
   place-items: center;
-  z-index: 5;
+  z-index: 20;
   cursor: ew-resize;
   touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  will-change: left;
   transition:
-    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
     background-color 0.2s ease,
     border-color 0.2s ease,
+    color 0.2s ease,
     box-shadow 0.2s ease;
 }
 
 .ba-handle svg {
   pointer-events: none;
+  transition: transform 0.2s ease;
 }
 
+.ba-slider:hover .ba-handle,
+.ba-slider.is-hovered .ba-handle,
+.ba-slider.is-dragging .ba-handle,
 .ba-handle:hover,
 .ba-handle:focus-visible {
-  transform: translate(-50%, -50%) scale(1.12);
   background-color: #b59054;
-  border-color: #d9ba82;
+  border-color: #e5cb96;
   color: #ffffff;
   box-shadow:
-    0 8px 24px rgba(181, 144, 84, 0.45),
-    0 0 0 6px rgba(181, 144, 84, 0.25);
+    0 6px 22px rgba(181, 144, 84, 0.5),
+    0 0 0 6px rgba(181, 144, 84, 0.28);
+}
+
+.ba-slider:hover .ba-handle svg,
+.ba-slider.is-hovered .ba-handle svg,
+.ba-slider.is-dragging .ba-handle svg {
+  transform: scale(1.12);
 }
 
 .ba-badge {
@@ -1313,26 +1405,35 @@
 
 @media (max-width: 640px) {
   .ba-handle {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
+    border-width: 1.5px;
   }
   .ba-handle svg {
-    width: 15px;
-    height: 15px;
+    width: 14px;
+    height: 14px;
+  }
+  .ba-divider {
+    width: 2px;
+  }
+  .ba-divider::before,
+  .ba-divider::after {
+    width: 6px;
+    height: 6px;
   }
   .ba-badge {
-    bottom: 10px;
-    padding: 4px 8px;
+    bottom: 8px;
+    padding: 3px 7px;
     font-size: 0.58rem;
     letter-spacing: 0.08em;
   }
   .ba-badge--old,
   .ba-badge--before {
-    left: 10px;
+    left: 8px;
   }
   .ba-badge--new,
   .ba-badge--after {
-    right: 10px;
+    right: 8px;
   }
 }
 

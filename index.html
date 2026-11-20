@@ -111,19 +111,10 @@
         <nav class="primary-nav" aria-label="Primary Navigation">
           <ul class="nav-list">
             <li>
-              <a href="#home" class="nav-link active">Home</a>
-            </li>
-            <li>
-              <a href="#services" class="nav-link">Four Pillars</a>
+              <a href="#services" class="nav-link">Services</a>
             </li>
             <li>
               <a href="#macro-loupe" class="nav-link">Precision Loupe</a>
-            </li>
-            <li>
-              <a href="#colorways" class="nav-link">Alloy Recasting</a>
-            </li>
-            <li>
-              <a href="#how-we-work" class="nav-link">Bench Standards</a>
             </li>
             <li>
               <a href="#portfolio" class="nav-link">Portfolio</a>
@@ -138,8 +129,8 @@
         </nav>
 
         <div class="header-actions">
-          <a href="#free-trial-home" class="btn btn-outline btn-sm">2 Free Test Images</a>
-          <a href="#pricing" class="btn btn-obsidian btn-sm">Get Quote</a>
+          <a href="#free-trial-home" class="btn btn-outline btn-sm hidden lg:inline-flex">2 Free Test Images</a>
+          <a href="#pricing" class="btn btn-obsidian btn-sm hidden lg:inline-flex">Get Quote</a>
           <button
             type="button"
             class="mobile-menu-btn"
@@ -207,46 +198,53 @@
               <a href="#home" class="mobile-nav-link active">Home</a>
             </li>
             <li>
-              <a href="#services" class="mobile-nav-link">Four Pillars</a>
+              <a href="#services" class="mobile-nav-link">Four Pillars of Retouching</a>
             </li>
             <li>
-              <a href="#macro-loupe" class="mobile-nav-link">Precision Loupe</a>
+              <a href="#macro-loupe" class="mobile-nav-link">Precision Loupe (400%)</a>
             </li>
             <li>
-              <a href="#colorways" class="mobile-nav-link">Alloy Recasting</a>
+              <a href="#colorways" class="mobile-nav-link">Alloy Recasting (4 Metals)</a>
             </li>
             <li>
-              <a href="#how-we-work" class="mobile-nav-link">Bench Standards</a>
+              <a href="#how-we-work" class="mobile-nav-link">Bench Standards &amp; Integrity</a>
             </li>
             <li>
-              <a href="#portfolio" class="mobile-nav-link">Portfolio</a>
+              <a href="#portfolio" class="mobile-nav-link">Masterpiece Portfolio</a>
             </li>
             <li>
-              <a href="#pricing" class="mobile-nav-link">Pricing &amp; SLA</a>
+              <a href="#pricing" class="mobile-nav-link">Pricing &amp; Turnaround</a>
             </li>
             <li>
-              <a href="#faq" class="mobile-nav-link">FAQ</a>
+              <a href="#faq" class="mobile-nav-link">FAQ &amp; Studio Desk</a>
             </li>
           </ul>
 
           <div class="mobile-drawer-ctas">
-            <a href="#free-trial-home" class="btn btn-gold btn-full"
-              >2 Free Test Images</a
-            >
-            <a href="#pricing" class="btn btn-obsidian btn-full">Pricing &amp; Quote</a>
+            <a href="#free-trial-home" class="btn btn-gold btn-full flex items-center justify-center gap-2">
+              <span>2 Free Test Images</span>
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M4 10H16M11 5L16 10L11 15" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="#pricing" class="btn btn-obsidian btn-full text-center">Get Custom Quote</a>
           </div>
         </div>
 
-        <p
-          style="font-size: 0.8rem; color: var(--ink-muted); padding-top: 24px"
-        >
-          Studio Desk:
-          <a
-            href="mailto:studio@bestjewelryretouching.com"
-            style="color: var(--gold-deep); text-decoration: underline"
-            >studio@bestjewelryretouching.com</a
-          >
-        </p>
+        <div class="pt-6 mt-6 border-t border-stone-200">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="text-xs uppercase tracking-wider text-ink-muted font-semibold">Studio Desk &bull; 24h Express Ready</span>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--ink-muted)">
+            Direct Line:
+            <a
+              href="mailto:studio@bestjewelryretouching.com"
+              style="color: var(--gold-deep); text-decoration: underline"
+              >studio@bestjewelryretouching.com</a
+            >
+          </p>
+        </div>
       </div>
     </div>
 
@@ -257,7 +255,7 @@
          ====================================================================== -->
       <main id="page-home" class="page-view active" aria-label="Home">
         <!-- 1. HERO SECTION -->
-        <section class="hero-section">
+        <section id="home" class="hero-section">
           <div class="container hero-grid">
             <div>
               <span class="eyebrow js-hero-item"
@@ -274,10 +272,10 @@
               </p>
 
               <div class="hero-ctas js-hero-item">
-                <a href="#trial" class="btn btn-gold"
+                <a href="#free-trial-home" class="btn btn-gold"
                   >Start Your Free Trial (2 Images)</a
                 >
-                <a href="#quote" class="btn btn-outline"
+                <a href="#pricing" class="btn btn-outline"
                   >Request Custom Quote</a
                 >
               </div>
@@ -520,7 +518,7 @@
                     </li>
                   </ul>
                   <a
-                    href="#quote"
+                    href="#pricing"
                     class="btn btn-obsidian"
                     data-preselect-quote="All-In-One"
                     >Order High-End Retouching</a
@@ -618,7 +616,7 @@
                     </li>
                   </ul>
                   <a
-                    href="#quote"
+                    href="#pricing"
                     class="btn btn-obsidian"
                     data-preselect-quote="Ecommerce"
                     >Get E-Commerce Volume Pricing</a
@@ -716,7 +714,7 @@
                     </li>
                   </ul>
                   <a
-                    href="#trial"
+                    href="#free-trial-home"
                     class="btn btn-obsidian"
                     data-preselect-trial="Diamond Fire Restoration"
                     >Test Diamond Restoration Free</a
@@ -817,7 +815,7 @@
                     </li>
                   </ul>
                   <a
-                    href="#quote"
+                    href="#pricing"
                     class="btn btn-obsidian"
                     data-preselect-quote="3D"
                     >Enhance Your 3D Renders</a
@@ -850,15 +848,32 @@
               </div>
             </div>
 
-            <div class="macro-loupe-wrap js-reveal js-macro-loupe">
-              <img src="assets/images/macro-loupe-base.jpg" alt="Macro diamond ring under 10x inspection loupe" class="macro-loupe-img" width="1400" height="1050" loading="lazy" decoding="async" />
-              <div class="macro-loupe-lens" aria-hidden="true">
-                <img src="assets/images/macro-loupe-base.jpg" alt="" class="macro-loupe-zoom-img" />
-                <div class="macro-loupe-crosshair"></div>
-                <div class="macro-loupe-reticle"></div>
+            <div class="js-reveal">
+              <div class="macro-loupe-wrap js-macro-loupe">
+                <img src="assets/images/macro-loupe-base.jpg" alt="Macro diamond ring under 10x inspection loupe" class="macro-loupe-img" width="1400" height="1050" loading="lazy" decoding="async" />
+                <div class="macro-loupe-lens" aria-hidden="true">
+                  <div class="macro-loupe-crosshair"></div>
+                  <div class="macro-loupe-reticle"></div>
+                  <div class="macro-loupe-glare"></div>
+                  <div class="macro-loupe-tag">4.0X PRECISION</div>
+                </div>
+                <div class="macro-loupe-indicator">
+                  <span>✦ 400% Loupe Active &bull; Hover / Drag Image</span>
+                </div>
               </div>
-              <div class="macro-loupe-indicator">
-                <span>✦ 400% Loupe Active &bull; Hover / Drag to Inspect</span>
+
+              <!-- Interactive Preset Focal Points -->
+              <div class="mt-4 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+                <span class="text-[11px] font-semibold text-ink-muted uppercase tracking-wider mr-1">Quick Inspect:</span>
+                <button type="button" class="loupe-preset-btn text-xs font-semibold px-3 py-1.5 rounded-full border border-stone-200 bg-white hover:border-gold hover:text-gold transition-colors shadow-xs" data-loupe-x="50" data-loupe-y="38">
+                  ✦ Solitaire Crown
+                </button>
+                <button type="button" class="loupe-preset-btn text-xs font-semibold px-3 py-1.5 rounded-full border border-stone-200 bg-white hover:border-gold hover:text-gold transition-colors shadow-xs" data-loupe-x="38" data-loupe-y="52">
+                  ✦ Pavé Claws
+                </button>
+                <button type="button" class="loupe-preset-btn text-xs font-semibold px-3 py-1.5 rounded-full border border-stone-200 bg-white hover:border-gold hover:text-gold transition-colors shadow-xs" data-loupe-x="62" data-loupe-y="65">
+                  ✦ 18K Bezel Polish
+                </button>
               </div>
             </div>
           </div>
@@ -967,128 +982,102 @@
           <div class="container">
             <div class="wwc-head js-reveal">
               <div>
-                <span class="eyebrow"
-                  >How We Work &middot; What We Correct</span
-                >
-                <h2>
-                  The details buyers <em>notice</em> before they know why.
+                <span class="eyebrow">Atelier Bench Protocol</span>
+                <h2 style="font-size: clamp(2.2rem, 3.8vw, 3.4rem); line-height: 1.15;">
+                  The Bench Standard: <em>What We Perfect</em> On Every Piece.
                 </h2>
               </div>
-              <p>
-                Jewelry is judged in a glance and a zoom. We work through the
-                same checklist on every image, by hand, then audit the result
-                before it reaches you.
+              <p class="text-ink-secondary text-base sm:text-lg leading-relaxed">
+                Jewelry is judged under 10x magnification. We execute a rigorous 24-point gemological retouching protocol on every single piece by hand, then audit under color-calibrated monitors before release.
               </p>
             </div>
 
-            <div class="wwc-cols">
-              <div class="js-wwc-col">
-                <div class="wwc-col-head">
-                  <h3>Surface &amp; Light</h3>
-                  <span>Clean, believable, studio-grade</span>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-12">
+              <!-- Pillar 1 -->
+              <div class="js-wwc-col p-8 sm:p-10 rounded-2xl bg-white border border-stone-200/90 shadow-card flex flex-col justify-between relative overflow-hidden group hover:border-gold transition-all duration-300">
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div>
+                  <div class="flex items-center justify-between pb-6 mb-6 border-b border-stone-100">
+                    <span class="font-serif text-3xl sm:text-4xl text-gold font-light">01</span>
+                    <span class="text-[11px] font-semibold tracking-[0.16em] uppercase text-gold-deep bg-gold/10 px-3 py-1 rounded-full">Surface &amp; Metal</span>
+                  </div>
+                  <h3 class="text-xl sm:text-2xl font-serif text-ink-primary font-medium mb-3">Mirror Polish &amp; Metal Tone</h3>
+                  <p class="text-xs sm:text-sm text-ink-muted mb-6 leading-relaxed">Sculpting pure metallic luster while honoring original artisan hallmarks.</p>
+                  <ul class="space-y-3.5 text-xs sm:text-sm text-ink-secondary">
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-gold font-serif mt-0.5">✦</span>
+                      <span><strong>Dust, Scratches &amp; Pores:</strong> Cleared via frequency separation, retaining authentic metal grain.</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-gold font-serif mt-0.5">✦</span>
+                      <span><strong>Specular Light Sculpting:</strong> Studio gear and tripod reflections replaced with softbox gradients.</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-gold font-serif mt-0.5">✦</span>
+                      <span><strong>Natural Contact Shadows:</strong> Believable weighted drop shadow or floating 255 pure white.</span>
+                    </li>
+                  </ul>
                 </div>
-                <ul class="wwc-list">
-                  <li>
-                    <div>
-                      <strong>Dust, scratches &amp; fingerprints</strong
-                      ><small>Removed from metal and stone surfaces.</small>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <strong>Unwanted reflections</strong
-                      ><small
-                        >Studio gear and lights cleaned out of polished
-                        areas.</small
-                      >
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <strong>Soft, believable shadows</strong
-                      ><small
-                        >Natural contact shadows or a clean pure-white
-                        base.</small
-                      >
-                    </div>
-                  </li>
-                </ul>
               </div>
 
-              <div class="js-wwc-col">
-                <div class="wwc-col-head">
-                  <h3>Metal &amp; Setting</h3>
-                  <span>True tone, precise geometry</span>
+              <!-- Pillar 2 -->
+              <div class="js-wwc-col p-8 sm:p-10 rounded-2xl bg-white border border-stone-200/90 shadow-card flex flex-col justify-between relative overflow-hidden group hover:border-gold transition-all duration-300">
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div>
+                  <div class="flex items-center justify-between pb-6 mb-6 border-b border-stone-100">
+                    <span class="font-serif text-3xl sm:text-4xl text-gold font-light">02</span>
+                    <span class="text-[11px] font-semibold tracking-[0.16em] uppercase text-gold-deep bg-gold/10 px-3 py-1 rounded-full">Optics &amp; Prongs</span>
+                  </div>
+                  <h3 class="text-xl sm:text-2xl font-serif text-ink-primary font-medium mb-3">Diamond Fire &amp; Geometry</h3>
+                  <p class="text-xs sm:text-sm text-ink-muted mb-6 leading-relaxed">Restoring pavilion contrast, refractive brilliance, and structural balance.</p>
+                  <ul class="space-y-3.5 text-xs sm:text-sm text-ink-secondary">
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-gold font-serif mt-0.5">✦</span>
+                      <span><strong>Pavilion &amp; Crown Contrast:</strong> Internal facet fire restored without blurring GIA facet lines.</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-gold font-serif mt-0.5">✦</span>
+                      <span><strong>Claw &amp; Bezel Alignment:</strong> Prongs, pave beads, and channel settings hand-straightened.</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-gold font-serif mt-0.5">✦</span>
+                      <span><strong>Colored Gemstone Depth:</strong> Emerald, sapphire, and ruby internal light brought to life.</span>
+                    </li>
+                  </ul>
                 </div>
-                <ul class="wwc-list">
-                  <li>
-                    <div>
-                      <strong>Metal polish &amp; tone matching</strong
-                      ><small
-                        >Gold, rose gold and platinum kept true to the
-                        piece.</small
-                      >
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <strong>Prong &amp; setting cleanup</strong
-                      ><small
-                        >Clean edges and correct form on every claw and
-                        bezel.</small
-                      >
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <strong>Consistent catalog colour</strong
-                      ><small
-                        >The same look across every SKU in a collection.</small
-                      >
-                    </div>
-                  </li>
-                </ul>
               </div>
 
-              <div class="js-wwc-col">
-                <div class="wwc-col-head">
-                  <h3>Stone &amp; Delivery</h3>
-                  <span>Brilliant, balanced, ready to publish</span>
+              <!-- Pillar 3 -->
+              <div class="js-wwc-col p-8 sm:p-10 rounded-2xl bg-white border border-stone-200/90 shadow-card flex flex-col justify-between relative overflow-hidden group hover:border-gold transition-all duration-300">
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div>
+                  <div class="flex items-center justify-between pb-6 mb-6 border-b border-stone-100">
+                    <span class="font-serif text-3xl sm:text-4xl text-gold font-light">03</span>
+                    <span class="text-[11px] font-semibold tracking-[0.16em] uppercase text-gold-deep bg-gold/10 px-3 py-1 rounded-full">Master Output</span>
+                  </div>
+                  <h3 class="text-xl sm:text-2xl font-serif text-ink-primary font-medium mb-3">Catalog Consistency &amp; PSD</h3>
+                  <p class="text-xs sm:text-sm text-ink-muted mb-6 leading-relaxed">Uniform presentation across 100+ SKUs with master layered deliverables.</p>
+                  <ul class="space-y-3.5 text-xs sm:text-sm text-ink-secondary">
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-gold font-serif mt-0.5">✦</span>
+                      <span><strong>100% Karat Hue Uniformity:</strong> Consistent gold warmth across your entire catalog collection.</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-gold font-serif mt-0.5">✦</span>
+                      <span><strong>Layered 16-Bit Master PSDs:</strong> Discrete adjustment layers for metal, stone, and shadows.</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-gold font-serif mt-0.5">✦</span>
+                      <span><strong>Omnichannel Export:</strong> Shopify, Amazon Luxury, Farfetch, and 300DPI print ready.</span>
+                    </li>
+                  </ul>
                 </div>
-                <ul class="wwc-list">
-                  <li>
-                    <div>
-                      <strong>Gemstone clarity &amp; colour</strong
-                      ><small
-                        >Facets and fire restored without smearing
-                        detail.</small
-                      >
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <strong>Symmetry &amp; shape correction</strong
-                      ><small
-                        >Rings, bands and settings straightened and
-                        balanced.</small
-                      >
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <strong>Marketplace-ready sizing</strong
-                      ><small
-                        >Exported to the specs of your store or platform.</small
-                      >
-                    </div>
-                  </li>
-                </ul>
               </div>
             </div>
 
-            <div class="wwc-foot js-reveal">
-              <p>See this checklist applied to your own photos, free.</p>
-              <a href="#trial" class="btn btn-gold">Start Your Free Trial</a>
+            <div class="wwc-foot js-reveal mt-12 text-center flex flex-col sm:flex-row items-center justify-center gap-6">
+              <p class="text-base sm:text-lg text-ink-secondary mb-0">Experience this gemological protocol on your own raw photos.</p>
+              <a href="#free-trial-home" class="btn btn-obsidian">Start Your Complimentary 2-Image Trial</a>
             </div>
           </div>
         </section>
@@ -1589,7 +1578,7 @@
               <p>Your jewelry could be next.</p>
               <div class="portfolio-cta-actions">
                 <a href="#free-trial-home" class="btn btn-gold">Get Free Trial</a>
-                <a href="#quote" class="btn btn-obsidian"
+                <a href="#pricing" class="btn btn-obsidian"
                   >Request Custom Quote</a
                 >
               </div>
@@ -1647,22 +1636,84 @@
         </section>
 
         <!-- 8. THE ANTI-AI HUMAN ARTISAN PLEDGE -->
-        <section class="artisan-pledge-section">
+        <section id="authenticity" class="artisan-pledge-section">
           <div class="container">
             <div class="artisan-pledge-card js-reveal">
-              <span class="eyebrow" style="color: #d9ba82; margin-bottom: 1.5rem;">Authenticity &amp; Bench Integrity</span>
-              <blockquote class="artisan-quote">
-                &ldquo;In an era flooded with generic AI filters that distort diamond fire and melt fine prongs, we make one solemn promise: every facet, reflection, and shadow is crafted by senior artisans with 10+ years of high-jewelry bench experience. We enhance desire&mdash;we never fake perfection.&rdquo;
-              </blockquote>
-              <div class="artisan-author">
-                <span class="artisan-sig">Marcello Vance</span>
-                <span class="text-xs uppercase tracking-[0.2em] text-gold-light mt-1">Lead Master Jewelry Retoucher &amp; Colorist</span>
+              <!-- Top Seal -->
+              <div class="flex flex-col items-center justify-center text-center mb-10">
+                <div class="w-16 h-16 rounded-full border border-gold/60 bg-gold/10 flex items-center justify-center mb-4 text-gold shadow-glow-gold">
+                  <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <span class="eyebrow" style="color: #d9ba82; margin-bottom: 0.5rem;">Authenticity &amp; Bench Integrity</span>
+                <h2 style="font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.15; color: #fbf9f4;">
+                  The Human Artisan Manifesto.
+                </h2>
               </div>
-              <div class="artisan-badges">
-                <span>✦ GIA Proportion Compliant</span>
-                <span>✦ 100% Wacom Pen-Tool Handcraft</span>
-                <span>✦ Zero AI Hallucination Guarantee</span>
-                <span>✦ ISO-Standard Calibrated Color</span>
+
+              <!-- Dual Column Grid -->
+              <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-14 items-center text-left">
+                <!-- Manifesto Quote & Signature -->
+                <div class="border-b lg:border-b-0 lg:border-r border-white/10 pb-8 lg:pb-0 lg:pr-10">
+                  <blockquote class="font-serif text-lg sm:text-xl lg:text-2xl italic leading-relaxed text-ink-light font-light mb-8">
+                    &ldquo;In an era flooded with generic AI filters that distort diamond fire, melt fine prongs, and blur hallmarks, we make one solemn promise: every facet, reflection, and shadow is crafted by senior retouchers with 10+ years of high-jewelry bench experience. We enhance desire&mdash;we never fake perfection.&rdquo;
+                  </blockquote>
+
+                  <div class="flex items-center gap-6 pt-4">
+                    <div class="artisan-author flex-1">
+                      <span class="artisan-sig text-2xl sm:text-3xl font-serif text-gold italic font-semibold">Marcello Vance</span>
+                      <span class="block text-xs uppercase tracking-[0.2em] text-gold-light/80 mt-1">Lead Master Jewelry Retoucher &amp; Colorist</span>
+                      <span class="block text-[11px] text-ink-light-muted">Atelier Bench Master &bull; Member #408</span>
+                    </div>
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-gold/40 bg-white/[0.03] p-2 flex flex-col items-center justify-center text-center shrink-0">
+                      <span class="text-[9px] uppercase tracking-wider text-gold font-semibold leading-tight">100%<br>HAND<br>CRAFT</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 4 Bench Commandments -->
+                <div class="space-y-4">
+                  <div class="p-4 sm:p-5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-gold/40 transition-colors">
+                    <div class="flex items-center gap-3 mb-1">
+                      <span class="text-gold text-sm font-serif">✦</span>
+                      <strong class="text-sm font-serif text-ink-light">Zero AI Hallucination Guarantee</strong>
+                    </div>
+                    <p class="text-xs text-ink-light-muted leading-relaxed pl-6">
+                      No automated generative blurring. Facets remain mathematically true to real GIA diamond cuts.
+                    </p>
+                  </div>
+
+                  <div class="p-4 sm:p-5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-gold/40 transition-colors">
+                    <div class="flex items-center gap-3 mb-1">
+                      <span class="text-gold text-sm font-serif">✦</span>
+                      <strong class="text-sm font-serif text-ink-light">100% Wacom Pen-Tool Handcraft</strong>
+                    </div>
+                    <p class="text-xs text-ink-light-muted leading-relaxed pl-6">
+                      Every gemstone claw, bezel, and link isolated with hand-drawn vector bezier curves.
+                    </p>
+                  </div>
+
+                  <div class="p-4 sm:p-5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-gold/40 transition-colors">
+                    <div class="flex items-center gap-3 mb-1">
+                      <span class="text-gold text-sm font-serif">✦</span>
+                      <strong class="text-sm font-serif text-ink-light">16-Bit ProPhoto Color Integrity</strong>
+                    </div>
+                    <p class="text-xs text-ink-light-muted leading-relaxed pl-6">
+                      Full dynamic range preserved. Non-destructive layered master PSDs provided on delivery.
+                    </p>
+                  </div>
+
+                  <div class="p-4 sm:p-5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-gold/40 transition-colors">
+                    <div class="flex items-center gap-3 mb-1">
+                      <span class="text-gold text-sm font-serif">✦</span>
+                      <strong class="text-sm font-serif text-ink-light">Strict Studio NDA &amp; Vault Security</strong>
+                    </div>
+                    <p class="text-xs text-ink-light-muted leading-relaxed pl-6">
+                      Your unreleased designs and high-jewelry prototypes are encrypted and never shown publicly without consent.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1695,7 +1746,7 @@
                     <li>Catalog Color Consistency Across 100+ SKUs</li>
                   </ul>
                 </div>
-                <a href="#trial" class="btn btn-outline w-full text-center justify-center mt-6" data-preselect-trial="E-Commerce Volume">Start Free Test Images</a>
+                <a href="#free-trial-home" class="btn btn-outline w-full text-center justify-center mt-6" data-preselect-trial="E-Commerce Volume">Start Free Test Images</a>
               </article>
 
               <!-- Tier 2 (Featured) -->
@@ -1717,7 +1768,7 @@
                     <li>Dedicated Senior Lead Retoucher</li>
                   </ul>
                 </div>
-                <a href="#trial" class="btn btn-obsidian w-full text-center justify-center mt-6" data-preselect-trial="Editorial & Campaign">Order Editorial Trial</a>
+                <a href="#free-trial-home" class="btn btn-obsidian w-full text-center justify-center mt-6" data-preselect-trial="Editorial & Campaign">Order Editorial Trial</a>
               </article>
 
               <!-- Tier 3 -->
@@ -1736,7 +1787,7 @@
                     <li>Unlimited Complimentary Revisions</li>
                   </ul>
                 </div>
-                <a href="#quote" class="btn btn-outline w-full text-center justify-center mt-6" data-preselect-quote="All-In-One">Request Custom Brief</a>
+                <a href="#pricing" class="btn btn-outline w-full text-center justify-center mt-6" data-preselect-quote="All-In-One">Request Custom Brief</a>
               </article>
             </div>
           </div>
@@ -2099,802 +2150,6 @@
           </div>
         </section>
       </main>
-
-      <!-- ======================================================================
-         VIEW 2: ABOUT STUDIO (#about)
-         ====================================================================== -->
-      <section id="page-about" class="page-view" aria-label="About Studio">
-        <div class="subpage-hero">
-          <div class="container">
-            <span class="eyebrow">About BestJewelryRetouching.com</span>
-            <h1>Where Gemological Precision Meets Digital Artistry</h1>
-            <p>
-              We are a dedicated jewelry post-production house serving fine
-              jewelry brands, watch manufacturers, and commercial photographers
-              across North America and Europe.
-            </p>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="container about-grid">
-            <div class="about-photo">
-              <img
-                src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=1400&q=85"
-                width="1400"
-                height="1750"
-                loading="lazy"
-                decoding="async"
-                alt="Luxury fine jewelry collection photographed with studio precision"
-              />
-            </div>
-
-            <div>
-              <span class="eyebrow">Our Philosophy</span>
-              <h2
-                style="
-                  font-size: clamp(2.1rem, 3.5vw, 3.1rem);
-                  margin-bottom: 18px;
-                "
-              >
-                Zero AI Shortcuts. 100% Human Craft.
-              </h2>
-              <p
-                style="
-                  color: var(--ink-secondary);
-                  font-size: 1rem;
-                  line-height: 1.78;
-                  margin-bottom: 24px;
-                "
-              >
-                Automated AI tools distort prong geometry, smear diamond facets,
-                and alter precious metal hallmarks. At Best Jewelry Retouching,
-                every pixel is refined manually using Wacom pen tablets,
-                frequency separation, and custom dodge-and-burn curves.
-              </p>
-              <ul class="editorial-checklist">
-                <li>
-                  Specialized team trained exclusively in luxury jewelry and
-                  horology
-                </li>
-                <li>
-                  Hardware-calibrated monitors for true 14k, 18k, Rose Gold, and
-                  Platinum color accuracy
-                </li>
-                <li>
-                  Dedicated account managers aligned with EST, PST, GMT, and CET
-                  business hours
-                </li>
-                <li>
-                  100% Non-Disclosure Agreement (NDA) protection for unreleased
-                  collections
-                </li>
-              </ul>
-              <div style="display: flex; flex-wrap: wrap; gap: 12px">
-                <a href="#trial" class="btn btn-gold"
-                  >Experience Our Quality Free</a
-                >
-                <a href="#contact" class="btn btn-outline"
-                  >Contact Our Studio Desk</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ======================================================================
-         VIEW 3: FREE TRIAL (#trial)
-         ====================================================================== -->
-      <section id="page-trial" class="page-view" aria-label="Free Trial">
-        <div class="subpage-hero">
-          <div class="container">
-            <span class="eyebrow">Risk-Free Evaluation</span>
-            <h1>Try Us With 2 Free Test Images</h1>
-            <p>
-              See the difference our senior jewelry retouchers make on your
-              actual product photos before committing to an order.
-            </p>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="container form-layout">
-            <div>
-              <h2 style="font-size: 2.2rem; margin-bottom: 16px">
-                Included in Your Studio Trial
-              </h2>
-              <p style="color: var(--ink-secondary); margin-bottom: 24px">
-                Send up to two raw captures or 3D renders to benchmark our metal
-                polishing, diamond fire restoration, and background consistency.
-              </p>
-              <ul class="editorial-checklist">
-                <li>No credit card or contract required</li>
-                <li>Delivered within 12–24 hours in full resolution</li>
-                <li>Supports RAW (CR2, NEF, ARW), TIFF, PSD, JPEG, and PNG</li>
-                <li>Protected under automatic NDA confidentiality</li>
-              </ul>
-            </div>
-
-            <div class="form-card">
-              <h3>Submit Free Trial Request</h3>
-              <p class="form-sub">
-                Upload up to 2 sample images and share your finishing
-                preferences.
-              </p>
-
-              <form class="js-studio-form" data-form-type="trial" novalidate>
-                <div class="form-grid-2">
-                  <div class="form-group">
-                    <label for="pt-name">Full Name *</label>
-                    <input
-                      type="text"
-                      id="pt-name"
-                      name="name"
-                      class="form-control"
-                      placeholder="e.g., Sarah Jenkins"
-                      autocomplete="name"
-                      required
-                      aria-describedby="pt-name-err"
-                    />
-                    <span
-                      id="pt-name-err"
-                      class="field-error"
-                      role="alert"
-                    ></span>
-                  </div>
-                  <div class="form-group">
-                    <label for="pt-email">Work Email *</label>
-                    <input
-                      type="email"
-                      id="pt-email"
-                      name="email"
-                      class="form-control"
-                      placeholder="sarah@luxuryjewels.com"
-                      autocomplete="email"
-                      required
-                      aria-describedby="pt-email-err"
-                    />
-                    <span
-                      id="pt-email-err"
-                      class="field-error"
-                      role="alert"
-                    ></span>
-                  </div>
-                </div>
-
-                <div class="form-grid-2">
-                  <div class="form-group">
-                    <label for="pt-company">Brand / Studio Name *</label>
-                    <input
-                      type="text"
-                      id="pt-company"
-                      name="company"
-                      class="form-control"
-                      placeholder="Studio or Brand Name"
-                      autocomplete="organization"
-                      required
-                      aria-describedby="pt-company-err"
-                    />
-                    <span
-                      id="pt-company-err"
-                      class="field-error"
-                      role="alert"
-                    ></span>
-                  </div>
-                  <div class="form-group">
-                    <label for="pt-region">Region *</label>
-                    <select
-                      id="pt-region"
-                      name="region"
-                      class="form-control"
-                      required
-                      aria-describedby="pt-region-err"
-                    >
-                      <option value="">Select Region</option>
-                      <option value="USA">United States (USA)</option>
-                      <option value="UK">United Kingdom (UK)</option>
-                      <option value="EU">
-                        European Union (France, Germany, Italy, etc.)
-                      </option>
-                      <option value="Canada">Canada / Other</option>
-                    </select>
-                    <span
-                      id="pt-region-err"
-                      class="field-error"
-                      role="alert"
-                    ></span>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="pt-service">Select Primary Service *</label>
-                  <select
-                    id="pt-service"
-                    name="service"
-                    class="form-control js-trial-service"
-                    required
-                    aria-describedby="pt-service-err"
-                  >
-                    <option value="High-End Retouching">
-                      Next-Gen High-End Jewelry Retouching
-                    </option>
-                    <option value="Hybrid E-Commerce">
-                      Hybrid E-Commerce Jewelry Photo Editing
-                    </option>
-                    <option value="Diamond Fire Restoration">
-                      Advanced Diamond Fire Restoration
-                    </option>
-                    <option value="3D Render Enhancement">
-                      3D Render to Photorealistic Enhancement
-                    </option>
-                  </select>
-                  <span
-                    id="pt-service-err"
-                    class="field-error"
-                    role="alert"
-                  ></span>
-                </div>
-
-                <div class="form-group">
-                  <label for="pt-files">Upload up to 2 Sample Images</label>
-                  <div
-                    class="dropzone js-dropzone"
-                    role="button"
-                    tabindex="0"
-                    aria-describedby="pt-files-err"
-                  >
-                    <strong
-                      >Drag &amp; drop up to 2 sample images, or click to
-                      select</strong
-                    >
-                    <p>
-                      RAW (CR2, CR3, NEF, ARW, DNG), TIFF, PSD, JPG, PNG, WebP
-                      &middot; Max 2 files
-                    </p>
-                    <input
-                      type="file"
-                      id="pt-files"
-                      name="images"
-                      class="sr-only js-file-input"
-                      multiple
-                      accept=".jpg,.jpeg,.png,.tif,.tiff,.psd,.cr2,.cr3,.nef,.arw,.dng,.webp"
-                    />
-                  </div>
-                  <ul class="file-list js-file-list" aria-live="polite"></ul>
-                  <span
-                    id="pt-files-err"
-                    class="field-error"
-                    role="alert"
-                  ></span>
-                </div>
-
-                <div class="form-group">
-                  <label for="pt-notes">Retouching Instructions</label>
-                  <textarea
-                    id="pt-notes"
-                    name="instructions"
-                    class="form-control"
-                    rows="3"
-                    placeholder="Specify background preference (pure white, transparent, natural shadow), metal tone, or specific blemishes to fix..."
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  class="btn btn-gold btn-full js-submit-btn"
-                >
-                  Submit Free Trial Request
-                </button>
-                <div
-                  class="form-status js-form-status"
-                  role="status"
-                  aria-live="polite"
-                ></div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ======================================================================
-         VIEW 4: GET QUOTE (#quote)
-         ====================================================================== -->
-      <section id="page-quote" class="page-view" aria-label="Get Quote">
-        <div class="subpage-hero">
-          <div class="container">
-            <span class="eyebrow">Transparent Custom Pricing</span>
-            <h1>Request a Tailored Project Quote</h1>
-            <p>
-              Whether you have 15 hero campaign pieces or 2,000 e-commerce SKUs,
-              we provide volume-discounted pricing within 2 hours.
-            </p>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="container form-layout">
-            <div>
-              <h2 style="font-size: 2.2rem; margin-bottom: 14px">
-                Volume-Tailored Production Rates
-              </h2>
-              <p style="color: var(--ink-secondary); line-height: 1.75">
-                Share your expected batch volume, turnaround preference, and
-                output layering requirements for a transparent itemized
-                proposal.
-              </p>
-
-              <div class="tier-card">
-                <h3>Estimated Tier Guidelines</h3>
-                <ul class="tier-list">
-                  <li>
-                    <span>Hybrid E-Commerce Editing</span>
-                    <span class="tier-price">From $3.50 / image</span>
-                  </li>
-                  <li>
-                    <span>Diamond Fire &amp; Metal Polish</span>
-                    <span class="tier-price">From $6.00 / image</span>
-                  </li>
-                  <li>
-                    <span>High-End Editorial / 3D Enhancement</span>
-                    <span class="tier-price">From $12.00 / image</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="form-card">
-              <h3>Project Scope Details</h3>
-              <p class="form-sub">
-                Receive your customized studio proposal within 2 hours.
-              </p>
-
-              <form class="js-studio-form" data-form-type="quote" novalidate>
-                <div class="form-grid-2">
-                  <div class="form-group">
-                    <label for="qt-name">Your Name *</label>
-                    <input
-                      type="text"
-                      id="qt-name"
-                      name="name"
-                      class="form-control"
-                      autocomplete="name"
-                      required
-                      aria-describedby="qt-name-err"
-                    />
-                    <span
-                      id="qt-name-err"
-                      class="field-error"
-                      role="alert"
-                    ></span>
-                  </div>
-                  <div class="form-group">
-                    <label for="qt-email">Business Email *</label>
-                    <input
-                      type="email"
-                      id="qt-email"
-                      name="email"
-                      class="form-control"
-                      autocomplete="email"
-                      required
-                      aria-describedby="qt-email-err"
-                    />
-                    <span
-                      id="qt-email-err"
-                      class="field-error"
-                      role="alert"
-                    ></span>
-                  </div>
-                </div>
-
-                <div class="form-grid-2">
-                  <div class="form-group">
-                    <label for="qt-qty">Estimated Image Quantity *</label>
-                    <select
-                      id="qt-qty"
-                      name="quantity"
-                      class="form-control"
-                      required
-                      aria-describedby="qt-qty-err"
-                    >
-                      <option value="1-20">1 – 20 Images</option>
-                      <option value="21-100">
-                        21 – 100 Images (10% Volume Discount)
-                      </option>
-                      <option value="101-500">
-                        101 – 500 Images (20% Volume Discount)
-                      </option>
-                      <option value="500+">
-                        500+ Images (Dedicated Retoucher Team)
-                      </option>
-                    </select>
-                    <span
-                      id="qt-qty-err"
-                      class="field-error"
-                      role="alert"
-                    ></span>
-                  </div>
-                  <div class="form-group">
-                    <label for="qt-turnaround">Required Turnaround *</label>
-                    <select
-                      id="qt-turnaround"
-                      name="turnaround"
-                      class="form-control"
-                      required
-                      aria-describedby="qt-turnaround-err"
-                    >
-                      <option value="24h">Standard 24 Hours</option>
-                      <option value="12h">Express 12 Hours</option>
-                      <option value="48h">Flexible 48–72 Hours</option>
-                    </select>
-                    <span
-                      id="qt-turnaround-err"
-                      class="field-error"
-                      role="alert"
-                    ></span>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="qt-service">Services Needed *</label>
-                  <select
-                    id="qt-service"
-                    name="service"
-                    class="form-control js-quote-service"
-                    required
-                    aria-describedby="qt-service-err"
-                  >
-                    <option value="All-In-One">
-                      Complete High-End Jewelry Retouching
-                    </option>
-                    <option value="Ecommerce">
-                      Hybrid E-Commerce Catalog Editing
-                    </option>
-                    <option value="Diamond">
-                      Advanced Diamond Fire Restoration
-                    </option>
-                    <option value="3D">
-                      3D CAD Render Photorealistic Enhancement
-                    </option>
-                  </select>
-                  <span
-                    id="qt-service-err"
-                    class="field-error"
-                    role="alert"
-                  ></span>
-                </div>
-
-                <div class="form-group">
-                  <label for="qt-link"
-                    >Cloud Folder Link (Dropbox, Google Drive,
-                    WeTransfer)</label
-                  >
-                  <input
-                    type="url"
-                    id="qt-link"
-                    name="cloudLink"
-                    class="form-control"
-                    placeholder="https://..."
-                    aria-describedby="qt-link-err"
-                  />
-                  <span
-                    id="qt-link-err"
-                    class="field-error"
-                    role="alert"
-                  ></span>
-                </div>
-
-                <div class="form-group">
-                  <label for="qt-specs">Project Specifications *</label>
-                  <textarea
-                    id="qt-specs"
-                    name="specifications"
-                    class="form-control"
-                    rows="4"
-                    placeholder="Tell us about output formats (PSD with layers, JPEG, PNG), shadow style, and color requirements..."
-                    required
-                    aria-describedby="qt-specs-err"
-                  ></textarea>
-                  <span
-                    id="qt-specs-err"
-                    class="field-error"
-                    role="alert"
-                  ></span>
-                </div>
-
-                <button
-                  type="submit"
-                  class="btn btn-obsidian btn-full js-submit-btn"
-                >
-                  Get Custom Quote Within 2 Hours
-                </button>
-                <div
-                  class="form-status js-form-status"
-                  role="status"
-                  aria-live="polite"
-                ></div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ======================================================================
-         VIEW 5: CONTACT US (#contact)
-         ====================================================================== -->
-      <section id="page-contact" class="page-view" aria-label="Contact Us">
-        <div class="subpage-hero">
-          <div class="container">
-            <span class="eyebrow">Direct Studio Desk</span>
-            <h1>Let’s Discuss Your Collection</h1>
-            <p>
-              Have questions about recurring monthly retainers, enterprise FTP
-              setup, or custom color grading? Reach out to our client desk
-              directly.
-            </p>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="container form-layout">
-            <div>
-              <div class="contact-block">
-                <span class="contact-label"
-                  >Client Support &amp; Production Email</span
-                >
-                <a
-                  href="mailto:studio@bestjewelryretouching.com"
-                  class="contact-email"
-                  >studio@bestjewelryretouching.com</a
-                >
-              </div>
-
-              <div class="contact-block">
-                <span class="contact-label">Operating Hours</span>
-                <p
-                  style="
-                    color: var(--ink-secondary);
-                    font-size: 0.96rem;
-                    line-height: 1.7;
-                  "
-                >
-                  24/7 Production Desk &bull; Dedicated support during EST (New
-                  York) &amp; CET (Paris/Antwerp) business hours.
-                </p>
-              </div>
-
-              <div class="contact-block">
-                <span class="contact-label">Test Our Craft First</span>
-                <p
-                  style="
-                    color: var(--ink-secondary);
-                    font-size: 0.94rem;
-                    margin-bottom: 16px;
-                  "
-                >
-                  Evaluate our precision on two of your own studio captures
-                  before starting a retainer.
-                </p>
-                <a href="#trial" class="btn btn-outline btn-sm"
-                  >Start 2 Free Test Images</a
-                >
-              </div>
-            </div>
-
-            <div class="form-card">
-              <h3>Send a Message</h3>
-              <p class="form-sub">
-                A senior account specialist will respond promptly.
-              </p>
-
-              <form class="js-studio-form" data-form-type="contact" novalidate>
-                <div class="form-group">
-                  <label for="ct-name">Full Name *</label>
-                  <input
-                    type="text"
-                    id="ct-name"
-                    name="name"
-                    class="form-control"
-                    autocomplete="name"
-                    required
-                    aria-describedby="ct-name-err"
-                  />
-                  <span
-                    id="ct-name-err"
-                    class="field-error"
-                    role="alert"
-                  ></span>
-                </div>
-                <div class="form-group">
-                  <label for="ct-email">Email Address *</label>
-                  <input
-                    type="email"
-                    id="ct-email"
-                    name="email"
-                    class="form-control"
-                    autocomplete="email"
-                    required
-                    aria-describedby="ct-email-err"
-                  />
-                  <span
-                    id="ct-email-err"
-                    class="field-error"
-                    role="alert"
-                  ></span>
-                </div>
-                <div class="form-group">
-                  <label for="ct-subject">Subject *</label>
-                  <input
-                    type="text"
-                    id="ct-subject"
-                    name="subject"
-                    class="form-control"
-                    placeholder="Partnership, Retainer, or General Inquiry"
-                    required
-                    aria-describedby="ct-subject-err"
-                  />
-                  <span
-                    id="ct-subject-err"
-                    class="field-error"
-                    role="alert"
-                  ></span>
-                </div>
-                <div class="form-group">
-                  <label for="ct-message">Message *</label>
-                  <textarea
-                    id="ct-message"
-                    name="message"
-                    class="form-control"
-                    rows="5"
-                    required
-                    aria-describedby="ct-message-err"
-                  ></textarea>
-                  <span
-                    id="ct-message-err"
-                    class="field-error"
-                    role="alert"
-                  ></span>
-                </div>
-                <button
-                  type="submit"
-                  class="btn btn-gold btn-full js-submit-btn"
-                >
-                  Send Message
-                </button>
-                <div
-                  class="form-status js-form-status"
-                  role="status"
-                  aria-live="polite"
-                ></div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ======================================================================
-         VIEW 6: PRIVACY POLICY (#privacy)
-         ====================================================================== -->
-      <section id="page-privacy" class="page-view" aria-label="Privacy Policy">
-        <div class="subpage-hero">
-          <div class="container">
-            <span class="eyebrow">Client Data &amp; Asset Security</span>
-            <h1>Privacy Policy</h1>
-            <p>
-              How Best Jewelry Retouching safeguards your intellectual property,
-              source imagery, and business data.
-            </p>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="container">
-            <article class="legal-box">
-              <div class="legal-meta">
-                <strong>Effective Date:</strong> November 2026 &nbsp;|&nbsp;
-                <strong>Website:</strong> bestjewelryretouching.com
-              </div>
-
-              <h2>1. Intellectual Property &amp; Image Confidentiality</h2>
-              <p>
-                All raw photographs, 3D CAD renders, and finished retouched
-                assets uploaded to Best Jewelry Retouching remain the sole
-                intellectual property of the client. We never publish, resell,
-                or display client jewelry designs in our public portfolio
-                without explicit written permission.
-              </p>
-
-              <h2>2. Information We Collect</h2>
-              <p>
-                We collect only necessary business contact details (name,
-                company name, email address, and project specifications)
-                required to fulfill your photo retouching orders, provide
-                quotes, and deliver invoices.
-              </p>
-
-              <h2>3. GDPR &amp; CCPA Compliance</h2>
-              <p>
-                For our clients across the European Union, United Kingdom, and
-                California (USA), we strictly adhere to GDPR and CCPA data
-                protection standards. You may request complete deletion of your
-                contact records and archived image files at any time.
-              </p>
-
-              <h2>4. Secure File Retention</h2>
-              <p>
-                Uploaded source files and completed deliverables are stored on
-                encrypted, access-controlled servers and are automatically
-                purged 30 days after project completion unless a longer archive
-                period is requested.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- ======================================================================
-         VIEW 7: TERMS & CONDITIONS (#terms)
-         ====================================================================== -->
-      <section
-        id="page-terms"
-        class="page-view"
-        aria-label="Terms and Conditions"
-      >
-        <div class="subpage-hero">
-          <div class="container">
-            <span class="eyebrow">Service Level Agreement</span>
-            <h1>Terms &amp; Conditions</h1>
-            <p>
-              Scope of services, free trial evaluation guidelines, delivery
-              turnaround, and billing terms.
-            </p>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="container">
-            <article class="legal-box">
-              <div class="legal-meta">
-                <strong>Last Updated:</strong> November 2026 &nbsp;|&nbsp;
-                <strong>Domain:</strong> bestjewelryretouching.com
-              </div>
-
-              <h2>1. Scope of Services</h2>
-              <p>
-                Best Jewelry Retouching provides professional digital
-                post-production services, including high-end jewelry retouching,
-                hybrid e-commerce photo editing, diamond fire restoration, and
-                3D render enhancement according to agreed project
-                specifications.
-              </p>
-
-              <h2>2. Free Trial Terms</h2>
-              <p>
-                New business clients are eligible for up to two (2)
-                complimentary sample edits to evaluate our quality. Free trial
-                deliverables are intended for evaluation purposes and carry no
-                obligation to purchase.
-              </p>
-
-              <h2>3. Turnaround Time &amp; Revisions</h2>
-              <p>
-                Standard delivery is within 24 hours for batches under 50
-                images. We offer unlimited complimentary revisions within 14
-                days of delivery to ensure the final output matches your exact
-                brand guidelines.
-              </p>
-
-              <h2>4. Billing &amp; Payment</h2>
-              <p>
-                Invoices are issued in USD ($) or EUR (€) via Stripe, PayPal
-                Business, or international bank wire transfer. Approved
-                enterprise and recurring agency accounts qualify for Net-15 or
-                Net-30 monthly billing cycles.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
     </div>
     <!-- /#main-content -->
 
@@ -2934,26 +2189,26 @@
           </div>
 
           <div class="footer-col">
-            <h4>Studio</h4>
+            <h4>Atelier Studio</h4>
             <ul class="footer-links">
-              <li><a href="#about">About Our Artisans</a></li>
+              <li><a href="#macro-loupe">Precision 400% Loupe</a></li>
+              <li><a href="#colorways">Alloy Recasting Studio</a></li>
+              <li><a href="#how-we-work">Bench Standards Protocol</a></li>
               <li><a href="#pricing">Pricing &amp; SLA Tiers</a></li>
-              <li><a href="#trial">Free Trial (2 Images)</a></li>
-              <li><a href="#quote">Get Custom Quote</a></li>
-              <li><a href="#contact">Contact Desk</a></li>
+              <li><a href="#free-trial-home">Free Trial (2 Test Images)</a></li>
             </ul>
           </div>
 
           <div class="footer-col">
-            <h4>Legal &amp; Security</h4>
+            <h4>Authenticity &amp; Care</h4>
             <ul class="footer-links">
-              <li><a href="#privacy">Privacy Policy</a></li>
-              <li><a href="#terms">Terms &amp; Conditions</a></li>
-              <li><a href="#privacy">NDA Protection</a></li>
+              <li><a href="#authenticity">Anti-AI Artisan Manifesto</a></li>
+              <li><a href="#faq">Client Privacy &amp; NDA</a></li>
+              <li><a href="#faq">Turnaround &amp; Delivery FAQ</a></li>
+              <li><a href="mailto:studio@bestjewelryretouching.com">Email Studio Desk</a></li>
             </ul>
           </div>
         </div>
-
         <div class="footer-bottom">
           <span
             >&copy; 2026 BestJewelryRetouching.com &mdash; All Rights

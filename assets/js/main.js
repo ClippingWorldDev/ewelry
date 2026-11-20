@@ -18,32 +18,15 @@ window.STUDIO_API = {
   /* ----------------------------------------------------------------------
      1. HASH ROUTING & MULTI-VIEW NAVIGATION
      ---------------------------------------------------------------------- */
-  const PAGE_TITLES = {
-    home: 'Best Jewelry Retouching | Luxury Post-Production Studio for USA & Europe',
-    about: 'About Studio | Best Jewelry Retouching',
-    trial: 'Free Trial (2 Test Images) | Best Jewelry Retouching',
-    quote: 'Get Custom Quote | Best Jewelry Retouching',
-    contact: 'Contact Us | Best Jewelry Retouching',
-    privacy: 'Privacy Policy | Best Jewelry Retouching',
-    terms: 'Terms & Conditions | Best Jewelry Retouching'
-  };
-
-  const HOME_ANCHORS = new Set([
-    'services', 'service-1', 'service-2', 'service-3', 'service-4',
-    'macro-loupe', 'colorways', 'pricing',
-    'how-we-work', 'portfolio', 'workflow', 'why-us', 'testimonials',
-    'free-trial-home', 'faq'
-  ]);
+  const PAGE_TITLE = 'Best Jewelry Retouching | Luxury Post-Production Studio for USA & Europe';
 
   let lenis = null;
   let testimonialsSwiper = null;
 
   function parseHash(rawHash) {
     const clean = (rawHash || '#home').replace(/^#/, '').trim();
-    if (!clean || clean === 'home') return { page: 'home', anchor: null };
-    if (PAGE_TITLES[clean]) return { page: clean, anchor: null };
-    if (HOME_ANCHORS.has(clean)) return { page: 'home', anchor: clean };
-    return { page: 'home', anchor: null };
+    if (!clean || clean === 'home') return null;
+    return clean;
   }
 
   function refreshMotion() {
@@ -80,24 +63,19 @@ window.STUDIO_API = {
   }
 
   function navigateRoute(hash, shouldScroll = true) {
-    const { page, anchor } = parseHash(hash);
-
-    document.querySelectorAll('.page-view').forEach((view) => {
-      view.classList.toggle('active', view.id === 'page-' + page);
-    });
-
-    document.querySelectorAll('[data-route]').forEach((link) => {
-      link.classList.toggle('active', link.getAttribute('data-route') === page);
-    });
-
-    document.title = PAGE_TITLES[page] || PAGE_TITLES.home;
+    const anchor = parseHash(hash);
+    document.title = PAGE_TITLE;
     closeMobileDrawer();
 
-    if (shouldScroll) {
+    if (shouldScroll && anchor) {
       requestAnimationFrame(() => {
         scrollToAnchor(anchor);
         refreshMotion();
       });
+    } else if (shouldScroll && !anchor) {
+      if (lenis) lenis.scrollTo(0, { immediate: false, duration: 0.8 });
+      else window.scrollTo({ top: 0, behavior: 'smooth' });
+      refreshMotion();
     } else {
       refreshMotion();
     }
@@ -134,6 +112,13 @@ window.STUDIO_API = {
     if (mobileOpenBtn) mobileOpenBtn.focus();
   });
   if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMobileDrawer);
+  if (mobileDrawer) {
+    mobileDrawer.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        closeMobileDrawer();
+      });
+    });
+  }
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && mobileDrawer && mobileDrawer.classList.contains('open')) {
       closeMobileDrawer();
@@ -188,9 +173,10 @@ window.STUDIO_API = {
         if (oldSrc && oldImg && !oldImg.getAttribute('src')) oldImg.src = oldSrc;
       }
 
-      // Add Glare layer for 3D holographic tilt reflection
-      if (!slider.querySelector('.ba-glare')) {
-        const glare = document.createElement('div');
+      // Add Glare layer for luxury specular reflection
+      let glare = slider.querySelector('.ba-glare');
+      if (!glare) {
+        glare = document.createElement('div');
         glare.className = 'ba-glare';
         slider.appendChild(glare);
       }
@@ -199,11 +185,17 @@ window.STUDIO_API = {
       if (!handle) return;
 
       let pct = 50;
+      let isDragging = false;
+      let activePointerId = null;
+      let rafId = null;
 
       const setPos = (value) => {
         pct = Math.max(2, Math.min(98, value));
-        slider.style.setProperty('--pos', pct + '%');
-        handle.setAttribute('aria-valuenow', String(Math.round(pct)));
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+          slider.style.setProperty('--pos', pct + '%');
+          handle.setAttribute('aria-valuenow', String(Math.round(pct)));
+        });
       };
 
       const updateFromClientX = (clientX) => {
@@ -213,43 +205,71 @@ window.STUDIO_API = {
         setPos((x / rect.width) * 100);
       };
 
-      let activePointerId = null;
+      const updateGlare = (clientX, clientY) => {
+        if (!glare) return;
+        const rect = slider.getBoundingClientRect();
+        if (!rect.width || !rect.height) return;
+        const gx = ((clientX - rect.left) / rect.width) * 100;
+        const gy = ((clientY - rect.top) / rect.height) * 100;
+        glare.style.background = `radial-gradient(circle at ${gx}% ${gy}%, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 65%)`;
+      };
 
-      const onPointerMove = (e) => {
-        if (activePointerId !== e.pointerId) return;
+      // 1. Desktop Hover: divider and circle smoothly track the mouse without needing click
+      slider.addEventListener('pointerenter', (e) => {
+        if (e.pointerType === 'mouse') {
+          slider.classList.add('is-hovered');
+          updateFromClientX(e.clientX);
+          updateGlare(e.clientX, e.clientY);
+        }
+      });
+
+      slider.addEventListener('pointermove', (e) => {
+        if (e.pointerType === 'mouse') {
+          updateFromClientX(e.clientX);
+          updateGlare(e.clientX, e.clientY);
+        }
+      });
+
+      slider.addEventListener('pointerleave', (e) => {
+        if (e.pointerType === 'mouse' && !isDragging) {
+          slider.classList.remove('is-hovered');
+        }
+      });
+
+      // 2. Click & Drag Support (for Touch devices & Click-and-Hold on Desktop)
+      const onWindowPointerMove = (e) => {
+        if (!isDragging) return;
+        if (activePointerId !== null && e.pointerId !== activePointerId) return;
         updateFromClientX(e.clientX);
+        updateGlare(e.clientX, e.clientY);
         if (e.cancelable) e.preventDefault();
       };
 
-      const onPointerEnd = (e) => {
-        if (activePointerId !== e.pointerId) return;
+      const onWindowPointerEnd = (e) => {
+        if (activePointerId !== null && e.pointerId !== activePointerId) return;
+        isDragging = false;
         activePointerId = null;
         slider.classList.remove('is-dragging');
-        try {
-          slider.releasePointerCapture(e.pointerId);
-        } catch (_) {}
-        window.removeEventListener('pointermove', onPointerMove);
-        window.removeEventListener('pointerup', onPointerEnd);
-        window.removeEventListener('pointercancel', onPointerEnd);
+        slider.classList.remove('is-hovered');
+        window.removeEventListener('pointermove', onWindowPointerMove);
+        window.removeEventListener('pointerup', onWindowPointerEnd);
+        window.removeEventListener('pointercancel', onWindowPointerEnd);
       };
 
-      const onPointerDown = (e) => {
+      slider.addEventListener('pointerdown', (e) => {
         if (e.pointerType === 'mouse' && e.button !== 0) return;
+        isDragging = true;
         activePointerId = e.pointerId;
         slider.classList.add('is-dragging');
-        try {
-          slider.setPointerCapture(e.pointerId);
-        } catch (_) {}
-
         updateFromClientX(e.clientX);
+        updateGlare(e.clientX, e.clientY);
 
-        window.addEventListener('pointermove', onPointerMove, { passive: false });
-        window.addEventListener('pointerup', onPointerEnd);
-        window.addEventListener('pointercancel', onPointerEnd);
-      };
+        window.addEventListener('pointermove', onWindowPointerMove, { passive: false });
+        window.addEventListener('pointerup', onWindowPointerEnd);
+        window.addEventListener('pointercancel', onWindowPointerEnd);
+      });
 
-      slider.addEventListener('pointerdown', onPointerDown);
-
+      // Keyboard Accessibility
       handle.addEventListener('keydown', (e) => {
         const step = e.shiftKey ? 10 : 2;
         if (e.key === 'ArrowLeft') { e.preventDefault(); setPos(pct - step); }
@@ -292,20 +312,36 @@ window.STUDIO_API = {
     if (isTouch) return;
     if (!window.gsap) return;
 
+    // Apply tilt to outer cards/frames, but NOT directly to .ba-slider
     const tiltElements = document.querySelectorAll(
-      '.hero-frame, .service-media .ba-slider, .pf-card .ba-slider, [data-tilt]'
+      '.hero-frame, .service-media, .pf-card, [data-tilt]'
     );
 
     tiltElements.forEach((el) => {
+      // Do not tilt the slider element itself
+      if (el.classList.contains('ba-slider')) return;
+
       let bounds = null;
-      const glare = el.querySelector('.ba-glare');
 
       const onMouseEnter = () => {
         bounds = el.getBoundingClientRect();
-        el.classList.add('is-hovered');
       };
 
       const onMouseMove = (e) => {
+        // When cursor is interacting inside Before/After slider or Loupe inspector,
+        // keep the element perfectly planar so the divider and circle are 100% straight and razor-sharp!
+        if (e.target.closest('.ba-slider') || e.target.closest('.macro-loupe-wrap')) {
+          window.gsap.to(el, {
+            rotateX: 0,
+            rotateY: 0,
+            scale: 1,
+            ease: 'power2.out',
+            duration: 0.35,
+            overwrite: 'auto'
+          });
+          return;
+        }
+
         if (el.classList.contains('is-dragging')) return;
         if (!bounds) bounds = el.getBoundingClientRect();
         if (!bounds.width || !bounds.height) return;
@@ -316,37 +352,29 @@ window.STUDIO_API = {
         const xRel = (mouseX / bounds.width) - 0.5; // -0.5 to 0.5
         const yRel = (mouseY / bounds.height) - 0.5;
 
-        const maxTilt = 9; // degrees noticeable luxury 3D tilt
+        const maxTilt = 4.5; // subtle, refined luxury 3D tilt
         const rotY = xRel * maxTilt;
         const rotX = -yRel * maxTilt;
 
         window.gsap.to(el, {
           rotateX: rotX,
           rotateY: rotY,
-          scale: 1.02,
-          transformPerspective: 1000,
+          scale: 1.015,
+          transformPerspective: 1200,
           ease: 'power1.out',
           duration: 0.3,
           overwrite: 'auto'
         });
-
-        // Dynamic specular glare lighting
-        if (glare) {
-          const glareX = (mouseX / bounds.width) * 100;
-          const glareY = (mouseY / bounds.height) * 100;
-          glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 65%)`;
-        }
       };
 
       const onMouseLeave = () => {
         bounds = null;
-        el.classList.remove('is-hovered');
         window.gsap.to(el, {
           rotateX: 0,
           rotateY: 0,
           scale: 1,
           ease: 'power2.out',
-          duration: 0.6,
+          duration: 0.5,
           overwrite: 'auto'
         });
       };
@@ -365,56 +393,113 @@ window.STUDIO_API = {
     if (!wrap) return;
 
     const lens = wrap.querySelector('.macro-loupe-lens');
-    const zoomImg = wrap.querySelector('.macro-loupe-zoom-img');
-    if (!lens || !zoomImg) return;
+    const baseImg = wrap.querySelector('.macro-loupe-img');
+    if (!lens || !baseImg) return;
 
-    const zoomFactor = 3.5;
+    const imgSrc = baseImg.getAttribute('src') || 'assets/images/macro-loupe-base.jpg';
+    lens.style.backgroundImage = `url("${imgSrc}")`;
 
-    const updateLoupe = (clientX, clientY) => {
+    const zoomFactor = 3.8; // Exact 380%–400% crisp luxury optical magnification
+    let touchTimeout = null;
+
+    const updateLoupe = (clientX, clientY, isTouch = false) => {
       const rect = wrap.getBoundingClientRect();
       if (!rect.width || !rect.height) return;
 
-      const x = Math.max(0, Math.min(rect.width, clientX - rect.left));
-      const y = Math.max(0, Math.min(rect.height, clientY - rect.top));
+      const lensWidth = lens.offsetWidth || 210;
+      const lensHeight = lens.offsetHeight || 210;
+      const radiusX = lensWidth / 2;
+      const radiusY = lensHeight / 2;
 
-      lens.style.left = `${x}px`;
-      lens.style.top = `${y}px`;
+      let x = clientX - rect.left;
+      let y = clientY - rect.top;
 
-      zoomImg.style.left = `${-x * (zoomFactor - 1)}px`;
-      zoomImg.style.top = `${-y * (zoomFactor - 1)}px`;
+      x = Math.max(0, Math.min(rect.width, x));
+      y = Math.max(0, Math.min(rect.height, y));
+
+      let lensCenterY = y;
+      if (isTouch) {
+        // On mobile touch, float the lens 75px above finger so thumb does NOT block the loupe view!
+        lensCenterY = Math.max(radiusY, y - 75);
+      }
+
+      // Lens physical position centered on (x, lensCenterY)
+      lens.style.left = `${x - radiusX}px`;
+      lens.style.top = `${lensCenterY - radiusY}px`;
+
+      // Scale background image to exact zoomFactor * container size
+      const bgW = rect.width * zoomFactor;
+      const bgH = rect.height * zoomFactor;
+
+      // Position background so that (x, y) on base image is EXACTLY centered under the crosshair
+      const bgX = radiusX - (x * zoomFactor);
+      const bgY = radiusY - (y * zoomFactor);
+
+      lens.style.backgroundSize = `${bgW}px ${bgH}px`;
+      lens.style.backgroundPosition = `${bgX}px ${bgY}px`;
     };
 
-    const onMouseEnter = (e) => {
+    const showLens = (clientX, clientY, isTouch = false) => {
+      if (touchTimeout) {
+        clearTimeout(touchTimeout);
+        touchTimeout = null;
+      }
       lens.classList.add('active');
-      updateLoupe(e.clientX, e.clientY);
+      updateLoupe(clientX, clientY, isTouch);
     };
 
-    const onMouseMove = (e) => {
-      updateLoupe(e.clientX, e.clientY);
-    };
-
-    const onMouseLeave = () => {
+    const hideLens = () => {
       lens.classList.remove('active');
     };
 
-    wrap.addEventListener('mouseenter', onMouseEnter);
-    wrap.addEventListener('mousemove', onMouseMove);
-    wrap.addEventListener('mouseleave', onMouseLeave);
+    wrap.addEventListener('mouseenter', (e) => {
+      showLens(e.clientX, e.clientY, false);
+    });
+
+    wrap.addEventListener('mousemove', (e) => {
+      showLens(e.clientX, e.clientY, false);
+    });
+
+    wrap.addEventListener('mouseleave', hideLens);
 
     // Touch support for mobile / tablets
     wrap.addEventListener('touchstart', (e) => {
       if (!e.touches.length) return;
-      lens.classList.add('active');
-      updateLoupe(e.touches[0].clientX, e.touches[0].clientY);
+      showLens(e.touches[0].clientX, e.touches[0].clientY, true);
     }, { passive: true });
 
     wrap.addEventListener('touchmove', (e) => {
       if (!e.touches.length) return;
-      updateLoupe(e.touches[0].clientX, e.touches[0].clientY);
-    }, { passive: true });
+      e.preventDefault(); // Stop page scrolling while inspecting diamond
+      updateLoupe(e.touches[0].clientX, e.touches[0].clientY, true);
+    }, { passive: false });
 
     wrap.addEventListener('touchend', () => {
-      lens.classList.remove('active');
+      // Keep visible for 1.8s so mobile user can admire the zoom after lifting finger
+      touchTimeout = setTimeout(hideLens, 1800);
+    });
+
+    // Preset focal buttons
+    document.querySelectorAll('.loupe-preset-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const pctX = parseFloat(btn.getAttribute('data-loupe-x')) || 50;
+        const pctY = parseFloat(btn.getAttribute('data-loupe-y')) || 50;
+        const rect = wrap.getBoundingClientRect();
+        const targetX = rect.left + (rect.width * (pctX / 100));
+        const targetY = rect.top + (rect.height * (pctY / 100));
+
+        showLens(targetX, targetY, false);
+
+        // Highlight active preset button
+        document.querySelectorAll('.loupe-preset-btn').forEach((b) => {
+          b.classList.toggle('border-gold', b === btn);
+          b.classList.toggle('text-gold', b === btn);
+          b.classList.toggle('bg-stone-50', b === btn);
+        });
+
+        if (touchTimeout) clearTimeout(touchTimeout);
+        touchTimeout = setTimeout(hideLens, 3500);
+      });
     });
   }
 
@@ -433,10 +518,10 @@ window.STUDIO_API = {
     if (!swatchBtns.length || !images.yellow) return;
 
     const alloyTitles = {
-      yellow: '18K Classic Yellow Gold Alloy',
-      rose: '18K Blush Rose Gold Alloy',
-      white: 'Platinum / 18K White Gold Alloy',
-      black: 'Gunmetal Black Rhodium Finish'
+      yellow: '18K Classic Yellow Gold',
+      rose: '18K Blush Rose Gold',
+      white: 'Platinum / White Gold',
+      black: 'Gunmetal Black Rhodium'
     };
 
     let activeAlloy = 'yellow';
@@ -450,12 +535,15 @@ window.STUDIO_API = {
         swatchBtns.forEach((b) => {
           const isCurrent = b === btn;
           b.setAttribute('aria-selected', String(isCurrent));
+          b.classList.toggle('ring-1', isCurrent);
+          b.classList.toggle('ring-gold', isCurrent);
+          b.classList.toggle('bg-stone-50', isCurrent);
           const statusSpan = b.querySelector('.swatch-status');
           if (statusSpan) {
             statusSpan.textContent = isCurrent ? 'Active' : 'Select';
             statusSpan.className = isCurrent
-              ? 'text-xs text-gold font-semibold uppercase tracking-wider swatch-status'
-              : 'text-xs text-stone-400 font-semibold uppercase tracking-wider swatch-status';
+              ? 'text-[10px] sm:text-xs text-gold uppercase tracking-wider font-medium swatch-status'
+              : 'text-[10px] sm:text-xs text-stone-400 uppercase tracking-wider font-medium swatch-status';
           }
         });
 
@@ -805,7 +893,7 @@ window.STUDIO_API = {
       const emailInput = form.querySelector('#ft-email');
       const serviceSelect = form.querySelector('#ft-service');
       const email = emailInput ? emailInput.value.trim() : '';
-      const service = serviceSelect ? serviceSelect.value : '';
+      const service = serviceSelect ? serviceSelect.value : 'High-End Jewelry Retouching';
       if (!email || !EMAIL_RE.test(email)) {
         if (emailInput) {
           emailInput.focus();
@@ -814,16 +902,23 @@ window.STUDIO_API = {
         }
         return;
       }
-      const targetEmail = document.querySelector('#page-trial input[name="email"]');
-      if (targetEmail) targetEmail.value = email;
-      if (service) {
-        document.querySelectorAll('.js-trial-service').forEach((sel) => { sel.value = service; });
+
+      const card = form.closest('.fast-track-card');
+      if (card) {
+        card.innerHTML = `
+          <div class="py-8 text-center animate-fade-in">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gold/10 border border-gold text-gold flex items-center justify-center text-2xl font-serif">✓</div>
+            <span class="eyebrow" style="margin-bottom: 0.5rem; color: #b59054;">Atelier Priority Slot Confirmed</span>
+            <h3 class="font-serif text-2xl sm:text-3xl text-ink-primary mb-3">Your Free Trial Has Been Reserved</h3>
+            <p class="text-ink-secondary text-base max-w-lg mx-auto mb-6 leading-relaxed">
+              Thank you! Our lead master retoucher will email you at <strong class="text-ink-primary font-semibold">${email}</strong> within 15 minutes with secure direct upload instructions for your 2 free test images (<strong>${service}</strong>).
+            </p>
+            <div class="inline-flex items-center gap-2 text-xs text-gold-deep font-semibold uppercase tracking-wider bg-gold/10 px-5 py-2.5 rounded-full border border-gold/30">
+              ✦ 12–24h Overnight Delivery Guarantee &bull; Automatic NDA Protection
+            </div>
+          </div>
+        `;
       }
-      navigateRoute('#trial', true);
-      setTimeout(() => {
-        const dropzone = document.querySelector('#page-trial .js-dropzone');
-        if (dropzone) dropzone.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 400);
     });
   }
 
@@ -881,14 +976,18 @@ window.STUDIO_API = {
 
     // Section Reveals
     gsap.utils.toArray('.js-reveal').forEach((el) => {
-      gsap.from(el, {
-        y: yDist,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        clearProps: 'transform,opacity',
-        scrollTrigger: { trigger: el, start: 'top 88%', once: true }
-      });
+      gsap.fromTo(
+        el,
+        { y: yDist, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power3.out',
+          clearProps: 'transform,opacity',
+          scrollTrigger: { trigger: el, start: 'top 88%', once: true, immediateRender: false }
+        }
+      );
     });
 
     // Four Pillars Stacking Glass Cards Deck Animation
@@ -896,14 +995,18 @@ window.STUDIO_API = {
     const isDesktopStack = window.matchMedia('(min-width: 1024px)').matches;
     if (isDesktopStack && serviceCards.length > 1) {
       serviceCards.forEach((card, i) => {
-        gsap.from(card, {
-          y: yDist,
-          opacity: 0,
-          duration: 0.85,
-          ease: 'power3.out',
-          clearProps: 'transform,opacity',
-          scrollTrigger: { trigger: card, start: 'top 86%', once: true }
-        });
+        gsap.fromTo(
+          card,
+          { y: yDist, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.85,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity',
+            scrollTrigger: { trigger: card, start: 'top 86%', once: true, immediateRender: false }
+          }
+        );
 
         if (i < serviceCards.length - 1) {
           const nextCard = serviceCards[i + 1];
@@ -929,14 +1032,18 @@ window.STUDIO_API = {
       });
     } else {
       serviceCards.forEach((card) => {
-        gsap.from(card, {
-          y: 20,
-          opacity: 0,
-          duration: 0.75,
-          ease: 'power3.out',
-          clearProps: 'transform,opacity',
-          scrollTrigger: { trigger: card, start: 'top 88%', once: true }
-        });
+        gsap.fromTo(
+          card,
+          { y: 20, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.75,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity',
+            scrollTrigger: { trigger: card, start: 'top 88%', once: true, immediateRender: false }
+          }
+        );
       });
     }
 
@@ -956,68 +1063,92 @@ window.STUDIO_API = {
     }
 
     // How We Work Columns
-    gsap.from('.js-wwc-col', {
-      y: yDist,
-      opacity: 0,
-      duration: 0.75,
-      stagger: 0.12,
-      ease: 'power3.out',
-      clearProps: 'transform,opacity',
-      scrollTrigger: { trigger: '.wwc-cols', start: 'top 86%', once: true }
-    });
+    gsap.fromTo(
+      '.js-wwc-col',
+      { y: yDist, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.75,
+        stagger: 0.12,
+        ease: 'power3.out',
+        clearProps: 'transform,opacity',
+        scrollTrigger: { trigger: '.wwc-cols', start: 'top 86%', once: true, immediateRender: false }
+      }
+    );
 
     // Portfolio Cards
-    gsap.from('.js-pf-card', {
-      y: yDist,
-      opacity: 0,
-      duration: 0.75,
-      stagger: isMobile ? 0.06 : 0.09,
-      ease: 'power3.out',
-      clearProps: 'transform,opacity',
-      scrollTrigger: { trigger: '#portfolioGrid', start: 'top 86%', once: true }
-    });
+    gsap.fromTo(
+      '.js-pf-card',
+      { y: 16, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        stagger: isMobile ? 0.03 : 0.06,
+        ease: 'power2.out',
+        clearProps: 'transform,opacity',
+        scrollTrigger: { trigger: '#portfolioGrid', start: 'top 90%', once: true, immediateRender: false }
+      }
+    );
 
     // Workflow Steps
-    gsap.from('.js-step-card', {
-      y: 24,
-      opacity: 0,
-      duration: 0.75,
-      stagger: 0.1,
-      ease: 'power3.out',
-      clearProps: 'transform,opacity',
-      scrollTrigger: { trigger: '.workflow-grid', start: 'top 86%', once: true }
-    });
+    gsap.fromTo(
+      '.js-step-card',
+      { y: 20, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.7,
+        stagger: 0.08,
+        ease: 'power3.out',
+        clearProps: 'transform,opacity',
+        scrollTrigger: { trigger: '.workflow-grid', start: 'top 86%', once: true, immediateRender: false }
+      }
+    );
 
     // Why Us Pillars
-    gsap.from('.js-why-item', {
-      y: 22,
-      opacity: 0,
-      duration: 0.7,
-      stagger: 0.08,
-      ease: 'power3.out',
-      clearProps: 'transform,opacity',
-      scrollTrigger: { trigger: '.why-list', start: 'top 86%', once: true }
-    });
+    gsap.fromTo(
+      '.js-why-item',
+      { y: 20, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.65,
+        stagger: 0.06,
+        ease: 'power3.out',
+        clearProps: 'transform,opacity',
+        scrollTrigger: { trigger: '.why-list', start: 'top 86%', once: true, immediateRender: false }
+      }
+    );
 
     // Testimonials Slider Reveal
-    gsap.from('.testimonials-slider-wrap', {
-      y: 24,
-      opacity: 0,
-      duration: 0.8,
-      ease: 'power3.out',
-      clearProps: 'transform,opacity',
-      scrollTrigger: { trigger: '#testimonials', start: 'top 86%', once: true }
-    });
+    gsap.fromTo(
+      '.testimonials-slider-wrap',
+      { y: 20, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.75,
+        ease: 'power3.out',
+        clearProps: 'transform,opacity',
+        scrollTrigger: { trigger: '#testimonials', start: 'top 86%', once: true, immediateRender: false }
+      }
+    );
 
     // Footer Reveal
-    gsap.from('.js-footer', {
-      opacity: 0,
-      y: 16,
-      duration: 0.75,
-      ease: 'power2.out',
-      clearProps: 'transform,opacity',
-      scrollTrigger: { trigger: '.js-footer', start: 'top 95%', once: true }
-    });
+    gsap.fromTo(
+      '.js-footer',
+      { opacity: 0, y: 16 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        ease: 'power2.out',
+        clearProps: 'transform,opacity',
+        scrollTrigger: { trigger: '.js-footer', start: 'top 95%', once: true, immediateRender: false }
+      }
+    );
 
     ScrollTrigger.refresh();
   }
