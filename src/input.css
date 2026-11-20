@@ -4,30 +4,31 @@
 
 @layer base {
   :root {
-    --bg-ivory: #FAF8F4;
-    --bg-stone: #F5F1E9;
-    --bg-obsidian: #0E0D0C;
+    --bg-ivory: #faf8f4;
+    --bg-stone: #f5f1e9;
+    --bg-obsidian: #0e0d0c;
     --bg-charcoal: #171513;
-    --surface-white: #FFFFFF;
+    --surface-white: #ffffff;
     --ink-primary: #141311;
-    --ink-secondary: #524E47;
-    --ink-muted: #7C766C;
-    --ink-light: #FAF8F4;
-    --ink-light-muted: #B8B1A6;
-    --gold: #B59054;
-    --gold-deep: #8E6B36;
-    --gold-light: #D9BA82;
+    --ink-secondary: #524e47;
+    --ink-muted: #7c766c;
+    --ink-light: #faf8f4;
+    --ink-light-muted: #b8b1a6;
+    --gold: #b59054;
+    --gold-deep: #8e6b36;
+    --gold-light: #d9ba82;
     --gold-border: rgba(181, 144, 84, 0.32);
     --gold-soft: rgba(181, 144, 84, 0.12);
-    --border-light: #E8E1D3;
-    --border-strong: #CFC6B5;
+    --border-light: #e8e1d3;
+    --border-strong: #cfc6b5;
     --border-dark: rgba(255, 255, 255, 0.12);
-    --error: #A62B2B;
-    --error-bg: #FDF2F2;
-    --success: #1B5E42;
-    --success-bg: #EEF8F3;
-    --font-serif: 'Cormorant Garamond', Georgia, serif;
-    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --error: #a62b2b;
+    --error-bg: #fdf2f2;
+    --success: #1b5e42;
+    --success-bg: #eef8f3;
+    --font-serif: "Cormorant Garamond", Georgia, serif;
+    --font-sans:
+      "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
     --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
     --transition: 0.32s cubic-bezier(0.22, 1, 0.36, 1);
   }
@@ -37,7 +38,8 @@
     overflow-x: clip;
   }
 
-  html.lenis, html.lenis body {
+  html.lenis,
+  html.lenis body {
     height: auto;
   }
 
@@ -51,7 +53,11 @@
     overflow-x: clip;
   }
 
-  h1, h2, h3, h4, .serif {
+  h1,
+  h2,
+  h3,
+  h4,
+  .serif {
     @apply font-serif font-medium tracking-tight text-ink-primary;
     line-height: 1.08;
   }
@@ -331,15 +337,19 @@
   /* Four Pillars Stacking Glass Cards */
   .services-section {
     @apply bg-ivory relative pb-24 sm:pb-32 lg:pb-40;
-    background-image: radial-gradient(circle at 50% 12%, rgba(181, 144, 84, 0.08) 0%, transparent 65%);
+    background-image: radial-gradient(
+      circle at 50% 12%,
+      rgba(181, 144, 84, 0.08) 0%,
+      transparent 65%
+    );
   }
 
   .services-stack {
-    @apply relative flex flex-col gap-12 sm:gap-16 lg:gap-20;
+    @apply relative flex flex-col gap-8 sm:gap-12 lg:gap-16;
   }
 
   .service-row {
-    @apply grid grid-cols-1 lg:grid-cols-[1.08fr_0.92fr] gap-8 sm:gap-12 lg:gap-16 items-center p-8 sm:p-12 lg:p-16 rounded-[28px] bg-white/95 backdrop-blur-2xl border border-white/95 ring-1 ring-gold/30 shadow-glass transition-all duration-300;
+    @apply grid grid-cols-1 lg:grid-cols-[1.08fr_0.92fr] gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-center p-5 sm:p-8 md:p-10 lg:p-14 rounded-2xl sm:rounded-3xl bg-white/95 backdrop-blur-2xl border border-white/95 ring-1 ring-gold/30 shadow-glass transition-all duration-300;
     transform-origin: center top;
     will-change: transform;
   }
@@ -357,23 +367,27 @@
   }
 
   .service-index {
-    @apply inline-flex items-center gap-3 text-xs font-semibold tracking-[0.16em] uppercase text-gold-deep mb-3.5 after:content-[''] after:w-6 after:h-px after:bg-gold;
+    @apply inline-flex items-center gap-2.5 sm:gap-3 text-[11px] sm:text-xs font-semibold tracking-[0.16em] uppercase text-gold-deep mb-2.5 sm:mb-3.5 after:content-[''] after:w-5 sm:after:w-6 after:h-px after:bg-gold;
   }
 
   .service-body h3 {
-    @apply text-3xl sm:text-4xl lg:text-5xl mb-4 font-serif;
+    @apply text-2xl sm:text-3xl lg:text-4xl xl:text-5xl mb-3 sm:mb-4 font-serif font-normal text-obsidian tracking-tight leading-[1.18];
   }
 
   .service-body p {
-    @apply text-ink-secondary text-base leading-relaxed mb-6;
+    @apply text-ink-secondary text-sm sm:text-base leading-relaxed mb-4 sm:mb-6;
+  }
+
+  .service-body .btn {
+    @apply w-full sm:w-auto text-center justify-center;
   }
 
   .editorial-checklist {
-    @apply grid gap-3 pt-5 mb-8 border-t border-stone-200 list-none;
+    @apply grid gap-2.5 sm:gap-3 pt-4 sm:pt-5 mb-6 sm:mb-8 border-t border-stone-200 list-none;
   }
 
   .editorial-checklist li {
-    @apply relative pl-6 text-sm sm:text-base text-ink-primary leading-snug before:content-['✦'] before:absolute before:left-0 before:top-0 before:text-gold before:text-xs;
+    @apply relative pl-5 sm:pl-6 text-xs sm:text-sm text-ink-primary leading-snug before:content-['✦'] before:absolute before:left-0 before:top-0 before:text-gold before:text-xs;
   }
 
   /* Full Bleed CTA Banner */
@@ -611,17 +625,53 @@
     @apply text-sm sm:text-base text-ink-secondary leading-relaxed;
   }
 
-  /* Testimonials */
+  /* Testimonials Swiper Carousel */
   .testimonials-section {
-    @apply bg-stone-100 border-y border-stone-200;
+    @apply bg-stone-100 border-y border-stone-200 overflow-hidden;
   }
 
-  .testimonials-grid {
-    @apply grid grid-cols-1 md:grid-cols-3 gap-7;
+  .testimonials-slider-wrap {
+    @apply relative;
+  }
+
+  .testimonials-swiper {
+    @apply pb-14 pt-2 px-1;
+  }
+
+  .testimonials-swiper .swiper-slide {
+    @apply h-auto flex;
+  }
+
+  .testimonials-grid,
+  .testimonials-swiper .testimonial-card {
+    @apply w-full h-full bg-white border border-stone-200 rounded-2xl p-8 sm:p-9 shadow-sm flex flex-col justify-between transition-all duration-300 hover:border-gold hover:shadow-md;
   }
 
   .testimonial-card {
-    @apply bg-white border border-stone-200 rounded-2xl p-8 sm:p-9 shadow-sm flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:border-gold hover:shadow-md;
+    @apply bg-white border border-stone-200 rounded-2xl p-8 sm:p-9 shadow-sm flex flex-col justify-between transition-all duration-300 hover:border-gold hover:shadow-md;
+  }
+
+  /* Luxury Swiper Pagination */
+  .testimonials-pagination {
+    @apply !bottom-0 flex justify-center items-center gap-2;
+  }
+
+  .testimonials-pagination .swiper-pagination-bullet {
+    @apply w-2.5 h-2.5 rounded-full bg-stone-300 opacity-60 transition-all duration-300 cursor-pointer m-0 inline-block;
+  }
+
+  .testimonials-pagination .swiper-pagination-bullet-active {
+    @apply !w-8 !rounded-full !bg-gold !opacity-100;
+  }
+
+  /* Luxury Navigation Buttons */
+  .testimonials-nav-wrap {
+    @apply flex justify-center items-center gap-4 mt-6;
+  }
+
+  .testimonials-prev,
+  .testimonials-next {
+    @apply w-11 h-11 rounded-full border border-stone-300 bg-white text-ink-primary flex items-center justify-center transition-all duration-300 cursor-pointer hover:border-gold hover:bg-gold hover:text-white hover:scale-105 active:scale-95 disabled:opacity-30 disabled:pointer-events-none shadow-sm;
   }
 
   .stars {
@@ -950,6 +1000,145 @@
   .footer-bottom {
     @apply pt-8 border-t border-white/10 flex flex-wrap justify-between items-center gap-4 text-xs text-ink-light-muted;
   }
+
+  /* Press / Accreditation Bar */
+  .press-bar {
+    @apply border-y border-stone-200/80 bg-white/60 py-5 text-center overflow-hidden;
+  }
+  .press-bar-title {
+    @apply text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.22em] text-ink-muted mb-3.5 block;
+  }
+  .press-badges {
+    @apply flex flex-wrap items-center justify-center gap-6 sm:gap-11 text-xs sm:text-sm font-serif uppercase tracking-[0.2em] text-ink-secondary/90;
+  }
+  .press-badge-item {
+    @apply transition-colors duration-200 hover:text-gold-deep;
+  }
+
+  /* 400% Macro Loupe Inspector */
+  .macro-loupe-section {
+    @apply bg-ivory border-t border-stone-200 py-20 lg:py-28 overflow-hidden;
+  }
+  .macro-loupe-grid {
+    @apply grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16 items-center;
+  }
+  .macro-loupe-wrap {
+    @apply relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-obsidian border border-gold/30 shadow-glass select-none cursor-crosshair;
+  }
+  .macro-loupe-img {
+    @apply w-full h-full object-cover block pointer-events-none select-none;
+  }
+  .macro-loupe-lens {
+    @apply absolute w-44 h-44 sm:w-52 sm:h-52 rounded-full border-4 border-gold overflow-hidden pointer-events-none z-20 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-90 transition-opacity duration-200 ring-2 ring-white/60;
+    box-shadow: 0 16px 40px rgba(14, 13, 12, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+  }
+  .macro-loupe-lens.active {
+    @apply opacity-100 scale-100;
+  }
+  .macro-loupe-zoom-img {
+    @apply absolute w-[350%] h-[350%] max-w-none object-cover pointer-events-none;
+  }
+  .macro-loupe-crosshair {
+    @apply absolute inset-0 pointer-events-none z-10 flex items-center justify-center;
+  }
+  .macro-loupe-crosshair::before {
+    content: '';
+    @apply absolute w-full h-px bg-gold/40;
+  }
+  .macro-loupe-crosshair::after {
+    content: '';
+    @apply absolute h-full w-px bg-gold/40;
+  }
+  .macro-loupe-indicator {
+    @apply absolute top-3 right-3 z-10 bg-obsidian/85 backdrop-blur-md text-gold px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-wider uppercase border border-gold/30 shadow-sm pointer-events-none flex items-center gap-2;
+  }
+
+  /* Digital Alloy Recasting Studio (Colorways) */
+  .colorway-section {
+    @apply bg-stone-100 border-t border-stone-200 py-20 lg:py-28;
+  }
+  .colorway-grid {
+    @apply grid grid-cols-1 lg:grid-cols-[1.08fr_0.92fr] gap-10 lg:gap-16 items-center;
+  }
+  .colorway-display {
+    @apply relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-white border border-stone-200 shadow-glass;
+  }
+  .colorway-img {
+    @apply absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-out;
+  }
+  .colorway-badge {
+    @apply absolute bottom-4 left-4 z-10 bg-obsidian/90 backdrop-blur-md text-white px-4 py-2 rounded-lg text-xs font-semibold tracking-wider uppercase border border-gold/40;
+  }
+  .swatch-group {
+    @apply flex flex-col gap-3 mt-6;
+  }
+  .swatch-btn {
+    @apply flex items-center gap-4 p-4 rounded-xl border border-stone-200 bg-white text-left transition-all duration-300 hover:border-gold hover:shadow-sm cursor-pointer;
+  }
+  .swatch-btn[aria-selected="true"] {
+    @apply border-gold ring-1 ring-gold bg-stone-50 shadow-md;
+  }
+  .swatch-dot {
+    @apply w-8 h-8 rounded-full border border-black/10 shrink-0 shadow-sm;
+  }
+
+  /* The Anti-AI Human Artisan Pledge */
+  .artisan-pledge-section {
+    @apply bg-obsidian text-ink-light py-20 lg:py-28 relative overflow-hidden border-y border-white/10;
+  }
+  .artisan-pledge-card {
+    @apply max-w-4xl mx-auto p-8 sm:p-14 rounded-3xl bg-white/[0.04] backdrop-blur-xl border border-gold/30 relative text-center;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(181, 144, 84, 0.2) inset;
+  }
+  .artisan-quote {
+    @apply font-serif text-xl sm:text-2xl lg:text-3xl italic leading-relaxed text-ink-light mb-8 font-normal;
+  }
+  .artisan-author {
+    @apply flex flex-col items-center gap-1 mb-8;
+  }
+  .artisan-sig {
+    @apply font-serif text-2xl text-gold italic font-semibold;
+  }
+  .artisan-badges {
+    @apply flex flex-wrap justify-center gap-3 sm:gap-6 pt-6 border-t border-white/10 text-xs sm:text-sm text-ink-light-muted uppercase tracking-wider;
+  }
+
+  /* Studio Investment & SLA Pricing Tiers */
+  .pricing-section {
+    @apply bg-ivory py-20 lg:py-28 border-t border-stone-200;
+  }
+  .pricing-grid {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mt-12 sm:mt-16;
+  }
+  .pricing-card {
+    @apply relative p-8 sm:p-10 rounded-2xl bg-white border border-stone-200 shadow-sm flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:border-gold hover:shadow-glass;
+  }
+  .pricing-card--featured {
+    @apply border-gold ring-2 ring-gold/40 shadow-glass-gold bg-gradient-to-b from-white via-white to-stone-50;
+  }
+  .pricing-tier-tag {
+    @apply inline-block text-[11px] font-semibold uppercase tracking-[0.16em] text-gold-deep mb-2;
+  }
+  .pricing-price {
+    @apply font-serif text-4xl sm:text-5xl font-medium text-ink-primary mb-1;
+  }
+  .pricing-unit {
+    @apply text-xs text-ink-muted uppercase tracking-wider block mb-6;
+  }
+  .pricing-features {
+    @apply grid gap-3 my-6 pt-6 border-t border-stone-200 text-sm text-ink-secondary list-none;
+  }
+  .pricing-features li {
+    @apply flex items-start gap-2.5 before:content-['✓'] before:text-gold before:font-bold before:text-sm;
+  }
+
+  /* VIP Fast-Track Free Trial (Streamlined) */
+  .fast-track-card {
+    @apply max-w-4xl mx-auto p-8 sm:p-12 lg:p-14 rounded-3xl bg-gradient-to-br from-white to-stone-50 border border-gold/40 shadow-glass-gold relative overflow-hidden text-center;
+  }
+  .fast-track-form {
+    @apply grid grid-cols-1 sm:grid-cols-[1fr_1fr_auto] gap-3 sm:gap-4 mt-8 items-center;
+  }
 }
 
 /* Interaction Critical Styles */
@@ -961,12 +1150,44 @@
   border-radius: 14px;
   overflow: hidden;
   background-color: #171513;
-  border: 1px solid #E8E1D3;
+  border: 1px solid #e8e1d3;
   box-shadow: 0 22px 54px rgba(14, 13, 12, 0.085);
   user-select: none;
   -webkit-user-select: none;
-  touch-action: none;
+  touch-action: pan-y;
   cursor: ew-resize;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ba-slider:hover {
+  box-shadow:
+    0 28px 65px rgba(14, 13, 12, 0.14),
+    0 0 0 1px rgba(181, 144, 84, 0.35);
+}
+
+.hero-frame,
+.service-media {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.ba-glare {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: overlay;
+  border-radius: inherit;
+}
+
+.ba-slider.is-hovered .ba-glare {
+  opacity: 1;
 }
 
 .ba-layer {
@@ -988,33 +1209,17 @@
   display: block;
 }
 
+.ba-layer--new,
 .ba-layer--after {
   z-index: 1;
 }
 
-.ba-layer--after img {
-  filter: contrast(1.1) saturate(1.15) brightness(1.02);
-}
-
+.ba-layer--old,
 .ba-layer--before {
   z-index: 2;
   clip-path: inset(0 calc(100% - var(--pos)) 0 0);
   will-change: clip-path;
   transform: translateZ(0);
-}
-
-.ba-layer--before img {
-  filter: saturate(0.55) contrast(0.82) brightness(0.9) blur(0.25px);
-}
-
-.ba-layer--before::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.14) 0%, transparent 55%),
-    linear-gradient(135deg, rgba(20, 18, 16, 0.16) 0%, rgba(20, 18, 16, 0.04) 50%, rgba(20, 18, 16, 0.22) 100%);
-  pointer-events: none;
 }
 
 .ba-divider {
@@ -1023,10 +1228,12 @@
   bottom: 0;
   left: var(--pos);
   width: 2px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   z-index: 4;
   pointer-events: none;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6), 0 0 4px rgba(181, 144, 84, 0.7);
+  box-shadow:
+    0 0 12px rgba(0, 0, 0, 0.6),
+    0 0 4px rgba(181, 144, 84, 0.7);
   transform: translateX(-50%);
 }
 
@@ -1035,21 +1242,27 @@
   top: 50%;
   left: var(--pos);
   transform: translate(-50%, -50%);
-  width: 48px;
-  height: 48px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  color: #0E0D0C;
-  border: 2px solid #B59054;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35), 0 0 0 4px rgba(181, 144, 84, 0.2);
+  color: #0e0d0c;
+  border: 2px solid #b59054;
+  box-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.35),
+    0 0 0 4px rgba(181, 144, 84, 0.2);
   display: grid;
   place-items: center;
   z-index: 5;
   cursor: ew-resize;
   touch-action: none;
-  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .ba-handle svg {
@@ -1059,10 +1272,12 @@
 .ba-handle:hover,
 .ba-handle:focus-visible {
   transform: translate(-50%, -50%) scale(1.12);
-  background-color: #B59054;
-  border-color: #D9BA82;
-  color: #FFFFFF;
-  box-shadow: 0 8px 24px rgba(181, 144, 84, 0.45), 0 0 0 6px rgba(181, 144, 84, 0.25);
+  background-color: #b59054;
+  border-color: #d9ba82;
+  color: #ffffff;
+  box-shadow:
+    0 8px 24px rgba(181, 144, 84, 0.45),
+    0 0 0 6px rgba(181, 144, 84, 0.25);
 }
 
 .ba-badge {
@@ -1080,43 +1295,84 @@
   -webkit-backdrop-filter: blur(8px);
 }
 
+.ba-badge--old,
 .ba-badge--before {
   left: 14px;
   background-color: rgba(14, 13, 12, 0.72);
-  color: #FAF8F4;
+  color: #faf8f4;
   border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
+.ba-badge--new,
 .ba-badge--after {
   right: 14px;
   background-color: rgba(255, 255, 255, 0.88);
-  color: #0E0D0C;
+  color: #0e0d0c;
   border: 1px solid rgba(14, 13, 12, 0.1);
 }
 
+@media (max-width: 640px) {
+  .ba-handle {
+    width: 40px;
+    height: 40px;
+  }
+  .ba-handle svg {
+    width: 15px;
+    height: 15px;
+  }
+  .ba-badge {
+    bottom: 10px;
+    padding: 4px 8px;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+  }
+  .ba-badge--old,
+  .ba-badge--before {
+    left: 10px;
+  }
+  .ba-badge--new,
+  .ba-badge--after {
+    right: 10px;
+  }
+}
+
 /* Stacking Cards Desktop Overrides */
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
   .service-row {
     position: sticky;
-    top: calc(88px + var(--card-index, 1) * 22px);
+    top: calc(96px + var(--card-index, 1) * 20px);
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1023px) {
   .service-row {
-    position: relative !important;
-    top: auto !important;
-    transform: none !important;
-    filter: none !important;
+    position: relative;
+    top: auto;
   }
 }
 
-#service-1 { --card-index: 1; z-index: 1; }
-#service-2 { --card-index: 2; z-index: 2; }
-#service-3 { --card-index: 3; z-index: 3; }
-#service-4 { --card-index: 4; z-index: 4; }
+#service-1 {
+  --card-index: 1;
+  z-index: 1;
+}
+#service-2 {
+  --card-index: 2;
+  z-index: 2;
+}
+#service-3 {
+  --card-index: 3;
+  z-index: 3;
+}
+#service-4 {
+  --card-index: 4;
+  z-index: 4;
+}
 
 @keyframes marqueeLoop {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }

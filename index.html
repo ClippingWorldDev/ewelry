@@ -72,6 +72,8 @@
       }
     </script>
 
+    <!-- Swiper Carousel Stylesheet (Local) -->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
     <!-- Compiled Luxury Studio Stylesheet (Tailwind CSS) -->
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
@@ -109,32 +111,35 @@
         <nav class="primary-nav" aria-label="Primary Navigation">
           <ul class="nav-list">
             <li>
-              <a href="#home" class="nav-link active" data-route="home">Home</a>
+              <a href="#home" class="nav-link active">Home</a>
             </li>
             <li>
-              <a href="#about" class="nav-link" data-route="about"
-                >About Studio</a
-              >
+              <a href="#services" class="nav-link">Four Pillars</a>
             </li>
             <li>
-              <a href="#trial" class="nav-link" data-route="trial"
-                >Free Trial</a
-              >
+              <a href="#macro-loupe" class="nav-link">Precision Loupe</a>
             </li>
             <li>
-              <a href="#quote" class="nav-link" data-route="quote">Get Quote</a>
+              <a href="#colorways" class="nav-link">Alloy Recasting</a>
             </li>
             <li>
-              <a href="#contact" class="nav-link" data-route="contact"
-                >Contact Us</a
-              >
+              <a href="#how-we-work" class="nav-link">Bench Standards</a>
+            </li>
+            <li>
+              <a href="#portfolio" class="nav-link">Portfolio</a>
+            </li>
+            <li>
+              <a href="#pricing" class="nav-link">Pricing &amp; SLA</a>
+            </li>
+            <li>
+              <a href="#faq" class="nav-link">FAQ</a>
             </li>
           </ul>
         </nav>
 
         <div class="header-actions">
-          <a href="#trial" class="btn btn-outline btn-sm">2 Free Test Images</a>
-          <a href="#quote" class="btn btn-obsidian btn-sm">Get Quote</a>
+          <a href="#free-trial-home" class="btn btn-outline btn-sm">2 Free Test Images</a>
+          <a href="#pricing" class="btn btn-obsidian btn-sm">Get Quote</a>
           <button
             type="button"
             class="mobile-menu-btn"
@@ -199,47 +204,36 @@
 
           <ul class="mobile-nav-list">
             <li>
-              <a href="#home" class="mobile-nav-link active" data-route="home"
-                >Home</a
-              >
+              <a href="#home" class="mobile-nav-link active">Home</a>
             </li>
             <li>
-              <a href="#services" class="mobile-nav-link" data-route="home"
-                >Services</a
-              >
+              <a href="#services" class="mobile-nav-link">Four Pillars</a>
             </li>
             <li>
-              <a href="#portfolio" class="mobile-nav-link" data-route="home"
-                >Portfolio</a
-              >
+              <a href="#macro-loupe" class="mobile-nav-link">Precision Loupe</a>
             </li>
             <li>
-              <a href="#about" class="mobile-nav-link" data-route="about"
-                >About Studio</a
-              >
+              <a href="#colorways" class="mobile-nav-link">Alloy Recasting</a>
             </li>
             <li>
-              <a href="#trial" class="mobile-nav-link" data-route="trial"
-                >Free Trial</a
-              >
+              <a href="#how-we-work" class="mobile-nav-link">Bench Standards</a>
             </li>
             <li>
-              <a href="#quote" class="mobile-nav-link" data-route="quote"
-                >Get Quote</a
-              >
+              <a href="#portfolio" class="mobile-nav-link">Portfolio</a>
             </li>
             <li>
-              <a href="#contact" class="mobile-nav-link" data-route="contact"
-                >Contact Us</a
-              >
+              <a href="#pricing" class="mobile-nav-link">Pricing &amp; SLA</a>
+            </li>
+            <li>
+              <a href="#faq" class="mobile-nav-link">FAQ</a>
             </li>
           </ul>
 
           <div class="mobile-drawer-ctas">
-            <a href="#trial" class="btn btn-gold btn-full"
+            <a href="#free-trial-home" class="btn btn-gold btn-full"
               >2 Free Test Images</a
             >
-            <a href="#quote" class="btn btn-obsidian btn-full">Get Quote</a>
+            <a href="#pricing" class="btn btn-obsidian btn-full">Pricing &amp; Quote</a>
           </div>
         </div>
 
@@ -305,31 +299,42 @@
             </div>
 
             <div class="js-hero-media">
-              <div class="hero-frame">
-                <div class="ba-slider" data-ba-slider>
-                  <div class="ba-layer ba-layer--after">
+              <div class="hero-frame" data-tilt>
+                <div
+                  class="ba-slider"
+                  data-ba-slider
+                  data-old-image="assets/images/hero-before.jpg"
+                  data-new-image="assets/images/hero-after.jpg"
+                  data-before="assets/images/hero-before.jpg"
+                  data-after="assets/images/hero-after.jpg"
+                >
+                  <!-- 1. NEW IMAGE (Retouched Master) -->
+                  <div class="ba-layer ba-layer--new ba-layer--after">
                     <img
-                      src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1400&q=85"
+                      src="assets/images/hero-after.jpg"
+                      class="ba-img ba-img--new"
                       width="1400"
                       height="1050"
-                      alt="Retouched luxury solitaire diamond engagement ring with restored fire and polished metal reflections"
+                      alt="New retouched luxury solitaire diamond engagement ring with restored fire"
                       fetchpriority="high"
                       decoding="async"
                     />
                   </div>
-                  <div class="ba-layer ba-layer--before">
+                  <!-- 2. OLD IMAGE (Raw Studio Capture) -->
+                  <div class="ba-layer ba-layer--old ba-layer--before">
                     <img
-                      src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1400&q=85"
+                      src="assets/images/hero-before.jpg"
+                      class="ba-img ba-img--old"
                       width="1400"
                       height="1050"
-                      alt="Unretouched raw studio capture of the same solitaire diamond engagement ring"
+                      alt="Old unretouched raw studio capture of the same solitaire diamond ring"
                       fetchpriority="high"
                       decoding="async"
                     />
                   </div>
                   <div class="ba-divider" aria-hidden="true"></div>
-                  <span class="ba-badge ba-badge--before">Raw Capture</span>
-                  <span class="ba-badge ba-badge--after">Retouched Master</span>
+                  <span class="ba-badge ba-badge--old ba-badge--before">Old (Raw)</span>
+                  <span class="ba-badge ba-badge--new ba-badge--after">New (Master)</span>
                   <button
                     type="button"
                     class="ba-handle"
@@ -390,6 +395,28 @@
           </div>
         </div>
 
+        <!-- ACCREDITATION / EDITORIAL PRESS BAR -->
+        <div class="press-bar">
+          <div class="container">
+            <span class="press-bar-title">Retouched for Luxury Maisons &amp; Retailers Featured In</span>
+            <div class="press-badges">
+              <span class="press-badge-item">Bergdorf Goodman</span>
+              <span class="press-badge-item text-gold/60">&bull;</span>
+              <span class="press-badge-item">Saks Fifth Avenue</span>
+              <span class="press-badge-item text-gold/60">&bull;</span>
+              <span class="press-badge-item">Harrods London</span>
+              <span class="press-badge-item text-gold/60">&bull;</span>
+              <span class="press-badge-item">Place Vend&ocirc;me</span>
+              <span class="press-badge-item text-gold/60">&bull;</span>
+              <span class="press-badge-item">Baselworld</span>
+              <span class="press-badge-item text-gold/60">&bull;</span>
+              <span class="press-badge-item">JCK Las Vegas</span>
+              <span class="press-badge-item text-gold/60">&bull;</span>
+              <span class="press-badge-item">Vogue Gioiello</span>
+            </div>
+          </div>
+        </div>
+
         <!-- 3. FOUR PILLARS OF JEWELRY RETOUCHING -->
         <section id="services" class="section services-section">
           <div class="container">
@@ -406,31 +433,42 @@
             <div class="services-stack">
               <!-- Pillar 01 -->
               <article id="service-1" class="service-row js-service-row">
-                <div class="service-media">
-                  <div class="ba-slider" data-ba-slider>
-                    <div class="ba-layer ba-layer--after">
+                <div class="service-media" data-tilt>
+                  <div
+                    class="ba-slider"
+                    data-ba-slider
+                    data-old-image="assets/images/service-1-before.jpg"
+                    data-new-image="assets/images/service-1-after.jpg"
+                    data-before="assets/images/service-1-before.jpg"
+                    data-after="assets/images/service-1-after.jpg"
+                  >
+                    <!-- 1. NEW IMAGE (After) -->
+                    <div class="ba-layer ba-layer--new ba-layer--after">
                       <img
-                        src="https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?auto=format&fit=crop&w=1400&q=85"
+                        src="assets/images/service-1-after.jpg"
+                        class="ba-img ba-img--new"
                         width="1400"
                         height="1050"
                         loading="lazy"
                         decoding="async"
-                        alt="Retouched luxury gold ring showing seamless metallic gradient polish"
+                        alt="New retouched luxury gold ring showing seamless metallic polish"
                       />
                     </div>
-                    <div class="ba-layer ba-layer--before">
+                    <!-- 2. OLD IMAGE (Before) -->
+                    <div class="ba-layer ba-layer--old ba-layer--before">
                       <img
-                        src="https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?auto=format&fit=crop&w=1400&q=85"
+                        src="assets/images/service-1-before.jpg"
+                        class="ba-img ba-img--old"
                         width="1400"
                         height="1050"
                         loading="lazy"
                         decoding="async"
-                        alt="Raw unretouched capture of the same luxury gold ring"
+                        alt="Old raw unretouched capture of the same luxury gold ring"
                       />
                     </div>
                     <div class="ba-divider" aria-hidden="true"></div>
-                    <span class="ba-badge ba-badge--before">Before</span>
-                    <span class="ba-badge ba-badge--after">After</span>
+                    <span class="ba-badge ba-badge--old ba-badge--before">Old (Raw)</span>
+                    <span class="ba-badge ba-badge--new ba-badge--after">New (Master)</span>
                     <button
                       type="button"
                       class="ba-handle"
@@ -495,31 +533,42 @@
                 id="service-2"
                 class="service-row service-row--reverse js-service-row"
               >
-                <div class="service-media">
-                  <div class="ba-slider" data-ba-slider>
-                    <div class="ba-layer ba-layer--after">
+                <div class="service-media" data-tilt>
+                  <div
+                    class="ba-slider"
+                    data-ba-slider
+                    data-old-image="assets/images/service-2-before.jpg"
+                    data-new-image="assets/images/service-2-after.jpg"
+                    data-before="assets/images/service-2-before.jpg"
+                    data-after="assets/images/service-2-after.jpg"
+                  >
+                    <!-- 1. NEW IMAGE (After) -->
+                    <div class="ba-layer ba-layer--new ba-layer--after">
                       <img
-                        src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1400&q=85"
+                        src="assets/images/service-2-after.jpg"
+                        class="ba-img ba-img--new"
                         width="1400"
                         height="1050"
                         loading="lazy"
                         decoding="async"
-                        alt="Clean marketplace-ready luxury pendant jewelry isolated for e-commerce catalog"
+                        alt="New marketplace-ready luxury pendant jewelry isolated for e-commerce catalog"
                       />
                     </div>
-                    <div class="ba-layer ba-layer--before">
+                    <!-- 2. OLD IMAGE (Before) -->
+                    <div class="ba-layer ba-layer--old ba-layer--before">
                       <img
-                        src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1400&q=85"
+                        src="assets/images/service-2-before.jpg"
+                        class="ba-img ba-img--old"
                         width="1400"
                         height="1050"
                         loading="lazy"
                         decoding="async"
-                        alt="Unretouched studio capture of the same fine jewelry pendant"
+                        alt="Old unretouched studio capture of the same fine jewelry pendant"
                       />
                     </div>
                     <div class="ba-divider" aria-hidden="true"></div>
-                    <span class="ba-badge ba-badge--before">Before</span>
-                    <span class="ba-badge ba-badge--after">After</span>
+                    <span class="ba-badge ba-badge--old ba-badge--before">Old (Raw)</span>
+                    <span class="ba-badge ba-badge--new ba-badge--after">New (Master)</span>
                     <button
                       type="button"
                       class="ba-handle"
@@ -579,31 +628,42 @@
 
               <!-- Pillar 03 -->
               <article id="service-3" class="service-row js-service-row">
-                <div class="service-media">
-                  <div class="ba-slider" data-ba-slider>
-                    <div class="ba-layer ba-layer--after">
+                <div class="service-media" data-tilt>
+                  <div
+                    class="ba-slider"
+                    data-ba-slider
+                    data-old-image="assets/images/service-3-before.jpg"
+                    data-new-image="assets/images/service-3-after.jpg"
+                    data-before="assets/images/service-3-before.jpg"
+                    data-after="assets/images/service-3-after.jpg"
+                  >
+                    <!-- 1. NEW IMAGE (After) -->
+                    <div class="ba-layer ba-layer--new ba-layer--after">
                       <img
-                        src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=1400&q=85"
+                        src="assets/images/service-3-after.jpg"
+                        class="ba-img ba-img--new"
                         width="1400"
                         height="1050"
                         loading="lazy"
                         decoding="async"
-                        alt="Macro diamond ring after manual diamond fire restoration showing luminous facet contrast"
+                        alt="New macro diamond ring after manual diamond fire restoration"
                       />
                     </div>
-                    <div class="ba-layer ba-layer--before">
+                    <!-- 2. OLD IMAGE (Before) -->
+                    <div class="ba-layer ba-layer--old ba-layer--before">
                       <img
-                        src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=1400&q=85"
+                        src="assets/images/service-3-before.jpg"
+                        class="ba-img ba-img--old"
                         width="1400"
                         height="1050"
                         loading="lazy"
                         decoding="async"
-                        alt="Flat unretouched macro diamond photograph prior to scintillation enhancement"
+                        alt="Old unretouched macro diamond photograph prior to scintillation enhancement"
                       />
                     </div>
                     <div class="ba-divider" aria-hidden="true"></div>
-                    <span class="ba-badge ba-badge--before">Before</span>
-                    <span class="ba-badge ba-badge--after">After</span>
+                    <span class="ba-badge ba-badge--old ba-badge--before">Old (Raw)</span>
+                    <span class="ba-badge ba-badge--new ba-badge--after">New (Master)</span>
                     <button
                       type="button"
                       class="ba-handle"
@@ -669,31 +729,42 @@
                 id="service-4"
                 class="service-row service-row--reverse js-service-row"
               >
-                <div class="service-media">
-                  <div class="ba-slider" data-ba-slider>
-                    <div class="ba-layer ba-layer--after">
+                <div class="service-media" data-tilt>
+                  <div
+                    class="ba-slider"
+                    data-ba-slider
+                    data-old-image="assets/images/service-4-before.jpg"
+                    data-new-image="assets/images/service-4-after.jpg"
+                    data-before="assets/images/service-4-before.jpg"
+                    data-after="assets/images/service-4-after.jpg"
+                  >
+                    <!-- 1. NEW IMAGE (After) -->
+                    <div class="ba-layer ba-layer--new ba-layer--after">
                       <img
-                        src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1400&q=85"
+                        src="assets/images/service-4-after.jpg"
+                        class="ba-img ba-img--new"
                         width="1400"
                         height="1050"
                         loading="lazy"
                         decoding="async"
-                        alt="Photorealistically enhanced luxury gold jewelry with warm organic studio light"
+                        alt="New photorealistically enhanced luxury gold jewelry"
                       />
                     </div>
-                    <div class="ba-layer ba-layer--before">
+                    <!-- 2. OLD IMAGE (Before) -->
+                    <div class="ba-layer ba-layer--old ba-layer--before">
                       <img
-                        src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1400&q=85"
+                        src="assets/images/service-4-before.jpg"
+                        class="ba-img ba-img--old"
                         width="1400"
                         height="1050"
                         loading="lazy"
                         decoding="async"
-                        alt="Raw sterile 3D CAD jewelry render prior to photorealistic studio enhancement"
+                        alt="Old raw sterile 3D CAD jewelry render prior to photorealistic enhancement"
                       />
                     </div>
                     <div class="ba-divider" aria-hidden="true"></div>
-                    <span class="ba-badge ba-badge--before">Raw 3D Render</span>
-                    <span class="ba-badge ba-badge--after">Photorealistic</span>
+                    <span class="ba-badge ba-badge--old ba-badge--before">Old (3D CAD)</span>
+                    <span class="ba-badge ba-badge--new ba-badge--after">New (Master)</span>
                     <button
                       type="button"
                       class="ba-handle"
@@ -757,6 +828,108 @@
           </div>
         </section>
 
+        <!-- NEW: 400% MACRO LOUPE INSPECTOR -->
+        <section id="macro-loupe" class="macro-loupe-section">
+          <div class="container macro-loupe-grid">
+            <div class="js-reveal">
+              <span class="eyebrow">400% Microscopic Scrutiny</span>
+              <h2 style="font-size: clamp(2.2rem, 3.8vw, 3.4rem); line-height: 1.15; margin-bottom: 1.25rem;">
+                The Jeweler&rsquo;s Loupe: <em>Microscopic</em> Hand-Crafted Precision.
+              </h2>
+              <p class="text-ink-secondary text-base sm:text-lg leading-relaxed mb-6">
+                Hover or drag across the macro solitaire diamond ring below. Inspect the razor-sharp pav&eacute; prongs, authentic internal pavilion facet contrast, and mirror-finished gold reconstruction without a single trace of automated AI smearing.
+              </p>
+              <ul class="editorial-checklist mb-8">
+                <li><strong>10x Optical Scrutiny:</strong> Zero pixel halo, ringing artifacts, or unnatural facet blurring</li>
+                <li><strong>100% Vector Pen-Tool Paths:</strong> Every gemstone claw and bezel hand-isolated for perfection</li>
+                <li><strong>GIA Color Integrity:</strong> Calibrated sRGB, AdobeRGB &amp; Display P3 color spaces</li>
+              </ul>
+              <div class="flex flex-wrap gap-4">
+                <a href="#free-trial-home" class="btn btn-obsidian">Test Your Macro Image Free</a>
+                <a href="#portfolio" class="btn btn-outline">Explore Full Gallery</a>
+              </div>
+            </div>
+
+            <div class="macro-loupe-wrap js-reveal js-macro-loupe">
+              <img src="assets/images/macro-loupe-base.jpg" alt="Macro diamond ring under 10x inspection loupe" class="macro-loupe-img" width="1400" height="1050" loading="lazy" decoding="async" />
+              <div class="macro-loupe-lens" aria-hidden="true">
+                <img src="assets/images/macro-loupe-base.jpg" alt="" class="macro-loupe-zoom-img" />
+                <div class="macro-loupe-crosshair"></div>
+                <div class="macro-loupe-reticle"></div>
+              </div>
+              <div class="macro-loupe-indicator">
+                <span>✦ 400% Loupe Active &bull; Hover / Drag to Inspect</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- NEW: 1 SKU, 4 LUXURY METAL COLORWAYS -->
+        <section id="colorways" class="colorway-section">
+          <div class="container colorway-grid">
+            <div class="colorway-display js-reveal">
+              <img src="assets/images/colorway-yellow-gold.jpg" alt="18K Yellow Gold luxury ring alloy" class="colorway-img active opacity-100" id="colorwayImgYellow" data-alloy="yellow" width="1400" height="1050" loading="lazy" decoding="async" />
+              <img src="assets/images/colorway-rose-gold.jpg" alt="18K Rose Gold luxury ring alloy" class="colorway-img opacity-0" id="colorwayImgRose" data-alloy="rose" width="1400" height="1050" loading="lazy" decoding="async" />
+              <img src="assets/images/colorway-white-gold.jpg" alt="Platinum / White Gold luxury ring alloy" class="colorway-img opacity-0" id="colorwayImgWhite" data-alloy="white" width="1400" height="1050" loading="lazy" decoding="async" />
+              <img src="assets/images/colorway-black-rhodium.jpg" alt="Black Rhodium luxury ring alloy" class="colorway-img opacity-0" id="colorwayImgBlack" data-alloy="black" width="1400" height="1050" loading="lazy" decoding="async" />
+              <div class="colorway-badge" id="colorwayActiveBadge">
+                <span id="colorwayBadgeText">18K Classic Yellow Gold</span>
+              </div>
+            </div>
+
+            <div class="js-reveal">
+              <span class="eyebrow">Digital Alloy Recasting Atelier</span>
+              <h2 style="font-size: clamp(2.2rem, 3.8vw, 3.4rem); line-height: 1.15; margin-bottom: 1rem;">
+                One Master Capture. <em>Four</em> Signature Metal Alloys.
+              </h2>
+              <p class="text-ink-secondary text-base sm:text-lg leading-relaxed mb-6">
+                Eliminate thousands of dollars in multiple photo shoots and shipping security. Our master colorists recast your single hero SKU into 18K Yellow Gold, Rose Gold, Platinum, and Black Rhodium with authentic optical metallics and natural specular reflections.
+              </p>
+
+              <!-- 2x2 LUXURY ALLOY CONFIGURATOR -->
+              <div class="grid grid-cols-2 gap-3 sm:gap-4 my-6" role="radiogroup" aria-label="Select Metal Alloy Finish">
+                <button type="button" class="swatch-btn p-3.5 sm:p-4 rounded-xl border border-stone-200 bg-white flex items-center gap-3 transition-all duration-300 hover:border-gold hover:shadow-sm cursor-pointer text-left ring-1 ring-gold bg-stone-50" aria-selected="true" data-alloy-target="yellow">
+                  <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full shrink-0 shadow-inner border border-black/10 ring-2 ring-gold/40" style="background: radial-gradient(circle at 35% 35%, #fff1b8, #e5b338 60%, #996e14 100%);"></span>
+                  <div class="min-w-0">
+                    <strong class="block text-xs sm:text-sm font-semibold text-ink-primary font-serif truncate">18K Yellow Gold</strong>
+                    <span class="text-[10px] sm:text-xs text-gold uppercase tracking-wider font-medium swatch-status">Active</span>
+                  </div>
+                </button>
+
+                <button type="button" class="swatch-btn p-3.5 sm:p-4 rounded-xl border border-stone-200 bg-white flex items-center gap-3 transition-all duration-300 hover:border-gold hover:shadow-sm cursor-pointer text-left" aria-selected="false" data-alloy-target="rose">
+                  <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full shrink-0 shadow-inner border border-black/10" style="background: radial-gradient(circle at 35% 35%, #ffe0d8, #e08b79 60%, #8c4736 100%);"></span>
+                  <div class="min-w-0">
+                    <strong class="block text-xs sm:text-sm font-semibold text-ink-primary font-serif truncate">18K Rose Gold</strong>
+                    <span class="text-[10px] sm:text-xs text-stone-400 uppercase tracking-wider font-medium swatch-status">Select</span>
+                  </div>
+                </button>
+
+                <button type="button" class="swatch-btn p-3.5 sm:p-4 rounded-xl border border-stone-200 bg-white flex items-center gap-3 transition-all duration-300 hover:border-gold hover:shadow-sm cursor-pointer text-left" aria-selected="false" data-alloy-target="white">
+                  <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full shrink-0 shadow-inner border border-black/10" style="background: radial-gradient(circle at 35% 35%, #ffffff, #d3d8dd 60%, #767c82 100%);"></span>
+                  <div class="min-w-0">
+                    <strong class="block text-xs sm:text-sm font-semibold text-ink-primary font-serif truncate">Platinum / White</strong>
+                    <span class="text-[10px] sm:text-xs text-stone-400 uppercase tracking-wider font-medium swatch-status">Select</span>
+                  </div>
+                </button>
+
+                <button type="button" class="swatch-btn p-3.5 sm:p-4 rounded-xl border border-stone-200 bg-white flex items-center gap-3 transition-all duration-300 hover:border-gold hover:shadow-sm cursor-pointer text-left" aria-selected="false" data-alloy-target="black">
+                  <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full shrink-0 shadow-inner border border-white/20" style="background: radial-gradient(circle at 35% 35%, #595959, #2b2b2b 60%, #0d0d0d 100%);"></span>
+                  <div class="min-w-0">
+                    <strong class="block text-xs sm:text-sm font-semibold text-ink-primary font-serif truncate">Black Rhodium</strong>
+                    <span class="text-[10px] sm:text-xs text-stone-400 uppercase tracking-wider font-medium swatch-status">Select</span>
+                  </div>
+                </button>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-3 pt-3 text-xs text-ink-muted">
+                <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-gold shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> 100% Facet &amp; Gemstone Integrity</span>
+                <span class="text-stone-300">&bull;</span>
+                <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-gold shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Zero Extra Photoshoot Logistics</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- 4. FULL-BLEED ATMOSPHERIC CTA BANNER -->
         <section
           class="cta-banner dark-section"
@@ -784,7 +957,7 @@
                 Send 2 sample images and get them back retouched within 12–24
                 hours. No credit card required.
               </p>
-              <a href="#trial" class="btn btn-gold">Get Free Trial</a>
+              <a href="#free-trial-home" class="btn btn-gold">Get Free Trial</a>
             </div>
           </div>
         </section>
@@ -974,31 +1147,42 @@
 
             <div class="portfolio-grid" id="portfolioGrid">
               <!-- Portfolio 1: Silver Ring -->
-              <article class="pf-card js-pf-card" data-cat="rings">
-                <div class="ba-slider" data-ba-slider>
-                  <div class="ba-layer ba-layer--after">
+              <article class="pf-card js-pf-card" data-cat="rings" data-tilt>
+                <div
+                  class="ba-slider"
+                  data-ba-slider
+                  data-old-image="assets/images/portfolio-1-before.jpg"
+                  data-new-image="assets/images/portfolio-1-after.jpg"
+                  data-before="assets/images/portfolio-1-before.jpg"
+                  data-after="assets/images/portfolio-1-after.jpg"
+                >
+                  <!-- 1. NEW IMAGE -->
+                  <div class="ba-layer ba-layer--new ba-layer--after">
                     <img
-                      src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1000&q=80"
+                      src="assets/images/portfolio-1-after.jpg"
+                      class="ba-img ba-img--new"
                       width="1000"
                       height="750"
                       loading="lazy"
                       decoding="async"
-                      alt="Retouched silver and platinum ring on clean studio surface"
+                      alt="New retouched silver and platinum ring on clean studio surface"
                     />
                   </div>
-                  <div class="ba-layer ba-layer--before">
+                  <!-- 2. OLD IMAGE -->
+                  <div class="ba-layer ba-layer--old ba-layer--before">
                     <img
-                      src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1000&q=80"
+                      src="assets/images/portfolio-1-before.jpg"
+                      class="ba-img ba-img--old"
                       width="1000"
                       height="750"
                       loading="lazy"
                       decoding="async"
-                      alt="Unretouched studio capture of the same silver ring"
+                      alt="Old unretouched studio capture of the same silver ring"
                     />
                   </div>
                   <div class="ba-divider" aria-hidden="true"></div>
-                  <span class="ba-badge ba-badge--before">Before</span>
-                  <span class="ba-badge ba-badge--after">After</span>
+                  <span class="ba-badge ba-badge--old ba-badge--before">Old (Raw)</span>
+                  <span class="ba-badge ba-badge--new ba-badge--after">New (Master)</span>
                   <button
                     type="button"
                     class="ba-handle"
@@ -1036,31 +1220,42 @@
               </article>
 
               <!-- Portfolio 2: Golden Ring -->
-              <article class="pf-card js-pf-card" data-cat="rings">
-                <div class="ba-slider" data-ba-slider>
-                  <div class="ba-layer ba-layer--after">
+              <article class="pf-card js-pf-card" data-cat="rings" data-tilt>
+                <div
+                  class="ba-slider"
+                  data-ba-slider
+                  data-old-image="assets/images/portfolio-2-before.jpg"
+                  data-new-image="assets/images/portfolio-2-after.jpg"
+                  data-before="assets/images/portfolio-2-before.jpg"
+                  data-after="assets/images/portfolio-2-after.jpg"
+                >
+                  <!-- 1. NEW IMAGE -->
+                  <div class="ba-layer ba-layer--new ba-layer--after">
                     <img
-                      src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=1000&q=80"
+                      src="assets/images/portfolio-2-after.jpg"
+                      class="ba-img ba-img--new"
                       width="1000"
                       height="750"
                       loading="lazy"
                       decoding="async"
-                      alt="Retouched golden ring with calibrated 18k yellow gold tone"
+                      alt="New retouched golden ring with calibrated 18k yellow gold tone"
                     />
                   </div>
-                  <div class="ba-layer ba-layer--before">
+                  <!-- 2. OLD IMAGE -->
+                  <div class="ba-layer ba-layer--old ba-layer--before">
                     <img
-                      src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=1000&q=80"
+                      src="assets/images/portfolio-2-before.jpg"
+                      class="ba-img ba-img--old"
                       width="1000"
                       height="750"
                       loading="lazy"
                       decoding="async"
-                      alt="Unretouched studio capture of the same golden ring"
+                      alt="Old unretouched studio capture of the same golden ring"
                     />
                   </div>
                   <div class="ba-divider" aria-hidden="true"></div>
-                  <span class="ba-badge ba-badge--before">Before</span>
-                  <span class="ba-badge ba-badge--after">After</span>
+                  <span class="ba-badge ba-badge--old ba-badge--before">Old (Raw)</span>
+                  <span class="ba-badge ba-badge--new ba-badge--after">New (Master)</span>
                   <button
                     type="button"
                     class="ba-handle"
@@ -1098,31 +1293,42 @@
               </article>
 
               <!-- Portfolio 3: Diamond Ring -->
-              <article class="pf-card js-pf-card" data-cat="gemstones">
-                <div class="ba-slider" data-ba-slider>
-                  <div class="ba-layer ba-layer--after">
+              <article class="pf-card js-pf-card" data-cat="gemstones" data-tilt>
+                <div
+                  class="ba-slider"
+                  data-ba-slider
+                  data-old-image="assets/images/portfolio-3-before.jpg"
+                  data-new-image="assets/images/portfolio-3-after.jpg"
+                  data-before="assets/images/portfolio-3-before.jpg"
+                  data-after="assets/images/portfolio-3-after.jpg"
+                >
+                  <!-- 1. NEW IMAGE -->
+                  <div class="ba-layer ba-layer--new ba-layer--after">
                     <img
-                      src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=1000&q=80"
+                      src="assets/images/portfolio-3-after.jpg"
+                      class="ba-img ba-img--new"
                       width="1000"
                       height="750"
                       loading="lazy"
                       decoding="async"
-                      alt="Retouched solitaire diamond ring with restored facet scintillation"
+                      alt="New retouched solitaire diamond ring with restored facet scintillation"
                     />
                   </div>
-                  <div class="ba-layer ba-layer--before">
+                  <!-- 2. OLD IMAGE -->
+                  <div class="ba-layer ba-layer--old ba-layer--before">
                     <img
-                      src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=1000&q=80"
+                      src="assets/images/portfolio-3-before.jpg"
+                      class="ba-img ba-img--old"
                       width="1000"
                       height="750"
                       loading="lazy"
                       decoding="async"
-                      alt="Unretouched studio capture of the same diamond ring"
+                      alt="Old unretouched studio capture of the same diamond ring"
                     />
                   </div>
                   <div class="ba-divider" aria-hidden="true"></div>
-                  <span class="ba-badge ba-badge--before">Before</span>
-                  <span class="ba-badge ba-badge--after">After</span>
+                  <span class="ba-badge ba-badge--old ba-badge--before">Old (Raw)</span>
+                  <span class="ba-badge ba-badge--new ba-badge--after">New (Master)</span>
                   <button
                     type="button"
                     class="ba-handle"
@@ -1160,31 +1366,42 @@
               </article>
 
               <!-- Portfolio 4: Pearl Ring -->
-              <article class="pf-card js-pf-card" data-cat="gemstones">
-                <div class="ba-slider" data-ba-slider>
-                  <div class="ba-layer ba-layer--after">
+              <article class="pf-card js-pf-card" data-cat="gemstones" data-tilt>
+                <div
+                  class="ba-slider"
+                  data-ba-slider
+                  data-old-image="assets/images/portfolio-4-before.jpg"
+                  data-new-image="assets/images/portfolio-4-after.jpg"
+                  data-before="assets/images/portfolio-4-before.jpg"
+                  data-after="assets/images/portfolio-4-after.jpg"
+                >
+                  <!-- 1. NEW IMAGE -->
+                  <div class="ba-layer ba-layer--new ba-layer--after">
                     <img
-                      src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1000&q=80"
+                      src="assets/images/portfolio-4-after.jpg"
+                      class="ba-img ba-img--new"
                       width="1000"
                       height="750"
                       loading="lazy"
                       decoding="async"
-                      alt="Retouched fine pearl and gemstone jewelry showing enhanced natural lustre"
+                      alt="New retouched fine pearl and gemstone jewelry showing enhanced natural lustre"
                     />
                   </div>
-                  <div class="ba-layer ba-layer--before">
+                  <!-- 2. OLD IMAGE -->
+                  <div class="ba-layer ba-layer--old ba-layer--before">
                     <img
-                      src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1000&q=80"
+                      src="assets/images/portfolio-4-before.jpg"
+                      class="ba-img ba-img--old"
                       width="1000"
                       height="750"
                       loading="lazy"
                       decoding="async"
-                      alt="Unretouched studio capture of the same pearl jewelry piece"
+                      alt="Old unretouched studio capture of the same pearl jewelry piece"
                     />
                   </div>
                   <div class="ba-divider" aria-hidden="true"></div>
-                  <span class="ba-badge ba-badge--before">Before</span>
-                  <span class="ba-badge ba-badge--after">After</span>
+                  <span class="ba-badge ba-badge--old ba-badge--before">Old (Raw)</span>
+                  <span class="ba-badge ba-badge--new ba-badge--after">New (Master)</span>
                   <button
                     type="button"
                     class="ba-handle"
@@ -1222,31 +1439,42 @@
               </article>
 
               <!-- Portfolio 5: Cluster Ring -->
-              <article class="pf-card js-pf-card" data-cat="rings">
-                <div class="ba-slider" data-ba-slider>
-                  <div class="ba-layer ba-layer--after">
+              <article class="pf-card js-pf-card" data-cat="rings" data-tilt>
+                <div
+                  class="ba-slider"
+                  data-ba-slider
+                  data-old-image="assets/images/portfolio-5-before.jpg"
+                  data-new-image="assets/images/portfolio-5-after.jpg"
+                  data-before="assets/images/portfolio-5-before.jpg"
+                  data-after="assets/images/portfolio-5-after.jpg"
+                >
+                  <!-- 1. NEW IMAGE -->
+                  <div class="ba-layer ba-layer--new ba-layer--after">
                     <img
-                      src="https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?auto=format&fit=crop&w=1000&q=80"
+                      src="assets/images/portfolio-5-after.jpg"
+                      class="ba-img ba-img--new"
                       width="1000"
                       height="750"
                       loading="lazy"
                       decoding="async"
-                      alt="Retouched multi-stone diamond cluster ring with crisp pavé definition"
+                      alt="New retouched multi-stone diamond cluster ring with crisp pavé definition"
                     />
                   </div>
-                  <div class="ba-layer ba-layer--before">
+                  <!-- 2. OLD IMAGE -->
+                  <div class="ba-layer ba-layer--old ba-layer--before">
                     <img
-                      src="https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?auto=format&fit=crop&w=1000&q=80"
+                      src="assets/images/portfolio-5-before.jpg"
+                      class="ba-img ba-img--old"
                       width="1000"
                       height="750"
                       loading="lazy"
                       decoding="async"
-                      alt="Unretouched studio capture of the same cluster ring"
+                      alt="Old unretouched studio capture of the same cluster ring"
                     />
                   </div>
                   <div class="ba-divider" aria-hidden="true"></div>
-                  <span class="ba-badge ba-badge--before">Before</span>
-                  <span class="ba-badge ba-badge--after">After</span>
+                  <span class="ba-badge ba-badge--old ba-badge--before">Old (Raw)</span>
+                  <span class="ba-badge ba-badge--new ba-badge--after">New (Master)</span>
                   <button
                     type="button"
                     class="ba-handle"
@@ -1284,31 +1512,42 @@
               </article>
 
               <!-- Portfolio 6: Jewel Product -->
-              <article class="pf-card js-pf-card" data-cat="catalog">
-                <div class="ba-slider" data-ba-slider>
-                  <div class="ba-layer ba-layer--after">
+              <article class="pf-card js-pf-card" data-cat="catalog" data-tilt>
+                <div
+                  class="ba-slider"
+                  data-ba-slider
+                  data-old-image="assets/images/portfolio-6-before.jpg"
+                  data-new-image="assets/images/portfolio-6-after.jpg"
+                  data-before="assets/images/portfolio-6-before.jpg"
+                  data-after="assets/images/portfolio-6-after.jpg"
+                >
+                  <!-- 1. NEW IMAGE -->
+                  <div class="ba-layer ba-layer--new ba-layer--after">
                     <img
-                      src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=1000&q=80"
+                      src="assets/images/portfolio-6-after.jpg"
+                      class="ba-img ba-img--new"
                       width="1000"
                       height="750"
                       loading="lazy"
                       decoding="async"
-                      alt="Retouched luxury bracelet catalog piece with uniform metal color and crisp edges"
+                      alt="New retouched luxury bracelet catalog piece with uniform metal color"
                     />
                   </div>
-                  <div class="ba-layer ba-layer--before">
+                  <!-- 2. OLD IMAGE -->
+                  <div class="ba-layer ba-layer--old ba-layer--before">
                     <img
-                      src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=1000&q=80"
+                      src="assets/images/portfolio-6-before.jpg"
+                      class="ba-img ba-img--old"
                       width="1000"
                       height="750"
                       loading="lazy"
                       decoding="async"
-                      alt="Unretouched raw capture of the same luxury jewelry product"
+                      alt="Old unretouched raw capture of the same luxury jewelry product"
                     />
                   </div>
                   <div class="ba-divider" aria-hidden="true"></div>
-                  <span class="ba-badge ba-badge--before">Before</span>
-                  <span class="ba-badge ba-badge--after">After</span>
+                  <span class="ba-badge ba-badge--old ba-badge--before">Old (Raw)</span>
+                  <span class="ba-badge ba-badge--new ba-badge--after">New (Master)</span>
                   <button
                     type="button"
                     class="ba-handle"
@@ -1349,7 +1588,7 @@
             <div class="portfolio-cta-bar js-reveal">
               <p>Your jewelry could be next.</p>
               <div class="portfolio-cta-actions">
-                <a href="#trial" class="btn btn-gold">Get Free Trial</a>
+                <a href="#free-trial-home" class="btn btn-gold">Get Free Trial</a>
                 <a href="#quote" class="btn btn-obsidian"
                   >Request Custom Quote</a
                 >
@@ -1407,82 +1646,103 @@
           </div>
         </section>
 
-        <!-- 8. WHY CHOOSE BEST JEWELRY RETOUCHING -->
-        <section id="why-us" class="section why-section">
-          <div class="container why-grid">
-            <div class="why-intro js-reveal">
-              <span class="eyebrow">Why Choose Best Jewelry Retouching</span>
-              <h2>Post-Production Built Only for Fine Jewelry.</h2>
-              <p>
-                We do one thing: make gold, platinum and gemstones look exactly
-                as they should. No generalist studio, no automated filters, just
-                senior specialists working on your time zone.
-              </p>
-              <div class="why-actions">
-                <a href="#trial" class="btn btn-gold">Start Your Free Trial</a>
-                <a href="#quote" class="btn btn-outline"
-                  >Request Custom Quote</a
-                >
+        <!-- 8. THE ANTI-AI HUMAN ARTISAN PLEDGE -->
+        <section class="artisan-pledge-section">
+          <div class="container">
+            <div class="artisan-pledge-card js-reveal">
+              <span class="eyebrow" style="color: #d9ba82; margin-bottom: 1.5rem;">Authenticity &amp; Bench Integrity</span>
+              <blockquote class="artisan-quote">
+                &ldquo;In an era flooded with generic AI filters that distort diamond fire and melt fine prongs, we make one solemn promise: every facet, reflection, and shadow is crafted by senior artisans with 10+ years of high-jewelry bench experience. We enhance desire&mdash;we never fake perfection.&rdquo;
+              </blockquote>
+              <div class="artisan-author">
+                <span class="artisan-sig">Marcello Vance</span>
+                <span class="text-xs uppercase tracking-[0.2em] text-gold-light mt-1">Lead Master Jewelry Retoucher &amp; Colorist</span>
+              </div>
+              <div class="artisan-badges">
+                <span>✦ GIA Proportion Compliant</span>
+                <span>✦ 100% Wacom Pen-Tool Handcraft</span>
+                <span>✦ Zero AI Hallucination Guarantee</span>
+                <span>✦ ISO-Standard Calibrated Color</span>
               </div>
             </div>
+          </div>
+        </section>
 
-            <div class="why-list">
-              <article class="why-item js-why-item">
-                <span class="why-num">01</span>
-                <h3>Jewelry-Only Specialists</h3>
-                <p>
-                  Our retouchers work on metals and gemstones every day, so
-                  prongs, hallmarks, pavilion facets and gold tones get the
-                  right treatment.
-                </p>
+        <!-- 9. STUDIO INVESTMENT & TRANSPARENT SLA TIERS -->
+        <section id="pricing" class="pricing-section">
+          <div class="container">
+            <div class="section-header centered js-reveal">
+              <span class="eyebrow">Studio Investment &amp; Turnaround</span>
+              <h2>Predictable Pricing. <em>Zero</em> Hidden Fees.</h2>
+              <p>
+                Whether launching 200 catalog SKUs or mastering a 5th Avenue flagship billboard, choose the exact craftsmanship tier tailored to your maison.
+              </p>
+            </div>
+
+            <div class="pricing-grid">
+              <!-- Tier 1 -->
+              <article class="pricing-card js-reveal">
+                <div>
+                  <span class="pricing-tier-tag">Catalog &amp; Marketplace</span>
+                  <h3 class="text-2xl font-serif text-ink-primary mb-2">E-Commerce Volume</h3>
+                  <div class="pricing-price">$4.50<span class="text-lg font-sans font-normal text-ink-muted"> / image</span></div>
+                  <span class="pricing-unit">Min. 20 Images &bull; 24h Delivery</span>
+                  <ul class="pricing-features">
+                    <li>Pure RGB (255, 255, 255) Background Cutout</li>
+                    <li>Micro-Dust &amp; Fingerprint Removal</li>
+                    <li>Natural Contact Shadow Creation</li>
+                    <li>Focus Stacking Composite Alignment</li>
+                    <li>Catalog Color Consistency Across 100+ SKUs</li>
+                  </ul>
+                </div>
+                <a href="#trial" class="btn btn-outline w-full text-center justify-center mt-6" data-preselect-trial="E-Commerce Volume">Start Free Test Images</a>
               </article>
-              <article class="why-item js-why-item">
-                <span class="why-num">02</span>
-                <h3>100% Hand-Crafted, No AI Filters</h3>
-                <p>
-                  Every image is refined by hand with pen-tool paths and
-                  dodge-and-burn, so facets stay sharp and geometry stays true
-                  to the piece.
-                </p>
+
+              <!-- Tier 2 (Featured) -->
+              <article class="pricing-card pricing-card--featured js-reveal">
+                <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gold text-obsidian px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-sm">
+                  Most Commissioned
+                </div>
+                <div>
+                  <span class="pricing-tier-tag">Campaign &amp; Lookbook</span>
+                  <h3 class="text-2xl font-serif text-ink-primary mb-2">Editorial &amp; Macro</h3>
+                  <div class="pricing-price">$28.00<span class="text-lg font-sans font-normal text-ink-muted"> / image</span></div>
+                  <span class="pricing-unit">No Minimum &bull; 12–24h Delivery</span>
+                  <ul class="pricing-features">
+                    <li>Extreme 400% Macro Precision Scrutiny</li>
+                    <li>Seamless Metallic Gradient Polish (18K/Plat)</li>
+                    <li>Diamond &amp; Gemstone Fire Scintillation Boost</li>
+                    <li>Prong Symmetry &amp; Hallmark Preservation</li>
+                    <li>300 DPI CMYK Print + sRGB Web Ready</li>
+                    <li>Dedicated Senior Lead Retoucher</li>
+                  </ul>
+                </div>
+                <a href="#trial" class="btn btn-obsidian w-full text-center justify-center mt-6" data-preselect-trial="Editorial & Campaign">Order Editorial Trial</a>
               </article>
-              <article class="why-item js-why-item">
-                <span class="why-num">03</span>
-                <h3>Overnight for USA &amp; Europe</h3>
-                <p>
-                  Upload before you close the studio and receive press-ready
-                  files within 12–24 hours, aligned with EST, PST, GMT and CET.
-                </p>
-              </article>
-              <article class="why-item js-why-item">
-                <span class="why-num">04</span>
-                <h3>3-Tier Quality Audit</h3>
-                <p>
-                  Each image passes a color-calibrated inspection at 300% zoom
-                  before it reaches you.
-                </p>
-              </article>
-              <article class="why-item js-why-item">
-                <span class="why-num">05</span>
-                <h3>NDA on Every Project</h3>
-                <p>
-                  Unreleased designs and trial files are protected under
-                  automatic confidentiality, and we never showcase your work
-                  without written consent.
-                </p>
-              </article>
-              <article class="why-item js-why-item">
-                <span class="why-num">06</span>
-                <h3>Production-Ready Files</h3>
-                <p>
-                  Layered PSDs with separate metal and stone layers, web-ready
-                  files, and unlimited revisions within 14 days of delivery.
-                </p>
+
+              <!-- Tier 3 -->
+              <article class="pricing-card js-reveal">
+                <div>
+                  <span class="pricing-tier-tag">Bespoke Masterpiece</span>
+                  <h3 class="text-2xl font-serif text-ink-primary mb-2">High Jewelry</h3>
+                  <div class="pricing-price">$65.00<span class="text-lg font-sans font-normal text-ink-muted"> / image</span></div>
+                  <span class="pricing-unit">Single Piece or Collection &bull; 24–48h</span>
+                  <ul class="pricing-features">
+                    <li>Complex Multi-Stone Pav&eacute; &amp; Cluster Restoration</li>
+                    <li>True-to-Grade Color Matching (Sapphire/Emerald)</li>
+                    <li>3D CAD Render to Photorealistic Conversion</li>
+                    <li>Full Digital Recasting (Yellow/Rose/Platinum)</li>
+                    <li>Layered 16-Bit Master PSD Delivery</li>
+                    <li>Unlimited Complimentary Revisions</li>
+                  </ul>
+                </div>
+                <a href="#quote" class="btn btn-outline w-full text-center justify-center mt-6" data-preselect-quote="All-In-One">Request Custom Brief</a>
               </article>
             </div>
           </div>
         </section>
 
-        <!-- 9. CLIENT ENDORSEMENTS (TESTIMONIALS) -->
+        <!-- 10. CLIENT ENDORSEMENTS (TESTIMONIALS) -->
         <section id="testimonials" class="section testimonials-section">
           <div class="container">
             <div class="section-header centered js-reveal">
@@ -1494,278 +1754,175 @@
               </p>
             </div>
 
-            <div class="testimonials-grid">
-              <article class="testimonial-card js-testimonial-card">
-                <div>
-                  <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-                  <p class="testimonial-quote">
-                    “Their diamond fire restoration is unmatched. Other studios
-                    rely on AI filters that smear pavilion facets, but Best
-                    Jewelry Retouching delivered crisp, natural brilliance
-                    overnight for our New York campaign.”
-                  </p>
-                </div>
-                <div class="client-info">
-                  <strong>Claire Vance</strong>
-                  <span
-                    >Creative Director, Aurelia Fine Jewelry &bull; New
-                    York</span
-                  >
-                </div>
-              </article>
+            <div class="testimonials-slider-wrap">
+              <div class="swiper testimonials-swiper">
+                <div class="swiper-wrapper">
+                  <!-- Slide 1: New York -->
+                  <div class="swiper-slide">
+                    <article class="testimonial-card">
+                      <div>
+                        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p class="testimonial-quote">
+                          “Their diamond fire restoration is unmatched. Other studios
+                          rely on AI filters that smear pavilion facets, but Best
+                          Jewelry Retouching delivered crisp, natural brilliance
+                          overnight for our New York campaign.”
+                        </p>
+                      </div>
+                      <div class="client-info">
+                        <strong>Claire Vance</strong>
+                        <span>Creative Director, Aurelia Fine Jewelry &bull; New York</span>
+                      </div>
+                    </article>
+                  </div>
 
-              <article class="testimonial-card js-testimonial-card">
-                <div>
-                  <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-                  <p class="testimonial-quote">
-                    “We send 300+ RAW e-commerce SKUs every month. Their 18k
-                    rose gold and platinum color consistency across our entire
-                    Shopify catalog reduced our product return rate
-                    significantly.”
-                  </p>
-                </div>
-                <div class="client-info">
-                  <strong>Henrik Van Der Berg</strong>
-                  <span>Head of E-Commerce, Maison Vermeer &bull; Antwerp</span>
-                </div>
-              </article>
+                  <!-- Slide 2: Antwerp -->
+                  <div class="swiper-slide">
+                    <article class="testimonial-card">
+                      <div>
+                        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p class="testimonial-quote">
+                          “We send 300+ RAW e-commerce SKUs every month. Their 18k
+                          rose gold and platinum color consistency across our entire
+                          Shopify catalog reduced our product return rate
+                          significantly.”
+                        </p>
+                      </div>
+                      <div class="client-info">
+                        <strong>Henrik Van Der Berg</strong>
+                        <span>Head of E-Commerce, Maison Vermeer &bull; Antwerp</span>
+                      </div>
+                    </article>
+                  </div>
 
-              <article class="testimonial-card js-testimonial-card">
-                <div>
-                  <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-                  <p class="testimonial-quote">
-                    “They transformed our sterile MatrixGold 3D CAD renders into
-                    photorealistic visuals that look indistinguishable from
-                    studio macro photography. Saved us thousands in
-                    prototyping.”
-                  </p>
+                  <!-- Slide 3: Paris -->
+                  <div class="swiper-slide">
+                    <article class="testimonial-card">
+                      <div>
+                        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p class="testimonial-quote">
+                          “They transformed our sterile MatrixGold 3D CAD renders into
+                          photorealistic visuals that look indistinguishable from
+                          studio macro photography. Saved us thousands in
+                          prototyping.”
+                        </p>
+                      </div>
+                      <div class="client-info">
+                        <strong>Elena Rostova</strong>
+                        <span>Lead Jewelry Designer, Atelier Lumière &bull; Paris</span>
+                      </div>
+                    </article>
+                  </div>
+
+                  <!-- Slide 4: London -->
+                  <div class="swiper-slide">
+                    <article class="testimonial-card">
+                      <div>
+                        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p class="testimonial-quote">
+                          “The hand-drawn clipping paths and natural shadow generation
+                          for our high-jewelry emerald necklaces exceeded all our expectations.
+                          Our Bond Street press launch was an absolute triumph.”
+                        </p>
+                      </div>
+                      <div class="client-info">
+                        <strong>Julian Kensington</strong>
+                        <span>Managing Director, Kensington &amp; Co. &bull; London</span>
+                      </div>
+                    </article>
+                  </div>
+
+                  <!-- Slide 5: Los Angeles -->
+                  <div class="swiper-slide">
+                    <article class="testimonial-card">
+                      <div>
+                        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p class="testimonial-quote">
+                          “Overnight delivery aligned with Pacific Time has been a lifesaver
+                          during red carpet and holiday rush. We drop RAW captures before leaving
+                          the studio and wake up to flawless retouched masters.”
+                        </p>
+                      </div>
+                      <div class="client-info">
+                        <strong>Marcus Sterling</strong>
+                        <span>Studio Operations Lead, Beverly Hills Gem House &bull; Los Angeles</span>
+                      </div>
+                    </article>
+                  </div>
+
+                  <!-- Slide 6: Geneva -->
+                  <div class="swiper-slide">
+                    <article class="testimonial-card">
+                      <div>
+                        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p class="testimonial-quote">
+                          “Their precision focus stacking and sapphire color fidelity
+                          meet the exacting standards of our Swiss horology and gemstone
+                          timepieces. True artisan craftsmanship.”
+                        </p>
+                      </div>
+                      <div class="client-info">
+                        <strong>Sylvie Delacroix</strong>
+                        <span>Senior Horology Curator, Horlogerie de Genève &bull; Geneva</span>
+                      </div>
+                    </article>
+                  </div>
                 </div>
-                <div class="client-info">
-                  <strong>Elena Rostova</strong>
-                  <span
-                    >Lead Jewelry Designer, Atelier Lumière &bull; Paris</span
-                  >
-                </div>
-              </article>
+
+                <!-- Swiper Luxury Pagination Dots -->
+                <div class="swiper-pagination testimonials-pagination"></div>
+              </div>
+
+              <!-- Swiper Navigation Arrows -->
+              <div class="testimonials-nav-wrap">
+                <button type="button" class="swiper-btn-prev testimonials-prev" aria-label="Previous testimonial">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <button type="button" class="swiper-btn-next testimonials-next" aria-label="Next testimonial">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+              </div>
             </div>
           </div>
         </section>
 
-        <!-- 10. HOME FREE TRIAL FORM SECTION -->
+        <!-- 11. STREAMLINED VIP FAST-TRACK FREE TRIAL -->
         <section id="free-trial-home" class="section home-trial">
-          <div class="container form-layout">
-            <div class="js-reveal">
-              <span class="eyebrow">Risk-Free Evaluation</span>
-              <h2
-                style="
-                  font-size: clamp(2.25rem, 3.8vw, 3.45rem);
-                  margin-bottom: 18px;
-                "
-              >
-                Try Us With 2 Free Test Images
+          <div class="container">
+            <div class="fast-track-card js-reveal">
+              <span class="eyebrow" style="margin-bottom: 1rem;">Experience The Atelier Protocol</span>
+              <h2 style="font-size: clamp(2.2rem, 3.8vw, 3.4rem); line-height: 1.15; margin-bottom: 1.25rem;">
+                Try Us With 2 Free Test Images. <em>Zero Risk.</em>
               </h2>
-              <p class="trial-lead">
-                See the difference our senior jewelry retouchers make on your
-                actual product photos before committing to an order.
-              </p>
-              <ul class="trial-points">
-                <li>
-                  <span class="trial-check" aria-hidden="true">✓</span
-                  ><span>No credit card or contract required</span>
-                </li>
-                <li>
-                  <span class="trial-check" aria-hidden="true">✓</span
-                  ><span>Delivered within 12–24 hours in full resolution</span>
-                </li>
-                <li>
-                  <span class="trial-check" aria-hidden="true">✓</span
-                  ><span
-                    >Supports RAW (CR2, NEF, ARW), TIFF, PSD, JPEG, and
-                    PNG</span
-                  >
-                </li>
-                <li>
-                  <span class="trial-check" aria-hidden="true">✓</span
-                  ><span>Protected under automatic NDA confidentiality</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="form-card js-reveal">
-              <h3>Request Your Free Trial</h3>
-              <p class="form-sub">
-                Tell us about your studio and upload up to two sample images.
+              <p class="text-ink-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-6">
+                Evaluate our hand-crafted jewelry retouching on your actual product shots before placing a paid order. No credit card, no contract, delivered within 12–24 hours under automatic NDA.
               </p>
 
-              <form class="js-studio-form" data-form-type="trial" novalidate>
-                <div class="form-grid-2">
-                  <div class="form-group">
-                    <label for="ht-name">Full Name *</label>
-                    <input
-                      type="text"
-                      id="ht-name"
-                      name="name"
-                      class="form-control"
-                      placeholder="e.g., Sarah Jenkins"
-                      autocomplete="name"
-                      required
-                      aria-describedby="ht-name-err"
-                    />
-                    <span
-                      id="ht-name-err"
-                      class="field-error"
-                      role="alert"
-                    ></span>
-                  </div>
-                  <div class="form-group">
-                    <label for="ht-email">Work Email *</label>
-                    <input
-                      type="email"
-                      id="ht-email"
-                      name="email"
-                      class="form-control"
-                      placeholder="sarah@luxuryjewels.com"
-                      autocomplete="email"
-                      required
-                      aria-describedby="ht-email-err"
-                    />
-                    <span
-                      id="ht-email-err"
-                      class="field-error"
-                      role="alert"
-                    ></span>
-                  </div>
+              <form class="fast-track-form js-fast-track-form" novalidate>
+                <div class="text-left">
+                  <label for="ft-email" class="sr-only">Work Email</label>
+                  <input type="email" id="ft-email" name="email" class="form-control" placeholder="Enter your work email..." required />
                 </div>
-
-                <div class="form-grid-2">
-                  <div class="form-group">
-                    <label for="ht-brand">Brand / Studio Name *</label>
-                    <input
-                      type="text"
-                      id="ht-brand"
-                      name="company"
-                      class="form-control"
-                      placeholder="Studio or Brand Name"
-                      autocomplete="organization"
-                      required
-                      aria-describedby="ht-brand-err"
-                    />
-                    <span
-                      id="ht-brand-err"
-                      class="field-error"
-                      role="alert"
-                    ></span>
-                  </div>
-                  <div class="form-group">
-                    <label for="ht-region">Region *</label>
-                    <select
-                      id="ht-region"
-                      name="region"
-                      class="form-control"
-                      required
-                      aria-describedby="ht-region-err"
-                    >
-                      <option value="">Select Region</option>
-                      <option value="USA">United States (USA)</option>
-                      <option value="UK">United Kingdom (UK)</option>
-                      <option value="EU">
-                        European Union (France, Germany, Italy, etc.)
-                      </option>
-                      <option value="Canada">Canada / Other</option>
-                    </select>
-                    <span
-                      id="ht-region-err"
-                      class="field-error"
-                      role="alert"
-                    ></span>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="ht-service">Select Primary Service *</label>
-                  <select
-                    id="ht-service"
-                    name="service"
-                    class="form-control js-trial-service"
-                    required
-                    aria-describedby="ht-service-err"
-                  >
-                    <option value="High-End Retouching">
-                      Next-Gen High-End Jewelry Retouching
-                    </option>
-                    <option value="Hybrid E-Commerce">
-                      Hybrid E-Commerce Jewelry Photo Editing
-                    </option>
-                    <option value="Diamond Fire Restoration">
-                      Advanced Diamond Fire Restoration
-                    </option>
-                    <option value="3D Render Enhancement">
-                      3D Render to Photorealistic Enhancement
-                    </option>
+                <div class="text-left">
+                  <label for="ft-service" class="sr-only">Jewelry Service</label>
+                  <select id="ft-service" name="service" class="form-control">
+                    <option value="Editorial & Campaign">High-End Editorial Retouching</option>
+                    <option value="Ecommerce">Hybrid E-Commerce Volume</option>
+                    <option value="Diamond Fire Restoration">Diamond Fire Restoration</option>
+                    <option value="3D CAD Enhancement">3D CAD to Photorealistic</option>
                   </select>
-                  <span
-                    id="ht-service-err"
-                    class="field-error"
-                    role="alert"
-                  ></span>
                 </div>
-
-                <div class="form-group">
-                  <label for="ht-files">Upload up to 2 Sample Images</label>
-                  <div
-                    class="dropzone js-dropzone"
-                    role="button"
-                    tabindex="0"
-                    aria-describedby="ht-files-err"
-                  >
-                    <strong
-                      >Drag &amp; drop up to 2 sample images, or click to
-                      select</strong
-                    >
-                    <p>
-                      RAW (CR2, CR3, NEF, ARW, DNG), TIFF, PSD, JPG, PNG, WebP
-                      &middot; Max 2 files
-                    </p>
-                    <input
-                      type="file"
-                      id="ht-files"
-                      name="images"
-                      class="sr-only js-file-input"
-                      multiple
-                      accept=".jpg,.jpeg,.png,.tif,.tiff,.psd,.cr2,.cr3,.nef,.arw,.dng,.webp"
-                    />
-                  </div>
-                  <ul class="file-list js-file-list" aria-live="polite"></ul>
-                  <span
-                    id="ht-files-err"
-                    class="field-error"
-                    role="alert"
-                  ></span>
-                </div>
-
-                <div class="form-group">
-                  <label for="ht-notes">Retouching Instructions</label>
-                  <textarea
-                    id="ht-notes"
-                    name="instructions"
-                    class="form-control"
-                    rows="3"
-                    placeholder="Specify background preference (pure white, transparent, natural shadow), metal tone, or Dropbox/WeTransfer link..."
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  class="btn btn-gold btn-full js-submit-btn"
-                >
-                  Submit Free Trial Request
+                <button type="submit" class="btn btn-gold whitespace-nowrap">
+                  Claim 2 Free Images &rarr;
                 </button>
-                <div
-                  class="form-status js-form-status"
-                  role="status"
-                  aria-live="polite"
-                ></div>
               </form>
+
+              <div class="flex flex-wrap justify-center gap-6 sm:gap-10 mt-8 pt-8 border-t border-stone-200 text-xs text-ink-muted">
+                <span>✓ 12–24h Overnight Turnaround</span>
+                <span>✓ Layered PSD + Web Ready</span>
+                <span>✓ Protected Under Automatic NDA</span>
+                <span>✓ No Credit Card Required</span>
+              </div>
             </div>
           </div>
         </section>
@@ -2780,6 +2937,7 @@
             <h4>Studio</h4>
             <ul class="footer-links">
               <li><a href="#about">About Our Artisans</a></li>
+              <li><a href="#pricing">Pricing &amp; SLA Tiers</a></li>
               <li><a href="#trial">Free Trial (2 Images)</a></li>
               <li><a href="#quote">Get Custom Quote</a></li>
               <li><a href="#contact">Contact Desk</a></li>
@@ -2810,10 +2968,11 @@
     </footer>
 
     <!-- Vendor Scripts (Local) -->
-    <script src="assets/js/lenis.min.js" defer></script>
-    <script src="assets/js/gsap.min.js" defer></script>
-    <script src="assets/js/ScrollTrigger.min.js" defer></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/lenis.min.js"></script>
+    <script src="assets/js/gsap.min.js"></script>
+    <script src="assets/js/ScrollTrigger.min.js"></script>
     <!-- Studio Core Interaction Script (Local) -->
-    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
