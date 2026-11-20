@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Best Jewelry Retouching | Luxury Post-Production Studio for USA & Europe</title>
   <meta name="description" content="Bespoke jewelry photo retouching, diamond fire restoration, hybrid e-commerce editing, and 3D render enhancement for luxury brands in the USA and Europe.">
   <style>
     :root {
-      --bg-primary: #FAF9F6;
-      --bg-secondary: #F2EFE9;
-      --bg-dark: #111111;
-      --surface-card: #FFFFFF;
-      --text-primary: #141414;
-      --text-secondary: #575550;
-      --text-muted: #8A867E;
-      --text-light: #FAF9F6;
-      --accent-gold: #B08D57;
-      --accent-gold-dark: #8E6F3E;
-      --accent-gold-soft: rgba(176, 141, 87, 0.12);
-      --border-light: #E6E2D8;
-      --border-dark: rgba(255, 255, 255, 0.12);
+      --bg-primary: #0C0B0A;
+      --bg-secondary: #151413;
+      --bg-dark: #080807;
+      --surface-card: #151413;
+      --surface-glass: rgba(255, 255, 255, 0.04);
+      --surface-glass-border: rgba(255, 255, 255, 0.12);
+      --text-primary: #F4F1EA;
+      --text-secondary: #B9B5AC;
+      --text-muted: #8E8A82;
+      --text-light: #F4F1EA;
+      --accent-gold: #D9B97A;
+      --accent-gold-dark: #B08D57;
+      --accent-gold-soft: rgba(217, 185, 122, 0.12);
+      --gold-gradient: linear-gradient(135deg, #D9B97A 0%, #B08D57 100%);
+      --border-light: rgba(255, 255, 255, 0.08);
+      --border-dark: rgba(255, 255, 255, 0.14);
       --font-serif: Georgia, 'Times New Roman', serif;
-      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      --shadow-sm: 0 4px 20px rgba(20, 20, 20, 0.04);
-      --shadow-lg: 0 20px 50px rgba(20, 20, 20, 0.08);
+      --font-sans: 'Switzer', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.35);
+      --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.65);
       --radius-sm: 6px;
       --radius-md: 12px;
       --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -844,7 +849,422 @@
       .pf-grid { grid-template-columns: 1fr; }
       .pf-foot { padding: 26px 22px; }
     }
-  </style>
+
+
+    /* --- Phase 1: Dark Mode & Glassmorphism Refinements --- */
+    header {
+      background: rgba(12, 11, 10, 0.82) !important;
+      backdrop-filter: blur(14px) !important;
+      -webkit-backdrop-filter: blur(14px) !important;
+      border-bottom: 1px solid var(--border-dark) !important;
+    }
+    @supports not (backdrop-filter: blur(14px)) {
+      header { background: #0C0B0A !important; }
+    }
+
+    .form-control {
+      background: #181716 !important;
+      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      color: #F4F1EA !important;
+    }
+    .form-control:focus {
+      border-color: var(--accent-gold) !important;
+      background: #1E1D1B !important;
+      box-shadow: 0 0 0 3px var(--accent-gold-soft) !important;
+    }
+
+    .form-card, .legal-box, .service-showcase-item, .testimonial-card, .pf-card, .faq-item {
+      background: var(--surface-card) !important;
+      border: 1px solid var(--border-light) !important;
+      color: var(--text-primary) !important;
+    }
+
+    .btn-primary {
+      background: #F4F1EA !important;
+      color: #0C0B0A !important;
+      font-weight: 600 !important;
+    }
+    .btn-primary:hover {
+      background: var(--accent-gold) !important;
+      color: #080807 !important;
+    }
+
+    .btn-gold {
+      background: var(--gold-gradient) !important;
+      color: #080807 !important;
+      font-weight: 700 !important;
+    }
+    .btn-gold:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border-color: rgba(255, 255, 255, 0.3) !important;
+      color: var(--text-primary) !important;
+    }
+    .btn-outline:hover {
+      background: #F4F1EA !important;
+      color: #0C0B0A !important;
+    }
+
+    .dropzone {
+      background: rgba(217, 185, 122, 0.05) !important;
+      border: 1.5px dashed var(--accent-gold) !important;
+    }
+
+    .pending-image-box {
+      width: 100%;
+      height: 100%;
+      min-height: 240px;
+      background: #151413;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #8E8A82;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      border: 1px dashed rgba(255, 255, 255, 0.12);
+      text-align: center;
+      padding: 24px;
+    }
+    .pending-image-box span.pending-icon {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      opacity: 0.6;
+    }
+    
+
+    /* --- Phase 2: Motion Engine & Reveal Styles --- */
+    html.has-lenis, html.has-lenis body {
+      scroll-behavior: auto !important;
+    }
+
+    html.js-motion [data-reveal] {
+      opacity: 0;
+      transform: translateY(28px);
+      will-change: opacity, transform;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html.js-motion [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* Scroll wheel indicator */
+    .scroll-indicator-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin-top: 36px;
+      opacity: 0.75;
+      transition: var(--transition);
+    }
+    .scroll-indicator-wrap:hover { opacity: 1; }
+    .scroll-wheel-mouse {
+      width: 24px;
+      height: 38px;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      border-radius: 12px;
+      position: relative;
+    }
+    .scroll-wheel-dot {
+      width: 4px;
+      height: 7px;
+      background: var(--accent-gold);
+      border-radius: 2px;
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: wheelBounce 2.6s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+    }
+    @keyframes wheelBounce {
+      0% { transform: translate(-50%, 0); opacity: 1; }
+      50% { transform: translate(-50%, 12px); opacity: 0.2; }
+      100% { transform: translate(-50%, 0); opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-wheel-dot { animation: none; }
+    }
+
+    /* Floating Glass Badges */
+    .hero-badges-track {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .hero-glass-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 15px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #E8E5DD;
+      letter-spacing: 0.03em;
+    }
+    .hero-glass-badge span.badge-bullet {
+      color: var(--accent-gold);
+      font-size: 0.75rem;
+    }
+    
+</style>
+  <!-- Phase 2: Pinned CDN libraries with defer -->
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js">
+    /* --- Phase 2 Motion Engine Integration --- */
+    window.lenis = null;
+
+    function initMotionEngine() {
+      // 1. Progressive enhancement: apply js-motion class only when JS runs
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('js-motion');
+      }
+
+      // 2. Initialize Lenis if available and motion is permitted
+      if (typeof Lenis !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        try {
+          window.lenis = new Lenis({
+            duration: 0.95,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            touchMultiplier: 1,
+            smoothTouch: false
+          });
+          document.documentElement.classList.add('has-lenis');
+
+          window.lenis.on('scroll', () => {
+            if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.update();
+          });
+
+          if (typeof gsap !== 'undefined') {
+            gsap.ticker.add((time) => {
+              if (window.lenis) window.lenis.raf(time * 1000);
+            });
+            gsap.ticker.lagSmoothing(0);
+          }
+        } catch (e) {
+          console.warn('Lenis initialization deferred or skipped:', e);
+        }
+      }
+
+      // 3. Register ScrollTrigger and setup reveals
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        initReveals();
+      }
+    }
+
+    function initReveals() {
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('[data-reveal]').forEach(el => {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        });
+        return;
+      }
+
+      const activePage = document.querySelector('.page-view.active');
+      if (!activePage) return;
+
+      const revealElements = activePage.querySelectorAll('[data-reveal]');
+      revealElements.forEach((el) => {
+        gsap.fromTo(el, 
+          { opacity: 0, y: 28 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              once: true
+            }
+          }
+        );
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      // Allow deferred libraries to finish loading
+      setTimeout(initMotionEngine, 50);
+    });
+    
+</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js">
+    /* --- Phase 2 Motion Engine Integration --- */
+    window.lenis = null;
+
+    function initMotionEngine() {
+      // 1. Progressive enhancement: apply js-motion class only when JS runs
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('js-motion');
+      }
+
+      // 2. Initialize Lenis if available and motion is permitted
+      if (typeof Lenis !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        try {
+          window.lenis = new Lenis({
+            duration: 0.95,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            touchMultiplier: 1,
+            smoothTouch: false
+          });
+          document.documentElement.classList.add('has-lenis');
+
+          window.lenis.on('scroll', () => {
+            if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.update();
+          });
+
+          if (typeof gsap !== 'undefined') {
+            gsap.ticker.add((time) => {
+              if (window.lenis) window.lenis.raf(time * 1000);
+            });
+            gsap.ticker.lagSmoothing(0);
+          }
+        } catch (e) {
+          console.warn('Lenis initialization deferred or skipped:', e);
+        }
+      }
+
+      // 3. Register ScrollTrigger and setup reveals
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        initReveals();
+      }
+    }
+
+    function initReveals() {
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('[data-reveal]').forEach(el => {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        });
+        return;
+      }
+
+      const activePage = document.querySelector('.page-view.active');
+      if (!activePage) return;
+
+      const revealElements = activePage.querySelectorAll('[data-reveal]');
+      revealElements.forEach((el) => {
+        gsap.fromTo(el, 
+          { opacity: 0, y: 28 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              once: true
+            }
+          }
+        );
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      // Allow deferred libraries to finish loading
+      setTimeout(initMotionEngine, 50);
+    });
+    
+</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js">
+    /* --- Phase 2 Motion Engine Integration --- */
+    window.lenis = null;
+
+    function initMotionEngine() {
+      // 1. Progressive enhancement: apply js-motion class only when JS runs
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('js-motion');
+      }
+
+      // 2. Initialize Lenis if available and motion is permitted
+      if (typeof Lenis !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        try {
+          window.lenis = new Lenis({
+            duration: 0.95,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            touchMultiplier: 1,
+            smoothTouch: false
+          });
+          document.documentElement.classList.add('has-lenis');
+
+          window.lenis.on('scroll', () => {
+            if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.update();
+          });
+
+          if (typeof gsap !== 'undefined') {
+            gsap.ticker.add((time) => {
+              if (window.lenis) window.lenis.raf(time * 1000);
+            });
+            gsap.ticker.lagSmoothing(0);
+          }
+        } catch (e) {
+          console.warn('Lenis initialization deferred or skipped:', e);
+        }
+      }
+
+      // 3. Register ScrollTrigger and setup reveals
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        initReveals();
+      }
+    }
+
+    function initReveals() {
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('[data-reveal]').forEach(el => {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        });
+        return;
+      }
+
+      const activePage = document.querySelector('.page-view.active');
+      if (!activePage) return;
+
+      const revealElements = activePage.querySelectorAll('[data-reveal]');
+      revealElements.forEach((el) => {
+        gsap.fromTo(el, 
+          { opacity: 0, y: 28 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              once: true
+            }
+          }
+        );
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      // Allow deferred libraries to finish loading
+      setTimeout(initMotionEngine, 50);
+    });
+    
+</script>
 </head>
 <body>
 
@@ -862,7 +1282,7 @@
         </div>
       </div>
 
-      <ul class="nav-menu" id="navMenu">
+      <ul class="nav-menu" id="navMenu" data-lenis-prevent>
         <li><a class="nav-link active" data-page="home" onclick="navigateTo('home')">Home</a></li>
         <li><a class="nav-link" data-page="about" onclick="navigateTo('about')">About Studio</a></li>
         <li><a class="nav-link" data-page="trial" onclick="navigateTo('trial')">Free Trial</a></li>
@@ -984,14 +1404,14 @@
 
     <section class="section-padding">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header" data-reveal="up">
           <span class="eyebrow">Specialized Craftsmanship</span>
           <h2>Four Pillars of Jewelry Retouching</h2>
           <p>Every gemstone facet, prong, and precious metal reflection is meticulously refined by senior jewelry retouchers—never automated AI filters.</p>
         </div>
 
         <!-- Service 1 -->
-        <div class="service-showcase-item">
+        <div class="service-showcase-item" data-reveal="up">
           <div class="ba-container" data-ba-slider>
             <div class="ba-layer" style="background: #151412; display:flex; align-items:center; justify-content:center;">
               <svg viewBox="0 0 400 300" width="100%" height="100%">
@@ -1033,7 +1453,7 @@
         </div>
 
         <!-- Service 2 -->
-        <div class="service-showcase-item">
+        <div class="service-showcase-item" data-reveal="up">
           <div class="ba-container" data-ba-slider>
             <div class="ba-layer" style="background: #FFFFFF; display:flex; align-items:center; justify-content:center;">
               <svg viewBox="0 0 400 300" width="100%" height="100%">
@@ -1071,7 +1491,7 @@
         </div>
 
         <!-- Service 3 -->
-        <div class="service-showcase-item">
+        <div class="service-showcase-item" data-reveal="up">
           <div class="ba-container" data-ba-slider>
             <div class="ba-layer" style="background: #12151C; display:flex; align-items:center; justify-content:center;">
               <svg viewBox="0 0 400 300" width="100%" height="100%">
@@ -1111,7 +1531,7 @@
         </div>
 
         <!-- Service 4 -->
-        <div class="service-showcase-item">
+        <div class="service-showcase-item" data-reveal="up">
           <div class="ba-container" data-ba-slider>
             <div class="ba-layer" style="background: radial-gradient(circle, #2B2620 0%, #11100E 100%); display:flex; align-items:center; justify-content:center;">
               <svg viewBox="0 0 400 300" width="100%" height="100%">
@@ -1263,7 +1683,7 @@
         <!-- To use a real photo: replace the <svg> inside .ba-layer (after) and .ba-before-inner (before)
              with <img src="URL" alt="..." style="width:100%;height:100%;object-fit:cover"> -->
         <div class="pf-grid">
-          <article class="pf-card" data-cat="rings">
+          <article class="pf-card" data-reveal="stagger" data-cat="rings">
             <div class="ba-container" data-ba-slider>
               <div class="ba-layer" style="background:linear-gradient(180deg,#ffffff 0%,#efece6 100%);">
                 <svg viewBox="0 0 400 300" width="100%" height="100%" aria-hidden="true"><defs><linearGradient id="pf1m" gradientUnits="userSpaceOnUse" x1="100" y1="50" x2="300" y2="250"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="35%" stop-color="#D5D9DE"/><stop offset="70%" stop-color="#8E959C"/><stop offset="100%" stop-color="#F4F6F8"/></linearGradient><linearGradient id="pf1f" gradientUnits="userSpaceOnUse" x1="100" y1="50" x2="300" y2="250"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="35%" stop-color="#E0F7FA"/><stop offset="70%" stop-color="#B2EBF2"/><stop offset="100%" stop-color="#FFFFFF"/></linearGradient></defs><ellipse cx="200" cy="246" rx="74" ry="9" fill="rgba(0,0,0,.12)"/><circle cx="200" cy="175" r="58" fill="none" stroke="url(#pf1m)" stroke-width="14"/><polygon points="200,52 242,88 224,118 176,118 158,88" fill="url(#pf1f)" stroke="#FFFFFF" stroke-width="1.5"/><polyline points="158,88 200,118 242,88" fill="none" stroke="#90CAF9" stroke-width="1"/><polyline points="176,118 200,52 224,118" fill="none" stroke="#FFFFFF" stroke-width="1.2"/><circle cx="182" cy="74" r="3" fill="#fff"/><circle cx="218" cy="82" r="2.4" fill="#E1F5FE"/></svg>
@@ -1283,7 +1703,7 @@
               <ul class="pf-edits"><li>Dust removal</li><li>Reflection cleanup</li><li>Pure-white base</li></ul>
             </div>
           </article>
-          <article class="pf-card" data-cat="rings">
+          <article class="pf-card" data-reveal="stagger" data-cat="rings">
             <div class="ba-container" data-ba-slider>
               <div class="ba-layer" style="background:linear-gradient(180deg,#ffffff 0%,#efece6 100%);">
                 <svg viewBox="0 0 400 300" width="100%" height="100%" aria-hidden="true"><defs><linearGradient id="pf2m" gradientUnits="userSpaceOnUse" x1="100" y1="50" x2="300" y2="250"><stop offset="0%" stop-color="#FFF2CC"/><stop offset="35%" stop-color="#D4AF37"/><stop offset="70%" stop-color="#997328"/><stop offset="100%" stop-color="#F7E29C"/></linearGradient><linearGradient id="pf2f" gradientUnits="userSpaceOnUse" x1="100" y1="50" x2="300" y2="250"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="35%" stop-color="#E0F7FA"/><stop offset="70%" stop-color="#B2EBF2"/><stop offset="100%" stop-color="#FFFFFF"/></linearGradient></defs><ellipse cx="200" cy="246" rx="74" ry="9" fill="rgba(0,0,0,.12)"/><circle cx="200" cy="175" r="58" fill="none" stroke="url(#pf2m)" stroke-width="14"/><polygon points="200,52 242,88 224,118 176,118 158,88" fill="url(#pf2f)" stroke="#FFFFFF" stroke-width="1.5"/><polyline points="158,88 200,118 242,88" fill="none" stroke="#90CAF9" stroke-width="1"/><polyline points="176,118 200,52 224,118" fill="none" stroke="#FFFFFF" stroke-width="1.2"/><circle cx="182" cy="74" r="3" fill="#fff"/><circle cx="218" cy="82" r="2.4" fill="#E1F5FE"/></svg>
@@ -1303,7 +1723,7 @@
               <ul class="pf-edits"><li>Gold tone correction</li><li>Scratch removal</li><li>Soft shadow</li></ul>
             </div>
           </article>
-          <article class="pf-card" data-cat="gemstones">
+          <article class="pf-card" data-reveal="stagger" data-cat="gemstones">
             <div class="ba-container" data-ba-slider>
               <div class="ba-layer" style="background:linear-gradient(180deg,#ffffff 0%,#efece6 100%);">
                 <svg viewBox="0 0 400 300" width="100%" height="100%" aria-hidden="true"><defs><linearGradient id="pf3m" gradientUnits="userSpaceOnUse" x1="100" y1="50" x2="300" y2="250"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="35%" stop-color="#D5D9DE"/><stop offset="70%" stop-color="#8E959C"/><stop offset="100%" stop-color="#F4F6F8"/></linearGradient><linearGradient id="pf3f" gradientUnits="userSpaceOnUse" x1="100" y1="50" x2="300" y2="250"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="35%" stop-color="#CDEBFF"/><stop offset="70%" stop-color="#8FCBF2"/><stop offset="100%" stop-color="#FFFFFF"/></linearGradient></defs><ellipse cx="200" cy="246" rx="74" ry="9" fill="rgba(0,0,0,.12)"/><circle cx="200" cy="175" r="58" fill="none" stroke="url(#pf3m)" stroke-width="14"/><polygon points="200,52 242,88 224,118 176,118 158,88" fill="url(#pf3f)" stroke="#FFFFFF" stroke-width="1.5"/><polyline points="158,88 200,118 242,88" fill="none" stroke="#90CAF9" stroke-width="1"/><polyline points="176,118 200,52 224,118" fill="none" stroke="#FFFFFF" stroke-width="1.2"/><circle cx="182" cy="74" r="3" fill="#fff"/><circle cx="218" cy="82" r="2.4" fill="#E1F5FE"/></svg>
@@ -1323,7 +1743,7 @@
               <ul class="pf-edits"><li>Facet clarity</li><li>Stone colour</li><li>Prong cleanup</li></ul>
             </div>
           </article>
-          <article class="pf-card" data-cat="gemstones">
+          <article class="pf-card" data-reveal="stagger" data-cat="gemstones">
             <div class="ba-container" data-ba-slider>
               <div class="ba-layer" style="background:linear-gradient(180deg,#ffffff 0%,#efece6 100%);">
                 <svg viewBox="0 0 400 300" width="100%" height="100%" aria-hidden="true"><defs><linearGradient id="pf4m" gradientUnits="userSpaceOnUse" x1="100" y1="50" x2="300" y2="250"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="35%" stop-color="#D5D9DE"/><stop offset="70%" stop-color="#8E959C"/><stop offset="100%" stop-color="#F4F6F8"/></linearGradient><linearGradient id="pf4f" gradientUnits="userSpaceOnUse" x1="100" y1="50" x2="300" y2="250"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="35%" stop-color="#E0F7FA"/><stop offset="70%" stop-color="#B2EBF2"/><stop offset="100%" stop-color="#FFFFFF"/></linearGradient></defs><ellipse cx="200" cy="246" rx="74" ry="9" fill="rgba(0,0,0,.12)"/><circle cx="200" cy="175" r="58" fill="none" stroke="url(#pf4m)" stroke-width="14"/><defs><radialGradient id="pf4p" cx="38%" cy="32%" r="75%"><stop offset="0%" stop-color="#fff"/><stop offset="55%" stop-color="#F1EDE6"/><stop offset="100%" stop-color="#CFC8BC"/></radialGradient></defs><circle cx="200" cy="106" r="26" fill="url(#pf4p)"/><circle cx="191" cy="97" r="5" fill="#fff" opacity=".9"/></svg>
@@ -1343,7 +1763,7 @@
               <ul class="pf-edits"><li>Pearl lustre</li><li>Background removal</li><li>Symmetry fix</li></ul>
             </div>
           </article>
-          <article class="pf-card" data-cat="rings">
+          <article class="pf-card" data-reveal="stagger" data-cat="rings">
             <div class="ba-container" data-ba-slider>
               <div class="ba-layer" style="background:linear-gradient(180deg,#ffffff 0%,#efece6 100%);">
                 <svg viewBox="0 0 400 300" width="100%" height="100%" aria-hidden="true"><defs><linearGradient id="pf5m" gradientUnits="userSpaceOnUse" x1="100" y1="50" x2="300" y2="250"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="35%" stop-color="#D5D9DE"/><stop offset="70%" stop-color="#8E959C"/><stop offset="100%" stop-color="#F4F6F8"/></linearGradient><linearGradient id="pf5f" gradientUnits="userSpaceOnUse" x1="100" y1="50" x2="300" y2="250"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="35%" stop-color="#E0F7FA"/><stop offset="70%" stop-color="#B2EBF2"/><stop offset="100%" stop-color="#FFFFFF"/></linearGradient></defs><ellipse cx="200" cy="246" rx="74" ry="9" fill="rgba(0,0,0,.12)"/><circle cx="200" cy="175" r="58" fill="none" stroke="url(#pf5m)" stroke-width="14"/><circle cx="200" cy="96" r="17" fill="url(#pf5f)" stroke="#fff" stroke-width="1.2"/><circle cx="174" cy="112" r="12" fill="url(#pf5f)" stroke="#fff" stroke-width="1.2"/><circle cx="226" cy="112" r="12" fill="url(#pf5f)" stroke="#fff" stroke-width="1.2"/><circle cx="186" cy="80" r="11" fill="url(#pf5f)" stroke="#fff" stroke-width="1.2"/><circle cx="214" cy="80" r="11" fill="url(#pf5f)" stroke="#fff" stroke-width="1.2"/></svg>
@@ -1363,7 +1783,7 @@
               <ul class="pf-edits"><li>Multi-stone cleanup</li><li>Shape correction</li><li>Clean edges</li></ul>
             </div>
           </article>
-          <article class="pf-card" data-cat="catalog">
+          <article class="pf-card" data-reveal="stagger" data-cat="catalog">
             <div class="ba-container" data-ba-slider>
               <div class="ba-layer" style="background:linear-gradient(180deg,#ffffff 0%,#efece6 100%);">
                 <svg viewBox="0 0 400 300" width="100%" height="100%" aria-hidden="true"><defs><linearGradient id="pf6m" gradientUnits="userSpaceOnUse" x1="100" y1="50" x2="300" y2="250"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="35%" stop-color="#D5D9DE"/><stop offset="70%" stop-color="#8E959C"/><stop offset="100%" stop-color="#F4F6F8"/></linearGradient><linearGradient id="pf6f" gradientUnits="userSpaceOnUse" x1="100" y1="50" x2="300" y2="250"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="35%" stop-color="#E0F7FA"/><stop offset="70%" stop-color="#B2EBF2"/><stop offset="100%" stop-color="#FFFFFF"/></linearGradient></defs><ellipse cx="200" cy="246" rx="110" ry="9" fill="rgba(0,0,0,.10)"/><rect x="78" y="88" width="244" height="13" rx="6.5" fill="url(#pf6m)"/><rect x="78" y="199" width="244" height="13" rx="6.5" fill="url(#pf6m)"/><line x1="102" y1="101" x2="162" y2="199" stroke="url(#pf6m)" stroke-width="7" stroke-linecap="round"/><line x1="162" y1="101" x2="102" y2="199" stroke="url(#pf6m)" stroke-width="7" stroke-linecap="round"/><line x1="170" y1="101" x2="230" y2="199" stroke="url(#pf6m)" stroke-width="7" stroke-linecap="round"/><line x1="230" y1="101" x2="170" y2="199" stroke="url(#pf6m)" stroke-width="7" stroke-linecap="round"/><line x1="238" y1="101" x2="298" y2="199" stroke="url(#pf6m)" stroke-width="7" stroke-linecap="round"/><line x1="298" y1="101" x2="238" y2="199" stroke="url(#pf6m)" stroke-width="7" stroke-linecap="round"/><circle cx="96" cy="94.5" r="2.4" fill="#fff"/><circle cx="96" cy="205.5" r="2.4" fill="#fff"/><circle cx="120" cy="94.5" r="2.4" fill="#fff"/><circle cx="120" cy="205.5" r="2.4" fill="#fff"/><circle cx="144" cy="94.5" r="2.4" fill="#fff"/><circle cx="144" cy="205.5" r="2.4" fill="#fff"/><circle cx="168" cy="94.5" r="2.4" fill="#fff"/><circle cx="168" cy="205.5" r="2.4" fill="#fff"/><circle cx="192" cy="94.5" r="2.4" fill="#fff"/><circle cx="192" cy="205.5" r="2.4" fill="#fff"/><circle cx="216" cy="94.5" r="2.4" fill="#fff"/><circle cx="216" cy="205.5" r="2.4" fill="#fff"/><circle cx="240" cy="94.5" r="2.4" fill="#fff"/><circle cx="240" cy="205.5" r="2.4" fill="#fff"/><circle cx="264" cy="94.5" r="2.4" fill="#fff"/><circle cx="264" cy="205.5" r="2.4" fill="#fff"/><circle cx="288" cy="94.5" r="2.4" fill="#fff"/><circle cx="288" cy="205.5" r="2.4" fill="#fff"/></svg>
@@ -1397,29 +1817,29 @@
 
     <section class="section-padding dark-band">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header" data-reveal="up">
           <span class="eyebrow">Seamless Studio Pipeline</span>
           <h2>Built for USA &amp; European Time Zones</h2>
           <p style="color: #A8A59E;">Upload your RAW, TIFF, PSD, or PNG files before you close your studio, and wake up to press-ready master assets.</p>
         </div>
 
         <div class="steps-grid">
-          <div class="step-card">
+          <div class="step-card" data-reveal="stagger">
             <span class="step-num">01</span>
             <h3>Upload Raw Assets</h3>
             <p>Send your files via our secure portal, Dropbox, or WeTransfer with your brand style guide.</p>
           </div>
-          <div class="step-card">
+          <div class="step-card" data-reveal="stagger">
             <span class="step-num">02</span>
             <h3>Artisan Retouching</h3>
             <p>Dedicated senior jewelry retouchers refine every metal surface and stone facet by hand.</p>
           </div>
-          <div class="step-card">
+          <div class="step-card" data-reveal="stagger">
             <span class="step-num">03</span>
             <h3>3-Tier Quality Audit</h3>
             <p>Every image passes color-calibrated inspection at 300% zoom before delivery.</p>
           </div>
-          <div class="step-card">
+          <div class="step-card" data-reveal="stagger">
             <span class="step-num">04</span>
             <h3>Overnight Delivery</h3>
             <p>Download layered PSDs and web-ready files within 12–24 hours with unlimited revisions.</p>
@@ -1442,27 +1862,27 @@
         </div>
 
         <div class="why-list">
-          <div class="why-item">
+          <div class="why-item" data-reveal="stagger">
             <h3>Jewelry-Only Specialists</h3>
             <p>Our retouchers work on metals and gemstones every day, so prongs, hallmarks, pavilion facets and gold tones get the right treatment.</p>
           </div>
-          <div class="why-item">
+          <div class="why-item" data-reveal="stagger">
             <h3>100% Hand-Crafted, No AI Filters</h3>
             <p>Every image is refined by hand with pen-tool paths and dodge-and-burn, so facets stay sharp and geometry stays true to the piece.</p>
           </div>
-          <div class="why-item">
+          <div class="why-item" data-reveal="stagger">
             <h3>Overnight for USA &amp; Europe</h3>
             <p>Upload before you close the studio and receive press-ready files within 12–24 hours, aligned with EST, PST, GMT and CET.</p>
           </div>
-          <div class="why-item">
+          <div class="why-item" data-reveal="stagger">
             <h3>3-Tier Quality Audit</h3>
             <p>Each image passes a color-calibrated inspection at 300% zoom before it reaches you.</p>
           </div>
-          <div class="why-item">
+          <div class="why-item" data-reveal="stagger">
             <h3>NDA on Every Project</h3>
             <p>Unreleased designs and trial files are protected under automatic confidentiality, and we never showcase your work without written consent.</p>
           </div>
-          <div class="why-item">
+          <div class="why-item" data-reveal="stagger">
             <h3>Production-Ready Files</h3>
             <p>Layered PSDs with separate metal and stone layers, web-ready files, and unlimited revisions within 14 days of delivery.</p>
           </div>
@@ -1473,13 +1893,13 @@
     <!-- NEW: CLIENT TESTIMONIALS -->
     <section class="section-padding testimonials-section">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header" data-reveal="up">
           <span class="eyebrow">Client Endorsements</span>
           <h2>Trusted by Fine Jewelers &amp; Studios Worldwide</h2>
           <p>From Fifth Avenue flagships to Antwerp diamond houses, see how our hand-crafted post-production elevates luxury brands.</p>
         </div>
         <div class="testimonials-grid">
-          <div class="testimonial-card">
+          <div class="testimonial-card" data-reveal="stagger">
             <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
             <p class="quote">"Their diamond fire restoration is unmatched. Other studios rely on AI filters that smear pavilion facets, but Best Jewelry Retouching delivered crisp, natural brilliance overnight for our New York campaign."</p>
             <div class="client-info">
@@ -1487,7 +1907,7 @@
               <span>Creative Director, Aurelia Fine Jewelry • New York</span>
             </div>
           </div>
-          <div class="testimonial-card">
+          <div class="testimonial-card" data-reveal="stagger">
             <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
             <p class="quote">"We send 300+ RAW e-commerce SKUs every month. Their 18k rose gold and platinum color consistency across our entire Shopify catalog reduced our product return rate significantly."</p>
             <div class="client-info">
@@ -1495,7 +1915,7 @@
               <span>Head of E-Commerce, Maison Vermeer • Antwerp</span>
             </div>
           </div>
-          <div class="testimonial-card">
+          <div class="testimonial-card" data-reveal="stagger">
             <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
             <p class="quote">"They transformed our sterile MatrixGold 3D CAD renders into photorealistic visuals that look indistinguishable from studio macro photography. Saved us thousands in prototyping."</p>
             <div class="client-info">
@@ -1576,7 +1996,7 @@
 
             <div class="form-group">
               <label for="ht-notes">Retouching Instructions</label>
-              <textarea id="ht-notes" class="form-control" rows="3" placeholder="Specify background preference (pure white, transparent, natural shadow), metal tone, or specific blemishes to fix..."></textarea>
+              <textarea data-lenis-prevent id="ht-notes" class="form-control" rows="3" placeholder="Specify background preference (pure white, transparent, natural shadow), metal tone, or specific blemishes to fix..."></textarea>
             </div>
 
             <button type="submit" class="btn btn-gold">Submit Free Trial Request</button>
@@ -1591,7 +2011,7 @@
     <!-- NEW: FAQ -->
     <section class="section-padding faq-section">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header" data-reveal="up">
           <span class="eyebrow">Common Inquiries</span>
           <h2>Frequently Asked Questions</h2>
           <p>Everything you need to know about our security, turnaround times, and hand-crafted retouching workflow.</p>
@@ -1624,7 +2044,7 @@
 
   <section id="page-about" class="page-view section-padding">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header" data-reveal="up">
         <span class="eyebrow">About BestJewelryRetouching.com</span>
         <h2>Where Gemological Precision Meets Digital Artistry</h2>
         <p>We are a dedicated jewelry post-production house serving fine jewelry brands, watch manufacturers, and commercial photographers across North America and Europe.</p>
@@ -1711,7 +2131,7 @@
 
           <div class="form-group">
             <label>Retouching Instructions</label>
-            <textarea class="form-control" rows="3" placeholder="Specify background preference (pure white, transparent, natural shadow), metal tone, or specific blemishes to fix..."></textarea>
+            <textarea data-lenis-prevent class="form-control" rows="3" placeholder="Specify background preference (pure white, transparent, natural shadow), metal tone, or specific blemishes to fix..."></textarea>
           </div>
 
           <button type="submit" class="btn btn-gold" style="width: 100%;">Submit Free Trial Request</button>
@@ -1787,7 +2207,7 @@
 
           <div class="form-group">
             <label>Project Specifications *</label>
-            <textarea class="form-control" rows="4" placeholder="Tell us about output formats (PSD with layers, JPEG, PNG), shadow style, and color requirements..." required></textarea>
+            <textarea data-lenis-prevent class="form-control" rows="4" placeholder="Tell us about output formats (PSD with layers, JPEG, PNG), shadow style, and color requirements..." required></textarea>
           </div>
 
           <button type="submit" class="btn btn-primary" style="width: 100%;">Get Custom Quote Within 2 Hours</button>
@@ -1831,7 +2251,7 @@
           </div>
           <div class="form-group">
             <label>Message *</label>
-            <textarea class="form-control" rows="5" required></textarea>
+            <textarea data-lenis-prevent class="form-control" rows="5" required></textarea>
           </div>
           <button type="submit" class="btn btn-gold" style="width: 100%;">Send Message</button>
           <div id="contactSuccess" class="alert-success">
@@ -1931,6 +2351,7 @@
     </div>
   </footer>
 
+
   <script>
     function navigateTo(pageId) {
       document.querySelectorAll('.page-view').forEach(page => page.classList.remove('active'));
@@ -2002,9 +2423,7 @@
       const fileList = event.target.querySelector('.file-list');
       if (fileList) fileList.textContent = '';
     }
-  </script>
 
-  <script>
     document.querySelectorAll('.pf-chip').forEach(function (chip) {
       chip.addEventListener('click', function () {
         var f = chip.getAttribute('data-filter');
@@ -2015,6 +2434,87 @@
         if (typeof syncSliderWidths === 'function') syncSliderWidths();
       });
     });
-  </script>
+
+
+    /* --- Phase 2 Motion Engine Integration --- */
+    window.lenis = null;
+
+    function initMotionEngine() {
+      // 1. Progressive enhancement: apply js-motion class only when JS runs
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('js-motion');
+      }
+
+      // 2. Initialize Lenis if available and motion is permitted
+      if (typeof Lenis !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        try {
+          window.lenis = new Lenis({
+            duration: 0.95,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            touchMultiplier: 1,
+            smoothTouch: false
+          });
+          document.documentElement.classList.add('has-lenis');
+
+          window.lenis.on('scroll', () => {
+            if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.update();
+          });
+
+          if (typeof gsap !== 'undefined') {
+            gsap.ticker.add((time) => {
+              if (window.lenis) window.lenis.raf(time * 1000);
+            });
+            gsap.ticker.lagSmoothing(0);
+          }
+        } catch (e) {
+          console.warn('Lenis initialization deferred or skipped:', e);
+        }
+      }
+
+      // 3. Register ScrollTrigger and setup reveals
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        initReveals();
+      }
+    }
+
+    function initReveals() {
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('[data-reveal]').forEach(el => {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        });
+        return;
+      }
+
+      const activePage = document.querySelector('.page-view.active');
+      if (!activePage) return;
+
+      const revealElements = activePage.querySelectorAll('[data-reveal]');
+      revealElements.forEach((el) => {
+        gsap.fromTo(el, 
+          { opacity: 0, y: 28 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              once: true
+            }
+          }
+        );
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      // Allow deferred libraries to finish loading
+      setTimeout(initMotionEngine, 50);
+    });
+    
+</script>
 </body>
 </html>
