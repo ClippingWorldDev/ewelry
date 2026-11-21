@@ -26,7 +26,7 @@
     --error-bg: #fdf2f2;
     --success: #1b5e42;
     --success-bg: #eef8f3;
-    --font-serif: "Cormorant Garamond", Georgia, serif;
+    --font-serif: "Marcellus", Georgia, serif;
     --font-sans:
       "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
     --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
@@ -321,7 +321,11 @@
 
   .hero-bg-img {
     @apply w-full h-full object-contain select-none transition-transform duration-700;
-    -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 50%, transparent 72%);
+    -webkit-mask-image: radial-gradient(
+      ellipse at 50% 50%,
+      black 50%,
+      transparent 72%
+    );
     mask-image: radial-gradient(ellipse at 50% 50%, black 50%, transparent 72%);
   }
 
@@ -356,23 +360,47 @@
   }
 
   .hero-ctas {
-    @apply flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8;
+    @apply flex items-center gap-4 sm:gap-6 mb-6 sm:mb-8;
   }
 
   .hero-explore {
     @apply inline-flex items-center justify-center px-6 sm:px-9 py-3 sm:py-3.5 bg-[#C5A46D] hover:bg-[#B59054] text-white text-xs sm:text-sm font-medium tracking-wide rounded-[4px] transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer whitespace-nowrap;
   }
 
-  .hero-watch {
-    @apply inline-flex items-center gap-2 px-2.5 sm:px-3 py-2.5 sm:py-3 text-xs sm:text-sm font-medium text-ink-primary hover:text-[#C5A46D] transition-colors duration-300 cursor-pointer whitespace-nowrap;
+  /* Video Circular Trigger with Infinite Radiating Ripple Waves */
+  .hero-video-pulse {
+    @apply relative inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full cursor-pointer select-none transition-transform duration-300;
   }
 
-  .hero-watch-icon {
-    @apply w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#C5A46D]/15 text-[#C5A46D] flex items-center justify-center transition-transform duration-300;
+  .hero-video-pulse:hover {
+    @apply scale-105;
   }
 
-  .hero-watch:hover .hero-watch-icon {
-    @apply scale-110;
+  .hero-video-circle {
+    @apply relative z-10 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white border border-[#C5A46D]/60 shadow-sm flex items-center justify-center text-[#C5A46D] transition-all duration-300 group-hover:bg-[#C5A46D] group-hover:border-[#C5A46D] group-hover:shadow-glow-gold;
+  }
+
+  .hero-video-ripple {
+    @apply absolute inset-0 rounded-full border border-[#C5A46D]/60 pointer-events-none;
+    animation: heroPulseWave 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  }
+
+  .hero-video-ripple--2 {
+    animation-delay: 1.2s;
+  }
+
+  @keyframes heroPulseWave {
+    0% {
+      transform: scale(0.95);
+      opacity: 0.85;
+    }
+    60% {
+      opacity: 0.4;
+    }
+    100% {
+      transform: scale(2.05);
+      opacity: 0;
+    }
   }
 
   .hero-assurance {
@@ -391,25 +419,25 @@
     @apply block font-sans text-[11px] sm:text-xs text-ink-muted leading-relaxed mt-1 max-w-[220px];
   }
 
-  /* Right Vertical 3-Card Carousel */
+  /* Right Carousel: Horizontal on Mobile/Tablet, Vertical on Desktop */
   .hero-vertical-carousel {
-    @apply flex flex-col items-center gap-2 sm:gap-3 z-20 select-none;
+    @apply flex flex-row lg:flex-col items-center justify-center gap-2 sm:gap-3 z-20 select-none;
   }
 
   .hero-v-arrow {
-    @apply w-8 h-8 rounded-full border border-stone-300/80 bg-[#FAF7F2] hover:bg-white text-ink-primary hover:text-[#C5A46D] flex items-center justify-center transition-all duration-300 shadow-xs hover:shadow-sm cursor-pointer;
+    @apply w-8 h-8 rounded-full border border-stone-300/80 bg-[#FAF7F2] hover:bg-white text-ink-primary hover:text-[#C5A46D] flex items-center justify-center transition-all duration-300 shadow-xs hover:shadow-sm cursor-pointer shrink-0;
   }
 
   .hero-v-window {
-    @apply overflow-hidden py-1 w-[88px] sm:w-[104px] lg:w-[112px] h-[272px] sm:h-[320px] lg:h-[344px] flex flex-col;
+    @apply overflow-hidden p-1 w-[246px] h-[78px] sm:w-[350px] sm:h-[86px] md:w-[380px] md:h-[92px] lg:w-[106px] lg:h-[334px] flex flex-row lg:flex-col;
   }
 
   .hero-v-track {
-    @apply flex flex-col gap-3 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)];
+    @apply flex flex-row lg:flex-col gap-2.5 sm:gap-2.5 md:gap-3 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)];
   }
 
   .hero-v-card {
-    @apply relative w-[80px] h-[80px] sm:w-[96px] sm:h-[96px] lg:w-[104px] lg:h-[104px] rounded-2xl bg-[#F7F4EE] border border-stone-200/90 p-1.5 sm:p-2 flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-white hover:shadow-md select-none shrink-0 overflow-hidden;
+    @apply relative w-[72px] h-[72px] sm:w-[76px] sm:h-[76px] md:w-[82px] md:h-[82px] lg:w-[98px] lg:h-[98px] rounded-xl sm:rounded-2xl bg-[#F7F4EE] border border-stone-200/90 p-0.5 flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-white hover:shadow-md select-none shrink-0 overflow-hidden;
   }
 
   .hero-v-card.is-active {
@@ -417,7 +445,7 @@
   }
 
   .hero-v-card-thumb {
-    @apply w-full h-full object-contain select-none transition-transform duration-300 rounded-xl;
+    @apply w-full h-full object-cover rounded-[10px] sm:rounded-[14px] select-none transition-transform duration-300;
   }
 
   .hero-v-card:hover .hero-v-card-thumb {

@@ -1184,15 +1184,31 @@ window.STUDIO_API = {
     let timer = null;
 
     function updateTrackPosition() {
-      if (!vTrack || cards.length <= 3) return;
+      if (!vTrack) return;
       const firstCard = cards[0];
       if (!firstCard) return;
-      const cardHeight = firstCard.offsetHeight || 108;
-      const computedGap = parseFloat(window.getComputedStyle(vTrack).rowGap) || 12;
-      const step = cardHeight + computedGap;
-      const maxOffset = Math.max(0, (cards.length - 3) * step);
-      const targetOffset = Math.min(Math.max(0, (current - 1) * step), maxOffset);
-      vTrack.style.transform = `translateY(-${targetOffset}px)`;
+
+      const width = window.innerWidth;
+      if (width < 640) {
+        // Mobile phone: horizontal carousel showing 3 cards
+        const cardWidth = firstCard.offsetWidth || 72;
+        const computedGap = parseFloat(window.getComputedStyle(vTrack).columnGap) || 10;
+        const step = cardWidth + computedGap;
+        const maxOffset = Math.max(0, (cards.length - 3) * step);
+        const targetOffset = Math.min(Math.max(0, (current - 1) * step), maxOffset);
+        vTrack.style.transform = `translateX(-${targetOffset}px)`;
+      } else if (width < 1024) {
+        // Tablet (640px - 1023px): all 4 cards displayed together cleanly
+        vTrack.style.transform = 'translateX(0px)';
+      } else {
+        // Desktop (1024px+): vertical slider showing 3 cards
+        const cardHeight = firstCard.offsetHeight || 98;
+        const computedGap = parseFloat(window.getComputedStyle(vTrack).rowGap) || 12;
+        const step = cardHeight + computedGap;
+        const maxOffset = Math.max(0, (cards.length - 3) * step);
+        const targetOffset = Math.min(Math.max(0, (current - 1) * step), maxOffset);
+        vTrack.style.transform = `translateY(-${targetOffset}px)`;
+      }
     }
 
     function showSlide(index) {
