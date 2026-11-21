@@ -968,11 +968,18 @@ window.STUDIO_API = {
     const yDist = isMobile ? 18 : 30;
 
     // Hero Staged Editorial Entrance
-    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-    heroTl
-      .from('.js-hero-item', { y: yDist, opacity: 0, duration: 0.85, stagger: 0.1, clearProps: 'transform,opacity' })
-      .from('.js-hero-media', { y: yDist, opacity: 0, scale: 0.98, duration: 0.95, clearProps: 'transform,opacity' }, '-=0.65')
-      .from('.js-hero-metric', { y: 16, opacity: 0, duration: 0.65, stagger: 0.09, clearProps: 'transform,opacity' }, '-=0.55');
+    window.triggerHeroEntrance = function () {
+      const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      heroTl
+        .from('.js-hero-item', { y: yDist, opacity: 0, duration: 0.85, stagger: 0.1, clearProps: 'transform,opacity' })
+        .from('.js-hero-media', { y: yDist, opacity: 0, scale: 0.98, duration: 0.95, clearProps: 'transform,opacity' }, '-=0.65')
+        .from('.js-hero-metric', { y: 16, opacity: 0, duration: 0.65, stagger: 0.09, clearProps: 'transform,opacity' }, '-=0.55');
+    };
+
+    // If preloader is absent, trigger hero entrance immediately
+    if (!document.getElementById('bjrPreloader')) {
+      window.triggerHeroEntrance();
+    }
 
     // Section Reveals
     gsap.utils.toArray('.js-reveal').forEach((el) => {
@@ -1092,20 +1099,22 @@ window.STUDIO_API = {
       }
     );
 
-    // Workflow Steps
-    gsap.fromTo(
-      '.js-step-card',
-      { y: 20, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.7,
-        stagger: 0.08,
-        ease: 'power3.out',
-        clearProps: 'transform,opacity',
-        scrollTrigger: { trigger: '.workflow-grid', start: 'top 86%', once: true, immediateRender: false }
-      }
-    );
+    // Workflow Steps (if present)
+    if (document.querySelector('.workflow-grid')) {
+      gsap.fromTo(
+        '.js-step-card',
+        { y: 20, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.7,
+          stagger: 0.08,
+          ease: 'power3.out',
+          clearProps: 'transform,opacity',
+          scrollTrigger: { trigger: '.workflow-grid', start: 'top 86%', once: true, immediateRender: false }
+        }
+      );
+    }
 
     // Why Us Pillars
     gsap.fromTo(
@@ -1281,8 +1290,207 @@ window.STUDIO_API = {
     window.addEventListener('resize', updateTrackPosition, { passive: true });
   }
 
+  /* ----------------------------------------------------------------------
+     HERO VIDEO MODAL POPUP
+     ---------------------------------------------------------------------- */
+  function initHeroVideoModal() {
+    const modal = document.getElementById('heroVideoModal');
+    const iframe = document.getElementById('heroVideoIframe');
+    const closeBtn = document.getElementById('heroVideoModalClose');
+    const backdrop = document.getElementById('heroVideoModalBackdrop');
+    const triggers = document.querySelectorAll('.js-hero-video-trigger');
+
+    if (!modal || !iframe) return;
+
+    function openModal() {
+      const videoSrc = iframe.getAttribute('data-src') || 'https://www.youtube-nocookie.com/embed/ScMzIvxBSi4?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+      iframe.setAttribute('src', videoSrc);
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      if (lenis && typeof lenis.stop === 'function') lenis.stop();
+      document.body.style.overflow = 'hidden';
+      if (closeBtn) closeBtn.focus();
+    }
+
+    function closeModal() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      iframe.setAttribute('src', '');
+      if (lenis && typeof lenis.start === 'function') lenis.start();
+      document.body.style.overflow = '';
+    }
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal();
+      });
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeModal();
+      });
+    }
+
+    if (backdrop) {
+      backdrop.addEventListener('click', closeModal);
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+        closeModal();
+      }
+    });
+  }
+
+  /* ----------------------------------------------------------------------
+     LUXURY ATELIER JEWELRY SVG PRELOADER (GSAP STROKE & FACET ANIMATION)
+     ---------------------------------------------------------------------- */
+  function initLuxuryPreloader() {
+    const preloader = document.getElementById('bjrPreloader');
+    if (!preloader) {
+      if (typeof window.triggerHeroEntrance === 'function') {
+        window.triggerHeroEntrance();
+      }
+      return;
+    }
+
+    // Respect reduced-motion preferences
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      preloader.classList.add('is-done');
+      preloader.style.display = 'none';
+      if (typeof window.triggerHeroEntrance === 'function') {
+        window.triggerHeroEntrance();
+      }
+      return;
+    }
+
+    const paths = preloader.querySelectorAll('.preloader-path');
+    const aura = preloader.querySelector('.preloader-aura');
+    const sparkles = preloader.querySelectorAll('.preloader-sparkle');
+    const gemFills = preloader.querySelectorAll('.preloader-gem-fill');
+    const meta = preloader.querySelector('.preloader-meta');
+    const progressWrap = preloader.querySelector('.preloader-progress-wrap');
+    const progressBar = document.getElementById('preloaderBar');
+    const progressCount = document.getElementById('preloaderCount');
+
+    // Prevent scrolling while preloading
+    if (lenis && typeof lenis.stop === 'function') lenis.stop();
+    document.body.style.overflow = 'hidden';
+
+    // Prepare SVG stroke-dasharray and stroke-dashoffset for path drawing
+    paths.forEach((p) => {
+      try {
+        const len = p.getTotalLength() || 180;
+        p.style.strokeDasharray = len;
+        p.style.strokeDashoffset = len;
+      } catch (e) {
+        p.style.strokeDasharray = 180;
+        p.style.strokeDashoffset = 180;
+      }
+    });
+
+    if (window.gsap) {
+      const gsap = window.gsap;
+      gsap.set(aura, { scale: 0, opacity: 0, transformOrigin: 'center center' });
+      gsap.set(sparkles, { scale: 0, opacity: 0, transformOrigin: 'center center' });
+      gsap.set(gemFills, { opacity: 0 });
+      gsap.set(meta, { opacity: 0, y: 12 });
+      gsap.set(progressWrap, { opacity: 0, y: 8 });
+
+      const tl = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
+
+      // 1. Draw SVG stroke lines (Shank, Cathedral Basket, Facet Geometry & Crown)
+      tl.to(paths, {
+        strokeDashoffset: 0,
+        duration: 1.15,
+        stagger: 0.035,
+        ease: 'power2.out'
+      })
+      // 2. Diamond facet sheen and champagne aura glow
+      .to(gemFills, { opacity: 1, duration: 0.35 }, '-=0.4')
+      .to(aura, { scale: 1, opacity: 1, duration: 0.55, ease: 'back.out(1.4)' }, '-=0.35')
+      // 3. Optical brilliance sparkles pop & twinkle
+      .to(sparkles, { scale: 1, opacity: 1, duration: 0.3, stagger: 0.08, ease: 'back.out(2)' }, '-=0.3')
+      .to(sparkles[0], { scale: 1.35, duration: 0.35, repeat: 1, yoyo: true, ease: 'sine.inOut' })
+      // 4. Reveal Typography & Progress Bar
+      .to(meta, { opacity: 1, y: 0, duration: 0.45, ease: 'power3.out' }, '-=0.45')
+      .to(progressWrap, { opacity: 1, y: 0, duration: 0.35 }, '-=0.25');
+
+      // Progress counter animation from 0% to 100%
+      const counter = { val: 0 };
+      gsap.to(counter, {
+        val: 100,
+        duration: 1.4,
+        ease: 'power1.inOut',
+        onUpdate: () => {
+          const current = Math.round(counter.val);
+          if (progressBar) progressBar.style.width = current + '%';
+          if (progressCount) progressCount.textContent = current + '%';
+        },
+        onComplete: () => {
+          exitPreloader();
+        }
+      });
+
+      let hasExited = false;
+      function exitPreloader() {
+        if (hasExited) return;
+        hasExited = true;
+
+        const exitTl = gsap.timeline({
+          onComplete: () => {
+            preloader.classList.add('is-done');
+            preloader.style.display = 'none';
+            document.body.style.overflow = '';
+            if (lenis && typeof lenis.start === 'function') lenis.start();
+
+            // Trigger hero editorial entrance animation
+            if (typeof window.triggerHeroEntrance === 'function') {
+              window.triggerHeroEntrance();
+            }
+          }
+        });
+
+        exitTl
+          .to(preloader.querySelector('.preloader-content'), {
+            y: -22,
+            opacity: 0,
+            scale: 0.94,
+            duration: 0.5,
+            ease: 'power3.in'
+          })
+          .to(preloader, {
+            opacity: 0,
+            duration: 0.6,
+            ease: 'power3.inOut'
+          }, '-=0.2');
+      }
+
+      // Safety timeout so user is never stuck if window loading is delayed
+      setTimeout(() => {
+        if (!hasExited) exitPreloader();
+      }, 3200);
+
+    } else {
+      // Fallback if GSAP is unavailable
+      setTimeout(() => {
+        preloader.classList.add('is-done');
+        preloader.style.display = 'none';
+        document.body.style.overflow = '';
+        if (typeof window.triggerHeroEntrance === 'function') {
+          window.triggerHeroEntrance();
+        }
+      }, 800);
+    }
+  }
+
   function start() {
+    initLuxuryPreloader();
     initHeroShowcase();
+    initHeroVideoModal();
     initSliders();
     init3DImageTilt();
     initMacroLoupe();

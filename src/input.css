@@ -360,7 +360,7 @@
   }
 
   .hero-ctas {
-    @apply flex items-center gap-4 sm:gap-6 mb-6 sm:mb-8;
+    @apply flex items-center gap-7 sm:gap-9 lg:gap-11 mb-6 sm:mb-8;
   }
 
   .hero-explore {
@@ -387,6 +387,43 @@
 
   .hero-video-ripple--2 {
     animation-delay: 1.2s;
+  }
+
+  /* Luxury Atelier Video Modal Popup */
+  .hero-video-modal {
+    @apply fixed inset-0 z-[120] flex items-center justify-center p-4 sm:p-6 lg:p-8 opacity-0 pointer-events-none transition-opacity duration-300;
+  }
+
+  .hero-video-modal.is-open {
+    @apply opacity-100 pointer-events-auto;
+  }
+
+  .hero-video-modal-backdrop {
+    @apply absolute inset-0 bg-obsidian/90 backdrop-blur-xl transition-opacity duration-300;
+  }
+
+  .hero-video-modal-dialog {
+    @apply relative z-10 w-full max-w-4xl bg-[#141311] border border-gold/40 rounded-2xl sm:rounded-3xl shadow-[0_30px_90px_rgba(0,0,0,0.85)] overflow-hidden transform scale-95 transition-transform duration-300;
+  }
+
+  .hero-video-modal.is-open .hero-video-modal-dialog {
+    @apply scale-100;
+  }
+
+  .hero-video-modal-header {
+    @apply flex items-center justify-between px-5 sm:px-7 py-4 border-b border-white/10 bg-white/[0.03];
+  }
+
+  .hero-video-modal-close {
+    @apply w-9 h-9 rounded-full bg-white/5 border border-white/10 text-stone-300 flex items-center justify-center hover:bg-gold hover:border-gold hover:text-obsidian transition-all duration-200 cursor-pointer;
+  }
+
+  .hero-video-modal-frame {
+    @apply relative w-full aspect-video bg-black overflow-hidden;
+  }
+
+  .hero-video-modal-footer {
+    @apply px-5 sm:px-7 py-3.5 border-t border-white/10 bg-white/[0.02] flex items-center justify-between;
   }
 
   @keyframes heroPulseWave {
@@ -497,13 +534,21 @@
   }
 
   .service-row {
-    @apply grid grid-cols-1 lg:grid-cols-[1.08fr_0.92fr] gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-center p-5 sm:p-8 md:p-10 lg:p-14 rounded-2xl sm:rounded-3xl bg-white/95 backdrop-blur-2xl border border-white/95 ring-1 ring-gold/30 shadow-glass transition-all duration-300;
+    @apply grid grid-cols-1 lg:grid-cols-[1.08fr_0.92fr] gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-center p-6 sm:p-8 md:p-10 lg:p-14 rounded-2xl sm:rounded-3xl bg-white/95 backdrop-blur-2xl transition-all duration-300 relative;
+    border: 1px solid rgba(232, 225, 211, 0.85);
+    box-shadow:
+      0 16px 45px -10px rgba(14, 13, 12, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95);
     transform-origin: center top;
     will-change: transform;
   }
 
   .service-row:hover {
-    @apply ring-gold/60 shadow-glass-gold;
+    border-color: rgba(181, 144, 84, 0.5);
+    box-shadow:
+      0 28px 70px -12px rgba(181, 144, 84, 0.16),
+      0 0 0 1px rgba(181, 144, 84, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 1);
   }
 
   .service-row--reverse {
@@ -512,6 +557,14 @@
 
   .service-row--reverse .service-media {
     @apply lg:order-2;
+  }
+
+  .service-meta {
+    @apply inline-flex items-center gap-3 mb-2.5;
+  }
+
+  .service-num {
+    @apply font-serif text-2xl sm:text-3xl text-gold-deep font-normal tracking-tight select-none;
   }
 
   .service-index {
@@ -531,11 +584,69 @@
   }
 
   .editorial-checklist {
-    @apply grid gap-2.5 sm:gap-3 pt-4 sm:pt-5 mb-6 sm:mb-8 border-t border-stone-200 list-none;
+    @apply grid gap-2.5 sm:gap-3 pt-4 sm:pt-5 mb-5 sm:mb-6 border-t border-stone-200/80 list-none;
   }
 
   .editorial-checklist li {
-    @apply relative pl-5 sm:pl-6 text-xs sm:text-sm text-ink-primary leading-snug before:content-['✦'] before:absolute before:left-0 before:top-0 before:text-gold before:text-xs;
+    @apply relative pl-5 sm:pl-6 text-xs sm:text-sm text-ink-primary leading-snug transition-transform duration-200;
+  }
+
+  .editorial-checklist li::before {
+    content: "✦";
+    @apply absolute left-0 top-0 text-gold text-xs transition-transform duration-200;
+  }
+
+  .editorial-checklist li:hover::before {
+    transform: scale(1.25);
+    color: #8E6B36;
+  }
+
+  /* 3-Column Studio Technical Metrics Strip */
+  .service-meta-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    padding: 0.875rem 1.125rem;
+    margin: 1.25rem 0;
+    background: linear-gradient(135deg, rgba(250, 248, 244, 0.95) 0%, rgba(245, 241, 233, 0.75) 100%);
+    border: 1px solid rgba(232, 225, 211, 0.9);
+    border-radius: 14px;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.9), 0 2px 8px rgba(14, 13, 12, 0.02);
+  }
+
+  .service-stat {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-right: 0.5rem;
+  }
+
+  .service-stat:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 15%;
+    height: 70%;
+    width: 1px;
+    background-color: rgba(207, 198, 181, 0.6);
+  }
+
+  .service-stat span:first-child {
+    font-family: "Marcellus", Georgia, serif;
+    font-size: 0.9375rem;
+    color: #8E6B36;
+    line-height: 1.2;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .service-stat span:last-child {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7C766C;
+    font-weight: 600;
+    margin-top: 0.25rem;
   }
 
   /* Full Bleed CTA Banner */
@@ -643,15 +754,23 @@
 
   .portfolio-filters,
   .pf-chips {
-    @apply flex flex-wrap justify-start lg:justify-end gap-2.5 sm:gap-3.5 mb-12 sm:mb-16;
+    @apply flex flex-wrap justify-start lg:justify-end gap-2.5 sm:gap-3 mb-10 sm:mb-14;
   }
 
   .pf-chip {
-    @apply px-5 sm:px-6 py-2.5 rounded-full border border-stone-300 bg-white text-ink-primary text-xs font-semibold tracking-wider uppercase transition-all duration-300 hover:border-gold;
+    @apply px-5 sm:px-6 py-2.5 rounded-full border border-stone-300/80 bg-white text-ink-primary text-xs font-semibold tracking-[0.14em] uppercase transition-all duration-300 cursor-pointer shadow-xs select-none;
+  }
+
+  .pf-chip:hover {
+    @apply border-gold text-ink-primary -translate-y-0.5;
+    box-shadow: 0 6px 16px -4px rgba(14, 13, 12, 0.08);
   }
 
   .pf-chip[aria-pressed="true"] {
     @apply bg-obsidian text-ink-light border-obsidian;
+    box-shadow:
+      0 8px 20px -4px rgba(14, 13, 12, 0.28),
+      0 0 0 1px rgba(181, 144, 84, 0.4);
   }
 
   .portfolio-grid {
@@ -659,34 +778,48 @@
   }
 
   .pf-card {
-    @apply bg-white border border-stone-200 rounded-2xl overflow-hidden flex flex-col shadow-sm;
+    @apply bg-white border border-stone-200/90 rounded-2xl overflow-hidden flex flex-col;
+    box-shadow: 0 4px 18px rgba(14, 13, 12, 0.03);
     transition:
-      border-color 0.25s ease,
-      box-shadow 0.25s ease;
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.3s ease,
+      box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .pf-card:hover {
-    @apply border-gold shadow-md;
+    transform: translateY(-5px);
+    border-color: rgba(181, 144, 84, 0.65);
+    box-shadow:
+      0 22px 50px -12px rgba(14, 13, 12, 0.12),
+      0 0 0 1px rgba(181, 144, 84, 0.35);
   }
 
   .pf-body {
-    @apply p-6 sm:p-7 flex flex-col flex-1;
+    @apply p-5 sm:p-6 flex flex-col flex-1 bg-gradient-to-b from-white to-stone-50/50;
   }
 
   .pf-tag {
-    @apply text-[0.68rem] font-semibold tracking-[0.16em] uppercase text-gold-deep mb-2;
+    @apply text-[10px] font-semibold tracking-[0.18em] uppercase text-gold-deep;
   }
 
   .pf-body h3 {
-    @apply text-2xl font-serif mb-4 text-ink-primary;
+    @apply text-lg sm:text-xl font-serif text-ink-primary font-normal tracking-tight transition-colors duration-200;
+  }
+
+  .pf-card:hover .pf-body h3 {
+    @apply text-obsidian;
   }
 
   .pf-edits {
-    @apply flex flex-wrap gap-2 mt-auto list-none;
+    @apply flex flex-wrap gap-1.5 mt-auto pt-3 border-t border-stone-200/70 list-none;
   }
 
   .pf-edits li {
-    @apply text-xs text-ink-secondary bg-stone-100 border border-stone-200 px-3 py-1 rounded-full;
+    @apply text-[11px] text-ink-secondary bg-stone-100/90 border border-stone-200 px-2.5 py-0.5 rounded-full font-medium transition-colors duration-200;
+  }
+
+  .pf-card:hover .pf-edits li {
+    @apply bg-stone-50 border-stone-300/80 text-ink-primary;
   }
 
   .portfolio-cta-bar {
@@ -1173,9 +1306,43 @@
     @apply grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16 items-center;
   }
   .macro-loupe-wrap {
-    @apply relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-obsidian border border-gold/30 shadow-glass select-none cursor-crosshair;
+    @apply relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-obsidian select-none cursor-crosshair;
     touch-action: none;
+    border: 1px solid rgba(181, 144, 84, 0.45);
+    box-shadow:
+      0 24px 60px -15px rgba(14, 13, 12, 0.25),
+      inset 0 0 0 1px rgba(181, 144, 84, 0.2);
   }
+
+  /* Optical Bench Crosshair Registration Brackets */
+  .macro-loupe-wrap::before,
+  .macro-loupe-wrap::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+    z-index: 18;
+    border-color: rgba(217, 186, 130, 0.75);
+    transition: border-color 0.3s ease;
+  }
+  .macro-loupe-wrap::before {
+    top: 14px;
+    left: 14px;
+    border-top: 2px solid;
+    border-left: 2px solid;
+  }
+  .macro-loupe-wrap::after {
+    bottom: 14px;
+    right: 14px;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+  }
+  .macro-loupe-wrap:hover::before,
+  .macro-loupe-wrap:hover::after {
+    border-color: #D9BA82;
+  }
+
   .macro-loupe-img {
     @apply w-full h-full object-cover block pointer-events-none select-none;
   }
@@ -1261,6 +1428,20 @@
     @apply absolute top-3 right-3 z-10 bg-obsidian/85 backdrop-blur-md text-gold px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-wider uppercase border border-gold/30 shadow-sm pointer-events-none flex items-center gap-2;
   }
 
+  /* Interactive Loupe Focal Point Quick-Pill Buttons */
+  .loupe-preset-btn {
+    @apply text-xs font-medium px-3.5 py-1.5 rounded-full border border-stone-300 bg-white text-ink-secondary transition-all duration-300 shadow-xs flex items-center gap-1.5 cursor-pointer;
+  }
+  .loupe-preset-btn:hover {
+    @apply border-gold text-ink-primary -translate-y-0.5;
+    background-color: #FAF8F4;
+    box-shadow: 0 4px 12px -2px rgba(181, 144, 84, 0.2);
+  }
+  .loupe-preset-btn.is-active,
+  .loupe-preset-btn:active {
+    @apply border-gold text-gold-deep ring-1 ring-gold/40 bg-stone-50;
+  }
+
   /* Digital Alloy Recasting Studio (Colorways) */
   .colorway-section {
     @apply bg-stone-100 border-t border-stone-200 py-20 lg:py-28;
@@ -1269,7 +1450,10 @@
     @apply grid grid-cols-1 lg:grid-cols-[1.08fr_0.92fr] gap-10 lg:gap-16 items-center;
   }
   .colorway-display {
-    @apply relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-white border border-stone-200 shadow-glass;
+    @apply relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-white border border-stone-200/90 shadow-glass;
+    box-shadow:
+      0 24px 60px -15px rgba(14, 13, 12, 0.1),
+      inset 0 0 0 1px rgba(181, 144, 84, 0.15);
   }
   .colorway-img {
     @apply absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-out;
@@ -1281,13 +1465,40 @@
     @apply flex flex-col gap-3 mt-6;
   }
   .swatch-btn {
-    @apply flex items-center gap-4 p-4 rounded-xl border border-stone-200 bg-white text-left transition-all duration-300 hover:border-gold hover:shadow-sm cursor-pointer;
+    @apply flex items-center gap-3.5 p-3.5 sm:p-4 rounded-xl border border-stone-200/90 bg-white text-left transition-all duration-300 cursor-pointer relative overflow-hidden select-none;
+    box-shadow: 0 2px 8px rgba(14, 13, 12, 0.02);
+  }
+  .swatch-btn:hover {
+    border-color: rgba(181, 144, 84, 0.6);
+    transform: translateY(-2px);
+    box-shadow:
+      0 8px 20px -5px rgba(14, 13, 12, 0.08),
+      0 0 0 1px rgba(181, 144, 84, 0.25);
   }
   .swatch-btn[aria-selected="true"] {
-    @apply border-gold ring-1 ring-gold bg-stone-50 shadow-md;
+    border-color: #B59054;
+    background: linear-gradient(135deg, rgba(250, 248, 244, 0.95) 0%, #FFFFFF 100%);
+    box-shadow:
+      0 10px 24px -5px rgba(181, 144, 84, 0.22),
+      0 0 0 1.5px #B59054;
+  }
+  .swatch-btn[aria-selected="true"] .swatch-status {
+    color: #8E6B36 !important;
+    font-weight: 700 !important;
+  }
+  .swatch-btn[aria-selected="true"] strong {
+    color: #0E0D0C !important;
   }
   .swatch-dot {
-    @apply w-8 h-8 rounded-full border border-black/10 shrink-0 shadow-sm;
+    @apply w-7 h-7 sm:w-8 sm:h-8 rounded-full shrink-0 transition-transform duration-300 relative;
+    box-shadow:
+      inset 0 2px 4px rgba(255, 255, 255, 0.7),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.35),
+      0 3px 8px rgba(14, 13, 12, 0.15);
+  }
+  .swatch-btn:hover .swatch-dot,
+  .swatch-btn[aria-selected="true"] .swatch-dot {
+    transform: scale(1.12);
   }
 
   /* The Anti-AI Human Artisan Pledge */
@@ -1321,10 +1532,27 @@
     @apply grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mt-12 sm:mt-16;
   }
   .pricing-card {
-    @apply relative p-8 sm:p-10 rounded-2xl bg-white border border-stone-200 shadow-sm flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:border-gold hover:shadow-glass;
+    @apply relative p-7 sm:p-9 lg:p-10 rounded-2xl bg-white border border-stone-200/90 flex flex-col justify-between transition-all duration-300;
+    box-shadow: 0 4px 20px rgba(14, 13, 12, 0.03);
+  }
+  .pricing-card:hover {
+    @apply -translate-y-1.5;
+    border-color: rgba(181, 144, 84, 0.45);
+    box-shadow: 0 20px 45px -10px rgba(14, 13, 12, 0.08);
   }
   .pricing-card--featured {
-    @apply border-gold ring-2 ring-gold/40 shadow-glass-gold bg-gradient-to-b from-white via-white to-stone-50;
+    border-color: #B08D57 !important;
+    background: linear-gradient(180deg, #181614 0%, #0E0D0C 100%) !important;
+    color: #FAF7F2 !important;
+    box-shadow:
+      0 24px 60px -12px rgba(181, 144, 84, 0.35),
+      0 0 0 1px rgba(181, 144, 84, 0.45) !important;
+  }
+  .pricing-card--featured:hover {
+    transform: translateY(-8px);
+    box-shadow:
+      0 32px 75px -10px rgba(181, 144, 84, 0.45),
+      0 0 0 1.5px #B59054 !important;
   }
   .pricing-tier-tag {
     @apply inline-block text-[11px] font-semibold uppercase tracking-[0.16em] text-gold-deep mb-2;
@@ -1336,18 +1564,43 @@
     @apply text-xs text-ink-muted uppercase tracking-wider block mb-6;
   }
   .pricing-features {
-    @apply grid gap-3 my-6 pt-6 border-t border-stone-200 text-sm text-ink-secondary list-none;
+    @apply grid gap-3 my-6 pt-6 border-t border-stone-200/80 text-sm text-ink-secondary list-none;
   }
   .pricing-features li {
     @apply flex items-start gap-2.5 before:content-['✓'] before:text-gold before:font-bold before:text-sm;
   }
+  .pricing-card--featured .pricing-features {
+    border-color: rgba(255, 255, 255, 0.12);
+    color: #D9BA82;
+  }
 
   /* VIP Fast-Track Free Trial (Streamlined) */
   .fast-track-card {
-    @apply max-w-4xl mx-auto p-8 sm:p-12 lg:p-14 rounded-3xl bg-gradient-to-br from-white to-stone-50 border border-gold/40 shadow-glass-gold relative overflow-hidden text-center;
+    @apply max-w-4xl mx-auto p-8 sm:p-12 lg:p-14 rounded-3xl bg-gradient-to-br from-white via-white to-stone-50/80 border border-gold/40 relative overflow-hidden text-center;
+    box-shadow:
+      0 24px 65px -15px rgba(14, 13, 12, 0.08),
+      0 0 30px -10px rgba(181, 144, 84, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 1);
+  }
+  .fast-track-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #B59054, transparent);
   }
   .fast-track-form {
     @apply grid grid-cols-1 sm:grid-cols-[1fr_1fr_auto] gap-3 sm:gap-4 mt-8 items-center;
+  }
+  .fast-track-form .form-control {
+    @apply w-full h-[52px] px-4 rounded-xl border border-stone-300 bg-white text-ink-primary text-sm transition-all duration-200 outline-none;
+  }
+  .fast-track-form .form-control:focus {
+    border-color: #B59054;
+    box-shadow: 0 0 0 3px rgba(181, 144, 84, 0.2);
   }
 }
 
@@ -1628,6 +1881,132 @@
   to {
     transform: translateX(-50%);
   }
+}
+
+/* ==========================================================================
+   Luxury Atelier Jewelry SVG Preloader
+   ========================================================================== */
+.bjr-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0E0D0C;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bjr-preloader.is-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 46%,
+    rgba(181, 144, 84, 0.16) 0%,
+    rgba(22, 20, 18, 0.88) 46%,
+    #0E0D0C 76%
+  );
+  pointer-events: none;
+}
+
+.preloader-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+  max-width: 90vw;
+}
+
+.preloader-gem-wrap {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .preloader-gem-wrap {
+    width: 170px;
+    height: 170px;
+  }
+}
+
+.preloader-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 20px rgba(181, 144, 84, 0.38));
+}
+
+.preloader-meta {
+  margin-bottom: 1.5rem;
+}
+
+.preloader-title {
+  font-family: "Marcellus", Georgia, serif;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  color: #FAF8F4;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.preloader-tagline {
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #C5A46D;
+}
+
+.preloader-progress-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 170px;
+}
+
+.preloader-track {
+  width: 100%;
+  height: 1.5px;
+  background-color: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.preloader-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #8E6B36, #D9BA82, #FAF8F4);
+  box-shadow: 0 0 10px rgba(217, 186, 130, 0.8);
+  border-radius: 999px;
+}
+
+.preloader-count {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: #B59054;
+  font-weight: 600;
 }
 
 

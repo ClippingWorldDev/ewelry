@@ -83,6 +83,83 @@
   <body
     class="bg-ivory text-ink-primary font-sans antialiased selection:bg-gold/20 selection:text-ink-primary"
   >
+    <!-- Luxury Atelier Jewelry SVG Preloader -->
+    <div id="bjrPreloader" class="bjr-preloader" aria-hidden="false" role="status" aria-label="Loading BJR Atelier">
+      <div class="preloader-bg"></div>
+      <div class="preloader-content">
+        <div class="preloader-gem-wrap">
+          <svg class="preloader-svg" viewBox="0 0 160 160" width="160" height="160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="preloaderGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FAF8F4" />
+                <stop offset="30%" stop-color="#D9BA82" />
+                <stop offset="70%" stop-color="#B59054" />
+                <stop offset="100%" stop-color="#8E6B36" />
+              </linearGradient>
+              <radialGradient id="preloaderAura" cx="50%" cy="40%" r="50%">
+                <stop offset="0%" stop-color="rgba(217, 186, 130, 0.45)" />
+                <stop offset="60%" stop-color="rgba(181, 144, 84, 0.12)" />
+                <stop offset="100%" stop-color="transparent" />
+              </radialGradient>
+            </defs>
+
+            <!-- Ambient Optical Aura -->
+            <circle cx="80" cy="50" r="48" fill="url(#preloaderAura)" class="preloader-aura" />
+
+            <!-- 1. Ring Band (Articulated Gold Precious Metal Shank) -->
+            <path d="M 40 92 C 40 142, 120 142, 120 92" class="preloader-path preloader-band-outer" stroke="url(#preloaderGoldGrad)" stroke-width="2.2" stroke-linecap="round" />
+            <path d="M 50 94 C 50 134, 110 134, 110 94" class="preloader-path preloader-band-inner" stroke="url(#preloaderGoldGrad)" stroke-width="1.2" stroke-linecap="round" opacity="0.65" />
+
+            <!-- 2. Cathedral Shoulders / Setting Basket -->
+            <path d="M 40 92 C 40 70, 52 56, 56 46" class="preloader-path preloader-prong" stroke="url(#preloaderGoldGrad)" stroke-width="1.8" stroke-linecap="round" />
+            <path d="M 120 92 C 120 70, 108 56, 104 46" class="preloader-path preloader-prong" stroke="url(#preloaderGoldGrad)" stroke-width="1.8" stroke-linecap="round" />
+            <path d="M 52 74 C 64 80, 96 80, 108 74" class="preloader-path preloader-bridge" stroke="url(#preloaderGoldGrad)" stroke-width="1" stroke-linecap="round" opacity="0.5" />
+
+            <!-- 3. Solitaire Diamond Pavilion & Facet Geometry -->
+            <polygon points="48,46 80,76 112,46" class="preloader-gem-fill" fill="rgba(217,186,130,0.08)" />
+            <path d="M 48 46 L 80 76 L 112 46" class="preloader-path preloader-facet" stroke="url(#preloaderGoldGrad)" stroke-width="1.6" stroke-linejoin="round" />
+            <line x1="80" y1="46" x2="80" y2="76" class="preloader-path preloader-facet" stroke="url(#preloaderGoldGrad)" stroke-width="1" />
+            <line x1="64" y1="46" x2="80" y2="76" class="preloader-path preloader-facet" stroke="url(#preloaderGoldGrad)" stroke-width="0.8" opacity="0.75" />
+            <line x1="96" y1="46" x2="80" y2="76" class="preloader-path preloader-facet" stroke="url(#preloaderGoldGrad)" stroke-width="0.8" opacity="0.75" />
+
+            <!-- Girdle Line -->
+            <line x1="44" y1="46" x2="116" y2="46" class="preloader-path preloader-girdle" stroke="url(#preloaderGoldGrad)" stroke-width="1.8" stroke-linecap="round" />
+
+            <!-- Crown & Table Facets -->
+            <polygon points="64,30 96,30 112,46 48,46" class="preloader-gem-fill" fill="rgba(250,248,244,0.12)" />
+            <path d="M 64 30 L 96 30 L 112 46 L 48 46 Z" class="preloader-path preloader-crown" stroke="url(#preloaderGoldGrad)" stroke-width="1.6" stroke-linejoin="round" />
+            <line x1="64" y1="30" x2="80" y2="46" class="preloader-path preloader-facet" stroke="url(#preloaderGoldGrad)" stroke-width="0.9" />
+            <line x1="96" y1="30" x2="80" y2="46" class="preloader-path preloader-facet" stroke="url(#preloaderGoldGrad)" stroke-width="0.9" />
+
+            <!-- 4. Prongs Holding Crown -->
+            <line x1="48" y1="47" x2="48" y2="43" class="preloader-path preloader-prong" stroke="url(#preloaderGoldGrad)" stroke-width="2.4" stroke-linecap="round" />
+            <line x1="112" y1="47" x2="112" y2="43" class="preloader-path preloader-prong" stroke="url(#preloaderGoldGrad)" stroke-width="2.4" stroke-linecap="round" />
+            <line x1="68" y1="47" x2="68" y2="44" class="preloader-path preloader-prong" stroke="url(#preloaderGoldGrad)" stroke-width="2.2" stroke-linecap="round" />
+            <line x1="92" y1="47" x2="92" y2="44" class="preloader-path preloader-prong" stroke="url(#preloaderGoldGrad)" stroke-width="2.2" stroke-linecap="round" />
+
+            <!-- 5. Optical Brilliance Sparkle Stars -->
+            <path d="M 80 18 Q 80 26 88 26 Q 80 26 80 34 Q 80 26 72 26 Q 80 26 80 18 Z" class="preloader-sparkle" fill="#FAF8F4" />
+            <path d="M 112 36 Q 112 41 117 41 Q 112 41 112 46 Q 112 41 107 41 Q 112 41 112 36 Z" class="preloader-sparkle preloader-sparkle--sub" fill="#D9BA82" />
+            <circle cx="80" cy="26" r="1.5" fill="#FFFFFF" class="preloader-sparkle" />
+          </svg>
+        </div>
+
+        <!-- Atelier Brand Reveal -->
+        <div class="preloader-meta">
+          <div class="preloader-title">BJR ATELIER</div>
+          <div class="preloader-tagline">Fine Jewelry Retouching Protocol</div>
+        </div>
+
+        <!-- Progress Track & Counter -->
+        <div class="preloader-progress-wrap">
+          <div class="preloader-track">
+            <div class="preloader-bar" id="preloaderBar"></div>
+          </div>
+          <span class="preloader-count" id="preloaderCount">0%</span>
+        </div>
+      </div>
+    </div>
+
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Architectural Studio Announcement Plaque -->
@@ -387,13 +464,13 @@
                         Explore
                         <i class="fa-solid fa-arrow-right-long text-xs ml-2" aria-hidden="true"></i>
                       </a>
-                      <a href="#macro-loupe" class="hero-video-pulse group" aria-label="Watch craftsmanship video" title="Watch Craftsmanship Video">
+                      <button type="button" class="hero-video-pulse group js-hero-video-trigger" aria-label="Watch atelier craftsmanship video" title="Watch Atelier Craftsmanship Reel">
                         <span class="hero-video-ripple" aria-hidden="true"></span>
                         <span class="hero-video-ripple hero-video-ripple--2" aria-hidden="true"></span>
                         <span class="hero-video-circle" aria-hidden="true">
                           <i class="fa-solid fa-play text-xs sm:text-sm text-[#C5A46D] group-hover:text-white transition-colors duration-300 ml-0.5"></i>
                         </span>
-                      </a>
+                      </button>
                     </div>
                     <div class="hero-assurance js-hero-metric">
                       <svg class="w-9 h-9 sm:w-10 sm:h-10 text-ink-primary shrink-0" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -422,13 +499,13 @@
                         Explore
                         <i class="fa-solid fa-arrow-right-long text-xs ml-2" aria-hidden="true"></i>
                       </a>
-                      <a href="#macro-loupe" class="hero-video-pulse group" aria-label="Watch craftsmanship video" title="Watch Craftsmanship Video">
+                      <button type="button" class="hero-video-pulse group js-hero-video-trigger" aria-label="Watch atelier craftsmanship video" title="Watch Atelier Craftsmanship Reel">
                         <span class="hero-video-ripple" aria-hidden="true"></span>
                         <span class="hero-video-ripple hero-video-ripple--2" aria-hidden="true"></span>
                         <span class="hero-video-circle" aria-hidden="true">
                           <i class="fa-solid fa-play text-xs sm:text-sm text-[#C5A46D] group-hover:text-white transition-colors duration-300 ml-0.5"></i>
                         </span>
-                      </a>
+                      </button>
                     </div>
                     <div class="hero-assurance js-hero-metric">
                       <svg class="w-9 h-9 sm:w-10 sm:h-10 text-ink-primary shrink-0" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -459,13 +536,13 @@
                         Explore
                         <i class="fa-solid fa-arrow-right-long text-xs ml-2" aria-hidden="true"></i>
                       </a>
-                      <a href="#macro-loupe" class="hero-video-pulse group" aria-label="Watch craftsmanship video" title="Watch Craftsmanship Video">
+                      <button type="button" class="hero-video-pulse group js-hero-video-trigger" aria-label="Watch atelier craftsmanship video" title="Watch Atelier Craftsmanship Reel">
                         <span class="hero-video-ripple" aria-hidden="true"></span>
                         <span class="hero-video-ripple hero-video-ripple--2" aria-hidden="true"></span>
                         <span class="hero-video-circle" aria-hidden="true">
                           <i class="fa-solid fa-play text-xs sm:text-sm text-[#C5A46D] group-hover:text-white transition-colors duration-300 ml-0.5"></i>
                         </span>
-                      </a>
+                      </button>
                     </div>
                     <div class="hero-assurance js-hero-metric">
                       <svg class="w-9 h-9 sm:w-10 sm:h-10 text-ink-primary shrink-0" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -494,13 +571,13 @@
                         Explore
                         <i class="fa-solid fa-arrow-right-long text-xs ml-2" aria-hidden="true"></i>
                       </a>
-                      <a href="#macro-loupe" class="hero-video-pulse group" aria-label="Watch craftsmanship video" title="Watch Craftsmanship Video">
+                      <button type="button" class="hero-video-pulse group js-hero-video-trigger" aria-label="Watch atelier craftsmanship video" title="Watch Atelier Craftsmanship Reel">
                         <span class="hero-video-ripple" aria-hidden="true"></span>
                         <span class="hero-video-ripple hero-video-ripple--2" aria-hidden="true"></span>
                         <span class="hero-video-circle" aria-hidden="true">
                           <i class="fa-solid fa-play text-xs sm:text-sm text-[#C5A46D] group-hover:text-white transition-colors duration-300 ml-0.5"></i>
                         </span>
-                      </a>
+                      </button>
                     </div>
                     <div class="hero-assurance js-hero-metric">
                       <svg class="w-9 h-9 sm:w-10 sm:h-10 text-ink-primary shrink-0" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -611,8 +688,8 @@
         <section id="services" class="section services-section">
           <div class="container">
             <div class="section-header centered js-reveal">
-              <span class="eyebrow">Specialized Craftsmanship</span>
-              <h2>Four Pillars of <em>Jewelry</em> Retouching</h2>
+              <span class="eyebrow">The Atelier Specializations</span>
+              <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-ink-primary">Four Pillars of <em>Jewelry</em> Retouching</h2>
               <p>
                 Every gemstone facet, prong, and precious metal reflection is
                 meticulously refined by senior jewelry retouchers—never
@@ -691,10 +768,12 @@
                 </div>
 
                 <div class="service-body">
-                  <span class="service-index"
-                    >01 / Editorial &amp; Campaign</span
-                  >
-                  <h3>Next-Gen High-End Jewelry Retouching</h3>
+                  <div class="service-meta inline-flex items-center gap-3 mb-2.5">
+                    <span class="service-num font-serif text-2xl sm:text-3xl text-gold-deep font-normal">01</span>
+                    <i class="w-8 h-px bg-gold/50" aria-hidden="true"></i>
+                    <span class="text-xs uppercase tracking-[0.2em] font-semibold text-stone-500">Editorial &amp; Campaign</span>
+                  </div>
+                  <h3 class="font-serif text-2xl sm:text-3xl lg:text-4xl text-ink-primary font-normal mb-3">Next-Gen High-End Jewelry Retouching</h3>
                   <p>
                     Designed for luxury print campaigns, lookbooks, and flagship
                     billboards where extreme macro scrutiny demands perfection.
@@ -713,11 +792,25 @@
                       creation
                     </li>
                   </ul>
+                  <div class="service-meta-strip grid grid-cols-3 gap-3 pt-4 pb-5 my-4 border-y border-stone-200/80">
+                    <div class="service-stat">
+                      <span class="font-serif text-sm sm:text-base font-normal text-gold-deep">400% Zoom</span>
+                      <span class="text-[10px] sm:text-[11px] uppercase tracking-wider text-stone-500 font-medium mt-0.5">Hand Checked</span>
+                    </div>
+                    <div class="service-stat">
+                      <span class="font-serif text-sm sm:text-base font-normal text-gold-deep">300 DPI</span>
+                      <span class="text-[10px] sm:text-[11px] uppercase tracking-wider text-stone-500 font-medium mt-0.5">CMYK Master</span>
+                    </div>
+                    <div class="service-stat">
+                      <span class="font-serif text-sm sm:text-base font-normal text-gold-deep">16-Bit PSD</span>
+                      <span class="text-[10px] sm:text-[11px] uppercase tracking-wider text-stone-500 font-medium mt-0.5">Full Layers</span>
+                    </div>
+                  </div>
                   <a
                     href="#pricing"
-                    class="btn btn-obsidian"
-                    data-preselect-quote="All-In-One"
-                    >Order High-End Retouching</a
+                    class="btn btn-obsidian inline-flex items-center justify-center gap-2"
+                    data-preselect-quote="Editorial"
+                    ><span>Order Editorial Retouching</span><i class="fa-solid fa-arrow-right text-xs opacity-80" aria-hidden="true"></i></a
                   >
                 </div>
               </article>
@@ -795,8 +888,12 @@
                 </div>
 
                 <div class="service-body">
-                  <span class="service-index">02 / High-Volume Catalog</span>
-                  <h3>Hybrid E-Commerce Jewelry Photo Editing</h3>
+                  <div class="service-meta inline-flex items-center gap-3 mb-2.5">
+                    <span class="service-num font-serif text-2xl sm:text-3xl text-gold-deep font-normal">02</span>
+                    <i class="w-8 h-px bg-gold/50" aria-hidden="true"></i>
+                    <span class="text-xs uppercase tracking-[0.2em] font-semibold text-stone-500">High-Volume Catalog</span>
+                  </div>
+                  <h3 class="font-serif text-2xl sm:text-3xl lg:text-4xl text-ink-primary font-normal mb-3">Hybrid E-Commerce Jewelry Photo Editing</h3>
                   <p>
                     Consistent, marketplace-ready product visuals engineered to
                     boost add-to-cart rates and reduce customer returns on
@@ -815,11 +912,25 @@
                       sharpness
                     </li>
                   </ul>
+                  <div class="service-meta-strip grid grid-cols-3 gap-3 pt-4 pb-5 my-4 border-y border-stone-200/80">
+                    <div class="service-stat">
+                      <span class="font-serif text-sm sm:text-base font-normal text-gold-deep">500+ SKUs</span>
+                      <span class="text-[10px] sm:text-[11px] uppercase tracking-wider text-stone-500 font-medium mt-0.5">Daily Capacity</span>
+                    </div>
+                    <div class="service-stat">
+                      <span class="font-serif text-sm sm:text-base font-normal text-gold-deep">RGB 255</span>
+                      <span class="text-[10px] sm:text-[11px] uppercase tracking-wider text-stone-500 font-medium mt-0.5">Pure Isolation</span>
+                    </div>
+                    <div class="service-stat">
+                      <span class="font-serif text-sm sm:text-base font-normal text-gold-deep">99.8%</span>
+                      <span class="text-[10px] sm:text-[11px] uppercase tracking-wider text-stone-500 font-medium mt-0.5">Color Fidelity</span>
+                    </div>
+                  </div>
                   <a
                     href="#pricing"
-                    class="btn btn-obsidian"
+                    class="btn btn-obsidian inline-flex items-center justify-center gap-2"
                     data-preselect-quote="Ecommerce"
-                    >Get E-Commerce Volume Pricing</a
+                    ><span>Get Volume Catalog SLA</span><i class="fa-solid fa-arrow-right text-xs opacity-80" aria-hidden="true"></i></a
                   >
                 </div>
               </article>
@@ -894,10 +1005,12 @@
                 </div>
 
                 <div class="service-body">
-                  <span class="service-index"
-                    >03 / Gemstone Optical Mastery</span
-                  >
-                  <h3>Advanced Diamond Fire Restoration</h3>
+                  <div class="service-meta inline-flex items-center gap-3 mb-2.5">
+                    <span class="service-num font-serif text-2xl sm:text-3xl text-gold-deep font-normal">03</span>
+                    <i class="w-8 h-px bg-gold/50" aria-hidden="true"></i>
+                    <span class="text-xs uppercase tracking-[0.2em] font-semibold text-stone-500">Gemstone Optical Mastery</span>
+                  </div>
+                  <h3 class="font-serif text-2xl sm:text-3xl lg:text-4xl text-ink-primary font-normal mb-3">Advanced Diamond Fire Restoration</h3>
                   <p>
                     Studio lighting often flattens diamond scintillation. We
                     manually rebuild internal facet contrast, dispersion, and
@@ -917,11 +1030,25 @@
                       marquise cuts
                     </li>
                   </ul>
+                  <div class="service-meta-strip grid grid-cols-3 gap-3 pt-4 pb-5 my-4 border-y border-stone-200/80">
+                    <div class="service-stat">
+                      <span class="font-serif text-sm sm:text-base font-normal text-gold-deep">10x Polish</span>
+                      <span class="text-[10px] sm:text-[11px] uppercase tracking-wider text-stone-500 font-medium mt-0.5">Facet Contrast</span>
+                    </div>
+                    <div class="service-stat">
+                      <span class="font-serif text-sm sm:text-base font-normal text-gold-deep">GIA Match</span>
+                      <span class="text-[10px] sm:text-[11px] uppercase tracking-wider text-stone-500 font-medium mt-0.5">D-Z Grade</span>
+                    </div>
+                    <div class="service-stat">
+                      <span class="font-serif text-sm sm:text-base font-normal text-gold-deep">Zero Blur</span>
+                      <span class="text-[10px] sm:text-[11px] uppercase tracking-wider text-stone-500 font-medium mt-0.5">Natural Fire</span>
+                    </div>
+                  </div>
                   <a
                     href="#free-trial-home"
-                    class="btn btn-obsidian"
+                    class="btn btn-obsidian inline-flex items-center justify-center gap-2"
                     data-preselect-trial="Diamond Fire Restoration"
-                    >Test Diamond Restoration Free</a
+                    ><span>Test Diamond Optics Free</span><i class="fa-solid fa-arrow-right text-xs opacity-80" aria-hidden="true"></i></a
                   >
                 </div>
               </article>
@@ -999,10 +1126,12 @@
                 </div>
 
                 <div class="service-body">
-                  <span class="service-index"
-                    >04 / CAD &amp; KeyShot Finishing</span
-                  >
-                  <h3>3D Render to Photorealistic Jewelry Enhancement</h3>
+                  <div class="service-meta inline-flex items-center gap-3 mb-2.5">
+                    <span class="service-num font-serif text-2xl sm:text-3xl text-gold-deep font-normal">04</span>
+                    <i class="w-8 h-px bg-gold/50" aria-hidden="true"></i>
+                    <span class="text-xs uppercase tracking-[0.2em] font-semibold text-stone-500">CAD &amp; KeyShot Finishing</span>
+                  </div>
+                  <h3 class="font-serif text-2xl sm:text-3xl lg:text-4xl text-ink-primary font-normal mb-3">3D Render to Photorealistic Jewelry Enhancement</h3>
                   <p>
                     Raw MatrixGold, Rhino, or KeyShot renders often look plastic
                     or overly sterile. We infuse organic studio lighting,
@@ -1022,11 +1151,25 @@
                       photography costs
                     </li>
                   </ul>
+                  <div class="service-meta-strip grid grid-cols-3 gap-3 pt-4 pb-5 my-4 border-y border-stone-200/80">
+                    <div class="service-stat">
+                      <span class="font-serif text-sm sm:text-base font-normal text-gold-deep">Rhino & CAD</span>
+                      <span class="text-[10px] sm:text-[11px] uppercase tracking-wider text-stone-500 font-medium mt-0.5">Native Files</span>
+                    </div>
+                    <div class="service-stat">
+                      <span class="font-serif text-sm sm:text-base font-normal text-gold-deep">Softbox Glow</span>
+                      <span class="text-[10px] sm:text-[11px] uppercase tracking-wider text-stone-500 font-medium mt-0.5">Organic Caustics</span>
+                    </div>
+                    <div class="service-stat">
+                      <span class="font-serif text-sm sm:text-base font-normal text-gold-deep">Zero Plastic</span>
+                      <span class="text-[10px] sm:text-[11px] uppercase tracking-wider text-stone-500 font-medium mt-0.5">Photorealistic</span>
+                    </div>
+                  </div>
                   <a
                     href="#pricing"
-                    class="btn btn-obsidian"
+                    class="btn btn-obsidian inline-flex items-center justify-center gap-2"
                     data-preselect-quote="3D"
-                    >Enhance Your 3D Renders</a
+                    ><span>Convert 3D CAD to Master</span><i class="fa-solid fa-arrow-right text-xs opacity-80" aria-hidden="true"></i></a
                   >
                 </div>
               </article>
@@ -1039,13 +1182,7 @@
           <div class="container macro-loupe-grid">
             <div class="js-reveal">
               <span class="eyebrow">400% Microscopic Scrutiny</span>
-              <h2
-                style="
-                  font-size: clamp(2.2rem, 3.8vw, 3.4rem);
-                  line-height: 1.15;
-                  margin-bottom: 1.25rem;
-                "
-              >
+              <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-ink-primary leading-tight mb-4">
                 The Jeweler&rsquo;s Loupe: <em>Microscopic</em> Hand-Crafted
                 Precision.
               </h2>
@@ -1082,7 +1219,12 @@
             </div>
 
             <div class="js-reveal">
-              <div class="macro-loupe-wrap js-macro-loupe">
+              <!-- Laboratory HUD Bar -->
+              <div class="flex items-center justify-between text-[10px] uppercase tracking-[0.2em] font-semibold text-stone-500 px-1 pb-2 border-b border-stone-200/80 mb-3">
+                <span class="flex items-center gap-1.5"><i class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse"></i> Optical Inspection: 4.0X</span>
+                <span>Zero AI Smear Guarantee</span>
+              </div>
+              <div class="macro-loupe-wrap js-macro-loupe border border-gold/40 rounded-2xl shadow-glass">
                 <img
                   src="assets/images/macro-loupe-base.jpg"
                   alt="Macro diamond ring under 10x inspection loupe"
@@ -1109,31 +1251,34 @@
               >
                 <span
                   class="text-[11px] font-semibold text-ink-muted uppercase tracking-wider mr-1"
-                  >Quick Inspect:</span
+                  >Quick Focus:</span
                 >
                 <button
                   type="button"
-                  class="loupe-preset-btn text-xs font-semibold px-3 py-1.5 rounded-full border border-stone-200 bg-white hover:border-gold hover:text-gold transition-colors shadow-xs"
+                  class="loupe-preset-btn text-xs font-medium px-3.5 py-1.5 rounded-full border border-stone-300 bg-white hover:border-gold hover:text-gold-deep transition-all duration-200 shadow-xs flex items-center gap-1.5"
                   data-loupe-x="50"
                   data-loupe-y="38"
                 >
-                  ✦ Solitaire Crown
+                  <span class="w-1.5 h-1.5 rounded-full bg-gold/70"></span>
+                  <span>Solitaire Crown</span>
                 </button>
                 <button
                   type="button"
-                  class="loupe-preset-btn text-xs font-semibold px-3 py-1.5 rounded-full border border-stone-200 bg-white hover:border-gold hover:text-gold transition-colors shadow-xs"
+                  class="loupe-preset-btn text-xs font-medium px-3.5 py-1.5 rounded-full border border-stone-300 bg-white hover:border-gold hover:text-gold-deep transition-all duration-200 shadow-xs flex items-center gap-1.5"
                   data-loupe-x="38"
                   data-loupe-y="52"
                 >
-                  ✦ Pavé Claws
+                  <span class="w-1.5 h-1.5 rounded-full bg-gold/70"></span>
+                  <span>Pavé Claws</span>
                 </button>
                 <button
                   type="button"
-                  class="loupe-preset-btn text-xs font-semibold px-3 py-1.5 rounded-full border border-stone-200 bg-white hover:border-gold hover:text-gold transition-colors shadow-xs"
+                  class="loupe-preset-btn text-xs font-medium px-3.5 py-1.5 rounded-full border border-stone-300 bg-white hover:border-gold hover:text-gold-deep transition-all duration-200 shadow-xs flex items-center gap-1.5"
                   data-loupe-x="62"
                   data-loupe-y="65"
                 >
-                  ✦ 18K Bezel Polish
+                  <span class="w-1.5 h-1.5 rounded-full bg-gold/70"></span>
+                  <span>18K Bezel Polish</span>
                 </button>
               </div>
             </div>
@@ -1144,6 +1289,10 @@
         <section id="colorways" class="colorway-section">
           <div class="container colorway-grid">
             <div class="colorway-display js-reveal">
+              <div class="absolute top-4 left-4 z-10 bg-obsidian/85 backdrop-blur-md text-white px-3.5 py-1.5 rounded-full text-[10px] font-semibold tracking-wider uppercase border border-gold/40 shadow-sm flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse"></span>
+                <span>Save $1,800+ Per SKU in Physical Casting</span>
+              </div>
               <img
                 src="assets/images/colorway-yellow-gold.jpg"
                 alt="18K Yellow Gold luxury ring alloy"
@@ -1195,13 +1344,9 @@
 
             <div class="js-reveal">
               <span class="eyebrow">Digital Alloy Recasting Atelier</span>
-              <h2
-                style="
-                  font-size: clamp(2.2rem, 3.8vw, 3.4rem);
-                  line-height: 1.15;
-                  margin-bottom: 1rem;
-                "
-              >
+              <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-ink-primary leading-tight mb-4">
+                One Master Capture. <em>Four</em> Signature Metal Alloys.
+              </h2>
                 One Master Capture. <em>Four</em> Signature Metal Alloys.
               </h2>
               <p
@@ -1374,39 +1519,7 @@
           </div>
         </section>
 
-        <!-- 4. FULL-BLEED ATMOSPHERIC CTA BANNER -->
-        <section
-          class="cta-banner dark-section"
-          aria-labelledby="cta-banner-title"
-        >
-          <div class="cta-banner-bg js-parallax-bg" aria-hidden="true">
-            <img
-              src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=1800&q=85"
-              width="1800"
-              height="1000"
-              loading="lazy"
-              decoding="async"
-              alt=""
-            />
-          </div>
-          <div class="cta-banner-overlay" aria-hidden="true"></div>
-
-          <div class="container">
-            <div class="cta-banner-content js-reveal">
-              <span class="eyebrow">Risk-Free Evaluation</span>
-              <h2 id="cta-banner-title">
-                See Your Jewelry Retouched Before You Order.
-              </h2>
-              <p>
-                Send 2 sample images and get them back retouched within 12–24
-                hours. No credit card required.
-              </p>
-              <a href="#free-trial-home" class="btn btn-gold">Get Free Trial</a>
-            </div>
-          </div>
-        </section>
-
-        <!-- 5. THE SIX STEPS OF JEWELRY RETOUCHING (WORDPRESS & ACF READY) -->
+        <!-- 4. THE SIX STEPS OF JEWELRY RETOUCHING (WORDPRESS & ACF READY) -->
         <!-- WP Note: Enqueue assets/css/jrw-workflow.css & assets/js/jrw-workflow.js via wp_enqueue_scripts -->
         <!-- Ensure parent containers have overflow: visible or overflow-x: clip (never overflow: hidden) -->
         <section id="jrw-workflow" class="jrw-section relative w-full bg-[#FAF7F2] overflow-x-clip">
@@ -1447,8 +1560,10 @@
                       <h3>Background Removal</h3>
                       <p>Every piece is traced at 400% magnification, preserving prongs, band openings and natural diamond edge detail.</p>
                       <ul>
-                        <li>Manual Bezier paths preserve every delicate contour</li>
-                        <li>Clean transparent or editorial ivory background</li>
+                        <li>Manual Bezier paths preserve delicate prongs and stone boundaries</li>
+                        <li>Internal negative space isolated for rings, chains and articulated links</li>
+                        <li>Natural contact shadow preserved to avoid artificial floating appearance</li>
+                        <li>Delivered on pure white (RGB 255) or transparent layered alpha channel</li>
                       </ul>
                       <div class="jrw-card-controls">
                         <span class="jrw-status"><i></i><b id="jrw-status-01">Vector Path Cutout</b></span>
@@ -1501,8 +1616,10 @@
                       <h3>Dust &amp; Surface Flaw Removal</h3>
                       <p>Fine dust, lint and micro-scratches are removed with controlled localized cleanup while retaining authentic metal grain.</p>
                       <ul>
-                        <li>Surface pores and handling marks removed</li>
-                        <li>Texture remains natural and dimensional</li>
+                        <li>Removal of airborne micro-dust, lint fibers and bench handling oils</li>
+                        <li>Authentic metal grain retained without synthetic plastic smearing</li>
+                        <li>Facet grease and surface scratches cleared to restore natural brilliance</li>
+                        <li>Selective frequency separation isolating fine texture from underlying tone</li>
                       </ul>
                       <div class="jrw-card-controls">
                         <span class="jrw-status"><i></i><b id="jrw-status-02">Healing Surface Flaws</b></span>
@@ -1523,8 +1640,10 @@
                       <h3>Sculpting 3D Luster</h3>
                       <p>Manual dodge-and-burn reveals satin highlights, pavilion depth and natural specular light across metal and gemstones.</p>
                       <ul>
-                        <li>Hand-painted highlights and shadow contours</li>
-                        <li>Preserved facet structure and stone fire</li>
+                        <li>Hand-painted specular highlights along bezels, shanks and claws</li>
+                        <li>Volumetric dodge-and-burn sculpting authentic 3D optical curvature</li>
+                        <li>Calibrated facet scintillation boost restoring GIA-certified diamond fire</li>
+                        <li>Balanced studio reflection gradients mirroring softbox light transitions</li>
                       </ul>
                       <div class="jrw-card-controls">
                         <span class="jrw-status"><i></i><b id="jrw-status-03">Sculpting 3D Luster</b></span>
@@ -1576,8 +1695,10 @@
                       <h3>Geometric Symmetry</h3>
                       <p>Perspective, axis and center mass are audited before catalog use so every image aligns consistently across the collection.</p>
                       <ul>
-                        <li>Horizontal and vertical symmetry locked</li>
-                        <li>Batch framing standardized for e-commerce</li>
+                        <li>Sub-millimeter horizontal and vertical axis alignment locking</li>
+                        <li>Center of mass balanced for upright, stable catalog presentation</li>
+                        <li>Prong and stone symmetry corrected from physical bench casting offsets</li>
+                        <li>Standardized scale and margin proportions across all collection SKUs</li>
                       </ul>
                       <div class="jrw-card-controls">
                         <span class="jrw-status"><i></i><b id="jrw-status-04">Drawing Symmetry Grid</b></span>
@@ -1598,8 +1719,10 @@
                       <h3>Digital Gilding &amp; Tone</h3>
                       <p>Accurate yellow gold, rose gold and platinum finishes are matched to the original casting and product specification.</p>
                       <ul>
-                        <li>Consistent karat warmth across every SKU</li>
-                        <li>Non-destructive finish variants for collection scale</li>
+                        <li>Calibrated alloy warmth matching 18K Yellow, Rose Gold and Platinum</li>
+                        <li>Pure metallic luminosity and gemstone pavilion contrast preserved</li>
+                        <li>Non-destructive adjustment layer stacks ready for multi-colorway exports</li>
+                        <li>Eliminates physical prototyping costs for unreleased metal variants</li>
                       </ul>
                       <div class="jrw-card-controls">
                         <span class="jrw-status"><i></i><b id="jrw-status-05">18K Yellow Gold</b></span>
@@ -1657,8 +1780,10 @@
                       <h3>Raw to Museum-Grade</h3>
                       <p>The completed work is inspected, calibrated and exported for consistent commercial presentation across print and digital channels.</p>
                       <ul>
-                        <li>Final color and contrast quality checked</li>
-                        <li>16-bit master and e-commerce exports prepared</li>
+                        <li>Multi-monitor color inspection calibrated to sRGB, Adobe RGB and DCI-P3</li>
+                        <li>Layered 16-bit master PSD archives with organized, non-destructive groups</li>
+                        <li>High-resolution 300 DPI CMYK ready for luxury lookbooks and billboards</li>
+                        <li>Web-optimized progressive JPG &amp; WebP exports tailored for e-commerce</li>
                       </ul>
                       <div class="jrw-card-controls">
                         <span class="jrw-status"><i></i><b id="jrw-status-06">Auto-Compare Active</b></span>
@@ -1676,11 +1801,10 @@
           <div class="container">
             <div class="portfolio-head js-reveal">
               <div class="portfolio-head-copy">
-                <span class="eyebrow">Jewelry Retouching Portfolio</span>
-                <h2>From raw capture to retouched master.</h2>
+                <span class="eyebrow">Curated Retouching Gallery</span>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-ink-primary">From Studio Raw Capture to Retouched Master.</h2>
                 <p>
-                  Drag the handle on any piece to compare the original studio
-                  shot with our finished result.
+                  Drag the handle on any piece to inspect our handcrafted precision across diamonds, gemstones, and fine alloys.
                 </p>
               </div>
               <div
@@ -1694,7 +1818,7 @@
                   data-filter="all"
                   aria-pressed="true"
                 >
-                  All
+                  All (6)
                 </button>
                 <button
                   type="button"
@@ -1702,7 +1826,7 @@
                   data-filter="rings"
                   aria-pressed="false"
                 >
-                  Rings
+                  Rings (3)
                 </button>
                 <button
                   type="button"
@@ -1710,7 +1834,7 @@
                   data-filter="gemstones"
                   aria-pressed="false"
                 >
-                  Gemstones
+                  Gemstones (2)
                 </button>
                 <button
                   type="button"
@@ -1718,7 +1842,7 @@
                   data-filter="catalog"
                   aria-pressed="false"
                 >
-                  Catalog
+                  Catalog (1)
                 </button>
               </div>
             </div>
@@ -1791,12 +1915,15 @@
                   </button>
                 </div>
                 <div class="pf-body">
-                  <span class="pf-tag">High-End Retouching</span>
-                  <h3>Silver Ring</h3>
-                  <ul class="pf-edits">
-                    <li>Dust removal</li>
-                    <li>Reflection cleanup</li>
-                    <li>Pure-white base</li>
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="pf-tag">High-End Editorial</span>
+                    <span class="text-[10px] uppercase tracking-wider text-stone-400 font-medium">950 Platinum</span>
+                  </div>
+                  <h3 class="font-serif text-lg font-normal text-ink-primary mb-1.5">Solitaire Diamond Pavilion</h3>
+                  <ul class="pf-edits text-xs text-stone-500">
+                    <li>400% Vector Cutout</li>
+                    <li>Facet Fire Boost</li>
+                    <li>Pure Contact Shadow</li>
                   </ul>
                 </div>
               </article>
@@ -1868,12 +1995,15 @@
                   </button>
                 </div>
                 <div class="pf-body">
-                  <span class="pf-tag">Metal Tone Matching</span>
-                  <h3>Golden Ring</h3>
-                  <ul class="pf-edits">
-                    <li>Gold tone correction</li>
-                    <li>Scratch removal</li>
-                    <li>Soft shadow</li>
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="pf-tag">Macro Lookbook</span>
+                    <span class="text-[10px] uppercase tracking-wider text-stone-400 font-medium">18K Yellow Gold</span>
+                  </div>
+                  <h3 class="font-serif text-lg font-normal text-ink-primary mb-1.5">18K Gold Cathedral Band</h3>
+                  <ul class="pf-edits text-xs text-stone-500">
+                    <li>Blemish Elimination</li>
+                    <li>Metallic Gradient Polish</li>
+                    <li>Edge Sharpness</li>
                   </ul>
                 </div>
               </article>
@@ -1949,12 +2079,15 @@
                   </button>
                 </div>
                 <div class="pf-body">
-                  <span class="pf-tag">Diamond Fire Restoration</span>
-                  <h3>Diamond Ring</h3>
-                  <ul class="pf-edits">
-                    <li>Facet clarity</li>
-                    <li>Stone colour</li>
-                    <li>Prong cleanup</li>
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="pf-tag">Gemstone Optics</span>
+                    <span class="text-[10px] uppercase tracking-wider text-stone-400 font-medium">GIA D-Flawless</span>
+                  </div>
+                  <h3 class="font-serif text-lg font-normal text-ink-primary mb-1.5">Brilliant Solitaire Crown</h3>
+                  <ul class="pf-edits text-xs text-stone-500">
+                    <li>Internal Facet Contrast</li>
+                    <li>Dispersion Calibration</li>
+                    <li>Prong Mirror Polish</li>
                   </ul>
                 </div>
               </article>
@@ -2030,12 +2163,15 @@
                   </button>
                 </div>
                 <div class="pf-body">
-                  <span class="pf-tag">Hybrid E-Commerce Editing</span>
-                  <h3>Pearl Ring</h3>
-                  <ul class="pf-edits">
-                    <li>Pearl lustre</li>
-                    <li>Background removal</li>
-                    <li>Symmetry fix</li>
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="pf-tag">Fine Jewelry</span>
+                    <span class="text-[10px] uppercase tracking-wider text-stone-400 font-medium">South Sea Pearl</span>
+                  </div>
+                  <h3 class="font-serif text-lg font-normal text-ink-primary mb-1.5">South Sea Pearl Pendant</h3>
+                  <ul class="pf-edits text-xs text-stone-500">
+                    <li>Organic Pearl Lustre</li>
+                    <li>Symmetry Correction</li>
+                    <li>Articulated Chain Polish</li>
                   </ul>
                 </div>
               </article>
@@ -2107,12 +2243,15 @@
                   </button>
                 </div>
                 <div class="pf-body">
-                  <span class="pf-tag">High-End Retouching</span>
-                  <h3>Cluster Ring</h3>
-                  <ul class="pf-edits">
-                    <li>Multi-stone cleanup</li>
-                    <li>Shape correction</li>
-                    <li>Clean edges</li>
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="pf-tag">High Jewelry</span>
+                    <span class="text-[10px] uppercase tracking-wider text-stone-400 font-medium">18K White Gold</span>
+                  </div>
+                  <h3 class="font-serif text-lg font-normal text-ink-primary mb-1.5">Multi-Stone Pavé Cluster Ring</h3>
+                  <ul class="pf-edits text-xs text-stone-500">
+                    <li>Multi-Stone Definition</li>
+                    <li>Prong Alignment</li>
+                    <li>Specular Fire Boost</li>
                   </ul>
                 </div>
               </article>
@@ -2184,12 +2323,15 @@
                   </button>
                 </div>
                 <div class="pf-body">
-                  <span class="pf-tag">Catalog Consistency</span>
-                  <h3>Jewel Product</h3>
-                  <ul class="pf-edits">
-                    <li>Marketplace sizing</li>
-                    <li>Colour consistency</li>
-                    <li>Clean edges</li>
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="pf-tag">Catalog Volume</span>
+                    <span class="text-[10px] uppercase tracking-wider text-stone-400 font-medium">18K Rose Gold</span>
+                  </div>
+                  <h3 class="font-serif text-lg font-normal text-ink-primary mb-1.5">Articulated Link Bracelet</h3>
+                  <ul class="pf-edits text-xs text-stone-500">
+                    <li>Pure RGB 255 Isolation</li>
+                    <li>Consistent Metal Tone</li>
+                    <li>Natural Shadow Creation</li>
                   </ul>
                 </div>
               </article>
@@ -2209,56 +2351,7 @@
           </div>
         </section>
 
-        <!-- 7. SEAMLESS STUDIO PIPELINE -->
-        <section id="workflow" class="section workflow-section">
-          <div class="container">
-            <div class="section-header centered js-reveal">
-              <span class="eyebrow">Seamless Studio Pipeline</span>
-              <h2>Built for USA &amp; European Time Zones</h2>
-              <p>
-                Upload your RAW, TIFF, PSD, or PNG files before you close your
-                studio, and wake up to press-ready master assets.
-              </p>
-            </div>
-
-            <div class="workflow-grid">
-              <article class="step-card js-step-card">
-                <span class="step-num">01</span>
-                <h3>Upload Raw Assets</h3>
-                <p>
-                  Send your files via our secure portal, Dropbox, or WeTransfer
-                  with your brand style guide.
-                </p>
-              </article>
-              <article class="step-card js-step-card">
-                <span class="step-num">02</span>
-                <h3>Artisan Retouching</h3>
-                <p>
-                  Dedicated senior jewelry retouchers refine every metal surface
-                  and stone facet by hand.
-                </p>
-              </article>
-              <article class="step-card js-step-card">
-                <span class="step-num">03</span>
-                <h3>3-Tier Quality Audit</h3>
-                <p>
-                  Every image passes color-calibrated inspection at 300% zoom
-                  before delivery.
-                </p>
-              </article>
-              <article class="step-card js-step-card">
-                <span class="step-num">04</span>
-                <h3>Overnight Delivery</h3>
-                <p>
-                  Download layered PSDs and web-ready files within 12–24 hours
-                  with unlimited revisions.
-                </p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <!-- 8. THE ANTI-AI HUMAN ARTISAN PLEDGE -->
+        <!-- 6. THE ANTI-AI HUMAN ARTISAN PLEDGE -->
         <section id="authenticity" class="artisan-pledge-section">
           <div class="container">
             <div class="artisan-pledge-card js-reveal">
@@ -2423,7 +2516,7 @@
           <div class="container">
             <div class="section-header centered js-reveal">
               <span class="eyebrow">Studio Investment &amp; Turnaround</span>
-              <h2>Predictable Pricing. <em>Zero</em> Hidden Fees.</h2>
+              <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-ink-primary">Predictable Pricing. <em>Zero</em> Hidden Fees.</h2>
               <p>
                 Whether launching 200 catalog SKUs or mastering a 5th Avenue
                 flagship billboard, choose the exact craftsmanship tier tailored
@@ -2468,41 +2561,41 @@
               </article>
 
               <!-- Tier 2 (Featured) -->
-              <article class="pricing-card pricing-card--featured js-reveal">
+              <article class="pricing-card pricing-card--featured js-reveal bg-[#161513] text-[#FAF7F2] border-[#B08D57] shadow-[0_24px_60px_-15px_rgba(176,141,87,0.35)] ring-1 ring-[#B08D57]">
                 <div
-                  class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gold text-obsidian px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-sm"
+                  class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#B08D57] text-[#161513] px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-md"
                 >
                   Most Commissioned
                 </div>
                 <div>
-                  <span class="pricing-tier-tag">Campaign &amp; Lookbook</span>
-                  <h3 class="text-2xl font-serif text-ink-primary mb-2">
+                  <span class="pricing-tier-tag text-[#C5A46D]">Campaign &amp; Lookbook</span>
+                  <h3 class="text-2xl font-serif text-[#FAF7F2] mb-2">
                     Editorial &amp; Macro
                   </h3>
-                  <div class="pricing-price">
+                  <div class="pricing-price text-[#FAF7F2]">
                     $28.00<span
-                      class="text-lg font-sans font-normal text-ink-muted"
+                      class="text-lg font-sans font-normal text-stone-400"
                     >
                       / image</span
                     >
                   </div>
-                  <span class="pricing-unit"
-                    >No Minimum &bull; 12–24h Delivery</span
+                  <span class="pricing-unit text-[#C5A46D]"
+                    >No Minimum &bull; 12–24h Turnaround</span
                   >
-                  <ul class="pricing-features">
-                    <li>Extreme 400% Macro Precision Scrutiny</li>
-                    <li>Seamless Metallic Gradient Polish (18K/Plat)</li>
-                    <li>Diamond &amp; Gemstone Fire Scintillation Boost</li>
-                    <li>Prong Symmetry &amp; Hallmark Preservation</li>
-                    <li>300 DPI CMYK Print + sRGB Web Ready</li>
-                    <li>Dedicated Senior Lead Retoucher</li>
+                  <ul class="pricing-features text-stone-300">
+                    <li class="flex items-center gap-2.5"><span class="text-[#B08D57]">✦</span> Extreme 400% Macro Precision Scrutiny</li>
+                    <li class="flex items-center gap-2.5"><span class="text-[#B08D57]">✦</span> Seamless Metallic Gradient Polish (18K/Plat)</li>
+                    <li class="flex items-center gap-2.5"><span class="text-[#B08D57]">✦</span> Diamond &amp; Gemstone Fire Scintillation Boost</li>
+                    <li class="flex items-center gap-2.5"><span class="text-[#B08D57]">✦</span> Prong Symmetry &amp; Hallmark Preservation</li>
+                    <li class="flex items-center gap-2.5"><span class="text-[#B08D57]">✦</span> 300 DPI CMYK Print + sRGB Web Ready</li>
+                    <li class="flex items-center gap-2.5"><span class="text-[#B08D57]">✦</span> Dedicated Senior Lead Retoucher</li>
                   </ul>
                 </div>
                 <a
                   href="#free-trial-home"
-                  class="btn btn-obsidian w-full text-center justify-center mt-6"
+                  class="btn btn-gold w-full text-center justify-center mt-6 shadow-md"
                   data-preselect-trial="Editorial & Campaign"
-                  >Order Editorial Trial</a
+                  ><span>Order Editorial Trial</span><i class="fa-solid fa-arrow-right text-xs ml-2" aria-hidden="true"></i></a
                 >
               </article>
 
@@ -2541,6 +2634,15 @@
                   >Request Custom Brief</a
                 >
               </article>
+            </div>
+
+            <!-- Guarantee Trust Bar -->
+            <div class="mt-12 text-center text-xs text-stone-500 flex flex-wrap items-center justify-center gap-6 pt-8 border-t border-stone-200">
+              <span class="flex items-center gap-2"><i class="fa-solid fa-shield-halved text-gold"></i> Guaranteed 24h SLA or 100% Free</span>
+              <span class="text-stone-300">•</span>
+              <span class="flex items-center gap-2"><i class="fa-solid fa-layer-group text-gold"></i> Layered 16-Bit Master PSD Included</span>
+              <span class="text-stone-300">•</span>
+              <span class="flex items-center gap-2"><i class="fa-solid fa-arrows-rotate text-gold"></i> Unlimited Complimentary Revisions</span>
             </div>
           </div>
         </section>
@@ -2758,16 +2860,12 @@
         <section id="free-trial-home" class="section home-trial">
           <div class="container">
             <div class="fast-track-card js-reveal">
-              <span class="eyebrow" style="margin-bottom: 1rem"
-                >Experience The Atelier Protocol</span
-              >
-              <h2
-                style="
-                  font-size: clamp(2.2rem, 3.8vw, 3.4rem);
-                  line-height: 1.15;
-                  margin-bottom: 1.25rem;
-                "
-              >
+              <!-- Security HUD Badge -->
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-stone-100 border border-stone-300 text-[10px] uppercase tracking-[0.2em] font-semibold text-stone-600 mb-5">
+                <i class="fa-solid fa-lock text-gold text-xs"></i>
+                <span>256-Bit Encrypted Client Vault &bull; Mutual Automatic NDA</span>
+              </div>
+              <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-ink-primary leading-tight mb-4">
                 Try Us With 2 Free Test Images. <em>Zero Risk.</em>
               </h2>
               <p
@@ -2807,18 +2905,19 @@
                     </option>
                   </select>
                 </div>
-                <button type="submit" class="btn btn-gold whitespace-nowrap">
-                  Claim 2 Free Images &rarr;
+                <button type="submit" class="btn btn-gold whitespace-nowrap inline-flex items-center gap-2">
+                  <span>Claim 2 Free Images</span>
+                  <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
                 </button>
               </form>
 
               <div
-                class="flex flex-wrap justify-center gap-6 sm:gap-10 mt-8 pt-8 border-t border-stone-200 text-xs text-ink-muted"
+                class="flex flex-wrap justify-center gap-6 sm:gap-10 mt-8 pt-8 border-t border-stone-200 text-xs text-stone-600"
               >
-                <span>✓ 12–24h Overnight Turnaround</span>
-                <span>✓ Layered PSD + Web Ready</span>
-                <span>✓ Protected Under Automatic NDA</span>
-                <span>✓ No Credit Card Required</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-clock text-gold"></i> 12–24h Overnight Turnaround</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-file-image text-gold"></i> Layered PSD + Web Ready</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-file-shield text-gold"></i> Protected Under Mutual NDA</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-credit-card text-gold"></i> No Credit Card Required</span>
               </div>
             </div>
           </div>
@@ -3085,6 +3184,57 @@
         </div>
       </div>
     </footer>
+
+    <!-- Luxury Atelier Video Modal Popup -->
+    <div
+      id="heroVideoModal"
+      class="hero-video-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Atelier Craftsmanship Video"
+      aria-hidden="true"
+    >
+      <div class="hero-video-modal-backdrop" id="heroVideoModalBackdrop"></div>
+      <div class="hero-video-modal-dialog">
+        <!-- Modal Header -->
+        <div class="hero-video-modal-header">
+          <div class="flex items-center gap-2.5">
+            <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+            <span class="font-serif text-sm sm:text-base text-white tracking-wide">Atelier Bench Craftsmanship</span>
+            <span class="text-[10px] uppercase tracking-[0.2em] text-gold-light/80 pl-2.5 border-l border-white/20 hidden sm:inline-block">Masterclass Film</span>
+          </div>
+          <button
+            type="button"
+            class="hero-video-modal-close"
+            id="heroVideoModalClose"
+            aria-label="Close video popup"
+          >
+            <i class="fa-solid fa-xmark text-sm" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <!-- Video Viewport Frame -->
+        <div class="hero-video-modal-frame">
+          <iframe
+            id="heroVideoIframe"
+            class="w-full h-full aspect-video border-0"
+            src=""
+            data-src="https://www.youtube-nocookie.com/embed/ScMzIvxBSi4?autoplay=1&rel=0&modestbranding=1&playsinline=1"
+            title="High-End Jewelry Craftsmanship & Retouching Masterclass"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="hero-video-modal-footer">
+          <p class="text-xs text-stone-400">
+            <span class="text-gold font-semibold">400% Bench Protocol:</span> Precision vector pen-tool paths, metallic gradient sculpting &amp; facet fire restoration.
+          </p>
+        </div>
+      </div>
+    </div>
 
     <!-- Vendor Scripts (Local) -->
     <script src="assets/js/swiper-bundle.min.js"></script>
