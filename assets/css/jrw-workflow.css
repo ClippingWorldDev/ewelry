@@ -1,0 +1,773 @@
+/**
+ * ============================================================================
+ * LUXURY EDITORIAL "THE SIX STEPS OF JEWELRY RETOUCHING" (SCOPED STYLES)
+ * ============================================================================
+ * WordPress Enqueue Guide (add to functions.php):
+ * 
+ *   function enqueue_jrw_workflow_assets() {
+ *       wp_enqueue_style('jrw-workflow-css', get_template_directory_uri() . '/assets/css/jrw-workflow.css', array(), '1.0.0');
+ *       wp_enqueue_script('gsap', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js', array(), '3.12.5', true);
+ *       wp_enqueue_script('gsap-scrolltrigger', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js', array('gsap'), '3.12.5', true);
+ *       wp_enqueue_script('jrw-workflow-js', get_template_directory_uri() . '/assets/js/jrw-workflow.js', array('gsap', 'gsap-scrolltrigger'), '1.0.0', true);
+ *   }
+ *   add_action('wp_enqueue_scripts', 'enqueue_jrw_workflow_assets');
+ *
+ * CRITICAL STICKY STACKING COMPATIBILITY RULE:
+ * Ensure that no parent theme container, body wrapper, or Elementor section has
+ * `overflow: hidden` applied to it. Sticky positioning requires `overflow: visible`
+ * or `overflow-x: clip`.
+ * ============================================================================
+ */
+
+#jrw-workflow {
+  --jrw-ivory: #FAF7F2;
+  --jrw-champagne: #F3EDE2;
+  --jrw-white: #FFFFFF;
+  --jrw-hairline: #E5DDD0;
+  --jrw-charcoal: #1C1B19;
+  --jrw-stone: #5E5A54;
+  --jrw-gold: #B08D57;
+  --jrw-gold-deep: #8E6E3B;
+  --jrw-pos: 50%;
+  background: var(--jrw-ivory);
+  color: var(--jrw-charcoal);
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  overflow-x: clip;
+}
+
+#jrw-workflow.jrw-section {
+  position: relative;
+  width: 100%;
+}
+
+/* Header & Eyebrow */
+#jrw-workflow .jrw-header {
+  position: relative;
+  z-index: 2;
+}
+
+#jrw-workflow .jrw-eyebrow b {
+  color: var(--jrw-gold);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+#jrw-workflow .jrw-eyebrow span {
+  width: 32px;
+  height: 1px;
+  background: var(--jrw-gold);
+  opacity: 0.7;
+}
+
+#jrw-workflow .jrw-title {
+  color: var(--jrw-charcoal);
+  font-family: "Marcellus", Georgia, serif;
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  font-weight: 400;
+}
+
+#jrw-workflow .jrw-subtitle {
+  color: var(--jrw-stone);
+  font-size: 16px;
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+/* Desktop Sticky Side Progress Rail (>= 1320px) */
+#jrw-workflow .jrw-progress {
+  display: none;
+  position: fixed;
+  left: 28px;
+  top: 50%;
+  z-index: 40;
+  transform: translateY(-50%) translateX(-12px);
+  flex-direction: column;
+  gap: 14px;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+              visibility 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#jrw-workflow .jrw-progress.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
+
+#jrw-workflow .jrw-progress-label {
+  margin-bottom: 2px;
+  color: var(--jrw-stone);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+#jrw-workflow .jrw-progress-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#jrw-workflow .jrw-progress-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border: 0;
+  background: transparent;
+  color: var(--jrw-stone);
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+#jrw-workflow .jrw-progress-item span {
+  width: 14px;
+  height: 1px;
+  background: var(--jrw-hairline);
+  transition: width 0.35s ease, background 0.35s ease;
+}
+
+#jrw-workflow .jrw-progress-item b {
+  font-family: "Marcellus", Georgia, serif;
+  font-size: 11px;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+#jrw-workflow .jrw-progress-item.is-active span {
+  width: 30px;
+  background: var(--jrw-gold);
+}
+
+#jrw-workflow .jrw-progress-item.is-active b {
+  color: var(--jrw-charcoal);
+  font-weight: 600;
+}
+
+/* Card Stacking & Anchors */
+#jrw-workflow .jrw-anchor {
+  height: 0;
+  scroll-margin-top: 24px;
+}
+
+#jrw-workflow .jrw-card {
+  position: sticky;
+  top: calc(14px + var(--jrw-index, 0) * 10px);
+  z-index: calc(10 + var(--jrw-index, 0));
+}
+
+#jrw-workflow .jrw-card-shell {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--jrw-hairline);
+  border-radius: 18px;
+  background: var(--jrw-white);
+  box-shadow: 0 20px 52px -24px rgba(28, 27, 25, 0.11);
+  transform-origin: center top;
+  will-change: transform;
+}
+
+#jrw-workflow .jrw-card-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  background: var(--jrw-charcoal);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+#jrw-workflow .jrw-grid-copy {
+  min-height: 470px;
+}
+
+/* Card Editorial Copy Side */
+#jrw-workflow .jrw-copy {
+  display: flex;
+  min-height: 400px;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 26px 22px;
+  border-color: var(--jrw-hairline);
+}
+
+#jrw-workflow .jrw-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+  color: var(--jrw-stone);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+#jrw-workflow .jrw-number {
+  color: var(--jrw-gold);
+  font-family: "Marcellus", Georgia, serif;
+  font-size: 38px;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+#jrw-workflow .jrw-meta i {
+  width: 32px;
+  height: 1px;
+  background: var(--jrw-hairline);
+}
+
+#jrw-workflow .jrw-copy h3 {
+  margin: 0 0 8px;
+  color: var(--jrw-charcoal);
+  font-family: "Marcellus", Georgia, serif;
+  font-size: 28px;
+  line-height: 1.15;
+  font-weight: 400;
+}
+
+#jrw-workflow .jrw-copy > p {
+  margin: 0 0 14px;
+  color: var(--jrw-stone);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+#jrw-workflow .jrw-copy ul {
+  margin: 0 0 16px;
+  padding: 12px 0 0;
+  border-top: 1px solid var(--jrw-hairline);
+  list-style: none;
+}
+
+#jrw-workflow .jrw-copy li {
+  position: relative;
+  margin: 6px 0;
+  padding-left: 15px;
+  color: var(--jrw-stone);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+#jrw-workflow .jrw-copy li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--jrw-gold);
+}
+
+/* Card Controls Bar */
+#jrw-workflow .jrw-card-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--jrw-hairline);
+}
+
+#jrw-workflow .jrw-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--jrw-hairline);
+  border-radius: 999px;
+  background: var(--jrw-ivory);
+  padding: 7px 12px;
+  color: var(--jrw-stone);
+  font-size: 9.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+#jrw-workflow .jrw-status i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--jrw-gold);
+  animation: jrw-pulse 2.4s ease-in-out infinite;
+  box-shadow: 0 0 6px rgba(176, 141, 87, 0.5);
+}
+
+#jrw-workflow .jrw-status b {
+  font-weight: 500;
+  color: var(--jrw-charcoal);
+}
+
+/* Stage Container & Image Positioning */
+#jrw-workflow .jrw-stage {
+  position: relative;
+  min-height: 380px;
+  overflow: hidden;
+  background: var(--jrw-champagne);
+  border-color: var(--jrw-hairline);
+  touch-action: pan-y;
+}
+
+#jrw-workflow .jrw-photo,
+#jrw-workflow .jrw-s5-layer {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+#jrw-workflow .jrw-photo-contain {
+  object-fit: contain;
+  padding: 32px;
+}
+
+#jrw-workflow .jrw-pass {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 12;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  background: rgba(28, 27, 25, 0.65);
+  padding: 6px 11px;
+  color: #FFFFFF;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+/* ==========================================================================
+   STAGE 01: BACKGROUND REMOVAL (VECTOR CUT)
+   ========================================================================== */
+#jrw-workflow .jrw-s1-reveal {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  overflow: hidden;
+}
+
+#jrw-workflow .jrw-s1-wipe {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 6;
+  width: 2px;
+  background: var(--jrw-gold);
+  transform: skewX(-12deg);
+  box-shadow: 0 0 14px rgba(176, 141, 87, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.45);
+}
+
+#jrw-workflow .jrw-s1-outline {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  pointer-events: none;
+}
+
+#jrw-workflow .jrw-s1-pen-path {
+  fill: none;
+  stroke: var(--jrw-gold);
+  stroke-width: 2.2;
+  stroke-dasharray: 2300;
+  stroke-dashoffset: 2300;
+  filter: drop-shadow(0 0 4px rgba(176, 141, 87, 0.6));
+}
+
+/* ==========================================================================
+   STAGE 02: BASIC RETOUCHING (400% CLEANUP)
+   ========================================================================== */
+#jrw-workflow .jrw-s2-after {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  clip-path: inset(0 94% 0 0);
+}
+
+#jrw-workflow .jrw-s2-line {
+  position: absolute;
+  left: 6%;
+  top: 0;
+  bottom: 0;
+  z-index: 5;
+  width: 2px;
+  background: var(--jrw-gold);
+  box-shadow: 0 0 12px rgba(176, 141, 87, 0.45), -6px 0 16px rgba(176, 141, 87, 0.25);
+}
+
+#jrw-workflow .jrw-s2-loupe {
+  position: absolute;
+  left: 6%;
+  top: 50%;
+  z-index: 7;
+  width: 96px;
+  height: 96px;
+  border: 2px solid var(--jrw-gold);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: contrast(1.08) brightness(1.04);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.55), 0 8px 24px rgba(28, 27, 25, 0.18);
+}
+
+#jrw-workflow .jrw-s2-loupe span {
+  position: absolute;
+  left: 50%;
+  bottom: -28px;
+  transform: translateX(-50%);
+  border: 1px solid var(--jrw-hairline);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  padding: 4px 8px;
+  white-space: nowrap;
+  color: var(--jrw-charcoal);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(28, 27, 25, 0.08);
+}
+
+/* ==========================================================================
+   STAGE 03: HAND RETOUCHING (DODGE & BURN)
+   ========================================================================== */
+#jrw-workflow .jrw-s3-sculpted {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  clip-path: circle(0% at 52% 48%);
+}
+
+#jrw-workflow .jrw-s3-brush {
+  position: absolute;
+  left: 34%;
+  top: 48%;
+  z-index: 7;
+  width: 58px;
+  height: 58px;
+  border: 1.5px dashed var(--jrw-gold);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+#jrw-workflow .jrw-s3-brush i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--jrw-gold);
+  transform: translate(-50%, -50%);
+}
+
+#jrw-workflow .jrw-s3-brush span {
+  position: absolute;
+  left: 64px;
+  top: 16px;
+  border: 1px solid var(--jrw-hairline);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  padding: 4px 9px;
+  color: var(--jrw-charcoal);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(28, 27, 25, 0.08);
+}
+
+#jrw-workflow .jrw-s3-sheen {
+  position: absolute;
+  top: -30%;
+  bottom: -30%;
+  left: -30%;
+  z-index: 8;
+  width: 25%;
+  transform: rotate(20deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   STAGE 04: GRID & ALIGNMENT (AXIS LOCK)
+   ========================================================================== */
+#jrw-workflow .jrw-s4-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image:
+    linear-gradient(rgba(176, 141, 87, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(176, 141, 87, 0.14) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0;
+}
+
+#jrw-workflow .jrw-s4-subject {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  transform: rotate(5.2deg) translateX(10px);
+  will-change: transform;
+}
+
+#jrw-workflow .jrw-s4-guide-svg {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+}
+
+#jrw-workflow .jrw-s4-angle {
+  position: absolute;
+  right: 14px;
+  bottom: 52px;
+  z-index: 10;
+  border: 1px solid var(--jrw-hairline);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  padding: 6px 11px;
+  color: var(--jrw-charcoal);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 8px rgba(28, 27, 25, 0.06);
+  transition: border-color 0.4s ease, color 0.4s ease;
+}
+
+/* ==========================================================================
+   STAGE 05: METAL PLATING (DIGITAL GILDING)
+   ========================================================================== */
+#jrw-workflow .jrw-s5-layer {
+  z-index: 2;
+  opacity: 0;
+  clip-path: polygon(0 0, 0 0, -14% 100%, 0 100%);
+}
+
+#jrw-workflow .jrw-s5-layer.is-active {
+  z-index: 3;
+  opacity: 1;
+  clip-path: none;
+}
+
+#jrw-workflow .jrw-s5-swatches {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  z-index: 10;
+  display: flex;
+  gap: 4px;
+  transform: translateX(-50%);
+  border: 1px solid rgba(229, 221, 208, 0.85);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  padding: 4px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 16px rgba(28, 27, 25, 0.08);
+}
+
+#jrw-workflow .jrw-s5-swatches button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  padding: 6px 10px;
+  color: var(--jrw-charcoal);
+  font-size: 9px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+#jrw-workflow .jrw-s5-swatches button.is-active {
+  background: var(--jrw-charcoal);
+  color: #FFFFFF;
+}
+
+#jrw-workflow .jrw-s5-swatches i {
+  width: 10px;
+  height: 10px;
+  border: 1px solid rgba(28, 27, 25, 0.12);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+#jrw-workflow .jrw-swatch-yellow {
+  background: linear-gradient(135deg, #FFF1A6, #B18831);
+}
+
+#jrw-workflow .jrw-swatch-rose {
+  background: linear-gradient(135deg, #F6D2C5, #B66F5E);
+}
+
+#jrw-workflow .jrw-swatch-white {
+  background: linear-gradient(135deg, #FFFFFF, #9DA1A3);
+}
+
+/* ==========================================================================
+   STAGE 06: FINAL MASTER (BEFORE & AFTER SLIDER)
+   ========================================================================== */
+#jrw-workflow .jrw-s6-before-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  clip-path: inset(0 calc(100% - var(--jrw-pos)) 0 0);
+}
+
+#jrw-workflow .jrw-s6-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--jrw-pos);
+  z-index: 8;
+  width: 2px;
+  background: #FFFFFF;
+  transform: translateX(-1px);
+  box-shadow: 0 0 10px rgba(28, 27, 25, 0.3);
+  pointer-events: none;
+}
+
+#jrw-workflow .jrw-s6-divider button {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  transform: translate(-50%, -50%);
+  border: 1.5px solid var(--jrw-gold);
+  border-radius: 50%;
+  background: #FFFFFF;
+  color: var(--jrw-charcoal);
+  box-shadow: 0 4px 18px rgba(28, 27, 25, 0.15);
+  pointer-events: auto;
+}
+
+#jrw-workflow .jrw-s6-before-label,
+#jrw-workflow .jrw-s6-after-label,
+#jrw-workflow .jrw-s6-hint {
+  position: absolute;
+  z-index: 10;
+  border-radius: 999px;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+#jrw-workflow .jrw-s6-before-label {
+  left: 14px;
+  top: 14px;
+  background: rgba(28, 27, 25, 0.7);
+  padding: 6px 10px;
+  color: #FFFFFF;
+  backdrop-filter: blur(4px);
+}
+
+#jrw-workflow .jrw-s6-after-label {
+  right: 14px;
+  top: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 6px 10px;
+  color: var(--jrw-charcoal);
+  backdrop-filter: blur(4px);
+}
+
+#jrw-workflow .jrw-s6-hint {
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  background: rgba(28, 27, 25, 0.72);
+  padding: 7px 12px;
+  color: #FFFFFF;
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+
+@keyframes jrw-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.6; }
+}
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT & BREAKPOINTS
+   ========================================================================== */
+@media (min-width: 1024px) {
+  #jrw-workflow .jrw-grid-copy {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Odd cards: Copy Left (border-r), Stage Right */
+  #jrw-workflow .jrw-grid-copy > .jrw-copy:first-child {
+    border-right: 1px solid var(--jrw-hairline);
+  }
+
+  /* Even cards: Stage Left (border-r), Copy Right */
+  #jrw-workflow .jrw-grid-copy > .jrw-stage:first-child {
+    border-right: 1px solid var(--jrw-hairline);
+  }
+
+  #jrw-workflow .jrw-card {
+    top: calc(34px + var(--jrw-index, 0) * 18px);
+  }
+
+  #jrw-workflow .jrw-anchor {
+    scroll-margin-top: 44px;
+  }
+
+  #jrw-workflow .jrw-copy {
+    padding: 34px 36px;
+    min-height: 450px;
+  }
+}
+
+@media (min-width: 1320px) {
+  #jrw-workflow .jrw-progress {
+    display: flex;
+  }
+}
+
+/* Reduced Motion Safety */
+@media (prefers-reduced-motion: reduce) {
+  #jrw-workflow * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  #jrw-workflow .jrw-status i {
+    animation: none;
+  }
+}

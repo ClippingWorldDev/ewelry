@@ -404,19 +404,23 @@
   }
 
   .hero-assurance {
-    @apply flex items-start gap-3.5 pt-4 sm:pt-6 border-t border-stone-200/60 max-w-sm text-ink-primary select-none;
+    @apply flex items-start gap-3.5 sm:gap-4 max-w-md text-ink-primary select-none mt-3 sm:mt-5;
   }
 
   .hero-assurance svg {
-    @apply shrink-0 mt-0.5 text-ink-primary w-7 h-7 sm:w-8 sm:h-8;
+    @apply shrink-0 mt-0.5 text-ink-primary w-9 h-9 sm:w-10 sm:h-10 transition-transform duration-300;
+  }
+
+  .hero-assurance:hover svg {
+    @apply scale-105;
   }
 
   .hero-assurance strong {
-    @apply block font-sans text-xs sm:text-[13px] font-bold text-ink-primary tracking-wide;
+    @apply block font-sans text-sm sm:text-[15px] font-semibold text-ink-primary tracking-tight leading-snug;
   }
 
   .hero-assurance span {
-    @apply block font-sans text-[11px] sm:text-xs text-ink-muted leading-relaxed mt-1 max-w-[220px];
+    @apply block font-sans text-xs sm:text-[13px] text-ink-secondary/85 font-normal leading-relaxed mt-1 max-w-[280px] sm:max-w-[320px];
   }
 
   /* Right Carousel: Horizontal on Mobile/Tablet, Vertical on Desktop */
@@ -454,12 +458,12 @@
 
   /* Marquee */
   .marquee-section {
-    @apply bg-obsidian py-4 overflow-hidden border-y border-gold/30;
+    @apply bg-obsidian py-4 sm:py-5 overflow-hidden border-y border-gold/30 select-none;
   }
 
   .marquee-track {
-    @apply flex w-max;
-    animation: marqueeLoop 38s linear infinite;
+    @apply flex w-max items-center;
+    animation: marqueeLoop 40s linear infinite;
   }
 
   .marquee-section:hover .marquee-track {
@@ -467,7 +471,15 @@
   }
 
   .marquee-group {
-    @apply flex items-center gap-11 pr-11 text-gold-light text-xs font-semibold tracking-[0.16em] uppercase whitespace-nowrap;
+    @apply flex items-center gap-6 sm:gap-9 pr-6 sm:pr-9 text-xs sm:text-[13px] font-semibold tracking-[0.18em] uppercase whitespace-nowrap;
+  }
+
+  .marquee-text {
+    @apply text-ink-light transition-colors duration-200 hover:text-gold cursor-default;
+  }
+
+  .marquee-icon-divider {
+    @apply inline-flex items-center justify-center text-gold text-lg sm:text-2xl transition-transform duration-300 hover:scale-125 select-none shrink-0 drop-shadow-[0_0_8px_rgba(209,160,84,0.35)];
   }
 
   /* Four Pillars Stacking Glass Cards */
@@ -1151,19 +1163,7 @@
     @apply pt-8 border-t border-white/10 flex flex-wrap justify-between items-center gap-4 text-xs text-ink-light-muted;
   }
 
-  /* Press / Accreditation Bar */
-  .press-bar {
-    @apply border-y border-stone-200/80 bg-white/60 py-5 text-center overflow-hidden;
-  }
-  .press-bar-title {
-    @apply text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.22em] text-ink-muted mb-3.5 block;
-  }
-  .press-badges {
-    @apply flex flex-wrap items-center justify-center gap-6 sm:gap-11 text-xs sm:text-sm font-serif uppercase tracking-[0.2em] text-ink-secondary/90;
-  }
-  .press-badge-item {
-    @apply transition-colors duration-200 hover:text-gold-deep;
-  }
+
 
   /* 400% Macro Loupe Inspector */
   .macro-loupe-section {
@@ -1629,3 +1629,6 @@
     transform: translateX(-50%);
   }
 }
+
+
+
