@@ -1164,7 +1164,109 @@ window.STUDIO_API = {
     onScroll();
   }
 
+  function initHeroShowcase() {
+    const heroSection = document.querySelector('.hero-section') || document.querySelector('.hero-showcase');
+    if (!heroSection) return;
+
+    const bgSlides = Array.from(heroSection.querySelectorAll('.hero-bg-slide'));
+    const textSlides = Array.from(heroSection.querySelectorAll('.hero-text-slide'));
+    const cards = Array.from(heroSection.querySelectorAll('.hero-v-card, .hero-category'));
+    const vTrack = heroSection.querySelector('.hero-v-track');
+    const prevBtn = heroSection.querySelector('.hero-v-arrow--up, .hero-arrow--up');
+    const nextBtn = heroSection.querySelector('.hero-v-arrow--down, .hero-arrow--down');
+
+    const total = Math.max(bgSlides.length, textSlides.length, cards.length);
+    if (total === 0) return;
+
+    // Detect initial active index from DOM (defaults to 1 for the Rings statement piece)
+    const initialActiveCard = cards.findIndex((c) => c.classList.contains('is-active'));
+    let current = initialActiveCard >= 0 ? initialActiveCard : 1;
+    let timer = null;
+
+    function updateTrackPosition() {
+      if (!vTrack || cards.length <= 3) return;
+      const firstCard = cards[0];
+      if (!firstCard) return;
+      const cardHeight = firstCard.offsetHeight || 108;
+      const computedGap = parseFloat(window.getComputedStyle(vTrack).rowGap) || 12;
+      const step = cardHeight + computedGap;
+      const maxOffset = Math.max(0, (cards.length - 3) * step);
+      const targetOffset = Math.min(Math.max(0, (current - 1) * step), maxOffset);
+      vTrack.style.transform = `translateY(-${targetOffset}px)`;
+    }
+
+    function showSlide(index) {
+      current = (index + total) % total;
+
+      bgSlides.forEach((slide, i) => {
+        const isActive = i === current;
+        slide.classList.toggle('is-active', isActive);
+        slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+      });
+
+      textSlides.forEach((slide, i) => {
+        const isActive = i === current;
+        slide.classList.toggle('is-active', isActive);
+        slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+      });
+
+      cards.forEach((card, i) => {
+        const isActive = i === current;
+        card.classList.toggle('is-active', isActive);
+        card.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+
+      updateTrackPosition();
+    }
+
+    function restartTimer() {
+      if (timer) window.clearInterval(timer);
+      timer = window.setInterval(() => showSlide(current + 1), 4500);
+    }
+
+    cards.forEach((card, index) => {
+      card.addEventListener('click', () => {
+        showSlide(index);
+        restartTimer();
+      });
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          showSlide(index);
+          restartTimer();
+        }
+      });
+    });
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        showSlide(current - 1);
+        restartTimer();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        showSlide(current + 1);
+        restartTimer();
+      });
+    }
+
+    heroSection.addEventListener('mouseenter', () => {
+      if (timer) window.clearInterval(timer);
+    });
+
+    heroSection.addEventListener('mouseleave', restartTimer);
+
+    // Initial setup
+    showSlide(current);
+    restartTimer();
+
+    window.addEventListener('resize', updateTrackPosition, { passive: true });
+  }
+
   function start() {
+    initHeroShowcase();
     initSliders();
     init3DImageTilt();
     initMacroLoupe();
