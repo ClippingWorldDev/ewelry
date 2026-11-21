@@ -295,17 +295,20 @@
 
   // ==========================================================================
   // STAGE 04: GRID & ALIGNMENT (PERSPECTIVE & GEOMETRIC SYMMETRY)
+  // Dual-Image Transformation: Raw Casting Offset (+5.2°) -> 0.0° Symmetrical Master
   // ==========================================================================
   function stage4(card) {
     const stage = card.querySelector('.jrw-stage-4');
     const subject = stage.querySelector('.jrw-s4-subject');
+    const alignedWrap = stage.querySelector('.jrw-s4-aligned-wrap');
     const grid = stage.querySelector('.jrw-s4-grid');
     const guideSvg = stage.querySelector('.jrw-s4-guide-svg');
     const angle = stage.querySelector('#jrw-angle-pill');
     const status = card.querySelector('#jrw-status-04');
 
     if (reduceMotion) {
-      gsap.set(subject, { rotation: 0, x: 0 });
+      gsap.set(subject, { rotation: 0, x: 0, y: 0 });
+      if (alignedWrap) gsap.set(alignedWrap, { opacity: 1 });
       gsap.set([grid, guideSvg], { opacity: 1 });
       if (angle) {
         angle.textContent = '0.0° ALIGNED';
@@ -319,18 +322,20 @@
     const timeline = gsap.timeline({ repeat: -1, repeatDelay: 1.2 });
 
     timeline
-      .set(subject, { rotation: 5.2, x: 10 })
+      // 1. Initial State: Raw uncentered casting tilted at +5.2°
+      .set(subject, { rotation: 5.2, x: 12, y: -6 })
+      .set(alignedWrap, { opacity: 0 })
       .set([grid, guideSvg], { opacity: 0 })
       .set(angle, { borderColor: '#E5DDD0', color: '#1C1B19' })
       .call(() => {
-        if (status) status.textContent = 'Drawing Symmetry Grid';
+        if (status) status.textContent = 'Scanning Raw Tilt (+5.2°)';
         if (angle) angle.textContent = '+5.2° OFFSET';
       })
-      // Fade in architectural grid & precision SVG axes/brackets
-      .to([grid, guideSvg], { opacity: 1, duration: 1.2, ease: 'power2.out' })
-      // Tween subject to perfect upright alignment
-      .to(subject, { rotation: 0, x: 0, duration: 2.2, ease: 'power3.out' })
-      // Smoothly count down degree readout from +5.2° to 0.0°
+      // 2. Precision architectural grid & SVG laser crosshairs power up
+      .to([grid, guideSvg], { opacity: 1, duration: 1.1, ease: 'power2.out' })
+      // 3. Subject smoothly rotates and levels to 0.0° perfect vertical alignment
+      .to(subject, { rotation: 0, x: 0, y: 0, duration: 2.2, ease: 'power3.out' })
+      // 4. Counter counts down smoothly from +5.2° to 0.0°
       .call(() => {
         const obj = { val: 5.2 };
         gsap.to(obj, {
@@ -344,13 +349,15 @@
           }
         });
       }, null, '-=2.2')
-      // Lock state styling
-      .to(angle, { borderColor: '#B08D57', color: '#8E6E3B', duration: 0.4 }, '-=0.2')
+      // 5. Cross-fade seamlessly into pristine aligned master image with a golden gleam
+      .to(alignedWrap, { opacity: 1, duration: 0.85, ease: 'power2.out' }, '-=0.6')
+      // 6. Lock state styling & status update
+      .to(angle, { borderColor: '#B08D57', color: '#8E6E3B', duration: 0.4 }, '-=0.3')
       .call(() => {
         if (status) status.textContent = '0.0° Symmetry Locked';
       })
-      // Hold aligned state cleanly
-      .to({}, { duration: 2.6 });
+      // 7. Hold aligned master state cleanly so viewer appreciates the result
+      .to({}, { duration: 2.8 });
 
     return createViewportTimeline(stage, () => timeline);
   }
@@ -530,6 +537,72 @@
     };
   }
 
+  // ==========================================================================
+  // BESPOKE LUXURY WORKFLOW INTERACTIVE CURSOR FOLLOWER
+  // ==========================================================================
+  function initWorkflowCursor() {
+    const cursor = root.querySelector('#jrw-cursor');
+    if (!cursor || window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
+
+    const cursorText = cursor.querySelector('.jrw-cursor-text');
+    let isInside = false;
+
+    // High performance smooth tracking using GSAP quickTo (120fps fluid lag-free)
+    const xTo = gsap.quickTo(cursor, 'x', { duration: 0.15, ease: 'power2.out' });
+    const yTo = gsap.quickTo(cursor, 'y', { duration: 0.15, ease: 'power2.out' });
+
+    window.addEventListener('pointermove', (e) => {
+      const rect = root.getBoundingClientRect();
+      const inSection = (
+        e.clientX >= rect.left &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom
+      );
+
+      if (inSection) {
+        if (!isInside) {
+          isInside = true;
+          cursor.classList.add('is-active');
+        }
+        xTo(e.clientX);
+        yTo(e.clientY);
+
+        const stage = e.target.closest('.jrw-stage');
+        const card = e.target.closest('.jrw-card');
+        const progress = e.target.closest('.jrw-progress');
+
+        if (stage) {
+          cursor.classList.add('is-hovering-stage');
+          const customText = stage.getAttribute('data-cursor');
+          if (customText && cursorText) {
+            cursorText.textContent = customText;
+          }
+        } else {
+          cursor.classList.remove('is-hovering-stage');
+          if (progress) {
+            if (cursorText) cursorText.textContent = 'JUMP TO STEP';
+          } else if (card) {
+            const stepNum = card.getAttribute('data-step');
+            if (cursorText) cursorText.textContent = `STEP 0${stepNum} PROTOCOL`;
+          } else {
+            if (cursorText) cursorText.textContent = 'CRAFTSMANSHIP PROTOCOL';
+          }
+        }
+      } else if (isInside) {
+        isInside = false;
+        cursor.classList.remove('is-active');
+      }
+    });
+
+    // Grab state on stage 6 slider
+    const stage6 = root.querySelector('.jrw-stage-6');
+    if (stage6) {
+      stage6.addEventListener('pointerdown', () => cursor.classList.add('is-grabbing'));
+      window.addEventListener('pointerup', () => cursor.classList.remove('is-grabbing'));
+    }
+  }
+
   // Initialize all 6 stages (infinite automated motion)
   cards.forEach((card) => {
     const id = Number(card.dataset.step);
@@ -540,6 +613,9 @@
     else if (id === 5) stage5(card);
     else if (id === 6) stage6(card);
   });
+
+  // Initialize interactive workflow cursor
+  initWorkflowCursor();
 
   // Cleanup on unload
   window.addEventListener('beforeunload', () => {

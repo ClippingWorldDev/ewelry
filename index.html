@@ -88,74 +88,162 @@
       <div class="preloader-bg"></div>
       <div class="preloader-content">
         <div class="preloader-gem-wrap">
-          <svg class="preloader-svg" viewBox="0 0 160 160" width="160" height="160" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="preloader-svg" viewBox="0 0 200 200" width="200" height="200" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <linearGradient id="preloaderGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <!-- 18K Yellow Gold Metallic Gradient for Ring Band -->
+              <linearGradient id="preloaderGoldBand" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stop-color="#FAF8F4" />
-                <stop offset="30%" stop-color="#D9BA82" />
-                <stop offset="70%" stop-color="#B59054" />
-                <stop offset="100%" stop-color="#8E6B36" />
+                <stop offset="25%" stop-color="#E5C483" />
+                <stop offset="55%" stop-color="#B59054" />
+                <stop offset="85%" stop-color="#8E6B36" />
+                <stop offset="100%" stop-color="#4A3515" />
               </linearGradient>
-              <radialGradient id="preloaderAura" cx="50%" cy="40%" r="50%">
-                <stop offset="0%" stop-color="rgba(217, 186, 130, 0.45)" />
-                <stop offset="60%" stop-color="rgba(181, 144, 84, 0.12)" />
+
+              <!-- Diamond Crystalline Icy Pure White / Glacial Blue Facet Gradient 1 -->
+              <linearGradient id="diamondFacetGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.96" />
+                <stop offset="40%" stop-color="#E0F2FE" stop-opacity="0.82" />
+                <stop offset="80%" stop-color="#BAE6FD" stop-opacity="0.65" />
+                <stop offset="100%" stop-color="#7DD3FC" stop-opacity="0.5" />
+              </linearGradient>
+
+              <!-- Diamond Crystalline Prismatic Cyan / Aqua Glint Gradient 2 -->
+              <linearGradient id="diamondFacetGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.98" />
+                <stop offset="35%" stop-color="#F0FDFA" stop-opacity="0.85" />
+                <stop offset="70%" stop-color="#CFFAFE" stop-opacity="0.7" />
+                <stop offset="100%" stop-color="#93C5FD" stop-opacity="0.45" />
+              </linearGradient>
+
+              <!-- Diamond Pavilion Deep Internal Reflection & Refraction Gradient -->
+              <linearGradient id="diamondPavilionGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.92" />
+                <stop offset="30%" stop-color="#E0F2FE" stop-opacity="0.75" />
+                <stop offset="65%" stop-color="#38BDF8" stop-opacity="0.5" />
+                <stop offset="100%" stop-color="#0284C7" stop-opacity="0.25" />
+              </linearGradient>
+
+              <!-- Diamond Wireframe Strokes: Blinding Crystalline Icy Fire with Prism Flash -->
+              <linearGradient id="diamondStrokeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="25%" stop-color="#E0F2FE" />
+                <stop offset="50%" stop-color="#FDF4FF" />
+                <stop offset="75%" stop-color="#BAE6FD" />
+                <stop offset="100%" stop-color="#FFFFFF" />
+              </linearGradient>
+
+              <!-- Platinum Claw Prongs Gradient -->
+              <linearGradient id="platinumGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="50%" stop-color="#E2E8F0" />
+                <stop offset="100%" stop-color="#94A3B8" />
+              </linearGradient>
+
+              <!-- Diamond Optical Bloom Aura -->
+              <radialGradient id="diamondAura" cx="50%" cy="32%" r="50%">
+                <stop offset="0%" stop-color="rgba(224, 242, 254, 0.75)" />
+                <stop offset="30%" stop-color="rgba(186, 230, 253, 0.35)" />
+                <stop offset="65%" stop-color="rgba(181, 144, 84, 0.15)" />
                 <stop offset="100%" stop-color="transparent" />
               </radialGradient>
+
+              <!-- Horizontal Anamorphic Lens Flare Beam -->
+              <linearGradient id="anamorphicFlare" x1="0%" y1="50%" x2="100%" y2="50%">
+                <stop offset="0%" stop-color="transparent" />
+                <stop offset="35%" stop-color="rgba(186, 230, 253, 0.5)" />
+                <stop offset="50%" stop-color="#FFFFFF" />
+                <stop offset="65%" stop-color="rgba(253, 244, 255, 0.5)" />
+                <stop offset="100%" stop-color="transparent" />
+              </linearGradient>
             </defs>
 
-            <!-- Ambient Optical Aura -->
-            <circle cx="80" cy="50" r="48" fill="url(#preloaderAura)" class="preloader-aura" />
+            <!-- Optical Bloom Aura -->
+            <circle cx="100" cy="54" r="54" fill="url(#diamondAura)" class="preloader-diamond-aura" />
 
-            <!-- 1. Ring Band (Articulated Gold Precious Metal Shank) -->
-            <path d="M 40 92 C 40 142, 120 142, 120 92" class="preloader-path preloader-band-outer" stroke="url(#preloaderGoldGrad)" stroke-width="2.2" stroke-linecap="round" />
-            <path d="M 50 94 C 50 134, 110 134, 110 94" class="preloader-path preloader-band-inner" stroke="url(#preloaderGoldGrad)" stroke-width="1.2" stroke-linecap="round" opacity="0.65" />
+            <!-- Horizontal Anamorphic Diamond Flare Beam -->
+            <line x1="26" y1="54" x2="174" y2="54" stroke="url(#anamorphicFlare)" stroke-width="2" class="preloader-anamorphic" stroke-linecap="round" />
 
-            <!-- 2. Cathedral Shoulders / Setting Basket -->
-            <path d="M 40 92 C 40 70, 52 56, 56 46" class="preloader-path preloader-prong" stroke="url(#preloaderGoldGrad)" stroke-width="1.8" stroke-linecap="round" />
-            <path d="M 120 92 C 120 70, 108 56, 104 46" class="preloader-path preloader-prong" stroke="url(#preloaderGoldGrad)" stroke-width="1.8" stroke-linecap="round" />
-            <path d="M 52 74 C 64 80, 96 80, 108 74" class="preloader-path preloader-bridge" stroke="url(#preloaderGoldGrad)" stroke-width="1" stroke-linecap="round" opacity="0.5" />
+            <!-- 1. 18K GOLD RING SHANK (Articulated Precious Metal Band) -->
+            <path d="M 52 112 C 52 176, 148 176, 148 112" class="preloader-path preloader-band-outer" stroke="url(#preloaderGoldBand)" stroke-width="2.6" stroke-linecap="round" />
+            <path d="M 64 114 C 64 162, 136 162, 136 114" class="preloader-path preloader-band-inner" stroke="url(#preloaderGoldBand)" stroke-width="1.4" stroke-linecap="round" opacity="0.75" />
+            <path d="M 52 112 C 52 86, 64 68, 72 54" class="preloader-path preloader-band-shoulder" stroke="url(#preloaderGoldBand)" stroke-width="2" stroke-linecap="round" />
+            <path d="M 148 112 C 148 86, 136 68, 128 54" class="preloader-path preloader-band-shoulder" stroke="url(#preloaderGoldBand)" stroke-width="2" stroke-linecap="round" />
+            <path d="M 68 88 C 84 96, 116 96, 132 88" class="preloader-path preloader-bridge" stroke="url(#preloaderGoldBand)" stroke-width="1.2" opacity="0.65" stroke-linecap="round" />
 
-            <!-- 3. Solitaire Diamond Pavilion & Facet Geometry -->
-            <polygon points="48,46 80,76 112,46" class="preloader-gem-fill" fill="rgba(217,186,130,0.08)" />
-            <path d="M 48 46 L 80 76 L 112 46" class="preloader-path preloader-facet" stroke="url(#preloaderGoldGrad)" stroke-width="1.6" stroke-linejoin="round" />
-            <line x1="80" y1="46" x2="80" y2="76" class="preloader-path preloader-facet" stroke="url(#preloaderGoldGrad)" stroke-width="1" />
-            <line x1="64" y1="46" x2="80" y2="76" class="preloader-path preloader-facet" stroke="url(#preloaderGoldGrad)" stroke-width="0.8" opacity="0.75" />
-            <line x1="96" y1="46" x2="80" y2="76" class="preloader-path preloader-facet" stroke="url(#preloaderGoldGrad)" stroke-width="0.8" opacity="0.75" />
+            <!-- 2. BRILLIANT-CUT DIAMOND FACET FILLS (Genuine Icy Blue & Crystal White) -->
+            <!-- Pavilion Lower Facets -->
+            <polygon points="100,54 100,96 82,54" class="preloader-diamond-facet" fill="url(#diamondPavilionGrad)" />
+            <polygon points="100,54 118,54 100,96" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="56,54 82,54 100,96" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="144,54 100,96 118,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
 
-            <!-- Girdle Line -->
-            <line x1="44" y1="46" x2="116" y2="46" class="preloader-path preloader-girdle" stroke="url(#preloaderGoldGrad)" stroke-width="1.8" stroke-linecap="round" />
+            <!-- Crown Upper Facets -->
+            <polygon points="88,40 112,40 100,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="78,28 88,40 100,54 68,46" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="122,28 132,46 100,54 112,40" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="78,28 68,46 56,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="122,28 144,54 132,46" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="68,46 100,54 56,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="132,46 144,54 100,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
 
-            <!-- Crown & Table Facets -->
-            <polygon points="64,30 96,30 112,46 48,46" class="preloader-gem-fill" fill="rgba(250,248,244,0.12)" />
-            <path d="M 64 30 L 96 30 L 112 46 L 48 46 Z" class="preloader-path preloader-crown" stroke="url(#preloaderGoldGrad)" stroke-width="1.6" stroke-linejoin="round" />
-            <line x1="64" y1="30" x2="80" y2="46" class="preloader-path preloader-facet" stroke="url(#preloaderGoldGrad)" stroke-width="0.9" />
-            <line x1="96" y1="30" x2="80" y2="46" class="preloader-path preloader-facet" stroke="url(#preloaderGoldGrad)" stroke-width="0.9" />
+            <!-- Table Facet (Top Flat Mirror) -->
+            <polygon points="78,28 122,28 112,40 88,40" class="preloader-diamond-table" fill="#FFFFFF" opacity="0.95" />
 
-            <!-- 4. Prongs Holding Crown -->
-            <line x1="48" y1="47" x2="48" y2="43" class="preloader-path preloader-prong" stroke="url(#preloaderGoldGrad)" stroke-width="2.4" stroke-linecap="round" />
-            <line x1="112" y1="47" x2="112" y2="43" class="preloader-path preloader-prong" stroke="url(#preloaderGoldGrad)" stroke-width="2.4" stroke-linecap="round" />
-            <line x1="68" y1="47" x2="68" y2="44" class="preloader-path preloader-prong" stroke="url(#preloaderGoldGrad)" stroke-width="2.2" stroke-linecap="round" />
-            <line x1="92" y1="47" x2="92" y2="44" class="preloader-path preloader-prong" stroke="url(#preloaderGoldGrad)" stroke-width="2.2" stroke-linecap="round" />
+            <!-- 3. DIAMOND WIREFRAME GEOMETRY STROKES (Icy White/Blue Crystal) -->
+            <line x1="78" y1="28" x2="122" y2="28" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.8" stroke-linecap="round" />
+            <line x1="78" y1="28" x2="56" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.6" />
+            <line x1="122" y1="28" x2="144" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.6" />
+            <line x1="78" y1="28" x2="88" y2="40" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="122" y1="28" x2="112" y2="40" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="88" y1="40" x2="112" y2="40" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="88" y1="40" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="112" y1="40" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="68" y1="46" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
+            <line x1="132" y1="46" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
+            <line x1="54" y1="54" x2="146" y2="54" class="preloader-path preloader-diamond-girdle" stroke="url(#diamondStrokeGrad)" stroke-width="2" stroke-linecap="round" />
+            <path d="M 56 54 L 100 96 L 144 54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.8" stroke-linejoin="round" />
+            <line x1="100" y1="54" x2="100" y2="96" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.3" />
+            <line x1="82" y1="54" x2="100" y2="96" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
+            <line x1="118" y1="54" x2="100" y2="96" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
 
-            <!-- 5. Optical Brilliance Sparkle Stars -->
-            <path d="M 80 18 Q 80 26 88 26 Q 80 26 80 34 Q 80 26 72 26 Q 80 26 80 18 Z" class="preloader-sparkle" fill="#FAF8F4" />
-            <path d="M 112 36 Q 112 41 117 41 Q 112 41 112 46 Q 112 41 107 41 Q 112 41 112 36 Z" class="preloader-sparkle preloader-sparkle--sub" fill="#D9BA82" />
-            <circle cx="80" cy="26" r="1.5" fill="#FFFFFF" class="preloader-sparkle" />
+            <!-- 4. PLATINUM PRONGS (Holding Diamond Girdle) -->
+            <line x1="56" y1="56" x2="56" y2="50" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.6" stroke-linecap="round" />
+            <line x1="144" y1="56" x2="144" y2="50" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.6" stroke-linecap="round" />
+            <line x1="80" y1="56" x2="80" y2="51" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.2" stroke-linecap="round" />
+            <line x1="120" y1="56" x2="120" y2="51" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.2" stroke-linecap="round" />
+
+            <!-- 5. DIAMOND OPTICAL FIRE & SCINTILLATION SPARKLES -->
+            <!-- Master Sparkle Star (at Table corner) -->
+            <path d="M 78 18 Q 78 28 88 28 Q 78 28 78 38 Q 78 28 68 28 Q 78 28 78 18 Z" class="preloader-sparkle preloader-sparkle--main" fill="#FFFFFF" />
+            <circle cx="78" cy="28" r="2.2" fill="#E0F2FE" class="preloader-sparkle" />
+            <!-- Secondary Sapphire Sparkle (at right Girdle) -->
+            <path d="M 144 48 Q 144 54 150 54 Q 144 54 144 60 Q 144 54 138 54 Q 144 54 144 48 Z" class="preloader-sparkle preloader-sparkle--secondary" fill="#BAE6FD" />
+            <circle cx="144" cy="54" r="1.5" fill="#FFFFFF" class="preloader-sparkle" />
+            <!-- Micro Violet/Pink Sparkle (at Culet) -->
+            <path d="M 100 90 Q 100 94 104 94 Q 100 94 100 98 Q 100 94 96 94 Q 100 94 100 90 Z" class="preloader-sparkle preloader-sparkle--culet" fill="#F472B6" />
           </svg>
         </div>
 
-        <!-- Atelier Brand Reveal -->
-        <div class="preloader-meta">
-          <div class="preloader-title">BJR ATELIER</div>
-          <div class="preloader-tagline">Fine Jewelry Retouching Protocol</div>
+        <!-- Large Animated Percentage Display -->
+        <div class="preloader-percent-display">
+          <span id="preloaderBigCount" class="preloader-big-num">00</span>
+          <span class="preloader-pct-symbol">%</span>
         </div>
 
-        <!-- Progress Track & Counter -->
+        <!-- Technical Bench Protocol Status Readout -->
+        <div id="preloaderStatusText" class="preloader-status">Initializing Optical Calibration...</div>
+
+        <!-- Progress Gauge Track -->
         <div class="preloader-progress-wrap">
           <div class="preloader-track">
             <div class="preloader-bar" id="preloaderBar"></div>
           </div>
-          <span class="preloader-count" id="preloaderCount">0%</span>
+        </div>
+
+        <!-- Atelier Brand Reveal -->
+        <div class="preloader-meta mt-3">
+          <div class="preloader-title">BJR ATELIER</div>
+          <div class="preloader-tagline">Fine Jewelry Retouching Protocol</div>
         </div>
       </div>
     </div>
@@ -1523,6 +1611,17 @@
         <!-- WP Note: Enqueue assets/css/jrw-workflow.css & assets/js/jrw-workflow.js via wp_enqueue_scripts -->
         <!-- Ensure parent containers have overflow: visible or overflow-x: clip (never overflow: hidden) -->
         <section id="jrw-workflow" class="jrw-section relative w-full bg-[#FAF7F2] overflow-x-clip">
+          <!-- Interactive Luxury Studio Workflow Cursor Follower -->
+          <div id="jrw-cursor" class="jrw-cursor" aria-hidden="true">
+            <div class="jrw-cursor-ring">
+              <div class="jrw-cursor-dot"></div>
+              <div class="jrw-cursor-crosshair"></div>
+            </div>
+            <div class="jrw-cursor-badge">
+              <span class="jrw-cursor-text">INSPECT</span>
+            </div>
+          </div>
+
           <!-- Desktop Sticky Side Progress Rail (>= 1320px) -->
           <aside class="jrw-progress" aria-label="Workflow step navigation">
             <span class="jrw-progress-label">Steps</span>
@@ -1569,7 +1668,7 @@
                         <span class="jrw-status"><i></i><b id="jrw-status-01">Vector Path Cutout</b></span>
                       </div>
                     </div>
-                    <div class="jrw-stage jrw-stage-1 order-1 lg:order-2" data-stage="1">
+                    <div class="jrw-stage jrw-stage-1 order-1 lg:order-2" data-stage="1" data-cursor="VECTOR PEN · 400%">
                       <!-- Base Layer: Raw Original Photo with Unretouched Background -->
                       <!-- WP/ACF: <?php echo esc_url(get_field('step_01_raw')); ?> -->
                       <img src="assets/images/service-1-before.jpg" class="jrw-photo jrw-photo-base" alt="Raw jewelry shot before background isolation" loading="eager">
@@ -1588,6 +1687,8 @@
                         <ellipse cx="718" cy="532" rx="350" ry="300" class="jrw-s1-pen-path" />
                         <ellipse cx="718" cy="532" rx="200" ry="170" class="jrw-s1-pen-path" />
                       </svg>
+                      <span class="jrw-stage-badge jrw-stage-badge-raw">Raw Capture</span>
+                      <span class="jrw-stage-badge jrw-stage-badge-master">Pure White (RGB 255)</span>
                       <span class="jrw-pass">Pass 01 · Vector Cut</span>
                     </div>
                   </div>
@@ -1600,7 +1701,7 @@
                 <div class="jrw-card-shell">
                   <div class="jrw-card-scrim"></div>
                   <div class="jrw-grid-copy grid grid-cols-1 lg:grid-cols-2">
-                    <div class="jrw-stage jrw-stage-2 order-1 lg:order-1" data-stage="2">
+                    <div class="jrw-stage jrw-stage-2 order-1 lg:order-1" data-stage="2" data-cursor="400% LOUPE · CLEANUP">
                       <!-- WP/ACF: <?php echo esc_url(get_field('step_02_before')); ?> -->
                       <img src="assets/images/service-2-before.jpg" class="jrw-photo jrw-photo-base" alt="Macro jewelry photo showing dust and micro-scratches" loading="lazy">
                       <div class="jrw-s2-after">
@@ -1609,6 +1710,8 @@
                       </div>
                       <div class="jrw-s2-loupe"><span>400% LOUPE</span></div>
                       <div class="jrw-s2-line"></div>
+                      <span class="jrw-stage-badge jrw-stage-badge-raw">Micro-Dust &amp; Flaws</span>
+                      <span class="jrw-stage-badge jrw-stage-badge-master">400% Grain Restored</span>
                       <span class="jrw-pass">Pass 02 · 400% Cleanup</span>
                     </div>
                     <div class="jrw-copy order-2 lg:order-2">
@@ -1649,7 +1752,7 @@
                         <span class="jrw-status"><i></i><b id="jrw-status-03">Sculpting 3D Luster</b></span>
                       </div>
                     </div>
-                    <div class="jrw-stage jrw-stage-3 order-1 lg:order-2" data-stage="3">
+                    <div class="jrw-stage jrw-stage-3 order-1 lg:order-2" data-stage="3" data-cursor="DODGE &amp; BURN · 3D LUSTER">
                       <!-- WP/ACF: <?php echo esc_url(get_field('step_03_flat')); ?> -->
                       <img src="assets/images/service-3-before.jpg" class="jrw-photo jrw-photo-base" alt="Flat-lit jewelry photo before hand retouching" loading="lazy">
                       <div class="jrw-s3-sculpted">
@@ -1658,6 +1761,8 @@
                       </div>
                       <div class="jrw-s3-brush"><i></i><span>DODGE &amp; BURN</span></div>
                       <div class="jrw-s3-sheen"></div>
+                      <span class="jrw-stage-badge jrw-stage-badge-raw">Flat Studio Lighting</span>
+                      <span class="jrw-stage-badge jrw-stage-badge-master">3D Specular Luster</span>
                       <span class="jrw-pass">Pass 03 · Dodge &amp; Burn</span>
                     </div>
                   </div>
@@ -1670,11 +1775,17 @@
                 <div class="jrw-card-shell">
                   <div class="jrw-card-scrim"></div>
                   <div class="jrw-grid-copy grid grid-cols-1 lg:grid-cols-2">
-                    <div class="jrw-stage jrw-stage-4 order-1 lg:order-1" data-stage="4">
+                    <div class="jrw-stage jrw-stage-4 order-1 lg:order-1" data-stage="4" data-cursor="AXIS LOCK · 0.0°">
                       <div class="jrw-s4-grid"></div>
                       <div class="jrw-s4-subject">
+                        <!-- Layer 1: Raw Off-Axis Photo with Casting Offset -->
+                        <!-- WP/ACF: <?php echo esc_url(get_field('step_04_raw')); ?> -->
+                        <img src="assets/images/service-4-before.jpg" class="jrw-photo jrw-s4-raw" alt="Raw luxury jewelry capture showing physical casting tilt and off-center axis" loading="lazy">
+                        <!-- Layer 2: Master Aligned & Retouched Photo (Revealed on 0.0° Lock) -->
                         <!-- WP/ACF: <?php echo esc_url(get_field('step_04_aligned')); ?> -->
-                        <img src="assets/images/hero-ring.jpg" class="jrw-photo jrw-photo-contain" alt="Aligned luxury diamond ring centered upright" loading="lazy">
+                        <div class="jrw-s4-aligned-wrap">
+                          <img src="assets/images/service-4-after.jpg" class="jrw-photo jrw-s4-aligned" alt="Master jewelry perfectly leveled with 0.0° geometric symmetry" loading="lazy">
+                        </div>
                       </div>
                       <svg class="jrw-s4-guide-svg" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <line x1="250" y1="20" x2="250" y2="380" stroke="#B08D57" stroke-width="1" stroke-dasharray="4 4" class="jrw-s4-axis" />
@@ -1687,6 +1798,8 @@
                         <path d="M 170 260 H 150 V 240" stroke="#B08D57" stroke-width="1.5" stroke-linecap="round" class="jrw-s4-axis" />
                         <path d="M 330 260 H 350 V 240" stroke="#B08D57" stroke-width="1.5" stroke-linecap="round" class="jrw-s4-axis" />
                       </svg>
+                      <span class="jrw-stage-badge jrw-stage-badge-raw">Raw Casting Offset (+5.2°)</span>
+                      <span class="jrw-stage-badge jrw-stage-badge-master">0.0° Symmetrical Master</span>
                       <span class="jrw-s4-angle" id="jrw-angle-pill">+5.2° OFFSET</span>
                       <span class="jrw-pass">Pass 04 · Axis Lock</span>
                     </div>
@@ -1728,7 +1841,7 @@
                         <span class="jrw-status"><i></i><b id="jrw-status-05">18K Yellow Gold</b></span>
                       </div>
                     </div>
-                    <div class="jrw-stage jrw-stage-5 order-1 lg:order-2" data-stage="5">
+                    <div class="jrw-stage jrw-stage-5 order-1 lg:order-2" data-stage="5" data-cursor="SELECT ALLOY FINISH">
                       <!-- WP/ACF: <?php echo esc_url(get_field('step_05_yellow_gold')); ?> -->
                       <img src="assets/images/colorway-yellow-gold.jpg" class="jrw-s5-layer is-active" data-finish="yellow" alt="Jewelry digitally finished in 18K yellow gold" loading="lazy">
                       <!-- WP/ACF: <?php echo esc_url(get_field('step_05_rose_gold')); ?> -->
@@ -1741,6 +1854,7 @@
                         <button type="button" role="tab" aria-selected="false" data-finish="rose"><i class="jrw-swatch-rose"></i>Rose Gold</button>
                         <button type="button" role="tab" aria-selected="false" data-finish="platinum"><i class="jrw-swatch-white"></i>Platinum</button>
                       </div>
+                      <span class="jrw-stage-badge jrw-stage-badge-master">100% Metallurgical Match</span>
                       <span class="jrw-pass">Pass 05 · Digital Gilding</span>
                     </div>
                   </div>
@@ -1753,7 +1867,7 @@
                 <div class="jrw-card-shell">
                   <div class="jrw-card-scrim"></div>
                   <div class="jrw-grid-copy grid grid-cols-1 lg:grid-cols-2">
-                    <div class="jrw-stage jrw-stage-6 order-1 lg:order-1" data-stage="6" tabindex="0" role="slider" aria-label="Compare raw and final jewelry images" aria-valuemin="5" aria-valuemax="95" aria-valuenow="50">
+                    <div class="jrw-stage jrw-stage-6 order-1 lg:order-1" data-stage="6" data-cursor="HOLD &amp; DRAG ◄►" tabindex="0" role="slider" aria-label="Compare raw and final jewelry images" aria-valuemin="5" aria-valuemax="95" aria-valuenow="50">
                       <!-- WP/ACF: <?php echo esc_url(get_field('step_06_after')); ?> -->
                       <img src="assets/images/portfolio-1-after.jpg" class="jrw-photo jrw-s6-after" alt="Final retouched luxury jewelry masterpiece" loading="lazy">
                       <div class="jrw-s6-before-wrap">
@@ -1770,8 +1884,8 @@
                           </svg>
                         </button>
                       </div>
-                      <span class="jrw-s6-before-label">Before</span>
-                      <span class="jrw-s6-after-label">After</span>
+                      <span class="jrw-s6-before-label">Raw Studio Capture</span>
+                      <span class="jrw-s6-after-label">Commercial Master</span>
                       <span class="jrw-s6-hint">Drag to Compare</span>
                       <span class="jrw-pass">Pass 06 · Final Master</span>
                     </div>

@@ -1346,7 +1346,7 @@ window.STUDIO_API = {
   }
 
   /* ----------------------------------------------------------------------
-     LUXURY ATELIER JEWELRY SVG PRELOADER (GSAP STROKE & FACET ANIMATION)
+     LUXURY ATELIER JEWELRY SVG PRELOADER (GSAP DIAMOND FIRE & PERCENTAGE)
      ---------------------------------------------------------------------- */
   function initLuxuryPreloader() {
     const preloader = document.getElementById('bjrPreloader');
@@ -1368,13 +1368,15 @@ window.STUDIO_API = {
     }
 
     const paths = preloader.querySelectorAll('.preloader-path');
-    const aura = preloader.querySelector('.preloader-aura');
+    const aura = preloader.querySelector('.preloader-diamond-aura');
+    const anamorphic = preloader.querySelector('.preloader-anamorphic');
     const sparkles = preloader.querySelectorAll('.preloader-sparkle');
-    const gemFills = preloader.querySelectorAll('.preloader-gem-fill');
-    const meta = preloader.querySelector('.preloader-meta');
-    const progressWrap = preloader.querySelector('.preloader-progress-wrap');
+    const facets = preloader.querySelectorAll('.preloader-diamond-facet');
+    const table = preloader.querySelector('.preloader-diamond-table');
+    const percentDisplay = preloader.querySelector('.preloader-percent-display');
+    const bigCount = document.getElementById('preloaderBigCount');
+    const statusText = document.getElementById('preloaderStatusText');
     const progressBar = document.getElementById('preloaderBar');
-    const progressCount = document.getElementById('preloaderCount');
 
     // Prevent scrolling while preloading
     if (lenis && typeof lenis.stop === 'function') lenis.stop();
@@ -1383,59 +1385,87 @@ window.STUDIO_API = {
     // Prepare SVG stroke-dasharray and stroke-dashoffset for path drawing
     paths.forEach((p) => {
       try {
-        const len = p.getTotalLength() || 180;
+        const len = p.getTotalLength() || 220;
         p.style.strokeDasharray = len;
         p.style.strokeDashoffset = len;
       } catch (e) {
-        p.style.strokeDasharray = 180;
-        p.style.strokeDashoffset = 180;
+        p.style.strokeDasharray = 220;
+        p.style.strokeDashoffset = 220;
       }
     });
 
     if (window.gsap) {
       const gsap = window.gsap;
       gsap.set(aura, { scale: 0, opacity: 0, transformOrigin: 'center center' });
+      if (anamorphic) gsap.set(anamorphic, { scaleX: 0, opacity: 0, transformOrigin: 'center center' });
       gsap.set(sparkles, { scale: 0, opacity: 0, transformOrigin: 'center center' });
-      gsap.set(gemFills, { opacity: 0 });
-      gsap.set(meta, { opacity: 0, y: 12 });
-      gsap.set(progressWrap, { opacity: 0, y: 8 });
+      gsap.set(facets, { opacity: 0 });
+      if (table) gsap.set(table, { opacity: 0, scale: 0.85, transformOrigin: 'center center' });
+      if (percentDisplay) gsap.set(percentDisplay, { opacity: 1, y: 0 });
+      if (statusText) gsap.set(statusText, { opacity: 1, y: 0 });
+      if (bigCount) bigCount.textContent = '00';
+      if (progressBar) progressBar.style.width = '0%';
 
-      const tl = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
+      const drawTl = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
 
-      // 1. Draw SVG stroke lines (Shank, Cathedral Basket, Facet Geometry & Crown)
-      tl.to(paths, {
-        strokeDashoffset: 0,
-        duration: 1.15,
-        stagger: 0.035,
-        ease: 'power2.out'
-      })
-      // 2. Diamond facet sheen and champagne aura glow
-      .to(gemFills, { opacity: 1, duration: 0.35 }, '-=0.4')
-      .to(aura, { scale: 1, opacity: 1, duration: 0.55, ease: 'back.out(1.4)' }, '-=0.35')
-      // 3. Optical brilliance sparkles pop & twinkle
-      .to(sparkles, { scale: 1, opacity: 1, duration: 0.3, stagger: 0.08, ease: 'back.out(2)' }, '-=0.3')
-      .to(sparkles[0], { scale: 1.35, duration: 0.35, repeat: 1, yoyo: true, ease: 'sine.inOut' })
-      // 4. Reveal Typography & Progress Bar
-      .to(meta, { opacity: 1, y: 0, duration: 0.45, ease: 'power3.out' }, '-=0.45')
-      .to(progressWrap, { opacity: 1, y: 0, duration: 0.35 }, '-=0.25');
+      // 1. Draw SVG stroke lines (18K Gold Band, Platinum Prongs & Diamond Facets)
+      drawTl
+        .to(paths, {
+          strokeDashoffset: 0,
+          duration: 1.25,
+          stagger: 0.024,
+          ease: 'power2.out'
+        })
+        // 2. Diamond facet crystallization & table mirror flash
+        .to(facets, { opacity: 1, duration: 0.45, stagger: 0.02 }, 0.4)
+        .to(table, { opacity: 0.95, scale: 1, duration: 0.35 }, 0.6)
+        .to(aura, { scale: 1, opacity: 1, duration: 0.65, ease: 'back.out(1.5)' }, 0.5)
+        // 3. Horizontal Anamorphic diamond flare sweep
+        .to(anamorphic, { scaleX: 1.4, opacity: 1, duration: 0.45, ease: 'power3.out' }, 0.8)
+        .to(anamorphic, { scaleX: 0.8, opacity: 0.55, duration: 0.35 }, 1.25)
+        // 4. Diamond optical scintillation sparkles twinkle
+        .to(sparkles, { scale: 1, opacity: 1, duration: 0.35, stagger: 0.06, ease: 'back.out(2.5)' }, 0.9)
+        .to('.preloader-sparkle--main', { scale: 1.4, duration: 0.32, repeat: 1, yoyo: true, ease: 'sine.inOut' }, 1.22);
 
-      // Progress counter animation from 0% to 100%
+      // Animated 00% to 100% Progress Counter & Dynamic Bench Protocol Status
       const counter = { val: 0 };
+      let lastStatus = '';
+      let hasExited = false;
+
       gsap.to(counter, {
         val: 100,
-        duration: 1.4,
+        duration: 1.75,
         ease: 'power1.inOut',
         onUpdate: () => {
           const current = Math.round(counter.val);
-          if (progressBar) progressBar.style.width = current + '%';
-          if (progressCount) progressCount.textContent = current + '%';
+          if (bigCount) {
+            bigCount.textContent = current < 10 ? '0' + current : current;
+          }
+          if (progressBar) {
+            progressBar.style.width = current + '%';
+          }
+
+          let nextStatus = 'Initializing Optical Calibration...';
+          if (current >= 25 && current < 55) {
+            nextStatus = 'Calibrating Diamond Facet Fire...';
+          } else if (current >= 55 && current < 85) {
+            nextStatus = 'Polishing 18K Gold Metallic Gradient...';
+          } else if (current >= 85) {
+            nextStatus = 'Haute Joaillerie Masterpiece Ready.';
+          }
+
+          if (statusText && nextStatus !== lastStatus) {
+            lastStatus = nextStatus;
+            statusText.textContent = nextStatus;
+          }
         },
         onComplete: () => {
+          if (bigCount) bigCount.textContent = '100';
+          if (progressBar) progressBar.style.width = '100%';
           exitPreloader();
         }
       });
 
-      let hasExited = false;
       function exitPreloader() {
         if (hasExited) return;
         hasExited = true;
@@ -1455,24 +1485,31 @@ window.STUDIO_API = {
         });
 
         exitTl
-          .to(preloader.querySelector('.preloader-content'), {
-            y: -22,
-            opacity: 0,
-            scale: 0.94,
-            duration: 0.5,
-            ease: 'power3.in'
+          // Final brilliant scintillation flare flash
+          .to('.preloader-sparkle--main', {
+            scale: 2.2,
+            opacity: 1,
+            duration: 0.22,
+            ease: 'power2.out'
           })
+          .to(preloader.querySelector('.preloader-content'), {
+            y: -24,
+            opacity: 0,
+            scale: 0.96,
+            duration: 0.45,
+            ease: 'power3.in'
+          }, '-=0.08')
           .to(preloader, {
             opacity: 0,
-            duration: 0.6,
+            duration: 0.55,
             ease: 'power3.inOut'
-          }, '-=0.2');
+          }, '-=0.22');
       }
 
       // Safety timeout so user is never stuck if window loading is delayed
       setTimeout(() => {
         if (!hasExited) exitPreloader();
-      }, 3200);
+      }, 3500);
 
     } else {
       // Fallback if GSAP is unavailable
