@@ -672,6 +672,9 @@ window.STUDIO_API = {
     const authorTitleEl = document.getElementById('artisanAuthorTitle');
     const authorMetaEl = document.getElementById('artisanAuthorMeta');
     const sealEl = document.getElementById('artisanSeal');
+    const progressBar = document.getElementById('artisanProgressBar');
+    const progressNum = document.getElementById('artisanProgressNum');
+    const diamondSvg = document.getElementById('artisanDiamondSvg');
 
     const manifestoData = [
       {
@@ -733,6 +736,31 @@ window.STUDIO_API = {
     let lastIndex = 0;
     let isTransitioning = false;
 
+    function restartProgressBar() {
+      if (window.gsap && progressBar) {
+        window.gsap.killTweensOf(progressBar);
+        window.gsap.fromTo(progressBar, { width: '0%' }, { width: '100%', duration: 3.8, ease: 'none' });
+      }
+    }
+
+    function pulseDiamondSeal() {
+      if (window.gsap && diamondSvg) {
+        window.gsap.fromTo(
+          diamondSvg,
+          {
+            scale: 1.22,
+            filter: 'drop-shadow(0 0 24px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 35px rgba(217, 186, 130, 0.9))'
+          },
+          {
+            scale: 1,
+            filter: 'drop-shadow(0 0 8px rgba(181, 144, 84, 0.45))',
+            duration: 0.75,
+            ease: 'power2.out'
+          }
+        );
+      }
+    }
+
     function updateLeftContent(index) {
       if (index === lastIndex && isTransitioning) return;
       isTransitioning = true;
@@ -742,6 +770,14 @@ window.STUDIO_API = {
         isTransitioning = false;
         return;
       }
+
+      // Update linear progress & diamond facet gleam
+      if (progressNum) {
+        const currentPillar = (index % manifestoData.length) + 1;
+        progressNum.textContent = `0${currentPillar} / 0${manifestoData.length}`;
+      }
+      restartProgressBar();
+      pulseDiamondSeal();
 
       if (window.gsap && manifestoContent) {
         const gsap = window.gsap;
@@ -812,6 +848,7 @@ window.STUDIO_API = {
         on: {
           init: function () {
             highlightActiveCard(this);
+            restartProgressBar();
           },
           slideChangeTransitionStart: function () {
             highlightActiveCard(this);
