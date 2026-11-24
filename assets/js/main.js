@@ -162,12 +162,12 @@ window.STUDIO_API = {
             <img src="${oldSrc || ''}" class="ba-img ba-img--old" alt="Old Raw Capture: ${altText}" loading="lazy" decoding="async" />
           </div>
           <div class="ba-divider" aria-hidden="true"></div>
-          <span class="ba-badge ba-badge--old ba-badge--before">${oldLabel}</span>
-          <span class="ba-badge ba-badge--new ba-badge--after">${newLabel}</span>
           <button type="button" class="ba-handle" role="slider" aria-label="Compare ${oldLabel} and ${newLabel} for ${altText}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+            <span class="ba-flank-badge ba-flank-before">BEFORE</span>
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
               <path d="M6.5 4.5L2.5 9L6.5 13.5M11.5 4.5L15.5 9L11.5 13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
+            <span class="ba-flank-badge ba-flank-after">AFTER</span>
           </button>
         `;
       } else {
@@ -188,6 +188,21 @@ window.STUDIO_API = {
       const handle = slider.querySelector('.ba-handle');
       if (!handle) return;
 
+      // Ensure handle has BEFORE and AFTER flank badges for dynamic cursor tracking
+      if (!handle.querySelector('.ba-flank-before')) {
+        const beforeFlank = document.createElement('span');
+        beforeFlank.className = 'ba-flank-badge ba-flank-before';
+        beforeFlank.textContent = 'BEFORE';
+        handle.insertBefore(beforeFlank, handle.firstChild);
+      }
+      if (!handle.querySelector('.ba-flank-after')) {
+        const afterFlank = document.createElement('span');
+        afterFlank.className = 'ba-flank-badge ba-flank-after';
+        afterFlank.textContent = 'AFTER';
+        handle.appendChild(afterFlank);
+      }
+
+      const parentCard = slider.closest('.pf-card, [data-tilt]');
       let pct = 50;
       let isDragging = false;
       let activePointerId = null;
@@ -199,6 +214,16 @@ window.STUDIO_API = {
         rafId = requestAnimationFrame(() => {
           slider.style.setProperty('--pos', pct + '%');
           handle.setAttribute('aria-valuenow', String(Math.round(pct)));
+          if (pct < 16) {
+            handle.classList.add('is-near-left');
+          } else {
+            handle.classList.remove('is-near-left');
+          }
+          if (pct > 84) {
+            handle.classList.add('is-near-right');
+          } else {
+            handle.classList.remove('is-near-right');
+          }
         });
       };
 
@@ -222,6 +247,9 @@ window.STUDIO_API = {
       slider.addEventListener('pointerenter', (e) => {
         if (e.pointerType === 'mouse') {
           slider.classList.add('is-hovered');
+          if (parentCard && window.gsap) {
+            window.gsap.to(parentCard, { rotateX: 0, rotateY: 0, scale: 1, duration: 0.25, overwrite: 'auto' });
+          }
           updateFromClientX(e.clientX);
           updateGlare(e.clientX, e.clientY);
         }
@@ -609,6 +637,89 @@ window.STUDIO_API = {
           );
         }
         refreshMotion();
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------------------
+     4B. PORTFOLIO MACRO ANGLE VIEW SWITCHER (VIEW 01 / VIEW 02 / VIEW 03)
+     ---------------------------------------------------------------------- */
+  function initPortfolioViews() {
+    const cards = document.querySelectorAll('.pf-card');
+    cards.forEach((card) => {
+      const slider = card.querySelector('[data-ba-slider]');
+      if (!slider) return;
+      const viewButtons = card.querySelectorAll('.pf-view-btn');
+      if (!viewButtons.length) return;
+
+      viewButtons.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (btn.classList.contains('is-active')) return;
+
+          // Update active pill state
+          viewButtons.forEach((b) => {
+            b.classList.remove('is-active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          btn.classList.add('is-active');
+          btn.setAttribute('aria-selected', 'true');
+
+          const beforeSrc = btn.getAttribute('data-before');
+          const afterSrc = btn.getAttribute('data-after');
+          if (!beforeSrc || !afterSrc) return;
+
+          const beforeImg = slider.querySelector('.ba-layer--before img');
+          const afterImg = slider.querySelector('.ba-layer--after img');
+
+          if (window.gsap && beforeImg && afterImg) {
+            window.gsap.to([beforeImg, afterImg], {
+              opacity: 0.25,
+              scale: 0.985,
+              duration: 0.16,
+              ease: 'power2.out',
+              onComplete: () => {
+                beforeImg.src = beforeSrc;
+                afterImg.src = afterSrc;
+                slider.setAttribute('data-before', beforeSrc);
+                slider.setAttribute('data-after', afterSrc);
+                slider.setAttribute('data-old-image', beforeSrc);
+                slider.setAttribute('data-new-image', afterSrc);
+
+                const restore = () => {
+                  window.gsap.to([beforeImg, afterImg], {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.28,
+                    ease: 'power2.out',
+                    clearProps: 'transform,opacity'
+                  });
+                };
+
+                if (beforeImg.complete && afterImg.complete) {
+                  restore();
+                } else {
+                  let loaded = 0;
+                  const onLoaded = () => {
+                    loaded++;
+                    if (loaded >= 2) restore();
+                  };
+                  beforeImg.onload = onLoaded;
+                  afterImg.onload = onLoaded;
+                  setTimeout(restore, 260);
+                }
+              }
+            });
+          } else {
+            if (beforeImg) beforeImg.src = beforeSrc;
+            if (afterImg) afterImg.src = afterSrc;
+            slider.setAttribute('data-before', beforeSrc);
+            slider.setAttribute('data-after', afterSrc);
+            slider.setAttribute('data-old-image', beforeSrc);
+            slider.setAttribute('data-new-image', afterSrc);
+          }
+        });
       });
     });
   }
@@ -1773,6 +1884,7 @@ window.STUDIO_API = {
     initMacroLoupe();
     initColorwayStudio();
     initPortfolioFilters();
+    initPortfolioViews();
     initTestimonialsSwiper();
     initArtisanManifestoSlider();
     initFaq();

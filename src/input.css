@@ -810,6 +810,28 @@
     @apply text-obsidian;
   }
 
+  /* Interactive View Switcher Buttons under Portfolio Cards */
+  .pf-views-row {
+    @apply mt-auto pt-3 border-t border-stone-200/70 flex flex-wrap items-center justify-between gap-2;
+  }
+
+  .pf-views {
+    @apply flex items-center gap-1.5;
+  }
+
+  .pf-view-btn {
+    @apply text-[11px] font-sans font-semibold tracking-wider uppercase px-2.5 sm:px-3 py-1 rounded-full border border-stone-200 bg-stone-100/90 text-ink-secondary transition-all duration-200 cursor-pointer select-none;
+  }
+
+  .pf-view-btn:hover {
+    @apply border-gold/70 text-ink-primary bg-white shadow-xs -translate-y-0.5;
+  }
+
+  .pf-view-btn.is-active {
+    @apply bg-obsidian text-gold-light border-obsidian font-bold;
+    box-shadow: 0 2px 8px rgba(14, 13, 12, 0.2), 0 0 0 1px rgba(181, 144, 84, 0.5);
+  }
+
   .pf-edits {
     @apply flex flex-wrap gap-1.5 mt-auto pt-3 border-t border-stone-200/70 list-none;
   }
@@ -1936,6 +1958,77 @@
 .ba-slider.is-hovered .ba-handle svg,
 .ba-slider.is-dragging .ba-handle svg {
   transform: scale(1.12);
+}
+
+/* Luxury Dynamic Flank Badges (BEFORE & AFTER) attached to cursor handle */
+.ba-flank-badge {
+  position: absolute;
+  top: 50%;
+  pointer-events: none;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  line-height: 1;
+  z-index: 25;
+}
+
+.ba-flank-before {
+  right: calc(100% + 10px);
+  transform: translateY(-50%) translateX(6px);
+  background: rgba(14, 13, 12, 0.9);
+  color: #FAF8F4;
+  border: 1px solid rgba(181, 144, 84, 0.55);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.ba-flank-after {
+  left: calc(100% + 10px);
+  transform: translateY(-50%) translateX(-6px);
+  background: rgba(255, 255, 255, 0.96);
+  color: #0E0D0C;
+  border: 1px solid rgba(181, 144, 84, 0.6);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.ba-slider:hover .ba-flank-badge,
+.ba-slider.is-hovered .ba-flank-badge,
+.ba-slider.is-dragging .ba-flank-badge {
+  opacity: 1;
+}
+
+.ba-slider:hover .ba-flank-before,
+.ba-slider.is-hovered .ba-flank-before,
+.ba-slider.is-dragging .ba-flank-before {
+  transform: translateY(-50%) translateX(0);
+}
+
+.ba-slider:hover .ba-flank-after,
+.ba-slider.is-hovered .ba-flank-after,
+.ba-slider.is-dragging .ba-flank-after {
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Edge protection so badges never clip at extreme slider limits */
+.ba-handle.is-near-left .ba-flank-before {
+  opacity: 0 !important;
+  transform: translateY(-50%) translateX(10px) !important;
+}
+
+.ba-handle.is-near-right .ba-flank-after {
+  opacity: 0 !important;
+  transform: translateY(-50%) translateX(-10px) !important;
 }
 
 .ba-badge {
