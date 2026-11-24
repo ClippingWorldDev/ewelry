@@ -2469,155 +2469,184 @@
         <section id="authenticity" class="artisan-pledge-section">
           <div class="container">
             <div class="artisan-pledge-card js-reveal">
+              <!-- Background Atelier Watermark Seal -->
+              <div class="absolute -right-16 -top-16 w-80 h-80 rounded-full border border-gold/10 pointer-events-none opacity-40"></div>
+              <div class="absolute -right-10 -top-10 w-68 h-68 rounded-full border border-gold/5 border-dashed pointer-events-none opacity-30"></div>
+
               <!-- Top Seal -->
-              <div
-                class="flex flex-col items-center justify-center text-center mb-10"
-              >
-                <div
-                  class="w-16 h-16 rounded-full border border-gold/60 bg-gold/10 flex items-center justify-center mb-4 text-gold shadow-glow-gold"
-                >
-                  <svg
-                    class="w-8 h-8"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                  >
-                    <path
-                      d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
+              <div class="flex flex-col items-center justify-center text-center mb-8 sm:mb-10">
+                <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-full border border-gold/70 bg-gradient-to-b from-gold/20 via-gold/10 to-obsidian flex items-center justify-center mb-4 text-gold shadow-[0_0_24px_rgba(181,144,84,0.35)] relative">
+                  <div class="absolute inset-1 rounded-full border border-gold/30 border-dashed pointer-events-none"></div>
+                  <svg class="w-8 h-8 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 3h12l4 6-10 12L2 9l4-6z" />
+                    <path d="M10 3l-2 6 4 12 4-12-2-6" />
+                    <path d="M2 9h20" />
                   </svg>
                 </div>
-                <span
-                  class="eyebrow"
-                  style="color: #d9ba82; margin-bottom: 0.5rem"
-                  >Authenticity &amp; Bench Integrity</span
-                >
-                <h2
-                  style="
-                    font-size: clamp(2rem, 3.5vw, 3rem);
-                    line-height: 1.15;
-                    color: #fbf9f4;
-                  "
-                >
+                <span class="eyebrow text-gold-light tracking-[0.25em] text-[10.5px] sm:text-[11px] uppercase mb-2 inline-block">Authenticity &amp; Bench Integrity</span>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-ink-light font-normal tracking-tight leading-tight">
                   The Human Artisan Manifesto.
                 </h2>
               </div>
 
-              <!-- Dual Column Grid -->
-              <div
-                class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-14 items-center text-left"
-              >
-                <!-- Manifesto Quote & Signature -->
-                <div
-                  class="border-b lg:border-b-0 lg:border-r border-white/10 pb-8 lg:pb-0 lg:pr-10"
-                >
-                  <blockquote
-                    class="font-serif text-lg sm:text-xl lg:text-2xl italic leading-relaxed text-ink-light font-light mb-8"
-                  >
-                    &ldquo;In an era flooded with generic AI filters that
-                    distort diamond fire, melt fine prongs, and blur hallmarks,
-                    we make one solemn promise: every facet, reflection, and
-                    shadow is crafted by senior retouchers with 10+ years of
-                    high-jewelry bench experience. We enhance desire&mdash;we
-                    never fake perfection.&rdquo;
-                  </blockquote>
-
-                  <div class="flex items-center gap-6 pt-4">
-                    <div class="artisan-author flex-1">
-                      <span
-                        class="artisan-sig text-2xl sm:text-3xl font-serif text-gold italic font-semibold"
-                        >Marcello Vance</span
-                      >
-                      <span
-                        class="block text-xs uppercase tracking-[0.2em] text-gold-light/80 mt-1"
-                        >Lead Master Jewelry Retoucher &amp; Colorist</span
-                      >
-                      <span class="block text-[11px] text-ink-light-muted"
-                        >Atelier Bench Master &bull; Member #408</span
-                      >
+              <!-- Dual Column Grid: Left Content (Synced R-to-L Slide) & Right Vertical Swiper (Bottom-to-Top Infinite Loop) -->
+              <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 xl:gap-14 items-center text-left">
+                <!-- LEFT COLUMN: DYNAMIC RIGHT-TO-LEFT MANIFESTO CONTENT -->
+                <div class="artisan-left-column border-b lg:border-b-0 lg:border-r border-white/10 pb-8 lg:pb-0 lg:pr-10 xl:pr-12 relative overflow-hidden min-h-[410px] sm:min-h-[430px] lg:min-h-[450px] flex flex-col justify-between">
+                  <div id="artisanManifestoContent" class="artisan-content-wrap">
+                    <div class="artisan-tag-badge inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 border border-gold/30 text-gold text-[10px] uppercase tracking-widest font-semibold mb-4">
+                      <span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse"></span>
+                      <span id="artisanTag">Authenticity Protocol · Pillar 01</span>
                     </div>
-                    <div
-                      class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-gold/40 bg-white/[0.03] p-2 flex flex-col items-center justify-center text-center shrink-0"
-                    >
-                      <span
-                        class="text-[9px] uppercase tracking-wider text-gold font-semibold leading-tight"
-                        >100%<br />HAND<br />CRAFT</span
-                      >
+
+                    <h3 id="artisanHeadline" class="font-serif text-xl sm:text-2xl text-ink-light font-normal leading-snug mb-5">
+                      Preserving Authentic Diamond Fire &amp; Real GIA Facet Geometry.
+                    </h3>
+
+                    <blockquote id="artisanQuote" class="font-serif text-base sm:text-lg lg:text-[18.5px] italic leading-relaxed text-ink-light/90 font-light mb-8">
+                      &ldquo;In an era flooded with generic AI filters that distort diamond fire, melt fine prongs, and blur hallmarks, we make one solemn promise: every facet, reflection, and culet is crafted by senior retouchers with 10+ years of high-jewelry bench experience. We enhance desire&mdash;we never fake perfection.&rdquo;
+                    </blockquote>
+
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-5 sm:gap-6 pt-6 border-t border-white/10">
+                      <div class="artisan-author flex-1">
+                        <div class="flex items-center gap-2 mb-0.5">
+                          <span id="artisanAuthorName" class="artisan-sig text-2xl sm:text-3xl font-serif text-gold italic font-semibold">Marcello Vance</span>
+                          <span class="text-xs text-gold/80" title="Senior Certified Bench Master">✦</span>
+                        </div>
+                        <span id="artisanAuthorTitle" class="block text-xs uppercase tracking-[0.2em] text-gold-light/90">Lead Master Jewelry Retoucher &amp; Colorist</span>
+                        <span id="artisanAuthorMeta" class="block text-[11px] text-ink-light-muted mt-0.5">Atelier Bench Master &bull; Member #408</span>
+                      </div>
+                      <div class="artisan-seal-stamp">
+                        <span id="artisanSeal" class="text-[8.5px] uppercase tracking-wider text-gold font-bold leading-tight">100%<br />HAND<br />CRAFT</span>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <!-- 4 Bench Commandments -->
-                <div class="space-y-4">
-                  <div
-                    class="p-4 sm:p-5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-gold/40 transition-colors"
-                  >
-                    <div class="flex items-center gap-3 mb-1">
-                      <span class="text-gold text-sm font-serif">✦</span>
-                      <strong class="text-sm font-serif text-ink-light"
-                        >Zero AI Hallucination Guarantee</strong
-                      >
-                    </div>
-                    <p
-                      class="text-xs text-ink-light-muted leading-relaxed pl-6"
-                    >
-                      No automated generative blurring. Facets remain
-                      mathematically true to real GIA diamond cuts.
-                    </p>
-                  </div>
+                <!-- RIGHT COLUMN: VERTICAL INFINITE SWIPER (3 ITEMS VISIBLE, BOTTOM TO TOP) -->
+                <div class="artisan-right-column relative">
+                  <div class="artisan-swiper-container swiper-container h-[410px] sm:h-[430px] lg:h-[450px] overflow-hidden relative" id="artisanSwiper">
+                    <div class="swiper-wrapper">
+                      <!-- Slide 1 -->
+                      <div class="swiper-slide cursor-pointer" data-index="0">
+                        <div class="artisan-commandment is-active">
+                          <div class="flex items-center justify-between gap-2 mb-2">
+                            <span class="artisan-pill-num text-[10px] uppercase font-bold tracking-widest px-2.5 py-0.5 rounded-full">Pillar 01</span>
+                            <span class="artisan-status-badge text-[10px] uppercase font-bold tracking-wider text-gold items-center gap-1.5">
+                              <span class="w-1.5 h-1.5 rounded-full bg-gold animate-ping"></span>
+                              Active Pillar
+                            </span>
+                          </div>
+                          <div class="flex items-center gap-2 mb-1">
+                            <span class="artisan-bullet text-gold text-xs font-serif">✦</span>
+                            <strong class="text-xs sm:text-sm font-serif tracking-wide">Zero AI Hallucination Guarantee</strong>
+                          </div>
+                          <p class="text-[11.5px] sm:text-xs leading-relaxed pl-4">
+                            No automated generative blurring. Facets remain mathematically true to real GIA diamond cuts and pavé settings.
+                          </p>
+                        </div>
+                      </div>
 
-                  <div
-                    class="p-4 sm:p-5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-gold/40 transition-colors"
-                  >
-                    <div class="flex items-center gap-3 mb-1">
-                      <span class="text-gold text-sm font-serif">✦</span>
-                      <strong class="text-sm font-serif text-ink-light"
-                        >100% Wacom Pen-Tool Handcraft</strong
-                      >
-                    </div>
-                    <p
-                      class="text-xs text-ink-light-muted leading-relaxed pl-6"
-                    >
-                      Every gemstone claw, bezel, and link isolated with
-                      hand-drawn vector bezier curves.
-                    </p>
-                  </div>
+                      <!-- Slide 2 -->
+                      <div class="swiper-slide cursor-pointer" data-index="1">
+                        <div class="artisan-commandment">
+                          <div class="flex items-center justify-between gap-2 mb-2">
+                            <span class="artisan-pill-num text-[10px] uppercase font-bold tracking-widest px-2.5 py-0.5 rounded-full">Pillar 02</span>
+                            <span class="artisan-status-badge text-[10px] uppercase font-bold tracking-wider text-gold items-center gap-1.5">
+                              <span class="w-1.5 h-1.5 rounded-full bg-gold animate-ping"></span>
+                              Active Pillar
+                            </span>
+                          </div>
+                          <div class="flex items-center gap-2 mb-1">
+                            <span class="artisan-bullet text-gold text-xs font-serif">✦</span>
+                            <strong class="text-xs sm:text-sm font-serif tracking-wide">100% Wacom Pen-Tool Handcraft</strong>
+                          </div>
+                          <p class="text-[11.5px] sm:text-xs leading-relaxed pl-4">
+                            Every gemstone claw, gallery opening, and articulated link isolated with hand-drawn 400% vector Bézier curves.
+                          </p>
+                        </div>
+                      </div>
 
-                  <div
-                    class="p-4 sm:p-5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-gold/40 transition-colors"
-                  >
-                    <div class="flex items-center gap-3 mb-1">
-                      <span class="text-gold text-sm font-serif">✦</span>
-                      <strong class="text-sm font-serif text-ink-light"
-                        >16-Bit ProPhoto Color Integrity</strong
-                      >
-                    </div>
-                    <p
-                      class="text-xs text-ink-light-muted leading-relaxed pl-6"
-                    >
-                      Full dynamic range preserved. Non-destructive layered
-                      master PSDs provided on delivery.
-                    </p>
-                  </div>
+                      <!-- Slide 3 -->
+                      <div class="swiper-slide cursor-pointer" data-index="2">
+                        <div class="artisan-commandment">
+                          <div class="flex items-center justify-between gap-2 mb-2">
+                            <span class="artisan-pill-num text-[10px] uppercase font-bold tracking-widest px-2.5 py-0.5 rounded-full">Pillar 03</span>
+                            <span class="artisan-status-badge text-[10px] uppercase font-bold tracking-wider text-gold items-center gap-1.5">
+                              <span class="w-1.5 h-1.5 rounded-full bg-gold animate-ping"></span>
+                              Active Pillar
+                            </span>
+                          </div>
+                          <div class="flex items-center gap-2 mb-1">
+                            <span class="artisan-bullet text-gold text-xs font-serif">✦</span>
+                            <strong class="text-xs sm:text-sm font-serif tracking-wide">16-Bit ProPhoto Color Integrity</strong>
+                          </div>
+                          <p class="text-[11.5px] sm:text-xs leading-relaxed pl-4">
+                            Full spectral dynamic range preserved. Non-destructive layered master PSDs with colorway channels provided on delivery.
+                          </p>
+                        </div>
+                      </div>
 
-                  <div
-                    class="p-4 sm:p-5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-gold/40 transition-colors"
-                  >
-                    <div class="flex items-center gap-3 mb-1">
-                      <span class="text-gold text-sm font-serif">✦</span>
-                      <strong class="text-sm font-serif text-ink-light"
-                        >Strict Studio NDA &amp; Vault Security</strong
-                      >
+                      <!-- Slide 4 -->
+                      <div class="swiper-slide cursor-pointer" data-index="3">
+                        <div class="artisan-commandment">
+                          <div class="flex items-center justify-between gap-2 mb-2">
+                            <span class="artisan-pill-num text-[10px] uppercase font-bold tracking-widest px-2.5 py-0.5 rounded-full">Pillar 04</span>
+                            <span class="artisan-status-badge text-[10px] uppercase font-bold tracking-wider text-gold items-center gap-1.5">
+                              <span class="w-1.5 h-1.5 rounded-full bg-gold animate-ping"></span>
+                              Active Pillar
+                            </span>
+                          </div>
+                          <div class="flex items-center gap-2 mb-1">
+                            <span class="artisan-bullet text-gold text-xs font-serif">✦</span>
+                            <strong class="text-xs sm:text-sm font-serif tracking-wide">Strict Studio NDA &amp; Vault Security</strong>
+                          </div>
+                          <p class="text-[11.5px] sm:text-xs leading-relaxed pl-4">
+                            Your unreleased high-jewelry collections and prototype CAD renders are encrypted and never shown publicly without consent.
+                          </p>
+                        </div>
+                      </div>
+
+                      <!-- Slide 5 -->
+                      <div class="swiper-slide cursor-pointer" data-index="4">
+                        <div class="artisan-commandment">
+                          <div class="flex items-center justify-between gap-2 mb-2">
+                            <span class="artisan-pill-num text-[10px] uppercase font-bold tracking-widest px-2.5 py-0.5 rounded-full">Pillar 05</span>
+                            <span class="artisan-status-badge text-[10px] uppercase font-bold tracking-wider text-gold items-center gap-1.5">
+                              <span class="w-1.5 h-1.5 rounded-full bg-gold animate-ping"></span>
+                              Active Pillar
+                            </span>
+                          </div>
+                          <div class="flex items-center gap-2 mb-1">
+                            <span class="artisan-bullet text-gold text-xs font-serif">✦</span>
+                            <strong class="text-xs sm:text-sm font-serif tracking-wide">Natural Metal Grain &amp; 3D Volumetrics</strong>
+                          </div>
+                          <p class="text-[11.5px] sm:text-xs leading-relaxed pl-4">
+                            Authentic brushed, satin, and high-polish metal grain preserved without artificial synthetic plastic smearing.
+                          </p>
+                        </div>
+                      </div>
+
+                      <!-- Slide 6 -->
+                      <div class="swiper-slide cursor-pointer" data-index="5">
+                        <div class="artisan-commandment">
+                          <div class="flex items-center justify-between gap-2 mb-2">
+                            <span class="artisan-pill-num text-[10px] uppercase font-bold tracking-widest px-2.5 py-0.5 rounded-full">Pillar 06</span>
+                            <span class="artisan-status-badge text-[10px] uppercase font-bold tracking-wider text-gold items-center gap-1.5">
+                              <span class="w-1.5 h-1.5 rounded-full bg-gold animate-ping"></span>
+                              Active Pillar
+                            </span>
+                          </div>
+                          <div class="flex items-center gap-2 mb-1">
+                            <span class="artisan-bullet text-gold text-xs font-serif">✦</span>
+                            <strong class="text-xs sm:text-sm font-serif tracking-wide">Standardized Multi-Device Proofing</strong>
+                          </div>
+                          <p class="text-[11.5px] sm:text-xs leading-relaxed pl-4">
+                            Hardware-calibrated across sRGB, Adobe RGB and DCI-P3 for guaranteed color fidelity in print and digital lookbooks.
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                    <p
-                      class="text-xs text-ink-light-muted leading-relaxed pl-6"
-                    >
-                      Your unreleased designs and high-jewelry prototypes are
-                      encrypted and never shown publicly without consent.
-                    </p>
                   </div>
                 </div>
               </div>

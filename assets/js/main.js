@@ -22,6 +22,7 @@ window.STUDIO_API = {
 
   let lenis = null;
   let testimonialsSwiper = null;
+  let artisanManifestoSwiper = null;
 
   function parseHash(rawHash) {
     const clean = (rawHash || '#home').replace(/^#/, '').trim();
@@ -33,6 +34,9 @@ window.STUDIO_API = {
     if (lenis && typeof lenis.resize === 'function') lenis.resize();
     if (testimonialsSwiper && typeof testimonialsSwiper.update === 'function') {
       testimonialsSwiper.update();
+    }
+    if (artisanManifestoSwiper && typeof artisanManifestoSwiper.update === 'function') {
+      artisanManifestoSwiper.update();
     }
     if (window.ScrollTrigger && typeof window.ScrollTrigger.refresh === 'function') {
       window.ScrollTrigger.refresh();
@@ -650,6 +654,205 @@ window.STUDIO_API = {
       });
     } catch (err) {
       console.warn('Swiper initialization skipped:', err);
+    }
+  }
+
+  /* ----------------------------------------------------------------------
+     HUMAN ARTISAN MANIFESTO (SWIPER VERTICAL INFINITE LOOP + GSAP R-TO-L SYNC)
+     ---------------------------------------------------------------------- */
+  function initArtisanManifestoSlider() {
+    const swiperEl = document.getElementById('artisanSwiper');
+    if (!swiperEl || typeof window.Swiper !== 'function') return;
+
+    const manifestoContent = document.getElementById('artisanManifestoContent');
+    const tagEl = document.getElementById('artisanTag');
+    const headlineEl = document.getElementById('artisanHeadline');
+    const quoteEl = document.getElementById('artisanQuote');
+    const authorNameEl = document.getElementById('artisanAuthorName');
+    const authorTitleEl = document.getElementById('artisanAuthorTitle');
+    const authorMetaEl = document.getElementById('artisanAuthorMeta');
+    const sealEl = document.getElementById('artisanSeal');
+
+    const manifestoData = [
+      {
+        tag: 'Authenticity Protocol · Pillar 01',
+        headline: 'Preserving Authentic Diamond Fire & Real GIA Facet Geometry.',
+        quote: '“In an era flooded with generic AI filters that distort diamond fire, melt fine prongs, and blur hallmarks, we make one solemn promise: every facet, reflection, and culet is crafted by senior retouchers with 10+ years of high-jewelry bench experience. We enhance desire—we never fake perfection.”',
+        authorName: 'Marcello Vance',
+        authorTitle: 'Lead Master Jewelry Retoucher & Colorist',
+        authorMeta: 'Atelier Bench Master • Member #408',
+        sealText: '100%<br />HAND<br />CRAFT'
+      },
+      {
+        tag: 'Authenticity Protocol · Pillar 02',
+        headline: 'Sub-Pixel Vector Bézier Isolation at 400% Magnification.',
+        quote: '“Automated background erasers and machine masks ruthlessly clip delicate claw tips and flatten intricate platinum filigree. Every single bezel opening, hollow earring cavity, and tennis link is isolated by hand with precision Bézier pen paths on 4K Wacom displays.”',
+        authorName: 'Elena Rostova',
+        authorTitle: 'Senior Vector Clipping & Masking Specialist',
+        authorMeta: 'Atelier Bench Master • Member #214',
+        sealText: '400%<br />VECTOR<br />PEN'
+      },
+      {
+        tag: 'Authenticity Protocol · Pillar 03',
+        headline: 'Uncompressed 16-Bit ProPhoto Dynamic Color Fidelity.',
+        quote: '“We refuse to smash color depth into 8-bit web artifacts. Clients receive museum-ready 16-bit ProPhoto RGB master archives with separated alloy layer stacks, ensuring color warmth matches real physical 18K Yellow, Rose Gold, and Platinum casting specifications.”',
+        authorName: 'Marcello Vance',
+        authorTitle: 'Master Colorist & Colorways Lead',
+        authorMeta: 'Certified Color Calibration Fellow • Member #408',
+        sealText: '16-BIT<br />PRO<br />PHOTO'
+      },
+      {
+        tag: 'Authenticity Protocol · Pillar 04',
+        headline: 'Bilateral Confidentiality & Air-Gapped Vault Security.',
+        quote: '“Your unreleased Baselworld collections, high-jewelry one-offs, and secret prototype CAD renders never touch public third-party AI cloud servers. Stored on air-gapped, encrypted on-premise local servers under strict enforceable NDAs with zero public disclosure without consent.”',
+        authorName: 'Julian Sterling',
+        authorTitle: 'Atelier Operations & Security Director',
+        authorMeta: 'Executive Studio Officer • Member #102',
+        sealText: 'VAULT<br />SECURE<br />NDA'
+      },
+      {
+        tag: 'Authenticity Protocol · Pillar 05',
+        headline: 'Tactile Curvature Sculpting Without Plastic Blur Smearing.',
+        quote: '“Plastic frequency separation kills authentic metal luster. Our artists hand-paint micro specular lights along shank edges and volumetric dodge-and-burn curves, restoring genuine 3D tactile luxury presence while respecting the original metal polish.”',
+        authorName: 'Marcello Vance',
+        authorTitle: 'Lead Master Jewelry Retoucher',
+        authorMeta: 'Atelier Bench Master • Member #408',
+        sealText: '3D<br />DODGE<br />BURN'
+      },
+      {
+        tag: 'Authenticity Protocol · Pillar 06',
+        headline: 'Strict D50/D65 Proofing from OLED Screens to Luxury Lookbooks.',
+        quote: '“From 5th Avenue flagship window billboards to mobile e-commerce zoom, our color outputs undergo multi-display calibration across EIZO ColorEdge hardware. What your creative director approves on screen matches the physical print lookbook exactly.”',
+        authorName: 'Elena Rostova',
+        authorTitle: 'Color Grading & Proofing Supervisor',
+        authorMeta: 'Atelier Bench Master • Member #214',
+        sealText: 'GIA<br />COLOR<br />PROOF'
+      }
+    ];
+
+    let lastIndex = 0;
+    let isTransitioning = false;
+
+    function updateLeftContent(index) {
+      if (index === lastIndex && isTransitioning) return;
+      isTransitioning = true;
+      lastIndex = index;
+      const data = manifestoData[index % manifestoData.length];
+      if (!data) {
+        isTransitioning = false;
+        return;
+      }
+
+      if (window.gsap && manifestoContent) {
+        const gsap = window.gsap;
+        gsap.killTweensOf(manifestoContent);
+
+        // Slide out to left
+        gsap.to(manifestoContent, {
+          x: -28,
+          opacity: 0,
+          duration: 0.22,
+          ease: 'power2.in',
+          onComplete: () => {
+            if (tagEl) tagEl.textContent = data.tag;
+            if (headlineEl) headlineEl.innerHTML = data.headline;
+            if (quoteEl) quoteEl.innerHTML = `&ldquo;${data.quote.replace(/^[“"]|[”"]$/g, '')}&rdquo;`;
+            if (authorNameEl) authorNameEl.textContent = data.authorName;
+            if (authorTitleEl) authorTitleEl.textContent = data.authorTitle;
+            if (authorMetaEl) authorMetaEl.innerHTML = data.authorMeta;
+            if (sealEl) sealEl.innerHTML = data.sealText;
+
+            // Slide in from right to left (exact requested animation)
+            gsap.fromTo(
+              manifestoContent,
+              { x: 36, opacity: 0 },
+              {
+                x: 0,
+                opacity: 1,
+                duration: 0.42,
+                ease: 'power3.out',
+                onComplete: () => {
+                  isTransitioning = false;
+                }
+              }
+            );
+          }
+        });
+      } else {
+        if (tagEl) tagEl.textContent = data.tag;
+        if (headlineEl) headlineEl.innerHTML = data.headline;
+        if (quoteEl) quoteEl.innerHTML = `&ldquo;${data.quote.replace(/^[“"]|[”"]$/g, '')}&rdquo;`;
+        if (authorNameEl) authorNameEl.textContent = data.authorName;
+        if (authorTitleEl) authorTitleEl.textContent = data.authorTitle;
+        if (authorMetaEl) authorMetaEl.innerHTML = data.authorMeta;
+        if (sealEl) sealEl.innerHTML = data.sealText;
+        isTransitioning = false;
+      }
+    }
+
+    // Initialize Vertical Swiper (3 slides visible, middle slide active, infinite loop, bottom to top)
+    try {
+      artisanManifestoSwiper = new window.Swiper(swiperEl, {
+        direction: 'vertical',
+        slidesPerView: 3,
+        spaceBetween: 12,
+        centeredSlides: true,
+        loop: true,
+        speed: 650,
+        autoplay: {
+          delay: 3800,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true
+        },
+        grabCursor: true,
+        mousewheel: {
+          forceToAxis: true,
+          releaseOnEdges: true
+        },
+        on: {
+          init: function () {
+            highlightActiveCard(this);
+          },
+          slideChangeTransitionStart: function () {
+            highlightActiveCard(this);
+            updateLeftContent(this.realIndex);
+          },
+          slideChange: function () {
+            highlightActiveCard(this);
+            updateLeftContent(this.realIndex);
+          },
+          slideChangeTransitionEnd: function () {
+            highlightActiveCard(this);
+          },
+          click: function () {
+            if (this.clickedSlide) {
+              const idx = parseInt(this.clickedSlide.getAttribute('data-index') || '0', 10);
+              this.slideToLoop(idx);
+            }
+          }
+        }
+      });
+
+      function highlightActiveCard(swiperInstance) {
+        if (!swiperEl) return;
+        const allCards = swiperEl.querySelectorAll('.artisan-commandment');
+        allCards.forEach((card) => card.classList.remove('is-active'));
+
+        const activeSlide = swiperEl.querySelector('.swiper-slide-active');
+        let cardToActivate = activeSlide ? activeSlide.querySelector('.artisan-commandment') : null;
+
+        if (!cardToActivate && swiperInstance && typeof swiperInstance.realIndex === 'number') {
+          const fallbackSlide = swiperEl.querySelector(`.swiper-slide[data-index="${swiperInstance.realIndex}"]:not(.swiper-slide-duplicate)`);
+          if (fallbackSlide) cardToActivate = fallbackSlide.querySelector('.artisan-commandment');
+        }
+
+        if (cardToActivate) {
+          cardToActivate.classList.add('is-active');
+        }
+      }
+
+    } catch (e) {
+      console.warn('Artisan manifesto swiper init skipped:', e);
     }
   }
 
@@ -1534,6 +1737,7 @@ window.STUDIO_API = {
     initColorwayStudio();
     initPortfolioFilters();
     initTestimonialsSwiper();
+    initArtisanManifestoSlider();
     initFaq();
     initForms();
     initFastTrackTrial();
@@ -1560,6 +1764,9 @@ window.STUDIO_API = {
     if (testimonialsSwiper && typeof testimonialsSwiper.update === 'function') {
       testimonialsSwiper.update();
     }
+    if (artisanManifestoSwiper && typeof artisanManifestoSwiper.update === 'function') {
+      artisanManifestoSwiper.update();
+    }
   });
 
   window.addEventListener('resize', () => {
@@ -1568,6 +1775,9 @@ window.STUDIO_API = {
     }
     if (lenis && typeof lenis.resize === 'function') {
       lenis.resize();
+    }
+    if (artisanManifestoSwiper && typeof artisanManifestoSwiper.update === 'function') {
+      artisanManifestoSwiper.update();
     }
   });
 
