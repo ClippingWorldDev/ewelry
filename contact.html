@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Best Jewelry Retouching Atelier</title>
+    <meta
+      name="description"
+      content="Get in touch with BJR Haute Atelier — request a private consultation, submit your jewelry retouching brief, or reach our studio desk in New York, Paris, Geneva, London & Antwerp."
+    />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Bespoke Jewelry Typography: Marcellus & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Local Font Awesome 6 Pro/Free Icons -->
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css" />
+    <!-- Compiled Luxury Studio Stylesheet (Tailwind CSS) -->
+    <link rel="stylesheet" href="assets/css/style.css?v=20261125i" />
+
+    <style>
+      /* ── Contact Page Bespoke Styles ── */
+      .contact-hero {
+        position: relative;
+        padding: 5rem 0 4rem;
+        overflow: hidden;
+      }
+      @media (min-width: 640px) { .contact-hero { padding: 6rem 0 5rem; } }
+      @media (min-width: 1024px) { .contact-hero { padding: 8rem 0 6rem; } }
+
+      .contact-hero::before {
+        content: '';
+        position: absolute;
+        top: -60%;
+        right: -20%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(176,141,87,0.06) 0%, transparent 70%);
+        pointer-events: none;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      @media (min-width: 1024px) {
+        .contact-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+          align-items: start;
+        }
+      }
+
+      /* Info Cards */
+      .contact-info-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.25rem;
+        padding: 1.5rem;
+        border: 1px solid rgba(176,141,87,0.15);
+        border-radius: 4px;
+        background: rgba(255,255,255,0.6);
+        backdrop-filter: blur(8px);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+      .contact-info-card:hover {
+        border-color: rgba(176,141,87,0.35);
+        box-shadow: 0 8px 32px rgba(176,141,87,0.08);
+      }
+      .contact-info-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, rgba(176,141,87,0.1), rgba(176,141,87,0.05));
+        color: #B08D57;
+        font-size: 1.1rem;
+      }
+      .contact-info-label {
+        font-family: 'Marcellus', serif;
+        font-size: 1.05rem;
+        color: var(--ink-primary, #1a1a1a);
+        margin-bottom: 0.35rem;
+      }
+      .contact-info-value {
+        font-size: 0.875rem;
+        color: var(--ink-secondary, #6b6b6b);
+        line-height: 1.65;
+      }
+      .contact-info-value a {
+        color: #9A7B4F;
+        text-decoration: underline;
+        text-decoration-color: rgba(176,141,87,0.3);
+        text-underline-offset: 3px;
+        transition: text-decoration-color 0.3s;
+      }
+      .contact-info-value a:hover {
+        text-decoration-color: #B08D57;
+      }
+
+      /* Form Card */
+      .contact-form-card {
+        padding: 2.5rem 2rem;
+        border: 1px solid rgba(176,141,87,0.15);
+        border-radius: 6px;
+        background: #fff;
+        box-shadow: 0 4px 40px rgba(0,0,0,0.04);
+        position: relative;
+      }
+      @media (min-width: 640px) { .contact-form-card { padding: 2.5rem; } }
+      .contact-form-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #B08D57, #D4B978, #B08D57);
+        border-radius: 6px 6px 0 0;
+      }
+
+      .contact-form-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      @media (min-width: 640px) {
+        .contact-form-row {
+          grid-template-columns: 1fr 1fr;
+          gap: 1.25rem;
+        }
+      }
+
+      .contact-field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .contact-field label {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ink-secondary, #6b6b6b);
+      }
+      .contact-field input,
+      .contact-field select,
+      .contact-field textarea {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 1px solid #e0dcd4;
+        border-radius: 3px;
+        background: #faf9f7;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 0.875rem;
+        color: var(--ink-primary, #1a1a1a);
+        transition: border-color 0.3s, box-shadow 0.3s;
+        outline: none;
+      }
+      .contact-field input::placeholder,
+      .contact-field textarea::placeholder {
+        color: #b5b0a6;
+      }
+      .contact-field input:focus,
+      .contact-field select:focus,
+      .contact-field textarea:focus {
+        border-color: #B08D57;
+        box-shadow: 0 0 0 3px rgba(176,141,87,0.1);
+      }
+      .contact-field textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      /* Studio Locations */
+      .studio-locations {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      @media (min-width: 640px) {
+        .studio-locations { grid-template-columns: repeat(3, 1fr); }
+      }
+      .studio-location {
+        text-align: center;
+        padding: 1.25rem 0.75rem;
+        border: 1px solid rgba(176,141,87,0.1);
+        border-radius: 4px;
+        background: rgba(255,255,255,0.5);
+        transition: border-color 0.3s, transform 0.3s;
+      }
+      .studio-location:hover {
+        border-color: rgba(176,141,87,0.3);
+        transform: translateY(-2px);
+      }
+      .studio-location .city {
+        font-family: 'Marcellus', serif;
+        font-size: 0.95rem;
+        color: var(--ink-primary, #1a1a1a);
+        margin-bottom: 0.2rem;
+      }
+      .studio-location .timezone {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #B08D57;
+        font-weight: 600;
+      }
+
+      /* Trust badges */
+      .contact-trust {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem 2.5rem;
+        padding: 2rem 0;
+        margin-top: 3rem;
+        border-top: 1px solid rgba(176,141,87,0.12);
+      }
+      .contact-trust span {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        color: var(--ink-secondary, #6b6b6b);
+        letter-spacing: 0.04em;
+      }
+      .contact-trust i {
+        color: #B08D57;
+        font-size: 0.85rem;
+      }
+
+      /* Success message */
+      .contact-success {
+        display: none;
+        text-align: center;
+        padding: 3rem 2rem;
+      }
+      .contact-success.is-visible { display: block; }
+      .contact-success .success-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 64px; height: 64px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, rgba(176,141,87,0.15), rgba(176,141,87,0.05));
+        color: #B08D57;
+        font-size: 1.5rem;
+        margin-bottom: 1.25rem;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-ivory text-ink-primary font-sans antialiased selection:bg-gold/20 selection:text-ink-primary"
+  >
+    <!-- Top Announcement Bar -->
+    <div
+      class="top-bar"
+      role="region"
+      aria-label="Atelier Discretion & Service Coverage"
+    >
+      Haute Joaillerie Post-Production &bull; Serving Maisons &amp; Studios in
+      <strong>New York &bull; Paris &bull; Geneva &bull; London &bull; Antwerp</strong> &bull;
+      Confidential 24h Turnaround
+    </div>
+
+    <!-- Sticky Architectural Luxury Header -->
+    <header class="site-header" id="siteHeader">
+      <div class="container header-inner">
+        <a
+          href="index.html"
+          class="brand-logo group"
+          aria-label="BJR Haute Joaillerie Post-Production Atelier"
+        >
+          <div class="brand-logo-wrap">
+            <img
+              src="assets/images/logo.svg"
+              alt="BJR Atelier Logo"
+              class="brand-logo-img"
+              width="36"
+              height="36"
+              loading="eager"
+              decoding="async"
+              onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden');"
+            />
+            <span class="brand-mark hidden" aria-hidden="true">
+              <span>BJR</span>
+            </span>
+          </div>
+          <span class="brand-wordmark">
+            <span class="brand-name">BJR</span>
+            <span class="brand-sub">Haute Atelier</span>
+          </span>
+        </a>
+
+        <nav class="primary-nav" aria-label="Primary Editorial Navigation">
+          <ul class="nav-list">
+            <li><a href="index.html#services" class="nav-link">Services</a></li>
+            <li><a href="index.html#macro-loupe" class="nav-link">Precision Loupe</a></li>
+            <li><a href="index.html#colorways" class="nav-link">Alloy Atelier</a></li>
+            <li><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
+            <li><a href="index.html#jrw-workflow" class="nav-link">Our Process</a></li>
+            <li><a href="index.html#pricing" class="nav-link">Pricing &amp; SLA</a></li>
+            <li><a href="index.html#faq" class="nav-link">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a
+            href="index.html#free-trial-home"
+            class="btn-haute hidden lg:inline-flex"
+            aria-label="Request a Trial & Private Consultation"
+          >
+            <span>Private Inquiry</span>
+            <i class="fa-solid fa-arrow-right-long text-xs ml-2 opacity-80" aria-hidden="true"></i>
+          </a>
+          <button
+            type="button"
+            class="mobile-menu-btn"
+            id="mobileMenuOpen"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="mobileDrawer"
+          >
+            <i class="fa-solid fa-bars text-lg" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Architectural Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+      <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop"></div>
+      <div
+        class="mobile-drawer-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Atelier Navigation Menu"
+      >
+        <div>
+          <div class="mobile-drawer-top">
+            <div class="flex items-center gap-2.5">
+              <img src="assets/images/logo.svg" alt="BJR Atelier" class="w-7 h-7 object-contain" width="28" height="28" />
+              <span class="font-serif text-lg tracking-[0.22em] text-ink-primary font-normal">BJR</span>
+              <span class="text-[9px] uppercase tracking-[0.24em] text-gold-deep font-semibold pl-2 border-l border-stone-200">Atelier</span>
+            </div>
+            <button type="button" class="mobile-menu-btn" style="display: inline-flex" id="mobileMenuClose" aria-label="Close navigation menu">
+              <i class="fa-solid fa-xmark text-lg" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <ul class="mobile-nav-list">
+            <li><a href="index.html" class="mobile-nav-link"><span>Atelier Home</span><span class="mobile-nav-idx">00</span></a></li>
+            <li><a href="index.html#services" class="mobile-nav-link"><span>Four Pillars of Retouching</span><span class="mobile-nav-idx">01</span></a></li>
+            <li><a href="index.html#portfolio" class="mobile-nav-link"><span>Curated Portfolio</span><span class="mobile-nav-idx">02</span></a></li>
+            <li><a href="index.html#jrw-workflow" class="mobile-nav-link"><span>Craftsmanship Protocol</span><span class="mobile-nav-idx">03</span></a></li>
+            <li><a href="index.html#pricing" class="mobile-nav-link"><span>Investment &amp; SLA Tiers</span><span class="mobile-nav-idx">04</span></a></li>
+            <li><a href="contact.html" class="mobile-nav-link active"><span>Contact Atelier</span><span class="mobile-nav-idx">05</span></a></li>
+            <li><a href="privacy.html" class="mobile-nav-link"><span>Privacy Policy</span><span class="mobile-nav-idx">06</span></a></li>
+            <li><a href="terms.html" class="mobile-nav-link"><span>Terms &amp; Conditions</span><span class="mobile-nav-idx">07</span></a></li>
+          </ul>
+
+          <div class="mobile-drawer-ctas">
+            <a href="index.html#free-trial-home" class="btn-haute w-full px-4 py-3.5 text-center flex items-center justify-center gap-2 whitespace-normal leading-snug">
+              <span>Request Free Test Images</span>
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true" class="shrink-0">
+                <path d="M4 10H16M11 5L16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="pt-6 mt-6 border-t border-stone-200">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="text-[10px] uppercase tracking-[0.22em] text-ink-muted font-semibold">Paris &bull; NY &bull; Geneva &bull; Active Desk</span>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--ink-muted)">
+            Private Desk:
+            <a href="mailto:studio@bestjewelryretouching.com" style="color: var(--gold-deep); text-decoration: underline">studio@bestjewelryretouching.com</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page Content -->
+    <main>
+      <!-- Contact Hero -->
+      <section class="contact-hero">
+        <div class="container max-w-6xl">
+          <!-- Page Header -->
+          <div class="text-center mb-12 lg:mb-16">
+            <div class="inline-flex items-center gap-3.5 mb-5">
+              <span class="w-10 h-px bg-gold opacity-70"></span>
+              <span class="text-[11px] font-semibold tracking-[0.28em] uppercase text-gold">Private Studio Desk</span>
+              <span class="w-10 h-px bg-gold opacity-70"></span>
+            </div>
+            <h1 class="font-serif text-4xl sm:text-5xl lg:text-[56px] font-normal text-ink-primary leading-[1.12] tracking-[-0.015em] mb-5">
+              Contact Our Atelier
+            </h1>
+            <p class="text-ink-secondary text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+              Whether you're a luxury maison planning a campaign shoot or an independent jeweler
+              seeking museum-grade retouching &mdash; we'd love to hear from you.
+              Every conversation is treated with the utmost discretion.
+            </p>
+          </div>
+
+          <!-- Contact Grid: Info + Form -->
+          <div class="contact-grid">
+            <!-- Left Column: Info Cards -->
+            <div class="space-y-5">
+              <!-- Email Card -->
+              <div class="contact-info-card">
+                <div class="contact-info-icon">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div>
+                  <div class="contact-info-label">Studio Email</div>
+                  <div class="contact-info-value">
+                    <a href="mailto:studio@bestjewelryretouching.com">studio@bestjewelryretouching.com</a>
+                    <br />
+                    <span class="text-xs text-ink-muted mt-1 inline-block">Response within 2–4 business hours</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Turnaround Card -->
+              <div class="contact-info-card">
+                <div class="contact-info-icon">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div>
+                  <div class="contact-info-label">Turnaround &amp; Availability</div>
+                  <div class="contact-info-value">
+                    Standard: 24–48h delivery<br />
+                    Rush: Same-day for urgent campaigns<br />
+                    <span class="text-xs text-ink-muted mt-1 inline-block">Studio operates across all time zones</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Security Card -->
+              <div class="contact-info-card">
+                <div class="contact-info-icon">
+                  <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div>
+                  <div class="contact-info-label">Vault Security &amp; NDA</div>
+                  <div class="contact-info-value">
+                    Every inquiry and file transfer is automatically protected under our mutual NDA with 256-bit encryption. Zero third-party AI exposure.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Free Trial Card -->
+              <div class="contact-info-card">
+                <div class="contact-info-icon">
+                  <i class="fa-solid fa-gem"></i>
+                </div>
+                <div>
+                  <div class="contact-info-label">Free Trial Retouching</div>
+                  <div class="contact-info-value">
+                    New clients receive <strong>2 complimentary test retouches</strong> — no credit card, no contract. 
+                    <a href="index.html#free-trial-home">Claim your free trial →</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Social Links -->
+              <div class="flex items-center gap-4 pt-3">
+                <span class="text-xs uppercase tracking-[0.15em] text-ink-muted font-semibold">Follow Us</span>
+                <div class="flex items-center gap-3">
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="BJR Instagram" class="w-9 h-9 rounded-full border border-stone-200 flex items-center justify-center text-ink-muted hover:border-gold hover:text-gold transition-all">
+                    <i class="fa-brands fa-instagram text-sm"></i>
+                  </a>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="BJR LinkedIn" class="w-9 h-9 rounded-full border border-stone-200 flex items-center justify-center text-ink-muted hover:border-gold hover:text-gold transition-all">
+                    <i class="fa-brands fa-linkedin-in text-sm"></i>
+                  </a>
+                  <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="BJR Pinterest" class="w-9 h-9 rounded-full border border-stone-200 flex items-center justify-center text-ink-muted hover:border-gold hover:text-gold transition-all">
+                    <i class="fa-brands fa-pinterest-p text-sm"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Contact Form -->
+            <div class="contact-form-card" id="contactFormCard">
+              <div class="mb-6">
+                <h2 class="font-serif text-2xl sm:text-[28px] text-ink-primary leading-snug mb-1.5">
+                  Send a Private Brief
+                </h2>
+                <p class="text-sm text-ink-secondary">
+                  Fill in the details below and our studio team will respond within hours.
+                </p>
+              </div>
+
+              <form class="space-y-4" id="contactForm" novalidate>
+                <div class="contact-form-row">
+                  <div class="contact-field">
+                    <label for="ct-name">Your Name</label>
+                    <input type="text" id="ct-name" name="name" placeholder="e.g. Alexander Van Der Berg" required />
+                  </div>
+                  <div class="contact-field">
+                    <label for="ct-brand">Brand / Studio</label>
+                    <input type="text" id="ct-brand" name="brand" placeholder="e.g. Maison Lumière" />
+                  </div>
+                </div>
+
+                <div class="contact-field">
+                  <label for="ct-email">Work Email</label>
+                  <input type="email" id="ct-email" name="email" placeholder="studio@yourbrand.com" required />
+                </div>
+
+                <div class="contact-form-row">
+                  <div class="contact-field">
+                    <label for="ct-service">Service Interest</label>
+                    <select id="ct-service" name="service">
+                      <option value="">Select a service…</option>
+                      <option value="Editorial & Campaign">High-End Editorial Retouching</option>
+                      <option value="Ecommerce">Hybrid E-Commerce Volume</option>
+                      <option value="Diamond Fire Restoration">Diamond Fire Restoration</option>
+                      <option value="3D CAD Enhancement">3D CAD to Photorealistic</option>
+                      <option value="Alloy Recasting">Digital Alloy Recasting</option>
+                      <option value="Full Post-Production">Full Post-Production Suite</option>
+                      <option value="Other">Other / Custom Brief</option>
+                    </select>
+                  </div>
+                  <div class="contact-field">
+                    <label for="ct-volume">Monthly Volume</label>
+                    <select id="ct-volume" name="volume">
+                      <option value="">Estimated images/month</option>
+                      <option value="1-50">1 – 50 images</option>
+                      <option value="51-200">51 – 200 images</option>
+                      <option value="201-500">201 – 500 images</option>
+                      <option value="501-1000">501 – 1,000 images</option>
+                      <option value="1000+">1,000+ images</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="contact-field">
+                  <label for="ct-message">Project Brief</label>
+                  <textarea id="ct-message" name="message" rows="5" placeholder="Describe your project — jewelry type, shooting style, delivery timeline, any special requirements…"></textarea>
+                </div>
+
+                <!-- NDA Acknowledgement -->
+                <div class="flex items-start gap-3 pt-1">
+                  <div class="mt-0.5">
+                    <i class="fa-solid fa-lock text-gold text-xs"></i>
+                  </div>
+                  <p class="text-xs text-ink-muted leading-relaxed">
+                    By submitting this form, your inquiry is automatically protected under our
+                    <a href="terms.html" class="text-gold-deep underline underline-offset-2 decoration-gold/30 hover:decoration-gold transition-colors">mutual NDA</a>.
+                    Read our <a href="privacy.html" class="text-gold-deep underline underline-offset-2 decoration-gold/30 hover:decoration-gold transition-colors">Privacy Policy</a>.
+                  </p>
+                </div>
+
+                <button type="submit" class="btn btn-obsidian w-full sm:w-auto inline-flex items-center justify-center gap-2.5 mt-2">
+                  <span>Submit Private Brief</span>
+                  <i class="fa-solid fa-paper-plane text-xs opacity-80" aria-hidden="true"></i>
+                </button>
+              </form>
+
+              <!-- Success Message (shown after submit) -->
+              <div class="contact-success" id="contactSuccess">
+                <div class="success-icon">
+                  <i class="fa-solid fa-check"></i>
+                </div>
+                <h3 class="font-serif text-2xl text-ink-primary mb-3">Brief Received</h3>
+                <p class="text-ink-secondary text-sm leading-relaxed max-w-md mx-auto">
+                  Thank you for reaching out. Our studio team will review your brief and respond
+                  within 2–4 business hours under NDA protection.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Studio Locations -->
+          <div class="mt-16">
+            <div class="text-center mb-6">
+              <span class="text-[10px] font-semibold tracking-[0.25em] uppercase text-gold">Global Atelier Coverage</span>
+            </div>
+            <div class="studio-locations">
+              <div class="studio-location">
+                <div class="city">New York</div>
+                <div class="timezone">EST / UTC−5</div>
+              </div>
+              <div class="studio-location">
+                <div class="city">Los Angeles</div>
+                <div class="timezone">PST / UTC−8</div>
+              </div>
+              <div class="studio-location">
+                <div class="city">London</div>
+                <div class="timezone">GMT / UTC+0</div>
+              </div>
+              <div class="studio-location">
+                <div class="city">Paris</div>
+                <div class="timezone">CET / UTC+1</div>
+              </div>
+              <div class="studio-location">
+                <div class="city">Antwerp</div>
+                <div class="timezone">CET / UTC+1</div>
+              </div>
+              <div class="studio-location">
+                <div class="city">Geneva</div>
+                <div class="timezone">CET / UTC+1</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="contact-trust">
+            <span><i class="fa-solid fa-shield-halved"></i> 256-Bit Encrypted Vault</span>
+            <span><i class="fa-solid fa-file-shield"></i> Automatic Mutual NDA</span>
+            <span><i class="fa-solid fa-clock"></i> 2–4h Response Time</span>
+            <span><i class="fa-solid fa-hand-sparkles"></i> 100% Human Artisan</span>
+            <span><i class="fa-solid fa-credit-card"></i> Free Trial – No Card Required</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Site Footer (Same as Homepage) -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="brand-logo" aria-label="Best Jewelry Retouching — Home">
+              <span class="brand-mark" aria-hidden="true"><span>B</span></span>
+              <span class="brand-wordmark">
+                <span class="brand-name">Best Jewelry Retouching</span>
+                <span class="brand-sub">Bespoke Post-Production</span>
+              </span>
+            </a>
+            <p>
+              Precision hand-crafted jewelry photo editing and diamond
+              restoration studio serving luxury brands across the USA and
+              Europe.
+            </p>
+            <div class="flex items-center gap-3.5 mt-4 text-stone-400">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="BJR Instagram" class="hover:text-gold-deep transition-colors"><i class="fa-brands fa-instagram text-base"></i></a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="BJR LinkedIn" class="hover:text-gold-deep transition-colors"><i class="fa-brands fa-linkedin-in text-base"></i></a>
+              <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="BJR Pinterest" class="hover:text-gold-deep transition-colors"><i class="fa-brands fa-pinterest-p text-base"></i></a>
+              <a href="mailto:studio@bestjewelryretouching.com" aria-label="Contact Studio" class="hover:text-gold-deep transition-colors"><i class="fa-solid fa-envelope text-base"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Core Services</h4>
+            <ul class="footer-links">
+              <li><a href="index.html#service-1">High-End Jewelry Retouching</a></li>
+              <li><a href="index.html#service-2">Hybrid E-Commerce Editing</a></li>
+              <li><a href="index.html#service-3">Diamond Fire Restoration</a></li>
+              <li><a href="index.html#service-4">3D Render Enhancement</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Atelier Studio</h4>
+            <ul class="footer-links">
+              <li><a href="index.html#macro-loupe">Precision 400% Loupe</a></li>
+              <li><a href="index.html#colorways">Alloy Recasting Studio</a></li>
+              <li><a href="index.html#jrw-workflow">Bench Standards Protocol</a></li>
+              <li><a href="index.html#pricing">Pricing &amp; SLA Tiers</a></li>
+              <li><a href="index.html#free-trial-home">Free Trial (2 Test Images)</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Authenticity &amp; Care</h4>
+            <ul class="footer-links">
+              <li><a href="index.html#authenticity">Anti-AI Artisan Manifesto</a></li>
+              <li><a href="contact.html">Contact Atelier</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms &amp; Conditions</a></li>
+              <li><a href="index.html#faq">Turnaround &amp; Delivery FAQ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; 2026 BestJewelryRetouching.com &mdash; All Rights Reserved.</span>
+          <span>Serving New York &bull; Los Angeles &bull; London &bull; Paris &bull; Antwerp &bull; Geneva</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Vendor Scripts (Local — for mobile drawer) -->
+    <script src="assets/js/gsap.min.js"></script>
+    <script src="assets/js/ScrollTrigger.min.js"></script>
+    <script src="assets/js/main.js?v=20261125e"></script>
+
+    <!-- Contact Form Handler -->
+    <script>
+      (function() {
+        'use strict';
+        var form = document.getElementById('contactForm');
+        var card = document.getElementById('contactFormCard');
+        var success = document.getElementById('contactSuccess');
+        if (!form || !success) return;
+
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          // Basic client-side validation
+          var name = form.querySelector('#ct-name');
+          var email = form.querySelector('#ct-email');
+          if (name && !name.value.trim()) { name.focus(); return; }
+          if (email && !email.value.trim()) { email.focus(); return; }
+
+          // Check STUDIO_API
+          var api = window.STUDIO_API;
+          if (api && api.contactEndpoint) {
+            var data = new FormData(form);
+            fetch(api.contactEndpoint, {
+              method: 'POST',
+              body: data
+            }).catch(function() {});
+          }
+
+          // Show success
+          form.style.display = 'none';
+          card.querySelector('div').style.display = 'none'; // hide heading
+          success.classList.add('is-visible');
+
+          // Scroll to success
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -6,111 +6,300 @@
     <title>Terms &amp; Conditions | Best Jewelry Retouching Atelier</title>
     <meta
       name="description"
-      content="Terms & Conditions, NDA confidentiality, intellectual property, and service-level terms for BestJewelryRetouching.com."
+      content="Terms & Conditions governing retouching services, NDA confidentiality, intellectual property, turnaround SLA, and billing for BestJewelryRetouching.com."
     />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Bespoke Jewelry Typography: Marcellus & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Local Font Awesome 6 Pro/Free Icons -->
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css" />
+    <!-- Compiled Luxury Studio Stylesheet (Tailwind CSS) -->
     <link rel="stylesheet" href="assets/css/style.css?v=20261125i" />
   </head>
-  <body class="bg-ivory text-ink-primary font-sans antialiased selection:bg-gold/20 selection:text-ink-primary">
-    <header class="sticky top-0 z-40 bg-ivory/95 backdrop-blur-md border-b border-stone-200/80">
-      <div class="container py-3.5 sm:py-4 flex items-center justify-between gap-2 sm:gap-4">
-        <a href="index.html" class="font-serif text-base sm:text-xl tracking-wide text-ink-primary whitespace-nowrap">
-          BJR <span class="text-gold">HAUTE ATELIER</span>
+  <body
+    class="bg-ivory text-ink-primary font-sans antialiased selection:bg-gold/20 selection:text-ink-primary"
+  >
+    <!-- Top Announcement Bar -->
+    <div
+      class="top-bar"
+      role="region"
+      aria-label="Atelier Discretion & Service Coverage"
+    >
+      Haute Joaillerie Post-Production &bull; Serving Maisons &amp; Studios in
+      <strong>New York &bull; Paris &bull; Geneva &bull; London &bull; Antwerp</strong> &bull;
+      Confidential 24h Turnaround
+    </div>
+
+    <!-- Sticky Architectural Luxury Header -->
+    <header class="site-header" id="siteHeader">
+      <div class="container header-inner">
+        <a
+          href="index.html"
+          class="brand-logo group"
+          aria-label="BJR Haute Joaillerie Post-Production Atelier"
+        >
+          <div class="brand-logo-wrap">
+            <img
+              src="assets/images/logo.svg"
+              alt="BJR Atelier Logo"
+              class="brand-logo-img"
+              width="36"
+              height="36"
+              loading="eager"
+              decoding="async"
+              onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden');"
+            />
+            <span class="brand-mark hidden" aria-hidden="true">
+              <span>BJR</span>
+            </span>
+          </div>
+          <span class="brand-wordmark">
+            <span class="brand-name">BJR</span>
+            <span class="brand-sub">Haute Atelier</span>
+          </span>
         </a>
-        <nav class="flex items-center gap-3 sm:gap-5 text-xs sm:text-sm font-medium text-ink-secondary">
-          <a href="index.html" class="hover:text-gold transition-colors">Home</a>
-          <a href="privacy.html" class="hidden sm:inline-block hover:text-gold transition-colors">Privacy Policy</a>
-          <a href="index.html#free-trial-home" class="btn btn-obsidian !py-1.5 !px-3 !text-[11px] sm:!py-2 sm:!px-4 sm:!text-xs whitespace-nowrap">Private Inquiry</a>
+
+        <nav class="primary-nav" aria-label="Primary Editorial Navigation">
+          <ul class="nav-list">
+            <li><a href="index.html#services" class="nav-link">Services</a></li>
+            <li><a href="index.html#macro-loupe" class="nav-link">Precision Loupe</a></li>
+            <li><a href="index.html#colorways" class="nav-link">Alloy Atelier</a></li>
+            <li><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
+            <li><a href="index.html#jrw-workflow" class="nav-link">Our Process</a></li>
+            <li><a href="index.html#pricing" class="nav-link">Pricing &amp; SLA</a></li>
+            <li><a href="index.html#faq" class="nav-link">FAQ</a></li>
+          </ul>
         </nav>
+
+        <div class="header-actions">
+          <a
+            href="index.html#free-trial-home"
+            class="btn-haute hidden lg:inline-flex"
+            aria-label="Request a Trial & Private Consultation"
+          >
+            <span>Private Inquiry</span>
+            <i class="fa-solid fa-arrow-right-long text-xs ml-2 opacity-80" aria-hidden="true"></i>
+          </a>
+          <button
+            type="button"
+            class="mobile-menu-btn"
+            id="mobileMenuOpen"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="mobileDrawer"
+          >
+            <i class="fa-solid fa-bars text-lg" aria-hidden="true"></i>
+          </button>
+        </div>
       </div>
     </header>
 
-    <main class="py-14 sm:py-20">
+    <!-- Mobile Architectural Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+      <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop"></div>
+      <div
+        class="mobile-drawer-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Atelier Navigation Menu"
+      >
+        <div>
+          <div class="mobile-drawer-top">
+            <div class="flex items-center gap-2.5">
+              <img src="assets/images/logo.svg" alt="BJR Atelier" class="w-7 h-7 object-contain" width="28" height="28" />
+              <span class="font-serif text-lg tracking-[0.22em] text-ink-primary font-normal">BJR</span>
+              <span class="text-[9px] uppercase tracking-[0.24em] text-gold-deep font-semibold pl-2 border-l border-stone-200">Atelier</span>
+            </div>
+            <button type="button" class="mobile-menu-btn" style="display: inline-flex" id="mobileMenuClose" aria-label="Close navigation menu">
+              <i class="fa-solid fa-xmark text-lg" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <ul class="mobile-nav-list">
+            <li><a href="index.html" class="mobile-nav-link"><span>Atelier Home</span><span class="mobile-nav-idx">00</span></a></li>
+            <li><a href="index.html#services" class="mobile-nav-link"><span>Four Pillars of Retouching</span><span class="mobile-nav-idx">01</span></a></li>
+            <li><a href="index.html#portfolio" class="mobile-nav-link"><span>Curated Portfolio</span><span class="mobile-nav-idx">02</span></a></li>
+            <li><a href="index.html#jrw-workflow" class="mobile-nav-link"><span>Craftsmanship Protocol</span><span class="mobile-nav-idx">03</span></a></li>
+            <li><a href="index.html#pricing" class="mobile-nav-link"><span>Investment &amp; SLA Tiers</span><span class="mobile-nav-idx">04</span></a></li>
+            <li><a href="privacy.html" class="mobile-nav-link"><span>Privacy Policy</span><span class="mobile-nav-idx">05</span></a></li>
+            <li><a href="terms.html" class="mobile-nav-link active"><span>Terms &amp; Conditions</span><span class="mobile-nav-idx">06</span></a></li>
+          </ul>
+
+          <div class="mobile-drawer-ctas">
+            <a href="index.html#free-trial-home" class="btn-haute w-full px-4 py-3.5 text-center flex items-center justify-center gap-2 whitespace-normal leading-snug">
+              <span>Request Free Test Images</span>
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true" class="shrink-0">
+                <path d="M4 10H16M11 5L16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="pt-6 mt-6 border-t border-stone-200">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="text-[10px] uppercase tracking-[0.22em] text-ink-muted font-semibold">Paris &bull; NY &bull; Geneva &bull; Active Desk</span>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--ink-muted)">
+            Private Desk:
+            <a href="mailto:studio@bestjewelryretouching.com" style="color: var(--gold-deep); text-decoration: underline">studio@bestjewelryretouching.com</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page Content -->
+    <main class="py-16 sm:py-20 lg:py-28">
       <div class="container max-w-4xl">
-        <div class="mb-10 pb-8 border-b border-stone-200">
-          <span class="eyebrow">Atelier Legal Protocol</span>
-          <h1 class="font-serif text-3xl sm:text-5xl font-normal text-ink-primary leading-tight mb-4">
+        <!-- Page Header -->
+        <div class="mb-12 pb-8 border-b border-stone-200">
+          <div class="inline-flex items-center gap-3.5 mb-4">
+            <span class="w-8 h-px bg-gold opacity-70"></span>
+            <span class="text-[11px] font-semibold tracking-[0.28em] uppercase text-gold">Atelier Legal Protocol</span>
+            <span class="w-8 h-px bg-gold opacity-70"></span>
+          </div>
+          <h1 class="font-serif text-4xl sm:text-5xl lg:text-[56px] font-normal text-ink-primary leading-[1.12] tracking-[-0.015em] mb-4">
             Terms &amp; Conditions
           </h1>
-          <p class="text-sm text-ink-muted">
-            Effective Date: November 25, 2026 &bull; BestJewelryRetouching.com
+          <p class="text-ink-secondary text-base leading-relaxed max-w-2xl">
+            Effective Date: November 25, 2026 &mdash; These terms govern every engagement with BestJewelryRetouching.com, including our mutual NDA, intellectual property rights, and service-level commitments.
           </p>
         </div>
 
-        <article class="space-y-8 text-ink-secondary leading-relaxed text-sm sm:text-base">
-          <section>
-            <h2 class="font-serif text-2xl text-ink-primary mb-3">1. Scope of Retouching Services</h2>
-            <p>
-              BestJewelryRetouching.com (&ldquo;BJR Haute Atelier&rdquo;) provides manual, human-crafted jewelry post-production services including vector background isolation, surface dust and flaw cleanup, dodge-and-burn luster sculpting, geometric alignment, and digital metal alloy recoloring. All deliverables are produced to the agreed project brief and tier specifications.
-            </p>
+        <!-- Terms Content -->
+        <article class="space-y-10">
+          <section class="group">
+            <div class="flex items-baseline gap-4 mb-3">
+              <span class="font-serif text-3xl text-gold/30 leading-none select-none">01</span>
+              <h2 class="font-serif text-2xl sm:text-[28px] text-ink-primary leading-snug">Scope of Retouching Services</h2>
+            </div>
+            <div class="pl-[52px] text-ink-secondary text-[15px] leading-[1.75] space-y-3">
+              <p>
+                BestJewelryRetouching.com (&ldquo;BJR Haute Atelier&rdquo;) provides manual, human-crafted jewelry post-production services including vector background isolation, surface dust and flaw cleanup, dodge-and-burn luster sculpting, geometric alignment, digital metal alloy recoloring, and 3D CAD render enhancement.
+              </p>
+              <p>All deliverables are produced to the agreed project brief and tier specifications (Essentials, Editorial &amp; Macro, or Haute Couture).</p>
+            </div>
           </section>
 
-          <section>
-            <h2 class="font-serif text-2xl text-ink-primary mb-3">2. Intellectual Property &amp; Client Ownership</h2>
-            <p>
-              Clients retain 100% exclusive copyright and ownership over all raw captures, layered 16-bit PSD master files, and final exported assets. BJR Haute Atelier never claims ownership over client jewelry designs, unreleased collections, or brand assets, and will never publish or showcase client work without explicit written permission.
-            </p>
+          <section class="group">
+            <div class="flex items-baseline gap-4 mb-3">
+              <span class="font-serif text-3xl text-gold/30 leading-none select-none">02</span>
+              <h2 class="font-serif text-2xl sm:text-[28px] text-ink-primary leading-snug">Intellectual Property &amp; Client Ownership</h2>
+            </div>
+            <div class="pl-[52px] text-ink-secondary text-[15px] leading-[1.75] space-y-3">
+              <p>
+                Clients retain 100% exclusive copyright and ownership over all raw captures, layered 16-bit PSD master files, and final exported assets. BJR Haute Atelier never claims ownership over client jewelry designs, unreleased collections, or brand assets.
+              </p>
+              <p>We will never publish, feature, or showcase client work without explicit written permission.</p>
+            </div>
           </section>
 
-          <section>
-            <h2 class="font-serif text-2xl text-ink-primary mb-3">3. Mutual Non-Disclosure &amp; Vault Security</h2>
-            <p>
-              Every engagement is automatically governed by our mutual Non-Disclosure Agreement (NDA). Unreleased bridal, high-jewelry, and timepiece assets are handled exclusively inside encrypted, access-controlled studio workstations with zero third-party AI training or public cloud exposure.
-            </p>
+          <section class="group">
+            <div class="flex items-baseline gap-4 mb-3">
+              <span class="font-serif text-3xl text-gold/30 leading-none select-none">03</span>
+              <h2 class="font-serif text-2xl sm:text-[28px] text-ink-primary leading-snug">Mutual Non-Disclosure &amp; Vault Security</h2>
+            </div>
+            <div class="pl-[52px] text-ink-secondary text-[15px] leading-[1.75] space-y-3">
+              <p>
+                Every engagement is automatically governed by our mutual Non-Disclosure Agreement (NDA). Unreleased bridal, high-jewelry, and timepiece assets are handled exclusively inside 256-bit encrypted, access-controlled studio workstations.
+              </p>
+              <p>Zero third-party AI training, public cloud exposure, or unauthorized sharing of your proprietary assets.</p>
+            </div>
           </section>
 
-          <section>
-            <h2 class="font-serif text-2xl text-ink-primary mb-3">4. Turnaround Times &amp; Revisions</h2>
-            <p>
-              Standard turnaround SLA is 24&ndash;48 hours depending on batch volume and complexity tier. Complimentary revisions are included to ensure exact alignment with your brand&rsquo;s color space (sRGB, Adobe RGB, or Display P3) and artistic direction.
-            </p>
+          <section class="group">
+            <div class="flex items-baseline gap-4 mb-3">
+              <span class="font-serif text-3xl text-gold/30 leading-none select-none">04</span>
+              <h2 class="font-serif text-2xl sm:text-[28px] text-ink-primary leading-snug">Turnaround Times &amp; Revisions</h2>
+            </div>
+            <div class="pl-[52px] text-ink-secondary text-[15px] leading-[1.75] space-y-3">
+              <p>
+                Standard turnaround SLA is 24&ndash;48 hours depending on batch volume and complexity tier. Rush delivery options are available for time-sensitive lookbook launches and campaign deadlines.
+              </p>
+              <p>Complimentary revisions are included to ensure exact alignment with your brand&rsquo;s color space (sRGB, Adobe RGB, or Display P3) and artistic direction.</p>
+            </div>
           </section>
 
-          <section>
-            <h2 class="font-serif text-2xl text-ink-primary mb-3">5. Billing, Free Trial &amp; Cancellations</h2>
-            <p>
-              New luxury houses and studios are eligible for two (2) complimentary test retouches prior to commercial engagement. Commercial invoices are issued upon project approval or under agreed monthly retainer schedules.
-            </p>
+          <section class="group">
+            <div class="flex items-baseline gap-4 mb-3">
+              <span class="font-serif text-3xl text-gold/30 leading-none select-none">05</span>
+              <h2 class="font-serif text-2xl sm:text-[28px] text-ink-primary leading-snug">Billing, Free Trial &amp; Cancellations</h2>
+            </div>
+            <div class="pl-[52px] text-ink-secondary text-[15px] leading-[1.75] space-y-3">
+              <p>
+                New luxury houses and studios are eligible for two (2) complimentary test retouches prior to commercial engagement. No credit card or upfront payment is required for the trial.
+              </p>
+              <p>Commercial invoices are issued upon project approval or under agreed monthly retainer schedules. Projects may be canceled before production begins at no cost.</p>
+            </div>
           </section>
 
-          <section>
-            <h2 class="font-serif text-2xl text-ink-primary mb-3">6. Contact Desk</h2>
-            <p>
-              For legal or SLA inquiries, please contact <a href="mailto:studio@bestjewelryretouching.com" class="text-gold-deep underline">studio@bestjewelryretouching.com</a>.
-            </p>
+          <section class="group">
+            <div class="flex items-baseline gap-4 mb-3">
+              <span class="font-serif text-3xl text-gold/30 leading-none select-none">06</span>
+              <h2 class="font-serif text-2xl sm:text-[28px] text-ink-primary leading-snug">Contact Desk</h2>
+            </div>
+            <div class="pl-[52px] text-ink-secondary text-[15px] leading-[1.75]">
+              <p>
+                For legal, SLA, or service inquiries, please contact
+                <a href="mailto:studio@bestjewelryretouching.com" class="text-gold-deep underline decoration-gold/40 underline-offset-2 hover:decoration-gold transition-colors">studio@bestjewelryretouching.com</a>.
+              </p>
+            </div>
           </section>
         </article>
+
+        <!-- Bottom CTA -->
+        <div class="mt-16 pt-10 border-t border-stone-200 text-center">
+          <p class="text-ink-secondary text-sm mb-6">Ready to experience museum-grade retouching?</p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="index.html#free-trial-home" class="btn btn-obsidian">Request Free Test Images</a>
+            <a href="index.html#pricing" class="btn btn-outline">View Pricing &amp; SLA</a>
+          </div>
+        </div>
       </div>
     </main>
 
-    <footer class="footer">
+    <!-- Site Footer (Same as Homepage) -->
+    <footer class="site-footer">
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a href="index.html" class="brand-logo" style="margin-bottom: 1rem">
-              <div class="brand-logo-text">
-                <strong class="text-ink-primary">BJR HAUTE ATELIER</strong>
-                <span>Precision Retouching &bull; USA &amp; Europe</span>
-              </div>
+            <a href="index.html" class="brand-logo" aria-label="Best Jewelry Retouching — Home">
+              <span class="brand-mark" aria-hidden="true"><span>B</span></span>
+              <span class="brand-wordmark">
+                <span class="brand-name">Best Jewelry Retouching</span>
+                <span class="brand-sub">Bespoke Post-Production</span>
+              </span>
             </a>
-            <p class="footer-desc">
-              Dedicated post-production studio crafted exclusively for fine jewelers, watchmakers, luxury maisons, and high-converting e-commerce brands.
+            <p>
+              Precision hand-crafted jewelry photo editing and diamond
+              restoration studio serving luxury brands across the USA and
+              Europe.
             </p>
+            <div class="flex items-center gap-3.5 mt-4 text-stone-400">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="BJR Instagram" class="hover:text-gold-deep transition-colors"><i class="fa-brands fa-instagram text-base"></i></a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="BJR LinkedIn" class="hover:text-gold-deep transition-colors"><i class="fa-brands fa-linkedin-in text-base"></i></a>
+              <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="BJR Pinterest" class="hover:text-gold-deep transition-colors"><i class="fa-brands fa-pinterest-p text-base"></i></a>
+              <a href="mailto:studio@bestjewelryretouching.com" aria-label="Contact Studio" class="hover:text-gold-deep transition-colors"><i class="fa-solid fa-envelope text-base"></i></a>
+            </div>
           </div>
+
           <div class="footer-col">
             <h4>Core Services</h4>
             <ul class="footer-links">
-              <li><a href="index.html#service-1">High-End Editorial Retouching</a></li>
+              <li><a href="index.html#service-1">High-End Jewelry Retouching</a></li>
               <li><a href="index.html#service-2">Hybrid E-Commerce Editing</a></li>
               <li><a href="index.html#service-3">Diamond Fire Restoration</a></li>
               <li><a href="index.html#service-4">3D Render Enhancement</a></li>
             </ul>
           </div>
+
           <div class="footer-col">
             <h4>Atelier Studio</h4>
             <ul class="footer-links">
@@ -121,6 +310,7 @@
               <li><a href="index.html#free-trial-home">Free Trial (2 Test Images)</a></li>
             </ul>
           </div>
+
           <div class="footer-col">
             <h4>Authenticity &amp; Care</h4>
             <ul class="footer-links">
@@ -138,5 +328,10 @@
         </div>
       </div>
     </footer>
+
+    <!-- Vendor Scripts (Local — for mobile drawer) -->
+    <script src="assets/js/gsap.min.js"></script>
+    <script src="assets/js/ScrollTrigger.min.js"></script>
+    <script src="assets/js/main.js?v=20261125e"></script>
   </body>
 </html>
