@@ -218,11 +218,11 @@
   }
 
   .nav-list {
-    @apply flex items-center gap-3 xl:gap-6 2xl:gap-8 list-none;
+    @apply flex items-center gap-3.5 xl:gap-5 2xl:gap-6 list-none;
   }
 
   .nav-link {
-    @apply relative inline-block py-2 text-[9.5px] xl:text-[11px] font-semibold uppercase tracking-[0.09em] xl:tracking-[0.20em] whitespace-nowrap text-ink-secondary transition-colors duration-300 hover:text-ink-primary;
+    @apply relative inline-block py-2 text-[10px] xl:text-[11px] font-semibold uppercase tracking-[0.12em] xl:tracking-[0.16em] whitespace-nowrap text-ink-secondary transition-colors duration-300 hover:text-ink-primary;
   }
 
   .nav-link.active {

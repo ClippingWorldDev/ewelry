@@ -1,0 +1,1207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atelier Essay | Best Jewelry Retouching Journal</title>
+    <meta
+      name="description"
+      content="Read in-depth technical essays from BJR Haute Atelier on 400% jewelry retouching, diamond fire restoration, digital alloy recasting, 3D CAD finishing, and NDA security."
+    />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Bespoke Jewelry Typography: Marcellus & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Local Font Awesome 6 Pro/Free Icons -->
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css" />
+    <!-- Compiled Luxury Studio Stylesheet (Tailwind CSS) -->
+    <link rel="stylesheet" href="assets/css/style.css?v=20261125i" />
+
+    <style>
+      /* ── Single Blog Article Luxury Editorial Styles (1440px Architecture) ── */
+      .single-hero {
+        position: relative;
+        padding: 3rem 0 2.5rem;
+        overflow: hidden;
+      }
+      @media (min-width: 640px) { .single-hero { padding: 4rem 0 3rem; } }
+      @media (min-width: 1024px) { .single-hero { padding: 4.5rem 0 3.5rem; } }
+
+      .single-hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -12%;
+        width: 620px;
+        height: 620px;
+        background: radial-gradient(circle, rgba(181,144,84,0.09) 0%, transparent 70%);
+        pointer-events: none;
+      }
+
+      .single-breadcrumb {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #7C766C;
+        font-weight: 600;
+        margin-bottom: 1.75rem;
+      }
+      .single-breadcrumb a {
+        color: #8E6B36;
+        transition: color 0.2s;
+      }
+      .single-breadcrumb a:hover {
+        color: #141311;
+      }
+
+      .single-meta-bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.65rem 1.25rem;
+        padding: 1rem 0;
+        border-top: 1px solid rgba(181,144,84,0.2);
+        border-bottom: 1px solid rgba(181,144,84,0.2);
+        margin-bottom: 2.25rem;
+        font-size: 0.8rem;
+        color: #524E47;
+      }
+      .single-meta-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        white-space: nowrap;
+      }
+      .single-meta-item i {
+        color: #B59054;
+        font-size: 0.8rem;
+      }
+
+      /* Framed Hero Image */
+      .single-hero-frame {
+        position: relative;
+        border-radius: 12px;
+        padding: 0.65rem;
+        background: #fff;
+        border: 1px solid rgba(181,144,84,0.26);
+        box-shadow: 0 24px 60px -12px rgba(14,13,12,0.12);
+      }
+      .single-hero-media {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        background: #0E0D0C;
+        width: 100%;
+        height: 240px;
+      }
+      @media (min-width: 640px) {
+        .single-hero-media { height: 380px; }
+      }
+      @media (min-width: 1024px) {
+        .single-hero-media { height: 500px; }
+      }
+      .single-hero-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* 2-Column Reading Layout */
+      .single-main-section {
+        position: relative;
+        overflow-x: clip;
+        padding: 2rem 0 5rem;
+      }
+      @media (min-width: 1024px) {
+        .single-main-section { padding: 3rem 0 6rem; }
+      }
+      .single-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .single-layout > * {
+        min-width: 0;
+      }
+      @media (min-width: 1200px) {
+        .single-layout {
+          grid-template-columns: minmax(0, 1fr) 370px;
+          gap: 4rem;
+          align-items: start;
+        }
+      }
+
+      /* Article Prose Styling */
+      .single-article {
+        background: #fff;
+        border: 1px solid rgba(181,144,84,0.18);
+        border-radius: 10px;
+        padding: 2rem 1.5rem;
+        box-shadow: 0 12px 36px rgba(14,13,12,0.04);
+      }
+      @media (min-width: 640px) {
+        .single-article { padding: 2.75rem 2.75rem; }
+      }
+      @media (min-width: 1024px) {
+        .single-article { padding: 3.25rem 3.5rem; }
+      }
+
+      .single-dropcap::first-letter {
+        font-family: 'Marcellus', serif;
+        float: left;
+        font-size: 3.5rem;
+        line-height: 0.85;
+        padding-right: 0.65rem;
+        padding-top: 0.25rem;
+        color: #8E6B36;
+      }
+
+      .single-section-title {
+        font-family: 'Marcellus', serif;
+        font-size: 1.6rem;
+        color: #141311;
+        line-height: 1.3;
+        margin: 2.25rem 0 0.85rem;
+        display: flex;
+        align-items: baseline;
+        gap: 0.75rem;
+      }
+      .single-section-num {
+        font-family: 'Marcellus', serif;
+        font-size: 1.1rem;
+        color: #B59054;
+        letter-spacing: 0.08em;
+      }
+
+      .single-prose p {
+        font-size: 0.98rem;
+        line-height: 1.85;
+        color: #524E47;
+        margin-bottom: 1.25rem;
+      }
+
+      /* Editorial Pull Quote */
+      .single-quote {
+        margin: 2.25rem 0;
+        padding: 1.75rem 1.75rem;
+        background: #FAF8F4;
+        border-left: 3px solid #B59054;
+        border-radius: 0 8px 8px 0;
+      }
+      .single-quote blockquote {
+        font-family: 'Marcellus', serif;
+        font-size: 1.25rem;
+        line-height: 1.55;
+        color: #141311;
+        margin-bottom: 0.6rem;
+      }
+      .single-quote cite {
+        font-style: normal;
+        font-size: 0.72rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #8E6B36;
+        font-weight: 600;
+      }
+
+      /* Bench Checklist Box */
+      .single-checklist {
+        margin: 2rem 0;
+        padding: 1.65rem;
+        border: 1px solid rgba(181,144,84,0.24);
+        border-radius: 8px;
+        background: rgba(250,248,244,0.7);
+      }
+      .single-checklist h4 {
+        font-family: 'Marcellus', serif;
+        font-size: 1.1rem;
+        color: #141311;
+        margin-bottom: 0.9rem;
+      }
+      .single-checklist ul {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+      }
+      @media (min-width: 640px) {
+        .single-checklist ul { grid-template-columns: 1fr 1fr; gap: 0.75rem 1.5rem; }
+      }
+      .single-checklist li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.55rem;
+        font-size: 0.875rem;
+        color: #524E47;
+        line-height: 1.5;
+      }
+      .single-checklist i {
+        color: #B59054;
+        margin-top: 0.2rem;
+        font-size: 0.78rem;
+      }
+
+      /* Article Footer: Tags + Share */
+      .single-article-footer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: 2.5rem;
+        padding-top: 1.75rem;
+        border-top: 1px solid #E8E1D3;
+      }
+      .single-tag-pill {
+        display: inline-block;
+        padding: 0.35rem 0.75rem;
+        border-radius: 4px;
+        border: 1px solid #E8E1D3;
+        background: #FAF8F4;
+        font-size: 0.72rem;
+        color: #524E47;
+      }
+
+      /* Author Card */
+      .single-author-card {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.75rem;
+        margin-top: 2rem;
+        border: 1px solid rgba(181,144,84,0.22);
+        border-radius: 8px;
+        background: #fff;
+      }
+      @media (min-width: 640px) {
+        .single-author-card {
+          flex-direction: row;
+          align-items: center;
+          gap: 1.5rem;
+        }
+      }
+      .single-author-badge {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: #0E0D0C;
+        color: #E5C483;
+        border: 1px solid rgba(181,144,84,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Marcellus', serif;
+        font-size: 1.15rem;
+        letter-spacing: 0.12em;
+        flex-shrink: 0;
+      }
+
+      /* Prev / Next Navigation */
+      .single-post-nav {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      @media (min-width: 640px) {
+        .single-post-nav {
+          grid-template-columns: 1fr 1fr;
+          gap: 1.25rem;
+        }
+      }
+      .single-nav-card {
+        padding: 1.35rem 1.4rem;
+        border: 1px solid rgba(181,144,84,0.2);
+        border-radius: 8px;
+        background: #fff;
+        transition: border-color 0.25s ease, transform 0.25s ease;
+        display: block;
+      }
+      .single-nav-card:hover {
+        border-color: #B59054;
+        transform: translateY(-2px);
+      }
+      .single-nav-dir {
+        font-size: 0.68rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #8E6B36;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+      .single-nav-title {
+        font-family: 'Marcellus', serif;
+        font-size: 1.05rem;
+        color: #141311;
+        line-height: 1.35;
+      }
+
+      /* Sticky Sidebar */
+      .single-sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 1.65rem;
+      }
+      @media (min-width: 1200px) {
+        .single-sidebar {
+          position: sticky;
+          top: 6.5rem;
+        }
+      }
+      .sidebar-widget {
+        padding: 1.6rem 1.5rem;
+        border: 1px solid rgba(181,144,84,0.18);
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 8px 28px rgba(14,13,12,0.035);
+      }
+      .sidebar-title {
+        font-family: 'Marcellus', serif;
+        font-size: 1.15rem;
+        color: #141311;
+        padding-bottom: 0.75rem;
+        margin-bottom: 1.1rem;
+        border-bottom: 1px solid #E8E1D3;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .sidebar-title::after {
+        content: '';
+        width: 24px;
+        height: 1px;
+        background: #B59054;
+      }
+      .sidebar-popular-item {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+        text-decoration: none;
+      }
+      .sidebar-popular-thumb {
+        width: 64px;
+        height: 64px;
+        border-radius: 6px;
+        overflow: hidden;
+        flex-shrink: 0;
+        border: 1px solid rgba(181,144,84,0.2);
+      }
+      .sidebar-popular-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .sidebar-popular-title {
+        font-family: 'Marcellus', serif;
+        font-size: 0.92rem;
+        line-height: 1.35;
+        color: #141311;
+        margin-bottom: 0.2rem;
+        transition: color 0.2s;
+      }
+      .sidebar-popular-item:hover .sidebar-popular-title {
+        color: #8E6B36;
+      }
+      .sidebar-popular-date {
+        font-size: 0.7rem;
+        color: #7C766C;
+      }
+      .sidebar-cta-widget {
+        padding: 2rem 1.6rem;
+        border-radius: 8px;
+        background: #0E0D0C;
+        color: #FAF8F4;
+        border: 1px solid rgba(181,144,84,0.34);
+        box-shadow: 0 20px 48px rgba(14,13,12,0.18);
+      }
+      .sidebar-cat-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.55rem 0.75rem;
+        border-radius: 5px;
+        font-size: 0.86rem;
+        color: #524E47;
+        transition: background-color 0.2s, color 0.2s;
+      }
+      .sidebar-cat-link:hover {
+        background: #FAF8F4;
+        color: #141311;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-ivory text-ink-primary font-sans antialiased selection:bg-gold/20 selection:text-ink-primary"
+  >
+    <!-- Luxury Atelier Jewelry SVG Preloader -->
+    <div id="bjrPreloader" class="bjr-preloader" aria-hidden="false" role="status" aria-label="Loading BJR Atelier">
+      <div class="preloader-bg"></div>
+      <div class="preloader-content">
+        <div class="preloader-gem-wrap">
+          <svg class="preloader-svg" viewBox="0 0 200 200" width="200" height="200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="preloaderGoldBand" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FAF8F4" />
+                <stop offset="25%" stop-color="#E5C483" />
+                <stop offset="55%" stop-color="#B59054" />
+                <stop offset="85%" stop-color="#8E6B36" />
+                <stop offset="100%" stop-color="#4A3515" />
+              </linearGradient>
+              <linearGradient id="diamondFacetGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.96" />
+                <stop offset="40%" stop-color="#E0F2FE" stop-opacity="0.82" />
+                <stop offset="80%" stop-color="#BAE6FD" stop-opacity="0.65" />
+                <stop offset="100%" stop-color="#7DD3FC" stop-opacity="0.5" />
+              </linearGradient>
+              <linearGradient id="diamondFacetGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.98" />
+                <stop offset="35%" stop-color="#F0FDFA" stop-opacity="0.85" />
+                <stop offset="70%" stop-color="#CFFAFE" stop-opacity="0.7" />
+                <stop offset="100%" stop-color="#93C5FD" stop-opacity="0.45" />
+              </linearGradient>
+              <linearGradient id="diamondPavilionGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.92" />
+                <stop offset="30%" stop-color="#E0F2FE" stop-opacity="0.75" />
+                <stop offset="65%" stop-color="#38BDF8" stop-opacity="0.5" />
+                <stop offset="100%" stop-color="#0284C7" stop-opacity="0.25" />
+              </linearGradient>
+              <linearGradient id="diamondStrokeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="25%" stop-color="#E0F2FE" />
+                <stop offset="50%" stop-color="#FDF4FF" />
+                <stop offset="75%" stop-color="#BAE6FD" />
+                <stop offset="100%" stop-color="#FFFFFF" />
+              </linearGradient>
+              <linearGradient id="platinumGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="50%" stop-color="#E2E8F0" />
+                <stop offset="100%" stop-color="#94A3B8" />
+              </linearGradient>
+              <radialGradient id="diamondAura" cx="50%" cy="32%" r="50%">
+                <stop offset="0%" stop-color="rgba(224, 242, 254, 0.75)" />
+                <stop offset="30%" stop-color="rgba(186, 230, 253, 0.35)" />
+                <stop offset="65%" stop-color="rgba(181, 144, 84, 0.15)" />
+                <stop offset="100%" stop-color="transparent" />
+              </radialGradient>
+              <linearGradient id="anamorphicFlare" x1="0%" y1="50%" x2="100%" y2="50%">
+                <stop offset="0%" stop-color="transparent" />
+                <stop offset="35%" stop-color="rgba(186, 230, 253, 0.5)" />
+                <stop offset="50%" stop-color="#FFFFFF" />
+                <stop offset="65%" stop-color="rgba(253, 244, 255, 0.5)" />
+                <stop offset="100%" stop-color="transparent" />
+              </linearGradient>
+            </defs>
+            <circle cx="100" cy="54" r="54" fill="url(#diamondAura)" class="preloader-diamond-aura" />
+            <line x1="26" y1="54" x2="174" y2="54" stroke="url(#anamorphicFlare)" stroke-width="2" class="preloader-anamorphic" stroke-linecap="round" />
+            <path d="M 52 112 C 52 176, 148 176, 148 112" class="preloader-path preloader-band-outer" stroke="url(#preloaderGoldBand)" stroke-width="2.6" stroke-linecap="round" />
+            <path d="M 64 114 C 64 162, 136 162, 136 114" class="preloader-path preloader-band-inner" stroke="url(#preloaderGoldBand)" stroke-width="1.4" stroke-linecap="round" opacity="0.75" />
+            <path d="M 52 112 C 52 86, 64 68, 72 54" class="preloader-path preloader-band-shoulder" stroke="url(#preloaderGoldBand)" stroke-width="2" stroke-linecap="round" />
+            <path d="M 148 112 C 148 86, 136 68, 128 54" class="preloader-path preloader-band-shoulder" stroke="url(#preloaderGoldBand)" stroke-width="2" stroke-linecap="round" />
+            <path d="M 68 88 C 84 96, 116 96, 132 88" class="preloader-path preloader-bridge" stroke="url(#preloaderGoldBand)" stroke-width="1.2" opacity="0.65" stroke-linecap="round" />
+            <polygon points="100,54 100,96 82,54" class="preloader-diamond-facet" fill="url(#diamondPavilionGrad)" />
+            <polygon points="100,54 118,54 100,96" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="56,54 82,54 100,96" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="144,54 100,96 118,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="88,40 112,40 100,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="78,28 88,40 100,54 68,46" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="122,28 132,46 100,54 112,40" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="78,28 68,46 56,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="122,28 144,54 132,46" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="68,46 100,54 56,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="132,46 144,54 100,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="78,28 122,28 112,40 88,40" class="preloader-diamond-table" fill="#FFFFFF" opacity="0.95" />
+            <line x1="78" y1="28" x2="122" y2="28" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.8" stroke-linecap="round" />
+            <line x1="78" y1="28" x2="56" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.6" />
+            <line x1="122" y1="28" x2="144" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.6" />
+            <line x1="78" y1="28" x2="88" y2="40" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="122" y1="28" x2="112" y2="40" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="88" y1="40" x2="112" y2="40" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="88" y1="40" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="112" y1="40" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="68" y1="46" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
+            <line x1="132" y1="46" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke-width="1.1" />
+            <line x1="54" y1="54" x2="146" y2="54" class="preloader-path preloader-diamond-girdle" stroke="url(#diamondStrokeGrad)" stroke-width="2" stroke-linecap="round" />
+            <path d="M 56 54 L 100 96 L 144 54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.8" stroke-linejoin="round" />
+            <line x1="100" y1="54" x2="100" y2="96" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.3" />
+            <line x1="82" y1="54" x2="100" y2="96" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
+            <line x1="118" y1="54" x2="100" y2="96" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
+            <line x1="56" y1="56" x2="56" y2="50" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.6" stroke-linecap="round" />
+            <line x1="144" y1="56" x2="144" y2="50" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.6" stroke-linecap="round" />
+            <line x1="80" y1="56" x2="80" y2="51" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.2" stroke-linecap="round" />
+            <line x1="120" y1="56" x2="120" y2="51" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.2" stroke-linecap="round" />
+            <path d="M 78 18 Q 78 28 88 28 Q 78 28 78 38 Q 78 28 68 28 Q 78 28 78 18 Z" class="preloader-sparkle preloader-sparkle--main" fill="#FFFFFF" />
+            <circle cx="78" cy="28" r="2.2" fill="#E0F2FE" class="preloader-sparkle" />
+            <path d="M 144 48 Q 144 54 150 54 Q 144 54 144 60 Q 144 54 138 54 Q 144 54 144 48 Z" class="preloader-sparkle preloader-sparkle--secondary" fill="#BAE6FD" />
+            <circle cx="144" cy="54" r="1.5" fill="#FFFFFF" class="preloader-sparkle" />
+            <path d="M 100 90 Q 100 94 104 94 Q 100 94 100 98 Q 100 94 96 94 Q 100 94 100 90 Z" class="preloader-sparkle preloader-sparkle--culet" fill="#F472B6" />
+          </svg>
+        </div>
+        <div class="preloader-percent-display">
+          <span id="preloaderBigCount" class="preloader-big-num">00</span>
+          <span class="preloader-pct-symbol">%</span>
+        </div>
+        <div id="preloaderStatusText" class="preloader-status">Initializing Optical Calibration...</div>
+        <div class="preloader-progress-wrap">
+          <div class="preloader-track">
+            <div class="preloader-bar" id="preloaderBar"></div>
+          </div>
+        </div>
+        <div class="preloader-meta mt-3">
+          <div class="preloader-title">BJR ATELIER</div>
+          <div class="preloader-tagline">Fine Jewelry Retouching Protocol</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Announcement Bar -->
+    <div
+      class="top-bar"
+      role="region"
+      aria-label="Atelier Discretion & Service Coverage"
+    >
+      Haute Joaillerie Post-Production &bull; Serving Maisons &amp; Studios in
+      <strong>New York &bull; Paris &bull; Geneva &bull; London &bull; Antwerp</strong> &bull;
+      Confidential 24h Turnaround
+    </div>
+
+    <!-- Sticky Architectural Luxury Header -->
+    <header class="site-header" id="siteHeader">
+      <div class="container header-inner">
+        <a
+          href="index.html"
+          class="brand-logo group"
+          aria-label="BJR Haute Joaillerie Post-Production Atelier"
+        >
+          <div class="brand-logo-wrap">
+            <img
+              src="assets/images/logo.svg"
+              alt="BJR Atelier Logo"
+              class="brand-logo-img"
+              width="36"
+              height="36"
+              loading="eager"
+              decoding="async"
+              onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden');"
+            />
+            <span class="brand-mark hidden" aria-hidden="true">
+              <span>BJR</span>
+            </span>
+          </div>
+          <span class="brand-wordmark">
+            <span class="brand-name">BJR</span>
+            <span class="brand-sub">Haute Atelier</span>
+          </span>
+        </a>
+
+        <nav class="primary-nav" aria-label="Primary Editorial Navigation">
+          <ul class="nav-list">
+            <li><a href="index.html#services" class="nav-link">Services</a></li>
+            <li><a href="index.html#macro-loupe" class="nav-link">Loupe</a></li>
+            <li><a href="index.html#colorways" class="nav-link">Alloy Atelier</a></li>
+            <li><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
+            <li><a href="index.html#jrw-workflow" class="nav-link">Process</a></li>
+            <li><a href="index.html#pricing" class="nav-link">Pricing</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="blog.html" class="nav-link active text-gold-deep">Blog</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a
+            href="index.html#free-trial-home"
+            class="btn-haute hidden lg:inline-flex"
+            aria-label="Request a Trial & Private Consultation"
+          >
+            <span>Private Inquiry</span>
+            <i class="fa-solid fa-arrow-right-long text-xs ml-2 opacity-80" aria-hidden="true"></i>
+          </a>
+          <button
+            type="button"
+            class="mobile-menu-btn"
+            id="mobileMenuOpen"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="mobileDrawer"
+          >
+            <i class="fa-solid fa-bars text-lg" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Architectural Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+      <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop"></div>
+      <div
+        class="mobile-drawer-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Atelier Navigation Menu"
+      >
+        <div>
+          <div class="mobile-drawer-top">
+            <div class="flex items-center gap-2.5">
+              <img src="assets/images/logo.svg" alt="BJR Atelier" class="w-7 h-7 object-contain" width="28" height="28" />
+              <span class="font-serif text-lg tracking-[0.22em] text-ink-primary font-normal">BJR</span>
+              <span class="text-[9px] uppercase tracking-[0.24em] text-gold-deep font-semibold pl-2 border-l border-stone-200">Atelier</span>
+            </div>
+            <button type="button" class="mobile-menu-btn" style="display: inline-flex" id="mobileMenuClose" aria-label="Close navigation menu">
+              <i class="fa-solid fa-xmark text-lg" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <ul class="mobile-nav-list">
+            <li><a href="index.html" class="mobile-nav-link"><span>Atelier Home</span><span class="mobile-nav-idx">00</span></a></li>
+            <li><a href="index.html#services" class="mobile-nav-link"><span>Four Pillars of Retouching</span><span class="mobile-nav-idx">01</span></a></li>
+            <li><a href="index.html#portfolio" class="mobile-nav-link"><span>Curated Portfolio</span><span class="mobile-nav-idx">02</span></a></li>
+            <li><a href="index.html#jrw-workflow" class="mobile-nav-link"><span>Craftsmanship Protocol</span><span class="mobile-nav-idx">03</span></a></li>
+            <li><a href="index.html#pricing" class="mobile-nav-link"><span>Investment &amp; SLA Tiers</span><span class="mobile-nav-idx">04</span></a></li>
+            <li><a href="about.html" class="mobile-nav-link"><span>About Atelier</span><span class="mobile-nav-idx">05</span></a></li>
+            <li><a href="blog.html" class="mobile-nav-link active"><span>Atelier Journal</span><span class="mobile-nav-idx">06</span></a></li>
+            <li><a href="contact.html" class="mobile-nav-link"><span>Contact Atelier</span><span class="mobile-nav-idx">07</span></a></li>
+            <li><a href="privacy.html" class="mobile-nav-link"><span>Privacy Policy</span><span class="mobile-nav-idx">08</span></a></li>
+            <li><a href="terms.html" class="mobile-nav-link"><span>Terms &amp; Conditions</span><span class="mobile-nav-idx">09</span></a></li>
+          </ul>
+
+          <div class="mobile-drawer-ctas">
+            <a href="index.html#free-trial-home" class="btn-haute w-full px-4 py-3.5 text-center flex items-center justify-center gap-2 whitespace-normal leading-snug">
+              <span>Request Free Test Images</span>
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true" class="shrink-0">
+                <path d="M4 10H16M11 5L16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="pt-6 mt-6 border-t border-stone-200">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="text-[10px] uppercase tracking-[0.22em] text-ink-muted font-semibold">Paris &bull; NY &bull; Geneva &bull; Active Desk</span>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--ink-muted)">
+            Private Desk:
+            <a href="mailto:studio@bestjewelryretouching.com" style="color: var(--gold-deep); text-decoration: underline">studio@bestjewelryretouching.com</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <!-- 1. Editorial Single Article Hero (1440px Container) -->
+      <section class="single-hero">
+        <!-- Decorative Diamond & Orbital Shapes -->
+        <div class="hidden lg:block absolute -left-24 top-8 w-64 h-64 rounded-full border border-gold/15 pointer-events-none select-none js-shape-spin" aria-hidden="true"></div>
+        <div class="hidden md:block absolute right-10 top-12 w-28 h-28 text-gold/15 pointer-events-none select-none js-shape-float" aria-hidden="true">
+          <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1">
+            <polygon points="60,8 106,36 106,84 60,112 14,84 14,36" />
+            <polygon points="60,24 90,42 90,78 60,96 30,78 30,42" />
+            <line x1="60" y1="8" x2="60" y2="112" />
+            <line x1="14" y1="36" x2="106" y2="84" />
+            <line x1="106" y1="36" x2="14" y2="84" />
+          </svg>
+        </div>
+
+        <div class="container relative z-10">
+          <!-- Breadcrumb -->
+          <nav class="single-breadcrumb js-hero-item" aria-label="Breadcrumb">
+            <a href="index.html">Atelier Home</a>
+            <span>/</span>
+            <a href="blog.html">Atelier Journal</a>
+            <span>/</span>
+            <span id="postCategoryCrumb" class="text-ink-primary">Diamond Retouching</span>
+          </nav>
+
+          <!-- Headline & Meta -->
+          <div class="max-w-4xl">
+            <div class="js-hero-item inline-flex items-center gap-3.5 mb-4">
+              <span class="w-8 h-px bg-gold opacity-70"></span>
+              <span class="text-[11px] font-semibold tracking-[0.28em] uppercase text-gold" id="postEyebrow">Diamond Retouching</span>
+            </div>
+            <h1 class="js-hero-item font-serif text-3xl sm:text-5xl lg:text-[52px] font-normal text-ink-primary leading-[1.12] tracking-[-0.015em] mb-5" id="postTitle">
+              Why 400% Magnification &amp; Manual Wacom Paths Outperform AI on Fine Jewelry
+            </h1>
+            <p class="js-hero-item text-ink-secondary text-base sm:text-lg leading-relaxed mb-6" id="postLead">
+              Generative filters hallucinate prong shapes and soften engraved hallmarks. Discover how our bench specialists preserve carat geometry while eliminating studio dust and tripod reflections.
+            </p>
+
+            <div class="single-meta-bar js-hero-item">
+              <span class="single-meta-item"><i class="fa-solid fa-pen-nib"></i> <span>BJR Senior Bench</span></span>
+              <span class="single-meta-item"><i class="fa-regular fa-calendar"></i> <span id="postDate">Nov 22, 2026</span></span>
+              <span class="single-meta-item"><i class="fa-regular fa-clock"></i> <span id="postReadTime">6 min read</span></span>
+              <span class="single-meta-item"><i class="fa-solid fa-magnifying-glass-plus"></i> <span>400% QC Protocol</span></span>
+            </div>
+          </div>
+
+          <!-- Framed Hero Visual -->
+          <div class="single-hero-frame js-hero-media">
+            <div class="single-hero-media">
+              <img
+                id="postHeroImg"
+                src="assets/images/hero-after.jpg"
+                alt="Why 400% Magnification & Manual Wacom Paths Outperform AI on Fine Jewelry"
+                width="1200"
+                height="600"
+                loading="eager"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Main 2-Column Article Body + Sticky Sidebar -->
+      <section class="single-main-section">
+        <div class="container">
+          <div class="single-layout">
+            <!-- LEFT COLUMN: Rich Article Body + Author + Prev/Next -->
+            <div>
+              <article class="single-article single-prose">
+                <p class="single-dropcap" id="postIntroPara">
+                  Every luxury jewelry house faces the same dilemma once macro studio captures arrive on the workstation: raw lenses reveal micro-dust, wax residue, harsh softbox reflections, and uneven metallic transitions — yet automated AI retouching alters the piece itself.
+                </p>
+                <p id="postPara2">
+                  At 400% magnification, the difference between an algorithmic filter and a dedicated human jewelry specialist becomes unmistakable. Automated tools blur tiny 750 gold hallmarks, distort prong symmetry, and invent artificial diamond facets that misrepresent the true stone cut.
+                </p>
+
+                <h2 class="single-section-title">
+                  <span class="single-section-num">01</span>
+                  <span id="postSec1Title">Hand-Drawn Vector Isolation vs. Automated Cutouts</span>
+                </h2>
+                <p id="postSec1Body">
+                  Delicate chains, pav&eacute; prongs, and openwork galleries demand surgical Pen Tool precision. Rather than relying on feather-edged AI masks that leave gray halos on white backgrounds, our specialists trace every curve manually onto pure RGB 255 white or custom editorial surfaces while preserving grounded contact shadows.
+                </p>
+
+                <div class="single-quote">
+                  <blockquote id="postQuoteText">
+                    &ldquo;In fine jewelry, authenticity is non-negotiable. A collector inspects every prong and facet before trusting a maison online.&rdquo;
+                  </blockquote>
+                  <cite>&mdash; BJR Haute Atelier Bench Standards</cite>
+                </div>
+
+                <h2 class="single-section-title">
+                  <span class="single-section-num">02</span>
+                  <span id="postSec2Title">Calibrated Dodge-and-Burn Metallic Sculpting</span>
+                </h2>
+                <p id="postSec2Body">
+                  Precious metals act like curved mirrors in the studio. Instead of flat frequency-separation smoothing, we sculpt directional specular gradients across 18K Yellow Gold, Rose Gold, and Platinum so reflections look naturally liquid and uninterrupted.
+                </p>
+
+                <div class="single-checklist">
+                  <h4>Atelier Bench Quality Checklist</h4>
+                  <ul>
+                    <li><i class="fa-solid fa-check"></i><span>400% zoom inspection across all prongs &amp; pav&eacute;</span></li>
+                    <li><i class="fa-solid fa-check"></i><span>16-bit layered PSD with non-destructive masks</span></li>
+                    <li><i class="fa-solid fa-check"></i><span>Calibrated sRGB, Adobe RGB &amp; Display P3</span></li>
+                    <li><i class="fa-solid fa-check"></i><span>256-bit encrypted vault &amp; Mutual NDA</span></li>
+                  </ul>
+                </div>
+
+                <h2 class="single-section-title">
+                  <span class="single-section-num">03</span>
+                  <span id="postSec3Title">Deliverables Ready for Print &amp; Global E-Commerce</span>
+                </h2>
+                <p id="postSec3Body">
+                  Every finished master is exported alongside web-optimized crops and color-checked across calibrated monitors before overnight delivery synchronized to New York, London, Paris, and Geneva time zones.
+                </p>
+
+                <!-- Tags & Share -->
+                <div class="single-article-footer">
+                  <div class="flex flex-wrap items-center gap-2" id="postTagsWrap">
+                    <span class="single-tag-pill">400% Loupe</span>
+                    <span class="single-tag-pill">Zero AI</span>
+                    <span class="single-tag-pill">16-Bit PSD</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <button type="button" id="copyArticleLink" class="btn btn-outline !py-2 !px-4 text-xs">
+                      <i class="fa-solid fa-link mr-1.5 text-[11px]"></i>
+                      <span id="copyLinkText">Copy Essay Link</span>
+                    </button>
+                    <a href="blog.html" class="btn btn-obsidian !py-2 !px-4 text-xs">
+                      All Essays
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Author / Bench Note Card -->
+              <div class="single-author-card">
+                <div class="single-author-badge">BJR</div>
+                <div>
+                  <div class="text-[10px] uppercase tracking-[0.2em] text-gold-deep font-semibold mb-1">Written By Our Bench</div>
+                  <h3 class="font-serif text-xl text-ink-primary mb-1">BJR Haute Atelier Editorial Desk</h3>
+                  <p class="text-sm text-ink-secondary leading-relaxed">
+                    Senior gemology-focused retouchers and 3D finishing specialists serving luxury jewelry maisons across New York, Paris, London, Antwerp, and Geneva.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Prev / Next Post Navigation -->
+              <nav class="single-post-nav" aria-label="Adjacent essays">
+                <a href="blog-single.html" class="single-nav-card" id="prevPostLink">
+                  <div class="single-nav-dir"><i class="fa-solid fa-arrow-left-long"></i><span>Previous Essay</span></div>
+                  <div class="single-nav-title" id="prevPostTitle">Previous Essay Title</div>
+                </a>
+                <a href="blog-single.html" class="single-nav-card text-left sm:text-right" id="nextPostLink">
+                  <div class="single-nav-dir sm:justify-end"><span>Next Essay</span><i class="fa-solid fa-arrow-right-long"></i></div>
+                  <div class="single-nav-title" id="nextPostTitle">Next Essay Title</div>
+                </a>
+              </nav>
+            </div>
+
+            <!-- RIGHT COLUMN: Sticky Luxury Sidebar -->
+            <aside class="single-sidebar" aria-label="Article Sidebar">
+              <!-- 1. Back to Journal + Specs -->
+              <div class="sidebar-widget">
+                <h2 class="sidebar-title">Essay Specifications</h2>
+                <div class="space-y-3 text-sm text-ink-secondary">
+                  <div class="flex items-center justify-between py-1.5 border-b border-stone-200/70">
+                    <span>Magnification</span>
+                    <strong class="text-ink-primary font-semibold">400% Bench QC</strong>
+                  </div>
+                  <div class="flex items-center justify-between py-1.5 border-b border-stone-200/70">
+                    <span>Workflow</span>
+                    <strong class="text-ink-primary font-semibold">100% Manual Wacom</strong>
+                  </div>
+                  <div class="flex items-center justify-between py-1.5 border-b border-stone-200/70">
+                    <span>Security</span>
+                    <strong class="text-ink-primary font-semibold">256-Bit Mutual NDA</strong>
+                  </div>
+                  <div class="flex items-center justify-between py-1.5">
+                    <span>Turnaround</span>
+                    <strong class="text-ink-primary font-semibold">12&ndash;24h Overnight</strong>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2. More From The Journal -->
+              <div class="sidebar-widget">
+                <h2 class="sidebar-title">More From Journal</h2>
+                <div class="space-y-4" id="sidebarRelatedList">
+                  <a href="blog-single.html?post=restoring-crystalline-diamond-fire" class="sidebar-popular-item">
+                    <div class="sidebar-popular-thumb">
+                      <img src="assets/images/service-3-after.jpg" alt="Diamond fire restoration" width="80" height="80" loading="lazy" />
+                    </div>
+                    <div>
+                      <div class="sidebar-popular-title">Restoring Crystalline Diamond Fire</div>
+                      <div class="sidebar-popular-date">Nov 18, 2026 &bull; 5 min read</div>
+                    </div>
+                  </a>
+                  <a href="blog-single.html?post=digital-alloy-recasting-science" class="sidebar-popular-item">
+                    <div class="sidebar-popular-thumb">
+                      <img src="assets/images/colorway-yellow-gold.jpg" alt="Alloy recasting" width="80" height="80" loading="lazy" />
+                    </div>
+                    <div>
+                      <div class="sidebar-popular-title">The Science of Digital Alloy Recasting</div>
+                      <div class="sidebar-popular-date">Nov 14, 2026 &bull; 4 min read</div>
+                    </div>
+                  </a>
+                  <a href="blog-single.html?post=artisanal-high-jewelry-macro" class="sidebar-popular-item">
+                    <div class="sidebar-popular-thumb">
+                      <img src="assets/images/portfolio-2-after.jpg" alt="High jewelry macro" width="80" height="80" loading="lazy" />
+                    </div>
+                    <div>
+                      <div class="sidebar-popular-title">Balancing Satin Finish &amp; Mirror Bevels</div>
+                      <div class="sidebar-popular-date">Nov 04, 2026 &bull; 6 min read</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <!-- 3. Dark Obsidian Free Trial CTA -->
+              <div class="sidebar-cta-widget">
+                <div class="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-[#E5C483] font-semibold mb-3">
+                  <i class="fa-solid fa-lock"></i>
+                  <span>256-Bit Mutual NDA</span>
+                </div>
+                <h3 class="font-serif text-2xl text-ivory leading-snug mb-3">
+                  Test Our Bench With 2 Free Images
+                </h3>
+                <p class="text-xs text-[#D6D1C7] leading-relaxed mb-5">
+                  Send two raw captures or 3D renders and receive layered 16-bit masters in 12&ndash;24 hours.
+                </p>
+                <a href="index.html#free-trial-home" class="btn btn-gold w-full justify-center">
+                  Claim Free Trial
+                </a>
+              </div>
+
+              <!-- 4. Browse Categories -->
+              <div class="sidebar-widget">
+                <h2 class="sidebar-title">Browse Topics</h2>
+                <div class="space-y-1">
+                  <a href="blog.html?cat=all" class="sidebar-cat-link"><span>All Articles</span><span>9</span></a>
+                  <a href="blog.html?cat=diamond" class="sidebar-cat-link"><span>Diamond Retouching</span><span>3</span></a>
+                  <a href="blog.html?cat=alloy" class="sidebar-cat-link"><span>Alloy Recasting</span><span>2</span></a>
+                  <a href="blog.html?cat=cad" class="sidebar-cat-link"><span>3D CAD &amp; Craft</span><span>2</span></a>
+                  <a href="blog.html?cat=ecommerce" class="sidebar-cat-link"><span>Workflow &amp; NDA</span><span>2</span></a>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Site Footer (Same as Homepage) -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="brand-logo" aria-label="Best Jewelry Retouching — Home">
+              <span class="brand-mark" aria-hidden="true"><span>B</span></span>
+              <span class="brand-wordmark">
+                <span class="brand-name">Best Jewelry Retouching</span>
+                <span class="brand-sub">Bespoke Post-Production</span>
+              </span>
+            </a>
+            <p>
+              Precision hand-crafted jewelry photo editing and diamond
+              restoration studio serving luxury brands across the USA and
+              Europe.
+            </p>
+            <div class="flex items-center gap-3.5 mt-4 text-stone-400">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="BJR Instagram" class="hover:text-gold-deep transition-colors"><i class="fa-brands fa-instagram text-base"></i></a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="BJR LinkedIn" class="hover:text-gold-deep transition-colors"><i class="fa-brands fa-linkedin-in text-base"></i></a>
+              <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="BJR Pinterest" class="hover:text-gold-deep transition-colors"><i class="fa-brands fa-pinterest-p text-base"></i></a>
+              <a href="mailto:studio@bestjewelryretouching.com" aria-label="Contact Studio" class="hover:text-gold-deep transition-colors"><i class="fa-solid fa-envelope text-base"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Core Services</h4>
+            <ul class="footer-links">
+              <li><a href="index.html#service-1">High-End Jewelry Retouching</a></li>
+              <li><a href="index.html#service-2">Hybrid E-Commerce Editing</a></li>
+              <li><a href="index.html#service-3">Diamond Fire Restoration</a></li>
+              <li><a href="index.html#service-4">3D Render Enhancement</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Atelier Studio</h4>
+            <ul class="footer-links">
+              <li><a href="about.html">About Atelier</a></li>
+              <li><a href="blog.html">Atelier Journal (Blog)</a></li>
+              <li><a href="index.html#macro-loupe">Precision 400% Loupe</a></li>
+              <li><a href="index.html#colorways">Alloy Recasting Studio</a></li>
+              <li><a href="index.html#jrw-workflow">Bench Standards Protocol</a></li>
+              <li><a href="index.html#pricing">Pricing &amp; SLA Tiers</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Authenticity &amp; Care</h4>
+            <ul class="footer-links">
+              <li><a href="index.html#authenticity">Anti-AI Artisan Manifesto</a></li>
+              <li><a href="contact.html">Contact Atelier</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms &amp; Conditions</a></li>
+              <li><a href="index.html#faq">Turnaround &amp; Delivery FAQ</a></li>
+              <li><a href="mailto:studio@bestjewelryretouching.com">Email Studio Desk</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; 2026 BestJewelryRetouching.com &mdash; All Rights Reserved.</span>
+          <span>Serving New York &bull; Los Angeles &bull; London &bull; Paris &bull; Antwerp &bull; Geneva</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Vendor Scripts (Local) -->
+    <script src="assets/js/lenis.min.js"></script>
+    <script src="assets/js/gsap.min.js"></script>
+    <script src="assets/js/ScrollTrigger.min.js"></script>
+    <script src="assets/js/main.js?v=20261125e"></script>
+
+    <!-- Single Article Dynamic Content & GSAP -->
+    <script>
+      (function () {
+        'use strict';
+        var ARTICLES = [
+          {
+            slug: 'manual-wacom-vs-ai-jewelry-retouching',
+            category: 'Diamond Retouching',
+            date: 'Nov 22, 2026',
+            read: '6 min read',
+            img: 'assets/images/hero-after.jpg',
+            title: 'Why 400% Magnification & Manual Wacom Paths Outperform AI on Fine Jewelry',
+            lead: 'Generative filters hallucinate prong shapes and soften engraved hallmarks. Discover how our bench specialists preserve carat geometry while eliminating studio dust and tripod reflections.',
+            tags: ['400% Loupe', 'Zero AI', '16-Bit PSD'],
+            quote: '\u201cIn fine jewelry, authenticity is non-negotiable. A collector inspects every prong and facet before trusting a maison online.\u201d'
+          },
+          {
+            slug: 'restoring-crystalline-diamond-fire',
+            category: 'Diamond Retouching',
+            date: 'Nov 18, 2026',
+            read: '5 min read',
+            img: 'assets/images/service-3-after.jpg',
+            title: 'Restoring Crystalline Diamond Fire Without Artificial Sparkle Overlays',
+            lead: 'True brilliance comes from disciplined micro-contrast between table, crown, and pavilion facets \u2014 never synthetic star brushes.',
+            tags: ['Diamond Fire', '400% Loupe'],
+            quote: '\u201cReal diamond scintillation is born from crisp tonal separation inside the pavilion \u2014 never pasted-on starbursts.\u201d'
+          },
+          {
+            slug: 'digital-alloy-recasting-science',
+            category: 'Alloy Recasting',
+            date: 'Nov 14, 2026',
+            read: '4 min read',
+            img: 'assets/images/colorway-yellow-gold.jpg',
+            title: '18K Yellow, Rose & Platinum: The Science of Digital Alloy Recasting',
+            lead: 'Shoot one master casting and generate assay-accurate metal colorways with calibrated spectral highlights for every SKU.',
+            tags: ['16-Bit PSD', 'Alloy Recasting'],
+            quote: '\u201cDigital alloy recasting saves maisons thousands in physical casting shoots while keeping every SKU optically identical.\u201d'
+          },
+          {
+            slug: 'matrixgold-cad-to-photorealistic',
+            category: '3D CAD & Craft',
+            date: 'Nov 09, 2026',
+            read: '5 min read',
+            img: 'assets/images/portfolio-4-v1-after.jpg',
+            title: 'From MatrixGold CAD to Photorealistic Campaign Assets',
+            lead: 'How subtle surface grain, chamfered highlights, and optical refraction turn sterile 3D renders into believable photography.',
+            tags: ['CAD Render', '16-Bit PSD'],
+            quote: '\u201cGreat 3D post-production introduces microscopic organic warmth so a render feels photographed under studio strobes.\u201d'
+          },
+          {
+            slug: 'artisanal-high-jewelry-macro',
+            category: '3D CAD & Craft',
+            date: 'Nov 04, 2026',
+            read: '6 min read',
+            img: 'assets/images/portfolio-2-after.jpg',
+            title: 'Artisanal High-Jewelry Macro: Balancing Satin Finish & Mirror Bevels',
+            lead: 'Precision dodge-and-burn sculpting preserves delicate brushed textures and sharp specular transitions across heirloom settings.',
+            tags: ['High Jewelry', '400% Loupe'],
+            quote: '\u201cPreserving the contrast between satin-brushed shoulders and mirror-polished bevels is the hallmark of luxury retouching.\u201d'
+          },
+          {
+            slug: 'rgb-255-isolation-vs-contact-shadows',
+            category: 'Workflow',
+            date: 'Oct 28, 2026',
+            read: '4 min read',
+            img: 'assets/images/service-2-after.jpg',
+            title: 'Pure RGB 255 Isolation vs. Natural Contact Shadows in Luxury E-Commerce',
+            lead: 'Why floating cutouts reduce buyer trust \u2014 and how calibrated natural shadows ground rings and bracelets on crisp white PDPs.',
+            tags: ['Mutual NDA', 'Zero AI'],
+            quote: '\u201cA calibrated natural contact shadow anchors precious metal onto the page and immediately elevates perceived value.\u201d'
+          },
+          {
+            slug: 'protecting-collections-mutual-nda',
+            category: 'Workflow',
+            date: 'Oct 21, 2026',
+            read: '5 min read',
+            img: 'assets/images/portfolio-6-v1-after.jpg',
+            title: 'Protecting Unreleased High-Jewelry Collections Under 256-Bit Mutual NDA',
+            lead: 'Inside our air-gapped studio vault protocol, zero-AI guarantee, and 30-day automatic asset purge for confidential lookbooks.',
+            tags: ['Mutual NDA', '16-Bit PSD'],
+            quote: '\u201cDiscretion is the foundation of every high-jewelry partnership \u2014 zero cloud AI, air-gapped benches, automatic NDA.\u201d'
+          },
+          {
+            slug: 'focus-stacking-24-macro-captures',
+            category: 'Diamond Retouching',
+            date: 'Oct 15, 2026',
+            read: '5 min read',
+            img: 'assets/images/portfolio-3-after.jpg',
+            title: 'Focus Stacking 24 Macro Captures for Edge-to-Edge Ring Sharpness',
+            lead: 'How manual halo cleanup after Helicon Focus stacking keeps every back-shank prong razor sharp without depth-of-field blur.',
+            tags: ['400% Loupe', 'Zero AI'],
+            quote: '\u201cAutomated focus stacks always leave ghosted edges; manual masking finishes what optical stacking starts.\u201d'
+          },
+          {
+            slug: 'color-calibrating-pearl-nacre-rose-gold',
+            category: 'Alloy Recasting',
+            date: 'Oct 08, 2026',
+            read: '4 min read',
+            img: 'assets/images/watch-after.jpg',
+            title: 'Color-Calibrating Pearl Nacre & Rose Gold Across Print and Display P3',
+            lead: 'Preventing warm blush tones from shifting orange across Retina screens and editorial print proofs with 16-bit LUTs.',
+            tags: ['16-Bit PSD', 'High Jewelry'],
+            quote: '\u201cTrue 18K Rose Gold and pearl overtones require 16-bit color discipline across every target display profile.\u201d'
+          }
+        ];
+
+        var params = new URLSearchParams(window.location.search);
+        var slug = params.get('post') || ARTICLES[0].slug;
+        var idx = ARTICLES.findIndex(function (a) { return a.slug === slug; });
+        if (idx === -1) idx = 0;
+
+        var article = ARTICLES[idx];
+        var prev = ARTICLES[(idx - 1 + ARTICLES.length) % ARTICLES.length];
+        var next = ARTICLES[(idx + 1) % ARTICLES.length];
+
+        document.title = article.title + ' | BJR Atelier Journal';
+
+        var setText = function (id, val) {
+          var el = document.getElementById(id);
+          if (el) el.textContent = val;
+        };
+        setText('postCategoryCrumb', article.category);
+        setText('postEyebrow', article.category);
+        setText('postTitle', article.title);
+        setText('postLead', article.lead);
+        setText('postDate', article.date);
+        setText('postReadTime', article.read);
+        setText('postQuoteText', article.quote);
+
+        var heroImg = document.getElementById('postHeroImg');
+        if (heroImg) {
+          heroImg.src = article.img;
+          heroImg.alt = article.title;
+        }
+
+        var tagsWrap = document.getElementById('postTagsWrap');
+        if (tagsWrap && article.tags) {
+          tagsWrap.innerHTML = article.tags.map(function (t) {
+            return '<span class="single-tag-pill">' + t + '</span>';
+          }).join('');
+        }
+
+        var prevLink = document.getElementById('prevPostLink');
+        var nextLink = document.getElementById('nextPostLink');
+        if (prevLink) prevLink.href = 'blog-single.html?post=' + prev.slug;
+        if (nextLink) nextLink.href = 'blog-single.html?post=' + next.slug;
+        setText('prevPostTitle', prev.title);
+        setText('nextPostTitle', next.title);
+
+        // Copy URL helper
+        var copyBtn = document.getElementById('copyArticleLink');
+        var copyText = document.getElementById('copyLinkText');
+        if (copyBtn) {
+          copyBtn.addEventListener('click', function () {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(window.location.href).catch(function () {});
+            }
+            if (copyText) copyText.textContent = 'Link Copied!';
+            setTimeout(function () {
+              if (copyText) copyText.textContent = 'Copy Essay Link';
+            }, 2200);
+          });
+        }
+
+        // Subtle GSAP animations for decorative shapes
+        if (window.gsap) {
+          window.gsap.utils.toArray('.js-shape-spin').forEach(function (el) {
+            window.gsap.to(el, { rotation: 360, duration: 55, repeat: -1, ease: 'none' });
+          });
+          window.gsap.utils.toArray('.js-shape-float').forEach(function (el) {
+            window.gsap.to(el, { y: -12, duration: 3.4, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
