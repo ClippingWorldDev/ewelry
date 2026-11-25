@@ -1551,8 +1551,8 @@ window.STUDIO_API = {
       const width = window.innerWidth;
       if (width < 640) {
         // Mobile phone: horizontal carousel showing 3 cards
-        const cardWidth = firstCard.offsetWidth || 72;
-        const computedGap = parseFloat(window.getComputedStyle(vTrack).columnGap) || 10;
+        const cardWidth = firstCard.offsetWidth || 64;
+        const computedGap = parseFloat(window.getComputedStyle(vTrack).columnGap) || 8;
         const step = cardWidth + computedGap;
         const maxOffset = Math.max(0, (cards.length - 3) * step);
         const targetOffset = Math.min(Math.max(0, (current - 1) * step), maxOffset);

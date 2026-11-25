@@ -160,8 +160,8 @@
 }
 
 #jrw-workflow .jrw-card {
-  position: sticky;
-  top: calc(14px + var(--jrw-index, 0) * 10px);
+  position: relative;
+  top: auto;
   z-index: calc(10 + var(--jrw-index, 0));
 }
 
@@ -641,6 +641,14 @@
   box-shadow: 0 4px 16px rgba(28, 27, 25, 0.08);
 }
 
+/* Keep Stage 05 pass pill at top-left so bottom swatches never collide at any width */
+#jrw-workflow .jrw-stage-5 .jrw-pass {
+  top: 14px;
+  left: 14px;
+  right: auto;
+  bottom: auto;
+}
+
 #jrw-workflow .jrw-s5-swatches button {
   display: flex;
   align-items: center;
@@ -773,6 +781,53 @@
 /* ==========================================================================
    RESPONSIVE LAYOUT & BREAKPOINTS
    ========================================================================== */
+@media (max-width: 639px) {
+  #jrw-workflow .jrw-stage {
+    min-height: 320px;
+  }
+
+  #jrw-workflow .jrw-stage-badge {
+    top: 10px;
+    font-size: 7.5px;
+    letter-spacing: 0.06em;
+    padding: 4px 8px;
+    max-width: calc(50% - 14px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #jrw-workflow .jrw-stage-badge-raw {
+    left: 10px;
+  }
+
+  #jrw-workflow .jrw-stage-badge-master {
+    right: 10px;
+  }
+
+  #jrw-workflow .jrw-stage-5 .jrw-pass {
+    top: 10px;
+    left: 10px;
+    font-size: 8px;
+    padding: 4px 9px;
+  }
+
+  #jrw-workflow .jrw-stage-6 .jrw-s6-hint {
+    left: 10px;
+    bottom: 10px;
+    transform: none;
+    padding: 6px 10px;
+    font-size: 8px;
+  }
+
+  #jrw-workflow .jrw-stage-6 .jrw-pass {
+    right: 10px;
+    bottom: 10px;
+    padding: 6px 10px;
+    font-size: 8px;
+  }
+}
+
 @media (min-width: 1024px) {
   #jrw-workflow .jrw-grid-copy {
     display: grid;
@@ -790,6 +845,7 @@
   }
 
   #jrw-workflow .jrw-card {
+    position: sticky;
     top: calc(34px + var(--jrw-index, 0) * 18px);
   }
 
@@ -803,7 +859,7 @@
   }
 }
 
-@media (min-width: 1320px) {
+@media (min-width: 1560px) {
   #jrw-workflow .jrw-progress {
     display: flex;
   }

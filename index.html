@@ -77,8 +77,8 @@
     <!-- Swiper Carousel Stylesheet (Local) -->
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
     <!-- Compiled Luxury Studio Stylesheet (Tailwind CSS) -->
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/jrw-workflow.css" />
+    <link rel="stylesheet" href="assets/css/style.css?v=20261125" />
+    <link rel="stylesheet" href="assets/css/jrw-workflow.css?v=20261125" />
   </head>
   <body
     class="bg-ivory text-ink-primary font-sans antialiased selection:bg-gold/20 selection:text-ink-primary"
@@ -431,15 +431,16 @@
           <div class="mobile-drawer-ctas">
             <a
               href="#free-trial-home"
-              class="btn-haute w-full py-3.5 text-center flex items-center justify-center gap-2"
+              class="btn-haute w-full px-4 py-3.5 text-center flex items-center justify-center gap-2 whitespace-normal leading-snug"
             >
-              <span>Request a Trial (2 Test Images)</span>
+              <span>Request Free Test Images</span>
               <svg
                 width="16"
                 height="16"
                 viewBox="0 0 20 20"
                 fill="none"
                 aria-hidden="true"
+                class="shrink-0"
               >
                 <path
                   d="M4 10H16M11 5L16 10L11 15"
@@ -452,7 +453,7 @@
             </a>
             <a
               href="#pricing"
-              class="btn btn-outline w-full py-3 text-center text-xs tracking-wider rounded-[2px]"
+              class="btn btn-outline w-full px-4 py-3 text-center text-xs tracking-wider rounded-[2px] whitespace-normal leading-snug"
             >
               Private Consultation &amp; SLA
             </a>
@@ -499,6 +500,8 @@
                     src="assets/images/hero-earrings.jpg"
                     alt="Braided 18k Gold Diamond Hoop Earrings"
                     class="hero-bg-img"
+                    width="1024"
+                    height="1024"
                     loading="lazy"
                   />
                 </div>
@@ -508,6 +511,8 @@
                     src="assets/images/hero-ring.jpg"
                     alt="Sculptural Diamond Gold Statement Ring"
                     class="hero-bg-img"
+                    width="1024"
+                    height="1024"
                     fetchpriority="high"
                   />
                 </div>
@@ -517,6 +522,8 @@
                     src="assets/images/hero-bracelet.jpg"
                     alt="Gold Knot Diamond Bangle Bracelet"
                     class="hero-bg-img"
+                    width="1024"
+                    height="1024"
                     loading="lazy"
                   />
                 </div>
@@ -526,6 +533,8 @@
                     src="assets/images/hero-necklace.jpg"
                     alt="Luxury Diamond Gold Pendant Necklace"
                     class="hero-bg-img"
+                    width="1024"
+                    height="1024"
                     loading="lazy"
                   />
                 </div>
@@ -535,7 +544,7 @@
 
           <!-- Foreground Interactive Grid -->
           <div class="container relative z-10 w-full">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[68vh] lg:min-h-[75vh]">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center min-h-0 sm:min-h-[60vh] lg:min-h-[75vh]">
               <!-- Left Column: Synchronized Dynamic Content (Title, Lead, Buttons, Badge) -->
               <div class="hero-copy">
                 <div class="hero-text-slides">
@@ -703,19 +712,19 @@
                     <div class="hero-v-track">
                       <!-- Card 0: Earrings -->
                       <button class="hero-v-card" type="button" data-slide="0" aria-label="Show Earrings collection">
-                        <img src="assets/images/hero-earrings-thumb.jpg" alt="Earrings" class="hero-v-card-thumb" />
+                        <img src="assets/images/hero-earrings-thumb.jpg" alt="Earrings" class="hero-v-card-thumb" width="300" height="300" />
                       </button>
                       <!-- Card 1: Rings (Default active matching reference design) -->
                       <button class="hero-v-card is-active" type="button" data-slide="1" aria-label="Show Rings collection">
-                        <img src="assets/images/hero-ring-thumb.jpg" alt="Rings" class="hero-v-card-thumb" />
+                        <img src="assets/images/hero-ring-thumb.jpg" alt="Rings" class="hero-v-card-thumb" width="300" height="300" />
                       </button>
                       <!-- Card 2: Bracelet -->
                       <button class="hero-v-card" type="button" data-slide="2" aria-label="Show Bracelet collection">
-                        <img src="assets/images/hero-bracelet-thumb.jpg" alt="Bracelet" class="hero-v-card-thumb" />
+                        <img src="assets/images/hero-bracelet-thumb.jpg" alt="Bracelet" class="hero-v-card-thumb" width="300" height="300" />
                       </button>
                       <!-- Card 3: Necklace -->
                       <button class="hero-v-card" type="button" data-slide="3" aria-label="Show Necklace collection">
-                        <img src="assets/images/hero-necklace-thumb.jpg" alt="Necklace" class="hero-v-card-thumb" />
+                        <img src="assets/images/hero-necklace-thumb.jpg" alt="Necklace" class="hero-v-card-thumb" width="300" height="300" />
                       </button>
                     </div>
                   </div>
@@ -1435,8 +1444,6 @@
               <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-ink-primary leading-tight mb-4">
                 One Master Capture. <em>Four</em> Signature Metal Alloys.
               </h2>
-                One Master Capture. <em>Four</em> Signature Metal Alloys.
-              </h2>
               <p
                 class="text-ink-secondary text-base sm:text-lg leading-relaxed mb-6"
               >
@@ -1449,7 +1456,7 @@
 
               <!-- 2x2 LUXURY ALLOY CONFIGURATOR -->
               <div
-                class="grid grid-cols-2 gap-3 sm:gap-4 my-6"
+                class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 my-6"
                 role="radiogroup"
                 aria-label="Select Metal Alloy Finish"
               >
@@ -1635,7 +1642,7 @@
             </nav>
           </aside>
 
-          <div class="container mx-auto max-w-[1180px] pt-8 sm:pt-10 lg:pt-12 pb-14 sm:pb-16 lg:pb-20">
+          <div class="container mx-auto pt-8 sm:pt-10 lg:pt-12 pb-14 sm:pb-16 lg:pb-20">
             <!-- Centered Editorial Header -->
             <header class="jrw-header max-w-[760px] mx-auto text-center mb-7 sm:mb-9 lg:mb-10">
               <div class="jrw-eyebrow inline-flex items-center gap-3.5 mb-2.5 sm:mb-3">
@@ -1671,12 +1678,12 @@
                     <div class="jrw-stage jrw-stage-1 order-1 lg:order-2" data-stage="1" data-cursor="VECTOR PEN · 400%">
                       <!-- Base Layer: Raw Original Photo with Unretouched Background -->
                       <!-- WP/ACF: <?php echo esc_url(get_field('step_01_raw')); ?> -->
-                      <img src="assets/images/service-1-before.jpg" class="jrw-photo jrw-photo-base" alt="Raw jewelry shot before background isolation" loading="eager">
+                      <img src="assets/images/service-1-before.jpg" class="jrw-photo jrw-photo-base" alt="Raw jewelry shot before background isolation" width="1400" height="1050" loading="eager">
                       
                       <!-- Clean Isolated Image Layer (Revealed by Wipe) -->
                       <div class="jrw-s1-reveal">
                         <!-- WP/ACF: <?php echo esc_url(get_field('step_01_after')); ?> -->
-                        <img src="assets/images/service-1-after.jpg" class="jrw-photo" alt="Jewelry with background cleanly isolated" loading="eager">
+                        <img src="assets/images/service-1-after.jpg" class="jrw-photo" alt="Jewelry with background cleanly isolated" width="1400" height="1050" loading="eager">
                       </div>
 
                       <!-- Slanted Hairline Wipe -->
@@ -1703,10 +1710,10 @@
                   <div class="jrw-grid-copy grid grid-cols-1 lg:grid-cols-2">
                     <div class="jrw-stage jrw-stage-2 order-1 lg:order-1" data-stage="2" data-cursor="400% LOUPE · CLEANUP">
                       <!-- WP/ACF: <?php echo esc_url(get_field('step_02_before')); ?> -->
-                      <img src="assets/images/service-2-before.jpg" class="jrw-photo jrw-photo-base" alt="Macro jewelry photo showing dust and micro-scratches" loading="lazy">
+                      <img src="assets/images/service-2-before.jpg" class="jrw-photo jrw-photo-base" alt="Macro jewelry photo showing dust and micro-scratches" width="1400" height="1050" loading="lazy">
                       <div class="jrw-s2-after">
                         <!-- WP/ACF: <?php echo esc_url(get_field('step_02_after')); ?> -->
-                        <img src="assets/images/service-2-after.jpg" class="jrw-photo" alt="Macro jewelry after surface flaws cleaned" loading="lazy">
+                        <img src="assets/images/service-2-after.jpg" class="jrw-photo" alt="Macro jewelry after surface flaws cleaned" width="1400" height="1050" loading="lazy">
                       </div>
                       <div class="jrw-s2-loupe"><span>400% LOUPE</span></div>
                       <div class="jrw-s2-line"></div>
@@ -1754,10 +1761,10 @@
                     </div>
                     <div class="jrw-stage jrw-stage-3 order-1 lg:order-2" data-stage="3" data-cursor="DODGE &amp; BURN · 3D LUSTER">
                       <!-- WP/ACF: <?php echo esc_url(get_field('step_03_flat')); ?> -->
-                      <img src="assets/images/service-3-before.jpg" class="jrw-photo jrw-photo-base" alt="Flat-lit jewelry photo before hand retouching" loading="lazy">
+                      <img src="assets/images/service-3-before.jpg" class="jrw-photo jrw-photo-base" alt="Flat-lit jewelry photo before hand retouching" width="1400" height="1050" loading="lazy">
                       <div class="jrw-s3-sculpted">
                         <!-- WP/ACF: <?php echo esc_url(get_field('step_03_sculpted')); ?> -->
-                        <img src="assets/images/service-3-after.jpg" class="jrw-photo" alt="Hand sculpted jewelry with 3D dimensional luster" loading="lazy">
+                        <img src="assets/images/service-3-after.jpg" class="jrw-photo" alt="Hand sculpted jewelry with 3D dimensional luster" width="1400" height="1050" loading="lazy">
                       </div>
                       <div class="jrw-s3-brush"><i></i><span>DODGE &amp; BURN</span></div>
                       <div class="jrw-s3-sheen"></div>
@@ -1780,11 +1787,11 @@
                       <div class="jrw-s4-subject">
                         <!-- Layer 1: Raw Off-Axis Photo with Casting Offset -->
                         <!-- WP/ACF: <?php echo esc_url(get_field('step_04_raw')); ?> -->
-                        <img src="assets/images/service-4-before.jpg" class="jrw-photo jrw-s4-raw" alt="Raw luxury jewelry capture showing physical casting tilt and off-center axis" loading="lazy">
+                        <img src="assets/images/service-4-before.jpg" class="jrw-photo jrw-s4-raw" alt="Raw luxury jewelry capture showing physical casting tilt and off-center axis" width="1400" height="1050" loading="lazy">
                         <!-- Layer 2: Master Aligned & Retouched Photo (Revealed on 0.0° Lock) -->
                         <!-- WP/ACF: <?php echo esc_url(get_field('step_04_aligned')); ?> -->
                         <div class="jrw-s4-aligned-wrap">
-                          <img src="assets/images/service-4-after.jpg" class="jrw-photo jrw-s4-aligned" alt="Master jewelry perfectly leveled with 0.0° geometric symmetry" loading="lazy">
+                          <img src="assets/images/service-4-after.jpg" class="jrw-photo jrw-s4-aligned" alt="Master jewelry perfectly leveled with 0.0° geometric symmetry" width="1400" height="1050" loading="lazy">
                         </div>
                       </div>
                       <svg class="jrw-s4-guide-svg" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1843,11 +1850,11 @@
                     </div>
                     <div class="jrw-stage jrw-stage-5 order-1 lg:order-2" data-stage="5" data-cursor="SELECT ALLOY FINISH">
                       <!-- WP/ACF: <?php echo esc_url(get_field('step_05_yellow_gold')); ?> -->
-                      <img src="assets/images/colorway-yellow-gold.jpg" class="jrw-s5-layer is-active" data-finish="yellow" alt="Jewelry digitally finished in 18K yellow gold" loading="lazy">
+                      <img src="assets/images/colorway-yellow-gold.jpg" class="jrw-s5-layer is-active" data-finish="yellow" alt="Jewelry digitally finished in 18K yellow gold" width="1400" height="1050" loading="lazy">
                       <!-- WP/ACF: <?php echo esc_url(get_field('step_05_rose_gold')); ?> -->
-                      <img src="assets/images/colorway-rose-gold.jpg" class="jrw-s5-layer" data-finish="rose" alt="Jewelry digitally finished in rose gold" loading="lazy">
+                      <img src="assets/images/colorway-rose-gold.jpg" class="jrw-s5-layer" data-finish="rose" alt="Jewelry digitally finished in rose gold" width="1400" height="1050" loading="lazy">
                       <!-- WP/ACF: <?php echo esc_url(get_field('step_05_platinum')); ?> -->
-                      <img src="assets/images/colorway-white-gold.jpg" class="jrw-s5-layer" data-finish="platinum" alt="Jewelry digitally finished in platinum" loading="lazy">
+                      <img src="assets/images/colorway-white-gold.jpg" class="jrw-s5-layer" data-finish="platinum" alt="Jewelry digitally finished in platinum" width="1400" height="1050" loading="lazy">
                       
                       <div class="jrw-s5-swatches" role="tablist" aria-label="Metal finish selection">
                         <button type="button" class="is-active" role="tab" aria-selected="true" data-finish="yellow"><i class="jrw-swatch-yellow"></i>18K Gold</button>
@@ -1869,10 +1876,10 @@
                   <div class="jrw-grid-copy grid grid-cols-1 lg:grid-cols-2">
                     <div class="jrw-stage jrw-stage-6 order-1 lg:order-1" data-stage="6" data-cursor="HOLD &amp; DRAG ◄►" tabindex="0" role="slider" aria-label="Compare raw and final jewelry images" aria-valuemin="5" aria-valuemax="95" aria-valuenow="50">
                       <!-- WP/ACF: <?php echo esc_url(get_field('step_06_after')); ?> -->
-                      <img src="assets/images/portfolio-1-after.jpg" class="jrw-photo jrw-s6-after" alt="Final retouched luxury jewelry masterpiece" loading="lazy">
+                      <img src="assets/images/portfolio-1-after.jpg" class="jrw-photo jrw-s6-after" alt="Final retouched luxury jewelry masterpiece" width="1000" height="667" loading="lazy">
                       <div class="jrw-s6-before-wrap">
                         <!-- WP/ACF: <?php echo esc_url(get_field('step_06_before')); ?> -->
-                        <img src="assets/images/portfolio-1-before.jpg" class="jrw-photo jrw-s6-before" alt="Unedited raw jewelry photograph" loading="lazy">
+                        <img src="assets/images/portfolio-1-before.jpg" class="jrw-photo jrw-s6-before" alt="Unedited raw jewelry photograph" width="1000" height="667" loading="lazy">
                       </div>
                       <div class="jrw-s6-divider">
                         <button type="button" tabindex="-1" aria-hidden="true">
@@ -2709,7 +2716,7 @@
                     <span class="text-gold text-xs">✦</span> 16-Bit ProPhoto Master
                   </span>
                 </div>
-                <a href="#trial" class="btn btn-gold text-xs sm:text-[13px] py-2.5 px-5 shrink-0 self-start md:self-auto flex items-center gap-2 group shadow-[0_0_20px_rgba(181,144,84,0.3)]">
+                <a href="#free-trial-home" class="btn btn-gold text-xs sm:text-[13px] py-2.5 px-5 shrink-0 self-start md:self-auto flex items-center gap-2 group shadow-[0_0_20px_rgba(181,144,84,0.3)]">
                   <span>Request Free Test Retouch</span>
                   <span class="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">&rarr;</span>
                 </a>
@@ -2790,12 +2797,12 @@
                     >No Minimum &bull; 12–24h Turnaround</span
                   >
                   <ul class="pricing-features text-stone-300">
-                    <li class="flex items-center gap-2.5"><span class="text-[#B08D57]">✦</span> Extreme 400% Macro Precision Scrutiny</li>
-                    <li class="flex items-center gap-2.5"><span class="text-[#B08D57]">✦</span> Seamless Metallic Gradient Polish (18K/Plat)</li>
-                    <li class="flex items-center gap-2.5"><span class="text-[#B08D57]">✦</span> Diamond &amp; Gemstone Fire Scintillation Boost</li>
-                    <li class="flex items-center gap-2.5"><span class="text-[#B08D57]">✦</span> Prong Symmetry &amp; Hallmark Preservation</li>
-                    <li class="flex items-center gap-2.5"><span class="text-[#B08D57]">✦</span> 300 DPI CMYK Print + sRGB Web Ready</li>
-                    <li class="flex items-center gap-2.5"><span class="text-[#B08D57]">✦</span> Dedicated Senior Lead Retoucher</li>
+                    <li>Extreme 400% Macro Precision Scrutiny</li>
+                    <li>Seamless Metallic Gradient Polish (18K/Plat)</li>
+                    <li>Diamond &amp; Gemstone Fire Scintillation Boost</li>
+                    <li>Prong Symmetry &amp; Hallmark Preservation</li>
+                    <li>300 DPI CMYK Print + sRGB Web Ready</li>
+                    <li>Dedicated Senior Lead Retoucher</li>
                   </ul>
                 </div>
                 <a
@@ -3448,8 +3455,8 @@
     <script src="assets/js/lenis.min.js"></script>
     <script src="assets/js/gsap.min.js"></script>
     <script src="assets/js/ScrollTrigger.min.js"></script>
-    <script src="assets/js/jrw-workflow.js"></script>
+    <script src="assets/js/jrw-workflow.js?v=20261125"></script>
     <!-- Studio Core Interaction Script (Local) -->
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js?v=20261125"></script>
   </body>
 </html>

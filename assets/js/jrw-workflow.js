@@ -65,13 +65,29 @@
         }
       });
 
-      // Sticky Stacking Depth Compression & Scrim Overlay
+      // Card entrance on all screens
+      cards.forEach((card) => {
+        gsap.from(card, {
+          y: 35,
+          opacity: 0,
+          duration: 0.9,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 88%',
+            once: true
+          }
+        });
+      });
+    });
+
+    // Sticky Stacking Depth Compression & Scrim Overlay (Desktop >= 1024px only)
+    mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', () => {
       cards.forEach((card, index) => {
         const shell = card.querySelector('.jrw-card-shell');
         const scrim = card.querySelector('.jrw-card-scrim');
         const nextAnchor = anchors[index + 1];
 
-        // Scale down card slightly as the next card stacks over it
         if (nextAnchor && index < cards.length - 1) {
           gsap.timeline({
             scrollTrigger: {
@@ -92,19 +108,6 @@
               ease: 'none'
             }, 0);
         }
-
-        // Card entrance
-        gsap.from(card, {
-          y: 35,
-          opacity: 0,
-          duration: 0.9,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: card,
-            start: 'top 88%',
-            once: true
-          }
-        });
       });
     });
 
@@ -124,14 +127,20 @@
     if (progressRail) {
       const railTrigger = ScrollTrigger.create({
         trigger: root,
-        start: 'top 60%',
-        end: 'bottom 40%',
+        start: 'top 55%',
+        end: 'bottom 55%',
+        onEnter: () => progressRail.classList.add('is-visible'),
+        onLeave: () => progressRail.classList.remove('is-visible'),
+        onEnterBack: () => progressRail.classList.add('is-visible'),
+        onLeaveBack: () => progressRail.classList.remove('is-visible'),
         onToggle: (self) => {
           progressRail.classList.toggle('is-visible', self.isActive);
         }
       });
       if (railTrigger.isActive) {
         progressRail.classList.add('is-visible');
+      } else {
+        progressRail.classList.remove('is-visible');
       }
     }
   }, root);
