@@ -40,7 +40,7 @@
         right: -20%;
         width: 600px;
         height: 600px;
-        background: radial-gradient(circle, rgba(176,141,87,0.06) 0%, transparent 70%);
+        background: radial-gradient(circle, rgba(181,144,84,0.08) 0%, transparent 70%);
         pointer-events: none;
       }
 
@@ -48,6 +48,9 @@
         display: grid;
         grid-template-columns: 1fr;
         gap: 3rem;
+      }
+      .contact-grid > * {
+        min-width: 0;
       }
       @media (min-width: 1024px) {
         .contact-grid {
@@ -62,16 +65,21 @@
         display: flex;
         align-items: flex-start;
         gap: 1.25rem;
-        padding: 1.5rem;
-        border: 1px solid rgba(176,141,87,0.15);
-        border-radius: 4px;
-        background: rgba(255,255,255,0.6);
+        padding: 1.6rem 1.5rem;
+        border: 1px solid rgba(181,144,84,0.18);
+        border-radius: 6px;
+        background: rgba(255,255,255,0.72);
         backdrop-filter: blur(8px);
         transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        min-width: 0;
+      }
+      .contact-info-card > div:last-child {
+        min-width: 0;
+        flex: 1;
       }
       .contact-info-card:hover {
-        border-color: rgba(176,141,87,0.35);
-        box-shadow: 0 8px 32px rgba(176,141,87,0.08);
+        border-color: rgba(181,144,84,0.42);
+        box-shadow: 0 8px 32px rgba(181,144,84,0.1);
       }
       .contact-info-icon {
         display: flex;
@@ -81,39 +89,41 @@
         height: 48px;
         min-width: 48px;
         border-radius: 50%;
-        background: linear-gradient(135deg, rgba(176,141,87,0.1), rgba(176,141,87,0.05));
-        color: #B08D57;
+        background: linear-gradient(135deg, rgba(181,144,84,0.14), rgba(181,144,84,0.05));
+        color: #B59054;
         font-size: 1.1rem;
       }
       .contact-info-label {
         font-family: 'Marcellus', serif;
         font-size: 1.05rem;
-        color: var(--ink-primary, #1a1a1a);
+        color: var(--ink-primary, #141311);
         margin-bottom: 0.35rem;
       }
       .contact-info-value {
         font-size: 0.875rem;
-        color: var(--ink-secondary, #6b6b6b);
+        color: var(--ink-secondary, #524E47);
         line-height: 1.65;
       }
       .contact-info-value a {
-        color: #9A7B4F;
+        color: #8E6B36;
         text-decoration: underline;
-        text-decoration-color: rgba(176,141,87,0.3);
+        text-decoration-color: rgba(181,144,84,0.35);
         text-underline-offset: 3px;
         transition: text-decoration-color 0.3s;
+        overflow-wrap: anywhere;
+        word-break: break-word;
       }
       .contact-info-value a:hover {
-        text-decoration-color: #B08D57;
+        text-decoration-color: #B59054;
       }
 
       /* Form Card */
       .contact-form-card {
         padding: 2.5rem 2rem;
-        border: 1px solid rgba(176,141,87,0.15);
+        border: 1px solid rgba(181,144,84,0.18);
         border-radius: 6px;
         background: #fff;
-        box-shadow: 0 4px 40px rgba(0,0,0,0.04);
+        box-shadow: 0 12px 40px rgba(14,13,12,0.05);
         position: relative;
       }
       @media (min-width: 640px) { .contact-form-card { padding: 2.5rem; } }
@@ -122,7 +132,7 @@
         position: absolute;
         top: 0; left: 0; right: 0;
         height: 3px;
-        background: linear-gradient(90deg, #B08D57, #D4B978, #B08D57);
+        background: linear-gradient(90deg, #B59054, #D9BA82, #B59054);
         border-radius: 6px 6px 0 0;
       }
 
@@ -142,37 +152,66 @@
         display: flex;
         flex-direction: column;
         gap: 0.4rem;
+        min-width: 0;
       }
       .contact-field label {
         font-size: 0.7rem;
         font-weight: 600;
         letter-spacing: 0.18em;
         text-transform: uppercase;
-        color: var(--ink-secondary, #6b6b6b);
+        color: var(--ink-secondary, #524E47);
       }
       .contact-field input,
       .contact-field select,
       .contact-field textarea {
         width: 100%;
         padding: 0.75rem 1rem;
-        border: 1px solid #e0dcd4;
-        border-radius: 3px;
-        background: #faf9f7;
+        border: 1px solid #E8E1D3;
+        border-radius: 6px;
+        background: #FAF8F4;
         font-family: 'Plus Jakarta Sans', sans-serif;
         font-size: 0.875rem;
-        color: var(--ink-primary, #1a1a1a);
-        transition: border-color 0.3s, box-shadow 0.3s;
+        color: var(--ink-primary, #141311);
+        transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
         outline: none;
+      }
+      .contact-field input,
+      .contact-field select {
+        height: 48px;
+      }
+      .contact-field select {
+        padding-right: 2rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
       }
       .contact-field input::placeholder,
       .contact-field textarea::placeholder {
-        color: #b5b0a6;
+        color: #B0A795;
       }
       .contact-field input:focus,
       .contact-field select:focus,
       .contact-field textarea:focus {
-        border-color: #B08D57;
-        box-shadow: 0 0 0 3px rgba(176,141,87,0.1);
+        border-color: #B59054;
+        box-shadow: 0 0 0 3px rgba(181,144,84,0.12);
+      }
+      .contact-field input.is-error,
+      .contact-field textarea.is-error {
+        border-color: #b91c1c;
+        box-shadow: 0 0 0 3px rgba(185,28,28,0.08);
+      }
+      .contact-form-error {
+        display: none;
+        padding: 0.75rem 1rem;
+        border: 1px solid rgba(185,28,28,0.25);
+        background: #fef2f2;
+        color: #991b1b;
+        font-size: 0.8125rem;
+        border-radius: 3px;
+      }
+      .contact-form-error.is-visible {
+        display: block;
       }
       .contact-field textarea {
         resize: vertical;
@@ -192,26 +231,26 @@
       .studio-location {
         text-align: center;
         padding: 1.25rem 0.75rem;
-        border: 1px solid rgba(176,141,87,0.1);
+        border: 1px solid rgba(181,144,84,0.14);
         border-radius: 4px;
-        background: rgba(255,255,255,0.5);
+        background: rgba(255,255,255,0.6);
         transition: border-color 0.3s, transform 0.3s;
       }
       .studio-location:hover {
-        border-color: rgba(176,141,87,0.3);
+        border-color: rgba(181,144,84,0.35);
         transform: translateY(-2px);
       }
       .studio-location .city {
         font-family: 'Marcellus', serif;
         font-size: 0.95rem;
-        color: var(--ink-primary, #1a1a1a);
+        color: var(--ink-primary, #141311);
         margin-bottom: 0.2rem;
       }
       .studio-location .timezone {
         font-size: 0.7rem;
         text-transform: uppercase;
         letter-spacing: 0.15em;
-        color: #B08D57;
+        color: #8E6B36;
         font-weight: 600;
       }
 
@@ -223,18 +262,18 @@
         gap: 1.5rem 2.5rem;
         padding: 2rem 0;
         margin-top: 3rem;
-        border-top: 1px solid rgba(176,141,87,0.12);
+        border-top: 1px solid rgba(181,144,84,0.15);
       }
       .contact-trust span {
         display: flex;
         align-items: center;
         gap: 0.5rem;
         font-size: 0.75rem;
-        color: var(--ink-secondary, #6b6b6b);
+        color: var(--ink-secondary, #524E47);
         letter-spacing: 0.04em;
       }
       .contact-trust i {
-        color: #B08D57;
+        color: #B59054;
         font-size: 0.85rem;
       }
 
@@ -251,8 +290,8 @@
         justify-content: center;
         width: 64px; height: 64px;
         border-radius: 50%;
-        background: linear-gradient(135deg, rgba(176,141,87,0.15), rgba(176,141,87,0.05));
-        color: #B08D57;
+        background: linear-gradient(135deg, rgba(181,144,84,0.18), rgba(181,144,84,0.06));
+        color: #B59054;
         font-size: 1.5rem;
         margin-bottom: 1.25rem;
       }
@@ -261,6 +300,126 @@
   <body
     class="bg-ivory text-ink-primary font-sans antialiased selection:bg-gold/20 selection:text-ink-primary"
   >
+    <!-- Luxury Atelier Jewelry SVG Preloader -->
+    <div id="bjrPreloader" class="bjr-preloader" aria-hidden="false" role="status" aria-label="Loading BJR Atelier">
+      <div class="preloader-bg"></div>
+      <div class="preloader-content">
+        <div class="preloader-gem-wrap">
+          <svg class="preloader-svg" viewBox="0 0 200 200" width="200" height="200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="preloaderGoldBand" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FAF8F4" />
+                <stop offset="25%" stop-color="#E5C483" />
+                <stop offset="55%" stop-color="#B59054" />
+                <stop offset="85%" stop-color="#8E6B36" />
+                <stop offset="100%" stop-color="#4A3515" />
+              </linearGradient>
+              <linearGradient id="diamondFacetGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.96" />
+                <stop offset="40%" stop-color="#E0F2FE" stop-opacity="0.82" />
+                <stop offset="80%" stop-color="#BAE6FD" stop-opacity="0.65" />
+                <stop offset="100%" stop-color="#7DD3FC" stop-opacity="0.5" />
+              </linearGradient>
+              <linearGradient id="diamondFacetGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.98" />
+                <stop offset="35%" stop-color="#F0FDFA" stop-opacity="0.85" />
+                <stop offset="70%" stop-color="#CFFAFE" stop-opacity="0.7" />
+                <stop offset="100%" stop-color="#93C5FD" stop-opacity="0.45" />
+              </linearGradient>
+              <linearGradient id="diamondPavilionGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.92" />
+                <stop offset="30%" stop-color="#E0F2FE" stop-opacity="0.75" />
+                <stop offset="65%" stop-color="#38BDF8" stop-opacity="0.5" />
+                <stop offset="100%" stop-color="#0284C7" stop-opacity="0.25" />
+              </linearGradient>
+              <linearGradient id="diamondStrokeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="25%" stop-color="#E0F2FE" />
+                <stop offset="50%" stop-color="#FDF4FF" />
+                <stop offset="75%" stop-color="#BAE6FD" />
+                <stop offset="100%" stop-color="#FFFFFF" />
+              </linearGradient>
+              <linearGradient id="platinumGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="50%" stop-color="#E2E8F0" />
+                <stop offset="100%" stop-color="#94A3B8" />
+              </linearGradient>
+              <radialGradient id="diamondAura" cx="50%" cy="32%" r="50%">
+                <stop offset="0%" stop-color="rgba(224, 242, 254, 0.75)" />
+                <stop offset="30%" stop-color="rgba(186, 230, 253, 0.35)" />
+                <stop offset="65%" stop-color="rgba(181, 144, 84, 0.15)" />
+                <stop offset="100%" stop-color="transparent" />
+              </radialGradient>
+              <linearGradient id="anamorphicFlare" x1="0%" y1="50%" x2="100%" y2="50%">
+                <stop offset="0%" stop-color="transparent" />
+                <stop offset="35%" stop-color="rgba(186, 230, 253, 0.5)" />
+                <stop offset="50%" stop-color="#FFFFFF" />
+                <stop offset="65%" stop-color="rgba(253, 244, 255, 0.5)" />
+                <stop offset="100%" stop-color="transparent" />
+              </linearGradient>
+            </defs>
+            <circle cx="100" cy="54" r="54" fill="url(#diamondAura)" class="preloader-diamond-aura" />
+            <line x1="26" y1="54" x2="174" y2="54" stroke="url(#anamorphicFlare)" stroke-width="2" class="preloader-anamorphic" stroke-linecap="round" />
+            <path d="M 52 112 C 52 176, 148 176, 148 112" class="preloader-path preloader-band-outer" stroke="url(#preloaderGoldBand)" stroke-width="2.6" stroke-linecap="round" />
+            <path d="M 64 114 C 64 162, 136 162, 136 114" class="preloader-path preloader-band-inner" stroke="url(#preloaderGoldBand)" stroke-width="1.4" stroke-linecap="round" opacity="0.75" />
+            <path d="M 52 112 C 52 86, 64 68, 72 54" class="preloader-path preloader-band-shoulder" stroke="url(#preloaderGoldBand)" stroke-width="2" stroke-linecap="round" />
+            <path d="M 148 112 C 148 86, 136 68, 128 54" class="preloader-path preloader-band-shoulder" stroke="url(#preloaderGoldBand)" stroke-width="2" stroke-linecap="round" />
+            <path d="M 68 88 C 84 96, 116 96, 132 88" class="preloader-path preloader-bridge" stroke="url(#preloaderGoldBand)" stroke-width="1.2" opacity="0.65" stroke-linecap="round" />
+            <polygon points="100,54 100,96 82,54" class="preloader-diamond-facet" fill="url(#diamondPavilionGrad)" />
+            <polygon points="100,54 118,54 100,96" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="56,54 82,54 100,96" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="144,54 100,96 118,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="88,40 112,40 100,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="78,28 88,40 100,54 68,46" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="122,28 132,46 100,54 112,40" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="78,28 68,46 56,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="122,28 144,54 132,46" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="68,46 100,54 56,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="132,46 144,54 100,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="78,28 122,28 112,40 88,40" class="preloader-diamond-table" fill="#FFFFFF" opacity="0.95" />
+            <line x1="78" y1="28" x2="122" y2="28" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.8" stroke-linecap="round" />
+            <line x1="78" y1="28" x2="56" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.6" />
+            <line x1="122" y1="28" x2="144" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.6" />
+            <line x1="78" y1="28" x2="88" y2="40" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="122" y1="28" x2="112" y2="40" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="88" y1="40" x2="112" y2="40" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="88" y1="40" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="112" y1="40" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="68" y1="46" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
+            <line x1="132" y1="46" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
+            <line x1="54" y1="54" x2="146" y2="54" class="preloader-path preloader-diamond-girdle" stroke="url(#diamondStrokeGrad)" stroke-width="2" stroke-linecap="round" />
+            <path d="M 56 54 L 100 96 L 144 54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.8" stroke-linejoin="round" />
+            <line x1="100" y1="54" x2="100" y2="96" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.3" />
+            <line x1="82" y1="54" x2="100" y2="96" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
+            <line x1="118" y1="54" x2="100" y2="96" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
+            <line x1="56" y1="56" x2="56" y2="50" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.6" stroke-linecap="round" />
+            <line x1="144" y1="56" x2="144" y2="50" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.6" stroke-linecap="round" />
+            <line x1="80" y1="56" x2="80" y2="51" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.2" stroke-linecap="round" />
+            <line x1="120" y1="56" x2="120" y2="51" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.2" stroke-linecap="round" />
+            <path d="M 78 18 Q 78 28 88 28 Q 78 28 78 38 Q 78 28 68 28 Q 78 28 78 18 Z" class="preloader-sparkle preloader-sparkle--main" fill="#FFFFFF" />
+            <circle cx="78" cy="28" r="2.2" fill="#E0F2FE" class="preloader-sparkle" />
+            <path d="M 144 48 Q 144 54 150 54 Q 144 54 144 60 Q 144 54 138 54 Q 144 54 144 48 Z" class="preloader-sparkle preloader-sparkle--secondary" fill="#BAE6FD" />
+            <circle cx="144" cy="54" r="1.5" fill="#FFFFFF" class="preloader-sparkle" />
+            <path d="M 100 90 Q 100 94 104 94 Q 100 94 100 98 Q 100 94 96 94 Q 100 94 100 90 Z" class="preloader-sparkle preloader-sparkle--culet" fill="#F472B6" />
+          </svg>
+        </div>
+        <div class="preloader-percent-display">
+          <span id="preloaderBigCount" class="preloader-big-num">00</span>
+          <span class="preloader-pct-symbol">%</span>
+        </div>
+        <div id="preloaderStatusText" class="preloader-status">Initializing Optical Calibration...</div>
+        <div class="preloader-progress-wrap">
+          <div class="preloader-track">
+            <div class="preloader-bar" id="preloaderBar"></div>
+          </div>
+        </div>
+        <div class="preloader-meta mt-3">
+          <div class="preloader-title">BJR ATELIER</div>
+          <div class="preloader-tagline">Fine Jewelry Retouching Protocol</div>
+        </div>
+      </div>
+    </div>
+
     <!-- Top Announcement Bar -->
     <div
       class="top-bar"
@@ -309,7 +468,9 @@
             <li><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
             <li><a href="index.html#jrw-workflow" class="nav-link">Our Process</a></li>
             <li><a href="index.html#pricing" class="nav-link">Pricing &amp; SLA</a></li>
-            <li><a href="index.html#faq" class="nav-link">FAQ</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="blog.html" class="nav-link">Blog</a></li>
+            <li><a href="contact.html" class="nav-link active text-gold-deep">Contact</a></li>
           </ul>
         </nav>
 
@@ -363,9 +524,11 @@
             <li><a href="index.html#portfolio" class="mobile-nav-link"><span>Curated Portfolio</span><span class="mobile-nav-idx">02</span></a></li>
             <li><a href="index.html#jrw-workflow" class="mobile-nav-link"><span>Craftsmanship Protocol</span><span class="mobile-nav-idx">03</span></a></li>
             <li><a href="index.html#pricing" class="mobile-nav-link"><span>Investment &amp; SLA Tiers</span><span class="mobile-nav-idx">04</span></a></li>
-            <li><a href="contact.html" class="mobile-nav-link active"><span>Contact Atelier</span><span class="mobile-nav-idx">05</span></a></li>
-            <li><a href="privacy.html" class="mobile-nav-link"><span>Privacy Policy</span><span class="mobile-nav-idx">06</span></a></li>
-            <li><a href="terms.html" class="mobile-nav-link"><span>Terms &amp; Conditions</span><span class="mobile-nav-idx">07</span></a></li>
+            <li><a href="about.html" class="mobile-nav-link"><span>About Atelier</span><span class="mobile-nav-idx">05</span></a></li>
+            <li><a href="blog.html" class="mobile-nav-link"><span>Atelier Journal</span><span class="mobile-nav-idx">06</span></a></li>
+            <li><a href="contact.html" class="mobile-nav-link active"><span>Contact Atelier</span><span class="mobile-nav-idx">07</span></a></li>
+            <li><a href="privacy.html" class="mobile-nav-link"><span>Privacy Policy</span><span class="mobile-nav-idx">08</span></a></li>
+            <li><a href="terms.html" class="mobile-nav-link"><span>Terms &amp; Conditions</span><span class="mobile-nav-idx">09</span></a></li>
           </ul>
 
           <div class="mobile-drawer-ctas">
@@ -395,7 +558,19 @@
     <main>
       <!-- Contact Hero -->
       <section class="contact-hero">
-        <div class="container max-w-6xl">
+        <!-- Decorative Luxury Diamond & Orbital Shapes -->
+        <div class="hidden lg:block absolute -left-24 top-20 w-72 h-72 rounded-full border border-gold/15 pointer-events-none select-none" aria-hidden="true"></div>
+        <div class="hidden lg:block absolute -left-16 top-28 w-56 h-56 rounded-full border border-gold/10 border-dashed pointer-events-none select-none" aria-hidden="true"></div>
+        <div class="hidden md:block absolute right-10 top-16 w-32 h-32 text-gold/15 pointer-events-none select-none" aria-hidden="true">
+          <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1">
+            <polygon points="60,8 106,36 106,84 60,112 14,84 14,36" />
+            <polygon points="60,24 90,42 90,78 60,96 30,78 30,42" />
+            <line x1="60" y1="8" x2="60" y2="112" />
+            <line x1="14" y1="36" x2="106" y2="84" />
+            <line x1="106" y1="36" x2="14" y2="84" />
+          </svg>
+        </div>
+        <div class="container relative z-10">
           <!-- Page Header -->
           <div class="text-center mb-12 lg:mb-16">
             <div class="inline-flex items-center gap-3.5 mb-5">
@@ -493,7 +668,7 @@
 
             <!-- Right Column: Contact Form -->
             <div class="contact-form-card" id="contactFormCard">
-              <div class="mb-6">
+              <div class="mb-6" id="contactFormHeader">
                 <h2 class="font-serif text-2xl sm:text-[28px] text-ink-primary leading-snug mb-1.5">
                   Send a Private Brief
                 </h2>
@@ -503,10 +678,11 @@
               </div>
 
               <form class="space-y-4" id="contactForm" novalidate>
+                <div class="contact-form-error" id="contactFormError" role="alert"></div>
                 <div class="contact-form-row">
                   <div class="contact-field">
                     <label for="ct-name">Your Name</label>
-                    <input type="text" id="ct-name" name="name" placeholder="e.g. Alexander Van Der Berg" required />
+                    <input type="text" id="ct-name" name="name" placeholder="e.g. Claire Laurent" required />
                   </div>
                   <div class="contact-field">
                     <label for="ct-brand">Brand / Studio</label>
@@ -536,7 +712,7 @@
                   <div class="contact-field">
                     <label for="ct-volume">Monthly Volume</label>
                     <select id="ct-volume" name="volume">
-                      <option value="">Estimated images/month</option>
+                      <option value="">Select volume…</option>
                       <option value="1-50">1 – 50 images</option>
                       <option value="51-200">51 – 200 images</option>
                       <option value="201-500">201 – 500 images</option>
@@ -575,10 +751,13 @@
                   <i class="fa-solid fa-check"></i>
                 </div>
                 <h3 class="font-serif text-2xl text-ink-primary mb-3">Brief Received</h3>
-                <p class="text-ink-secondary text-sm leading-relaxed max-w-md mx-auto">
+                <p class="text-ink-secondary text-sm leading-relaxed max-w-md mx-auto mb-6">
                   Thank you for reaching out. Our studio team will review your brief and respond
                   within 2–4 business hours under NDA protection.
                 </p>
+                <button type="button" id="contactResetBtn" class="btn btn-outline">
+                  Send Another Brief
+                </button>
               </div>
             </div>
           </div>
@@ -666,6 +845,8 @@
           <div class="footer-col">
             <h4>Atelier Studio</h4>
             <ul class="footer-links">
+              <li><a href="about.html">About Atelier</a></li>
+              <li><a href="blog.html">Atelier Journal (Blog)</a></li>
               <li><a href="index.html#macro-loupe">Precision 400% Loupe</a></li>
               <li><a href="index.html#colorways">Alloy Recasting Studio</a></li>
               <li><a href="index.html#jrw-workflow">Bench Standards Protocol</a></li>
@@ -682,6 +863,7 @@
               <li><a href="privacy.html">Privacy Policy</a></li>
               <li><a href="terms.html">Terms &amp; Conditions</a></li>
               <li><a href="index.html#faq">Turnaround &amp; Delivery FAQ</a></li>
+              <li><a href="mailto:studio@bestjewelryretouching.com">Email Studio Desk</a></li>
             </ul>
           </div>
         </div>
@@ -702,20 +884,61 @@
       (function() {
         'use strict';
         var form = document.getElementById('contactForm');
+        var header = document.getElementById('contactFormHeader');
         var card = document.getElementById('contactFormCard');
         var success = document.getElementById('contactSuccess');
+        var errorBox = document.getElementById('contactFormError');
+        var resetBtn = document.getElementById('contactResetBtn');
         if (!form || !success) return;
+
+        function clearErrors() {
+          if (errorBox) {
+            errorBox.textContent = '';
+            errorBox.classList.remove('is-visible');
+          }
+          form.querySelectorAll('.is-error').forEach(function(el) {
+            el.classList.remove('is-error');
+          });
+        }
+
+        function showError(field, msg) {
+          if (field) {
+            field.classList.add('is-error');
+            field.focus();
+          }
+          if (errorBox) {
+            errorBox.textContent = msg;
+            errorBox.classList.add('is-visible');
+          }
+        }
+
+        form.addEventListener('input', function(e) {
+          if (e.target && e.target.classList.contains('is-error')) {
+            e.target.classList.remove('is-error');
+          }
+          if (errorBox && errorBox.classList.contains('is-visible')) {
+            errorBox.classList.remove('is-visible');
+          }
+        });
 
         form.addEventListener('submit', function(e) {
           e.preventDefault();
+          clearErrors();
 
-          // Basic client-side validation
           var name = form.querySelector('#ct-name');
           var email = form.querySelector('#ct-email');
-          if (name && !name.value.trim()) { name.focus(); return; }
-          if (email && !email.value.trim()) { email.focus(); return; }
+          var emailVal = email ? email.value.trim() : '';
+          var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-          // Check STUDIO_API
+          if (name && !name.value.trim()) {
+            showError(name, 'Please enter your name so our studio desk can address you.');
+            return;
+          }
+          if (email && (!emailVal || !emailPattern.test(emailVal))) {
+            showError(email, 'Please enter a valid work email address.');
+            return;
+          }
+
           var api = window.STUDIO_API;
           if (api && api.contactEndpoint) {
             var data = new FormData(form);
@@ -725,14 +948,21 @@
             }).catch(function() {});
           }
 
-          // Show success
           form.style.display = 'none';
-          card.querySelector('div').style.display = 'none'; // hide heading
+          if (header) header.style.display = 'none';
           success.classList.add('is-visible');
-
-          // Scroll to success
           card.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
+
+        if (resetBtn) {
+          resetBtn.addEventListener('click', function() {
+            form.reset();
+            clearErrors();
+            success.classList.remove('is-visible');
+            if (header) header.style.display = '';
+            form.style.display = '';
+          });
+        }
       })();
     </script>
   </body>

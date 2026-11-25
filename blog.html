@@ -1,0 +1,1491 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atelier Journal &amp; Insights | Best Jewelry Retouching</title>
+    <meta
+      name="description"
+      content="Editorial essays and technical guides from BJR Haute Atelier on 400% jewelry retouching, diamond fire restoration, digital alloy recasting, 3D CAD finishing, and Swiss horology post-production."
+    />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Bespoke Jewelry Typography: Marcellus & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Local Font Awesome 6 Pro/Free Icons -->
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css" />
+    <!-- Compiled Luxury Studio Stylesheet (Tailwind CSS) -->
+    <link rel="stylesheet" href="assets/css/style.css?v=20261125i" />
+
+    <style>
+      /* ── Blog Page Luxury Editorial Styles (1440px Architecture) ── */
+      .blog-hero {
+        position: relative;
+        padding: 4.5rem 0 3rem;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(181,144,84,0.16);
+      }
+      @media (min-width: 640px) { .blog-hero { padding: 5.5rem 0 3.5rem; } }
+      @media (min-width: 1024px) { .blog-hero { padding: 6.5rem 0 4rem; } }
+
+      .blog-hero::before {
+        content: '';
+        position: absolute;
+        top: -55%;
+        right: -10%;
+        width: 620px;
+        height: 620px;
+        background: radial-gradient(circle, rgba(181,144,84,0.09) 0%, transparent 70%);
+        pointer-events: none;
+      }
+
+      /* Filter Chips */
+      .blog-filter-bar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.65rem;
+        margin-top: 2rem;
+      }
+      .blog-chip {
+        padding: 0.55rem 1.2rem;
+        border-radius: 9999px;
+        border: 1px solid rgba(181,144,84,0.28);
+        background: rgba(255,255,255,0.8);
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #524E47;
+        cursor: pointer;
+        transition: all 0.25s ease;
+      }
+      .blog-chip:hover {
+        border-color: #B59054;
+        color: #141311;
+      }
+      .blog-chip.is-active {
+        background: #0E0D0C;
+        border-color: #0E0D0C;
+        color: #FAF8F4;
+        box-shadow: 0 8px 20px rgba(14,13,12,0.14);
+      }
+
+      /* 2-Column Blog Layout: Left Posts + Right Sidebar */
+      .blog-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 3.5rem 0 5rem;
+      }
+      .blog-layout > * {
+        min-width: 0;
+      }
+      @media (min-width: 1024px) {
+        .blog-layout {
+          grid-template-columns: minmax(0, 1fr) 360px;
+          gap: 3.5rem;
+          align-items: start;
+          padding: 4.5rem 0 6rem;
+        }
+      }
+      @media (min-width: 1280px) {
+        .blog-layout {
+          grid-template-columns: minmax(0, 1fr) 390px;
+          gap: 4rem;
+        }
+      }
+
+      /* Featured Post Card */
+      .blog-featured-card {
+        display: grid;
+        grid-template-columns: 1fr;
+        border: 1px solid rgba(181,144,84,0.22);
+        border-radius: 10px;
+        background: #fff;
+        overflow: hidden;
+        box-shadow: 0 18px 48px rgba(14,13,12,0.06);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 2.25rem;
+      }
+      .blog-featured-card:hover {
+        border-color: rgba(181,144,84,0.48);
+        box-shadow: 0 24px 56px rgba(181,144,84,0.12);
+      }
+      @media (min-width: 768px) {
+        .blog-featured-card {
+          grid-template-columns: 1.05fr 0.95fr;
+        }
+      }
+      .blog-featured-media {
+        position: relative;
+        overflow: hidden;
+        background: #0E0D0C;
+        min-height: 260px;
+      }
+      .blog-featured-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .blog-featured-card:hover .blog-featured-media img {
+        transform: scale(1.04);
+      }
+      .blog-featured-badge {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        z-index: 2;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.4rem 0.85rem;
+        border-radius: 9999px;
+        background: rgba(14,13,12,0.84);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(217,186,130,0.45);
+        color: #D9BA82;
+        font-size: 0.65rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+      .blog-featured-body {
+        padding: 2rem 1.75rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      @media (min-width: 768px) {
+        .blog-featured-body { padding: 2.5rem 2.25rem; }
+      }
+
+      /* Standard Posts 2-Col Grid */
+      .blog-posts-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+      }
+      @media (min-width: 768px) {
+        .blog-posts-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+        }
+      }
+      .blog-card {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(181,144,84,0.18);
+        border-radius: 8px;
+        background: #fff;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(14,13,12,0.04);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+      }
+      .blog-card:hover {
+        border-color: rgba(181,144,84,0.45);
+        box-shadow: 0 18px 44px rgba(181,144,84,0.1);
+        transform: translateY(-3px);
+      }
+      .blog-card-media {
+        position: relative;
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        background: #0E0D0C;
+      }
+      .blog-card-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .blog-card:hover .blog-card-media img {
+        transform: scale(1.05);
+      }
+      .blog-card-cat {
+        position: absolute;
+        bottom: 0.85rem;
+        left: 0.85rem;
+        padding: 0.32rem 0.75rem;
+        border-radius: 9999px;
+        background: rgba(250,248,244,0.92);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(181,144,84,0.3);
+        font-size: 0.62rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #8E6B36;
+        font-weight: 700;
+      }
+      .blog-card-body {
+        padding: 1.5rem 1.5rem 1.65rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+      .blog-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 0.72rem;
+        color: #7C766C;
+        letter-spacing: 0.06em;
+        margin-bottom: 0.65rem;
+      }
+      .blog-card-title {
+        font-family: 'Marcellus', serif;
+        font-size: 1.28rem;
+        line-height: 1.32;
+        color: #141311;
+        margin-bottom: 0.65rem;
+        transition: color 0.25s ease;
+      }
+      .blog-card:hover .blog-card-title {
+        color: #8E6B36;
+      }
+      .blog-card-excerpt {
+        font-size: 0.88rem;
+        color: #524E47;
+        line-height: 1.68;
+        margin-bottom: 1.25rem;
+        flex: 1;
+      }
+      .blog-read-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #8E6B36;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: gap 0.25s ease, color 0.25s ease;
+      }
+      .blog-read-btn:hover {
+        color: #141311;
+        gap: 0.75rem;
+      }
+
+      /* Right Sticky Sidebar */
+      .blog-sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+      }
+      @media (min-width: 1024px) {
+        .blog-sidebar {
+          position: sticky;
+          top: 6.5rem;
+        }
+      }
+      .sidebar-widget {
+        padding: 1.65rem 1.5rem;
+        border: 1px solid rgba(181,144,84,0.18);
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 8px 28px rgba(14,13,12,0.035);
+      }
+      .sidebar-title {
+        font-family: 'Marcellus', serif;
+        font-size: 1.15rem;
+        color: #141311;
+        padding-bottom: 0.75rem;
+        margin-bottom: 1.1rem;
+        border-bottom: 1px solid #E8E1D3;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .sidebar-title::after {
+        content: '';
+        width: 24px;
+        height: 1px;
+        background: #B59054;
+      }
+
+      .sidebar-search-wrap {
+        position: relative;
+      }
+      .sidebar-search-wrap input {
+        width: 100%;
+        height: 46px;
+        padding: 0 2.75rem 0 1rem;
+        border: 1px solid #E8E1D3;
+        border-radius: 6px;
+        background: #FAF8F4;
+        font-size: 0.85rem;
+        color: #141311;
+        outline: none;
+        transition: border-color 0.25s, box-shadow 0.25s;
+      }
+      .sidebar-search-wrap input:focus {
+        border-color: #B59054;
+        box-shadow: 0 0 0 3px rgba(181,144,84,0.12);
+      }
+      .sidebar-search-wrap i {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #8E6B36;
+        font-size: 0.85rem;
+        pointer-events: none;
+      }
+
+      .sidebar-cat-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+      }
+      .sidebar-cat-btn {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0.55rem 0.75rem;
+        border-radius: 5px;
+        border: none;
+        background: transparent;
+        font-size: 0.86rem;
+        color: #524E47;
+        cursor: pointer;
+        text-align: left;
+        transition: background-color 0.2s, color 0.2s;
+      }
+      .sidebar-cat-btn:hover,
+      .sidebar-cat-btn.is-active {
+        background: #FAF8F4;
+        color: #141311;
+        font-weight: 600;
+      }
+      .sidebar-cat-count {
+        font-size: 0.72rem;
+        color: #8E6B36;
+        background: rgba(181,144,84,0.12);
+        padding: 0.15rem 0.5rem;
+        border-radius: 9999px;
+        font-weight: 600;
+      }
+
+      /* Popular Posts in Sidebar */
+      .sidebar-popular-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .sidebar-popular-item {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+        cursor: pointer;
+        text-align: left;
+        background: none;
+        border: none;
+        padding: 0;
+        width: 100%;
+      }
+      .sidebar-popular-thumb {
+        width: 66px;
+        height: 66px;
+        border-radius: 6px;
+        overflow: hidden;
+        flex-shrink: 0;
+        border: 1px solid rgba(181,144,84,0.2);
+      }
+      .sidebar-popular-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .sidebar-popular-title {
+        font-family: 'Marcellus', serif;
+        font-size: 0.92rem;
+        line-height: 1.35;
+        color: #141311;
+        margin-bottom: 0.2rem;
+        transition: color 0.2s;
+      }
+      .sidebar-popular-item:hover .sidebar-popular-title {
+        color: #8E6B36;
+      }
+      .sidebar-popular-date {
+        font-size: 0.7rem;
+        color: #7C766C;
+        letter-spacing: 0.06em;
+      }
+
+      /* Dark Obsidian Trial CTA Widget */
+      .sidebar-cta-widget {
+        position: relative;
+        overflow: hidden;
+        padding: 2rem 1.6rem;
+        border-radius: 8px;
+        background: #0E0D0C;
+        color: #FAF8F4;
+        border: 1px solid rgba(181,144,84,0.34);
+        box-shadow: 0 20px 48px rgba(14,13,12,0.18);
+      }
+
+      /* Tag Pills */
+      .sidebar-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .sidebar-tag {
+        padding: 0.38rem 0.75rem;
+        border-radius: 4px;
+        border: 1px solid #E8E1D3;
+        background: #FAF8F4;
+        font-size: 0.72rem;
+        color: #524E47;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .sidebar-tag:hover,
+      .sidebar-tag.is-active {
+        border-color: #B59054;
+        color: #141311;
+        background: rgba(181,144,84,0.12);
+      }
+
+      /* Empty Filter State */
+      .blog-empty {
+        display: none;
+        padding: 3rem 2rem;
+        text-align: center;
+        border: 1px dashed rgba(181,144,84,0.35);
+        border-radius: 8px;
+        background: rgba(255,255,255,0.65);
+      }
+      .blog-empty.is-visible { display: block; }
+
+      /* Luxury Article Reader Modal */
+      .blog-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 90;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 1.25rem;
+      }
+      .blog-modal.is-open {
+        display: flex;
+      }
+      .blog-modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(14,13,12,0.72);
+        backdrop-filter: blur(6px);
+      }
+      .blog-modal-dialog {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 780px;
+        max-height: 88vh;
+        overflow-y: auto;
+        background: #FAF8F4;
+        border: 1px solid rgba(181,144,84,0.35);
+        border-radius: 10px;
+        box-shadow: 0 32px 84px rgba(0,0,0,0.45);
+      }
+      .blog-modal-close {
+        position: sticky;
+        top: 1rem;
+        float: right;
+        margin: 1rem 1rem 0 0;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: #0E0D0C;
+        color: #FAF8F4;
+        border: 1px solid rgba(217,186,130,0.4);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 5;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-ivory text-ink-primary font-sans antialiased selection:bg-gold/20 selection:text-ink-primary"
+  >
+    <!-- Luxury Atelier Jewelry SVG Preloader -->
+    <div id="bjrPreloader" class="bjr-preloader" aria-hidden="false" role="status" aria-label="Loading BJR Atelier">
+      <div class="preloader-bg"></div>
+      <div class="preloader-content">
+        <div class="preloader-gem-wrap">
+          <svg class="preloader-svg" viewBox="0 0 200 200" width="200" height="200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="preloaderGoldBand" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FAF8F4" />
+                <stop offset="25%" stop-color="#E5C483" />
+                <stop offset="55%" stop-color="#B59054" />
+                <stop offset="85%" stop-color="#8E6B36" />
+                <stop offset="100%" stop-color="#4A3515" />
+              </linearGradient>
+              <linearGradient id="diamondFacetGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.96" />
+                <stop offset="40%" stop-color="#E0F2FE" stop-opacity="0.82" />
+                <stop offset="80%" stop-color="#BAE6FD" stop-opacity="0.65" />
+                <stop offset="100%" stop-color="#7DD3FC" stop-opacity="0.5" />
+              </linearGradient>
+              <linearGradient id="diamondFacetGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.98" />
+                <stop offset="35%" stop-color="#F0FDFA" stop-opacity="0.85" />
+                <stop offset="70%" stop-color="#CFFAFE" stop-opacity="0.7" />
+                <stop offset="100%" stop-color="#93C5FD" stop-opacity="0.45" />
+              </linearGradient>
+              <linearGradient id="diamondPavilionGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.92" />
+                <stop offset="30%" stop-color="#E0F2FE" stop-opacity="0.75" />
+                <stop offset="65%" stop-color="#38BDF8" stop-opacity="0.5" />
+                <stop offset="100%" stop-color="#0284C7" stop-opacity="0.25" />
+              </linearGradient>
+              <linearGradient id="diamondStrokeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="25%" stop-color="#E0F2FE" />
+                <stop offset="50%" stop-color="#FDF4FF" />
+                <stop offset="75%" stop-color="#BAE6FD" />
+                <stop offset="100%" stop-color="#FFFFFF" />
+              </linearGradient>
+              <linearGradient id="platinumGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="50%" stop-color="#E2E8F0" />
+                <stop offset="100%" stop-color="#94A3B8" />
+              </linearGradient>
+              <radialGradient id="diamondAura" cx="50%" cy="32%" r="50%">
+                <stop offset="0%" stop-color="rgba(224, 242, 254, 0.75)" />
+                <stop offset="30%" stop-color="rgba(186, 230, 253, 0.35)" />
+                <stop offset="65%" stop-color="rgba(181, 144, 84, 0.15)" />
+                <stop offset="100%" stop-color="transparent" />
+              </radialGradient>
+              <linearGradient id="anamorphicFlare" x1="0%" y1="50%" x2="100%" y2="50%">
+                <stop offset="0%" stop-color="transparent" />
+                <stop offset="35%" stop-color="rgba(186, 230, 253, 0.5)" />
+                <stop offset="50%" stop-color="#FFFFFF" />
+                <stop offset="65%" stop-color="rgba(253, 244, 255, 0.5)" />
+                <stop offset="100%" stop-color="transparent" />
+              </linearGradient>
+            </defs>
+            <circle cx="100" cy="54" r="54" fill="url(#diamondAura)" class="preloader-diamond-aura" />
+            <line x1="26" y1="54" x2="174" y2="54" stroke="url(#anamorphicFlare)" stroke-width="2" class="preloader-anamorphic" stroke-linecap="round" />
+            <path d="M 52 112 C 52 176, 148 176, 148 112" class="preloader-path preloader-band-outer" stroke="url(#preloaderGoldBand)" stroke-width="2.6" stroke-linecap="round" />
+            <path d="M 64 114 C 64 162, 136 162, 136 114" class="preloader-path preloader-band-inner" stroke="url(#preloaderGoldBand)" stroke-width="1.4" stroke-linecap="round" opacity="0.75" />
+            <path d="M 52 112 C 52 86, 64 68, 72 54" class="preloader-path preloader-band-shoulder" stroke="url(#preloaderGoldBand)" stroke-width="2" stroke-linecap="round" />
+            <path d="M 148 112 C 148 86, 136 68, 128 54" class="preloader-path preloader-band-shoulder" stroke="url(#preloaderGoldBand)" stroke-width="2" stroke-linecap="round" />
+            <path d="M 68 88 C 84 96, 116 96, 132 88" class="preloader-path preloader-bridge" stroke="url(#preloaderGoldBand)" stroke-width="1.2" opacity="0.65" stroke-linecap="round" />
+            <polygon points="100,54 100,96 82,54" class="preloader-diamond-facet" fill="url(#diamondPavilionGrad)" />
+            <polygon points="100,54 118,54 100,96" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="56,54 82,54 100,96" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="144,54 100,96 118,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="88,40 112,40 100,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="78,28 88,40 100,54 68,46" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="122,28 132,46 100,54 112,40" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="78,28 68,46 56,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="122,28 144,54 132,46" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="68,46 100,54 56,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="132,46 144,54 100,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="78,28 122,28 112,40 88,40" class="preloader-diamond-table" fill="#FFFFFF" opacity="0.95" />
+            <line x1="78" y1="28" x2="122" y2="28" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.8" stroke-linecap="round" />
+            <line x1="78" y1="28" x2="56" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.6" />
+            <line x1="122" y1="28" x2="144" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.6" />
+            <line x1="78" y1="28" x2="88" y2="40" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="122" y1="28" x2="112" y2="40" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="88" y1="40" x2="112" y2="40" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="88" y1="40" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="112" y1="40" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="68" y1="46" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
+            <line x1="132" y1="46" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
+            <line x1="54" y1="54" x2="146" y2="54" class="preloader-path preloader-diamond-girdle" stroke="url(#diamondStrokeGrad)" stroke-width="2" stroke-linecap="round" />
+            <path d="M 56 54 L 100 96 L 144 54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.8" stroke-linejoin="round" />
+            <line x1="100" y1="54" x2="100" y2="96" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.3" />
+            <line x1="82" y1="54" x2="100" y2="96" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
+            <line x1="118" y1="54" x2="100" y2="96" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
+            <line x1="56" y1="56" x2="56" y2="50" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.6" stroke-linecap="round" />
+            <line x1="144" y1="56" x2="144" y2="50" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.6" stroke-linecap="round" />
+            <line x1="80" y1="56" x2="80" y2="51" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.2" stroke-linecap="round" />
+            <line x1="120" y1="56" x2="120" y2="51" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.2" stroke-linecap="round" />
+            <path d="M 78 18 Q 78 28 88 28 Q 78 28 78 38 Q 78 28 68 28 Q 78 28 78 18 Z" class="preloader-sparkle preloader-sparkle--main" fill="#FFFFFF" />
+            <circle cx="78" cy="28" r="2.2" fill="#E0F2FE" class="preloader-sparkle" />
+            <path d="M 144 48 Q 144 54 150 54 Q 144 54 144 60 Q 144 54 138 54 Q 144 54 144 48 Z" class="preloader-sparkle preloader-sparkle--secondary" fill="#BAE6FD" />
+            <circle cx="144" cy="54" r="1.5" fill="#FFFFFF" class="preloader-sparkle" />
+            <path d="M 100 90 Q 100 94 104 94 Q 100 94 100 98 Q 100 94 96 94 Q 100 94 100 90 Z" class="preloader-sparkle preloader-sparkle--culet" fill="#F472B6" />
+          </svg>
+        </div>
+        <div class="preloader-percent-display">
+          <span id="preloaderBigCount" class="preloader-big-num">00</span>
+          <span class="preloader-pct-symbol">%</span>
+        </div>
+        <div id="preloaderStatusText" class="preloader-status">Initializing Optical Calibration...</div>
+        <div class="preloader-progress-wrap">
+          <div class="preloader-track">
+            <div class="preloader-bar" id="preloaderBar"></div>
+          </div>
+        </div>
+        <div class="preloader-meta mt-3">
+          <div class="preloader-title">BJR ATELIER</div>
+          <div class="preloader-tagline">Fine Jewelry Retouching Protocol</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Announcement Bar -->
+    <div
+      class="top-bar"
+      role="region"
+      aria-label="Atelier Discretion & Service Coverage"
+    >
+      Haute Joaillerie Post-Production &bull; Serving Maisons &amp; Studios in
+      <strong>New York &bull; Paris &bull; Geneva &bull; London &bull; Antwerp</strong> &bull;
+      Confidential 24h Turnaround
+    </div>
+
+    <!-- Sticky Architectural Luxury Header -->
+    <header class="site-header" id="siteHeader">
+      <div class="container header-inner">
+        <a
+          href="index.html"
+          class="brand-logo group"
+          aria-label="BJR Haute Joaillerie Post-Production Atelier"
+        >
+          <div class="brand-logo-wrap">
+            <img
+              src="assets/images/logo.svg"
+              alt="BJR Atelier Logo"
+              class="brand-logo-img"
+              width="36"
+              height="36"
+              loading="eager"
+              decoding="async"
+              onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden');"
+            />
+            <span class="brand-mark hidden" aria-hidden="true">
+              <span>BJR</span>
+            </span>
+          </div>
+          <span class="brand-wordmark">
+            <span class="brand-name">BJR</span>
+            <span class="brand-sub">Haute Atelier</span>
+          </span>
+        </a>
+
+        <nav class="primary-nav" aria-label="Primary Editorial Navigation">
+          <ul class="nav-list">
+            <li><a href="index.html#services" class="nav-link">Services</a></li>
+            <li><a href="index.html#macro-loupe" class="nav-link">Loupe</a></li>
+            <li><a href="index.html#colorways" class="nav-link">Alloy Atelier</a></li>
+            <li><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
+            <li><a href="index.html#jrw-workflow" class="nav-link">Process</a></li>
+            <li><a href="index.html#pricing" class="nav-link">Pricing</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="blog.html" class="nav-link active text-gold-deep">Blog</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a
+            href="index.html#free-trial-home"
+            class="btn-haute hidden lg:inline-flex"
+            aria-label="Request a Trial & Private Consultation"
+          >
+            <span>Private Inquiry</span>
+            <i class="fa-solid fa-arrow-right-long text-xs ml-2 opacity-80" aria-hidden="true"></i>
+          </a>
+          <button
+            type="button"
+            class="mobile-menu-btn"
+            id="mobileMenuOpen"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="mobileDrawer"
+          >
+            <i class="fa-solid fa-bars text-lg" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Architectural Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+      <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop"></div>
+      <div
+        class="mobile-drawer-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Atelier Navigation Menu"
+      >
+        <div>
+          <div class="mobile-drawer-top">
+            <div class="flex items-center gap-2.5">
+              <img src="assets/images/logo.svg" alt="BJR Atelier" class="w-7 h-7 object-contain" width="28" height="28" />
+              <span class="font-serif text-lg tracking-[0.22em] text-ink-primary font-normal">BJR</span>
+              <span class="text-[9px] uppercase tracking-[0.24em] text-gold-deep font-semibold pl-2 border-l border-stone-200">Atelier</span>
+            </div>
+            <button type="button" class="mobile-menu-btn" style="display: inline-flex" id="mobileMenuClose" aria-label="Close navigation menu">
+              <i class="fa-solid fa-xmark text-lg" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <ul class="mobile-nav-list">
+            <li><a href="index.html" class="mobile-nav-link"><span>Atelier Home</span><span class="mobile-nav-idx">00</span></a></li>
+            <li><a href="index.html#services" class="mobile-nav-link"><span>Four Pillars of Retouching</span><span class="mobile-nav-idx">01</span></a></li>
+            <li><a href="index.html#portfolio" class="mobile-nav-link"><span>Curated Portfolio</span><span class="mobile-nav-idx">02</span></a></li>
+            <li><a href="index.html#jrw-workflow" class="mobile-nav-link"><span>Craftsmanship Protocol</span><span class="mobile-nav-idx">03</span></a></li>
+            <li><a href="index.html#pricing" class="mobile-nav-link"><span>Investment &amp; SLA Tiers</span><span class="mobile-nav-idx">04</span></a></li>
+            <li><a href="about.html" class="mobile-nav-link"><span>About Atelier</span><span class="mobile-nav-idx">05</span></a></li>
+            <li><a href="blog.html" class="mobile-nav-link active"><span>Atelier Journal</span><span class="mobile-nav-idx">06</span></a></li>
+            <li><a href="contact.html" class="mobile-nav-link"><span>Contact Atelier</span><span class="mobile-nav-idx">07</span></a></li>
+            <li><a href="privacy.html" class="mobile-nav-link"><span>Privacy Policy</span><span class="mobile-nav-idx">08</span></a></li>
+            <li><a href="terms.html" class="mobile-nav-link"><span>Terms &amp; Conditions</span><span class="mobile-nav-idx">09</span></a></li>
+          </ul>
+
+          <div class="mobile-drawer-ctas">
+            <a href="index.html#free-trial-home" class="btn-haute w-full px-4 py-3.5 text-center flex items-center justify-center gap-2 whitespace-normal leading-snug">
+              <span>Request Free Test Images</span>
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true" class="shrink-0">
+                <path d="M4 10H16M11 5L16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="pt-6 mt-6 border-t border-stone-200">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="text-[10px] uppercase tracking-[0.22em] text-ink-muted font-semibold">Paris &bull; NY &bull; Geneva &bull; Active Desk</span>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--ink-muted)">
+            Private Desk:
+            <a href="mailto:studio@bestjewelryretouching.com" style="color: var(--gold-deep); text-decoration: underline">studio@bestjewelryretouching.com</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <!-- 1. Editorial Journal Header (1440px Container) -->
+      <section class="blog-hero">
+        <!-- Decorative Diamond Facet & Orbital Rings -->
+        <div class="hidden lg:block absolute -left-24 top-10 w-64 h-64 rounded-full border border-gold/15 pointer-events-none select-none js-shape-spin" aria-hidden="true"></div>
+        <div class="hidden lg:block absolute -left-16 top-16 w-48 h-48 rounded-full border border-gold/10 border-dashed pointer-events-none select-none" aria-hidden="true"></div>
+        <div class="hidden md:block absolute right-10 top-12 w-28 h-28 text-gold/15 pointer-events-none select-none js-shape-float" aria-hidden="true">
+          <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1">
+            <polygon points="60,8 106,36 106,84 60,112 14,84 14,36" />
+            <polygon points="60,24 90,42 90,78 60,96 30,78 30,42" />
+            <line x1="60" y1="8" x2="60" y2="112" />
+            <line x1="14" y1="36" x2="106" y2="84" />
+            <line x1="106" y1="36" x2="14" y2="84" />
+          </svg>
+        </div>
+
+        <div class="container relative z-10 text-center">
+          <div class="js-hero-item inline-flex items-center gap-3.5 mb-4">
+            <span class="w-8 h-px bg-gold opacity-70"></span>
+            <span class="text-[11px] font-semibold tracking-[0.28em] uppercase text-gold">The Atelier Journal</span>
+            <span class="w-8 h-px bg-gold opacity-70"></span>
+          </div>
+          <h1 class="js-hero-item font-serif text-4xl sm:text-5xl lg:text-[54px] font-normal text-ink-primary leading-[1.12] tracking-[-0.015em] mb-4">
+            Insights on Fine Jewelry Craft &amp; Post-Production
+          </h1>
+          <p class="js-hero-item text-ink-secondary text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+            Technical notes, studio benchmarks, and editorial perspectives from our senior retouching
+            bench serving luxury maisons in New York, Paris, London, and Geneva.
+          </p>
+
+          <!-- Category Filter Bar -->
+          <div class="blog-filter-bar js-hero-item" role="tablist" aria-label="Filter journal articles by topic">
+            <button type="button" class="blog-chip is-active" data-cat="all">All Articles</button>
+            <button type="button" class="blog-chip" data-cat="diamond">Diamond Retouching</button>
+            <button type="button" class="blog-chip" data-cat="alloy">Alloy Recasting</button>
+            <button type="button" class="blog-chip" data-cat="cad">3D CAD &amp; Horology</button>
+            <button type="button" class="blog-chip" data-cat="ecommerce">E-Commerce &amp; Workflow</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Main 2-Column Blog Area (Left: Posts | Right: Sticky Sidebar) -->
+      <section class="relative overflow-hidden">
+        <div class="container">
+          <div class="blog-layout">
+            <!-- LEFT COLUMN: Featured Article + Grid of Posts -->
+            <div id="blogPostsColumn">
+              <!-- Featured Lead Essay -->
+              <article
+                class="blog-featured-card js-blog-post js-reveal"
+                data-cat="diamond"
+                data-tags="400% Loupe,Zero AI,16-Bit PSD"
+                data-title="Why 400% Magnification & Manual Wacom Paths Outperform AI on Fine Jewelry"
+                data-date="Nov 22, 2026"
+                data-read="6 min read"
+                data-img="assets/images/hero-after.jpg"
+                data-category-label="Diamond Retouching"
+              >
+                <div class="blog-featured-media">
+                  <span class="blog-featured-badge">
+                    <i class="fa-solid fa-star text-[10px]"></i>
+                    <span>Featured Essay</span>
+                  </span>
+                  <img
+                    src="assets/images/hero-after.jpg"
+                    alt="400% manual jewelry retouching centerpiece"
+                    width="800"
+                    height="600"
+                    loading="eager"
+                  />
+                </div>
+                <div class="blog-featured-body">
+                  <div class="blog-meta">
+                    <span class="text-gold-deep font-semibold uppercase tracking-wider">Diamond Retouching</span>
+                    <span>&bull;</span>
+                    <span>Nov 22, 2026</span>
+                    <span>&bull;</span>
+                    <span>6 min read</span>
+                  </div>
+                  <h2 class="font-serif text-2xl sm:text-3xl text-ink-primary leading-snug mb-3">
+                    Why 400% Magnification &amp; Manual Wacom Paths Outperform AI on Fine Jewelry
+                  </h2>
+                  <p class="text-ink-secondary text-[15px] leading-[1.75] mb-6">
+                    Generative filters hallucinate prong shapes and soften engraved hallmarks. Discover
+                    how our bench specialists preserve carat geometry while eliminating studio dust and
+                    tripod reflections.
+                  </p>
+                  <div>
+                    <button type="button" class="blog-read-btn js-open-article">
+                      <span>Read Full Essay</span>
+                      <i class="fa-solid fa-arrow-right-long text-xs"></i>
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Posts Grid -->
+              <div class="blog-posts-grid" id="blogPostsGrid">
+                <!-- Post 2 -->
+                <article
+                  class="blog-card js-blog-post js-reveal"
+                  data-cat="diamond"
+                  data-tags="Diamond Fire,400% Loupe"
+                  data-title="Restoring Crystalline Diamond Fire Without Artificial Sparkle Overlays"
+                  data-date="Nov 18, 2026"
+                  data-read="5 min read"
+                  data-img="assets/images/service-3-after.jpg"
+                  data-category-label="Diamond Retouching"
+                >
+                  <div class="blog-card-media">
+                    <img src="assets/images/service-3-after.jpg" alt="Diamond facet fire restoration" width="640" height="400" loading="lazy" />
+                    <span class="blog-card-cat">Diamond Retouching</span>
+                  </div>
+                  <div class="blog-card-body">
+                    <div class="blog-meta">
+                      <span>Nov 18, 2026</span>
+                      <span>&bull;</span>
+                      <span>5 min read</span>
+                    </div>
+                    <h3 class="blog-card-title">
+                      Restoring Crystalline Diamond Fire Without Artificial Sparkle Overlays
+                    </h3>
+                    <p class="blog-card-excerpt">
+                      True brilliance comes from disciplined micro-contrast between table, crown, and
+                      pavilion facets — never synthetic star brushes.
+                    </p>
+                    <button type="button" class="blog-read-btn js-open-article">
+                      <span>Read Essay</span>
+                      <i class="fa-solid fa-arrow-right-long text-xs"></i>
+                    </button>
+                  </div>
+                </article>
+
+                <!-- Post 3 -->
+                <article
+                  class="blog-card js-blog-post js-reveal"
+                  data-cat="alloy"
+                  data-tags="16-Bit PSD,Alloy Recasting"
+                  data-title="18K Yellow, Rose & Platinum: The Science of Digital Alloy Recasting"
+                  data-date="Nov 14, 2026"
+                  data-read="4 min read"
+                  data-img="assets/images/colorway-yellow-gold.jpg"
+                  data-category-label="Alloy Recasting"
+                >
+                  <div class="blog-card-media">
+                    <img src="assets/images/colorway-yellow-gold.jpg" alt="18K gold digital alloy recasting" width="640" height="400" loading="lazy" />
+                    <span class="blog-card-cat">Alloy Recasting</span>
+                  </div>
+                  <div class="blog-card-body">
+                    <div class="blog-meta">
+                      <span>Nov 14, 2026</span>
+                      <span>&bull;</span>
+                      <span>4 min read</span>
+                    </div>
+                    <h3 class="blog-card-title">
+                      18K Yellow, Rose &amp; Platinum: The Science of Digital Alloy Recasting
+                    </h3>
+                    <p class="blog-card-excerpt">
+                      Shoot one master casting and generate assay-accurate metal colorways with
+                      calibrated spectral highlights for every SKU.
+                    </p>
+                    <button type="button" class="blog-read-btn js-open-article">
+                      <span>Read Essay</span>
+                      <i class="fa-solid fa-arrow-right-long text-xs"></i>
+                    </button>
+                  </div>
+                </article>
+
+                <!-- Post 4 -->
+                <article
+                  class="blog-card js-blog-post js-reveal"
+                  data-cat="cad"
+                  data-tags="CAD Render,16-Bit PSD"
+                  data-title="From MatrixGold CAD to Photorealistic Campaign Assets"
+                  data-date="Nov 09, 2026"
+                  data-read="5 min read"
+                  data-img="assets/images/service-4-after.jpg"
+                  data-category-label="3D CAD & Horology"
+                >
+                  <div class="blog-card-media">
+                    <img src="assets/images/service-4-after.jpg" alt="3D CAD jewelry render enhancement" width="640" height="400" loading="lazy" />
+                    <span class="blog-card-cat">3D CAD &amp; Horology</span>
+                  </div>
+                  <div class="blog-card-body">
+                    <div class="blog-meta">
+                      <span>Nov 09, 2026</span>
+                      <span>&bull;</span>
+                      <span>5 min read</span>
+                    </div>
+                    <h3 class="blog-card-title">
+                      From MatrixGold CAD to Photorealistic Campaign Assets
+                    </h3>
+                    <p class="blog-card-excerpt">
+                      How subtle surface grain, chamfered highlights, and optical refraction turn
+                      sterile 3D renders into believable photography.
+                    </p>
+                    <button type="button" class="blog-read-btn js-open-article">
+                      <span>Read Essay</span>
+                      <i class="fa-solid fa-arrow-right-long text-xs"></i>
+                    </button>
+                  </div>
+                </article>
+
+                <!-- Post 5 -->
+                <article
+                  class="blog-card js-blog-post js-reveal"
+                  data-cat="cad"
+                  data-tags="Swiss Watch,400% Loupe"
+                  data-title="Swiss Horology Macro: Eliminating Dial Glare While Preserving Guilloché"
+                  data-date="Nov 04, 2026"
+                  data-read="6 min read"
+                  data-img="assets/images/watch-after.jpg"
+                  data-category-label="3D CAD & Horology"
+                >
+                  <div class="blog-card-media">
+                    <img src="assets/images/watch-after.jpg" alt="Luxury watch macro retouching" width="640" height="400" loading="lazy" />
+                    <span class="blog-card-cat">3D CAD &amp; Horology</span>
+                  </div>
+                  <div class="blog-card-body">
+                    <div class="blog-meta">
+                      <span>Nov 04, 2026</span>
+                      <span>&bull;</span>
+                      <span>6 min read</span>
+                    </div>
+                    <h3 class="blog-card-title">
+                      Swiss Horology Macro: Eliminating Dial Glare While Preserving Guilloch&eacute;
+                    </h3>
+                    <p class="blog-card-excerpt">
+                      Anti-reflective sapphire crystal retouching demands delicate tonal separation
+                      across brushed lugs, bezels, and micro-dial hands.
+                    </p>
+                    <button type="button" class="blog-read-btn js-open-article">
+                      <span>Read Essay</span>
+                      <i class="fa-solid fa-arrow-right-long text-xs"></i>
+                    </button>
+                  </div>
+                </article>
+
+                <!-- Post 6 -->
+                <article
+                  class="blog-card js-blog-post js-reveal"
+                  data-cat="ecommerce"
+                  data-tags="Mutual NDA,Zero AI"
+                  data-title="Pure RGB 255 Isolation vs. Natural Contact Shadows in Luxury E-Commerce"
+                  data-date="Oct 28, 2026"
+                  data-read="4 min read"
+                  data-img="assets/images/service-2-after.jpg"
+                  data-category-label="E-Commerce & Workflow"
+                >
+                  <div class="blog-card-media">
+                    <img src="assets/images/service-2-after.jpg" alt="E-commerce jewelry isolation and contact shadow" width="640" height="400" loading="lazy" />
+                    <span class="blog-card-cat">E-Commerce &amp; Workflow</span>
+                  </div>
+                  <div class="blog-card-body">
+                    <div class="blog-meta">
+                      <span>Oct 28, 2026</span>
+                      <span>&bull;</span>
+                      <span>4 min read</span>
+                    </div>
+                    <h3 class="blog-card-title">
+                      Pure RGB 255 Isolation vs. Natural Contact Shadows in Luxury E-Commerce
+                    </h3>
+                    <p class="blog-card-excerpt">
+                      Why floating cutouts reduce buyer trust — and how calibrated natural shadows
+                      ground rings and bracelets on crisp white PDPs.
+                    </p>
+                    <button type="button" class="blog-read-btn js-open-article">
+                      <span>Read Essay</span>
+                      <i class="fa-solid fa-arrow-right-long text-xs"></i>
+                    </button>
+                  </div>
+                </article>
+
+                <!-- Post 7 -->
+                <article
+                  class="blog-card js-blog-post js-reveal"
+                  data-cat="ecommerce"
+                  data-tags="Mutual NDA,16-Bit PSD"
+                  data-title="Protecting Unreleased High-Jewelry Collections Under 256-Bit Mutual NDA"
+                  data-date="Oct 21, 2026"
+                  data-read="5 min read"
+                  data-img="assets/images/portfolio-1-after.jpg"
+                  data-category-label="E-Commerce & Workflow"
+                >
+                  <div class="blog-card-media">
+                    <img src="assets/images/portfolio-1-after.jpg" alt="High jewelry confidential retouching" width="640" height="400" loading="lazy" />
+                    <span class="blog-card-cat">E-Commerce &amp; Workflow</span>
+                  </div>
+                  <div class="blog-card-body">
+                    <div class="blog-meta">
+                      <span>Oct 21, 2026</span>
+                      <span>&bull;</span>
+                      <span>5 min read</span>
+                    </div>
+                    <h3 class="blog-card-title">
+                      Protecting Unreleased High-Jewelry Collections Under 256-Bit Mutual NDA
+                    </h3>
+                    <p class="blog-card-excerpt">
+                      Inside our air-gapped studio vault protocol, zero-AI guarantee, and 30-day
+                      automatic asset purge for confidential lookbooks.
+                    </p>
+                    <button type="button" class="blog-read-btn js-open-article">
+                      <span>Read Essay</span>
+                      <i class="fa-solid fa-arrow-right-long text-xs"></i>
+                    </button>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Empty Search/Filter State -->
+              <div class="blog-empty" id="blogEmptyState">
+                <i class="fa-solid fa-gem text-gold text-2xl mb-3"></i>
+                <h3 class="font-serif text-xl text-ink-primary mb-2">No Matching Essays Found</h3>
+                <p class="text-sm text-ink-secondary mb-5">
+                  Try clearing your search term or selecting another editorial category.
+                </p>
+                <button type="button" id="blogResetFilters" class="btn btn-outline">
+                  Show All Articles
+                </button>
+              </div>
+            </div>
+
+            <!-- RIGHT COLUMN: Sticky Luxury Sidebar -->
+            <aside class="blog-sidebar" aria-label="Blog Sidebar">
+              <!-- 1. Search Widget -->
+              <div class="sidebar-widget">
+                <h2 class="sidebar-title">Search Journal</h2>
+                <div class="sidebar-search-wrap">
+                  <label for="blogSearchInput" class="sr-only">Search articles</label>
+                  <input
+                    type="search"
+                    id="blogSearchInput"
+                    placeholder="Search essays, diamond, CAD…"
+                  />
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+              </div>
+
+              <!-- 2. Categories Widget -->
+              <div class="sidebar-widget">
+                <h2 class="sidebar-title">Categories</h2>
+                <div class="sidebar-cat-list">
+                  <button type="button" class="sidebar-cat-btn is-active" data-cat="all">
+                    <span>All Articles</span>
+                    <span class="sidebar-cat-count">7</span>
+                  </button>
+                  <button type="button" class="sidebar-cat-btn" data-cat="diamond">
+                    <span>Diamond Retouching</span>
+                    <span class="sidebar-cat-count">2</span>
+                  </button>
+                  <button type="button" class="sidebar-cat-btn" data-cat="alloy">
+                    <span>Alloy Recasting</span>
+                    <span class="sidebar-cat-count">1</span>
+                  </button>
+                  <button type="button" class="sidebar-cat-btn" data-cat="cad">
+                    <span>3D CAD &amp; Horology</span>
+                    <span class="sidebar-cat-count">2</span>
+                  </button>
+                  <button type="button" class="sidebar-cat-btn" data-cat="ecommerce">
+                    <span>E-Commerce &amp; Workflow</span>
+                    <span class="sidebar-cat-count">2</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 3. Popular Atelier Reads -->
+              <div class="sidebar-widget">
+                <h2 class="sidebar-title">Popular Reads</h2>
+                <div class="sidebar-popular-list">
+                  <button type="button" class="sidebar-popular-item js-sidebar-pick" data-target-idx="0">
+                    <div class="sidebar-popular-thumb">
+                      <img src="assets/images/macro-loupe-base.jpg" alt="400% Magnification Guide" width="80" height="80" loading="lazy" />
+                    </div>
+                    <div>
+                      <div class="sidebar-popular-title">Why 400% Magnification Outperforms AI</div>
+                      <div class="sidebar-popular-date">Nov 22, 2026 &bull; 6 min read</div>
+                    </div>
+                  </button>
+
+                  <button type="button" class="sidebar-popular-item js-sidebar-pick" data-target-idx="2">
+                    <div class="sidebar-popular-thumb">
+                      <img src="assets/images/colorway-yellow-gold.jpg" alt="Alloy Recasting Science" width="80" height="80" loading="lazy" />
+                    </div>
+                    <div>
+                      <div class="sidebar-popular-title">The Science of Digital Alloy Recasting</div>
+                      <div class="sidebar-popular-date">Nov 14, 2026 &bull; 4 min read</div>
+                    </div>
+                  </button>
+
+                  <button type="button" class="sidebar-popular-item js-sidebar-pick" data-target-idx="4">
+                    <div class="sidebar-popular-thumb">
+                      <img src="assets/images/watch-after.jpg" alt="Swiss Horology Macro" width="80" height="80" loading="lazy" />
+                    </div>
+                    <div>
+                      <div class="sidebar-popular-title">Swiss Horology Macro &amp; Guilloch&eacute;</div>
+                      <div class="sidebar-popular-date">Nov 04, 2026 &bull; 6 min read</div>
+                    </div>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 4. Dark Obsidian Free Trial CTA Widget -->
+              <div class="sidebar-cta-widget">
+                <div class="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-gold-light font-semibold mb-3">
+                  <i class="fa-solid fa-lock"></i>
+                  <span>256-Bit Mutual NDA</span>
+                </div>
+                <h3 class="font-serif text-2xl text-ivory leading-snug mb-3">
+                  Test Our Bench With 2 Free Images
+                </h3>
+                <p class="text-xs text-ink-light-muted leading-relaxed mb-5">
+                  Send two raw captures or 3D renders and receive layered 16-bit masters in 12&ndash;24 hours.
+                </p>
+                <a href="index.html#free-trial-home" class="btn btn-gold w-full justify-center">
+                  Claim Free Trial
+                </a>
+              </div>
+
+              <!-- 5. Editorial Tags Widget -->
+              <div class="sidebar-widget">
+                <h2 class="sidebar-title">Atelier Tags</h2>
+                <div class="sidebar-tags">
+                  <button type="button" class="sidebar-tag" data-tag="400% Loupe">400% Loupe</button>
+                  <button type="button" class="sidebar-tag" data-tag="16-Bit PSD">16-Bit PSD</button>
+                  <button type="button" class="sidebar-tag" data-tag="Zero AI">Zero AI</button>
+                  <button type="button" class="sidebar-tag" data-tag="Diamond Fire">Diamond Fire</button>
+                  <button type="button" class="sidebar-tag" data-tag="CAD Render">CAD Render</button>
+                  <button type="button" class="sidebar-tag" data-tag="Swiss Watch">Swiss Watch</button>
+                  <button type="button" class="sidebar-tag" data-tag="Mutual NDA">Mutual NDA</button>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Luxury Article Reader Modal -->
+    <div id="blogModal" class="blog-modal" role="dialog" aria-modal="true" aria-labelledby="blogModalTitle" aria-hidden="true">
+      <div class="blog-modal-backdrop" id="blogModalBackdrop"></div>
+      <div class="blog-modal-dialog">
+        <button type="button" class="blog-modal-close" id="blogModalClose" aria-label="Close article reader">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+        <div class="p-6 sm:p-10">
+          <div class="inline-flex items-center gap-2.5 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold mb-3" id="blogModalMeta"></div>
+          <h2 class="font-serif text-3xl sm:text-4xl text-ink-primary leading-tight mb-6" id="blogModalTitle"></h2>
+          <div class="rounded-lg overflow-hidden border border-gold/25 mb-6 bg-obsidian">
+            <img id="blogModalImg" src="assets/images/hero-after.jpg" alt="" class="w-full h-64 sm:h-80 object-cover block" />
+          </div>
+          <div class="space-y-4 text-ink-secondary text-[15px] leading-[1.8]" id="blogModalBody">
+            <p id="blogModalLead"></p>
+            <p>
+              At BestJewelryRetouching.com, every assignment begins at 400% magnification on calibrated
+              reference displays. Our bench specialists manually isolate prongs, pav&eacute; galleries,
+              and precious chains using vector Pen Tool paths so zero mechanical geometry is altered.
+            </p>
+            <p>
+              Whether preparing a flagship bridal campaign for Paris or high-volume e-commerce SKUs for
+              New York, calibrated 16-bit layered PSD deliverables guarantee consistent luxury
+              presentation across sRGB, Adobe RGB, and Display P3 color spaces.
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-stone-200 flex flex-wrap items-center justify-between gap-4">
+            <span class="text-xs text-ink-muted">Protected under Automatic Mutual NDA</span>
+            <a href="index.html#free-trial-home" class="btn btn-obsidian">Request 2 Free Test Images</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Site Footer (Same as Homepage) -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="brand-logo" aria-label="Best Jewelry Retouching — Home">
+              <span class="brand-mark" aria-hidden="true"><span>B</span></span>
+              <span class="brand-wordmark">
+                <span class="brand-name">Best Jewelry Retouching</span>
+                <span class="brand-sub">Bespoke Post-Production</span>
+              </span>
+            </a>
+            <p>
+              Precision hand-crafted jewelry photo editing and diamond
+              restoration studio serving luxury brands across the USA and
+              Europe.
+            </p>
+            <div class="flex items-center gap-3.5 mt-4 text-stone-400">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="BJR Instagram" class="hover:text-gold-deep transition-colors"><i class="fa-brands fa-instagram text-base"></i></a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="BJR LinkedIn" class="hover:text-gold-deep transition-colors"><i class="fa-brands fa-linkedin-in text-base"></i></a>
+              <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="BJR Pinterest" class="hover:text-gold-deep transition-colors"><i class="fa-brands fa-pinterest-p text-base"></i></a>
+              <a href="mailto:studio@bestjewelryretouching.com" aria-label="Contact Studio" class="hover:text-gold-deep transition-colors"><i class="fa-solid fa-envelope text-base"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Core Services</h4>
+            <ul class="footer-links">
+              <li><a href="index.html#service-1">High-End Jewelry Retouching</a></li>
+              <li><a href="index.html#service-2">Hybrid E-Commerce Editing</a></li>
+              <li><a href="index.html#service-3">Diamond Fire Restoration</a></li>
+              <li><a href="index.html#service-4">3D Render Enhancement</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Atelier Studio</h4>
+            <ul class="footer-links">
+              <li><a href="about.html">About Atelier</a></li>
+              <li><a href="blog.html">Atelier Journal (Blog)</a></li>
+              <li><a href="index.html#macro-loupe">Precision 400% Loupe</a></li>
+              <li><a href="index.html#colorways">Alloy Recasting Studio</a></li>
+              <li><a href="index.html#jrw-workflow">Bench Standards Protocol</a></li>
+              <li><a href="index.html#pricing">Pricing &amp; SLA Tiers</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Authenticity &amp; Care</h4>
+            <ul class="footer-links">
+              <li><a href="index.html#authenticity">Anti-AI Artisan Manifesto</a></li>
+              <li><a href="contact.html">Contact Atelier</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms &amp; Conditions</a></li>
+              <li><a href="index.html#faq">Turnaround &amp; Delivery FAQ</a></li>
+              <li><a href="mailto:studio@bestjewelryretouching.com">Email Studio Desk</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; 2026 BestJewelryRetouching.com &mdash; All Rights Reserved.</span>
+          <span>Serving New York &bull; Los Angeles &bull; London &bull; Paris &bull; Antwerp &bull; Geneva</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Vendor Scripts (Local) -->
+    <script src="assets/js/gsap.min.js"></script>
+    <script src="assets/js/ScrollTrigger.min.js"></script>
+    <script src="assets/js/main.js?v=20261125e"></script>
+
+    <!-- Blog Filter, Search, Reader Modal & GSAP Animations -->
+    <script>
+      (function () {
+        'use strict';
+        var posts = Array.prototype.slice.call(document.querySelectorAll('.js-blog-post'));
+        var chips = Array.prototype.slice.call(document.querySelectorAll('.blog-chip'));
+        var sideCats = Array.prototype.slice.call(document.querySelectorAll('.sidebar-cat-btn'));
+        var tags = Array.prototype.slice.call(document.querySelectorAll('.sidebar-tag'));
+        var searchInput = document.getElementById('blogSearchInput');
+        var emptyState = document.getElementById('blogEmptyState');
+        var resetBtn = document.getElementById('blogResetFilters');
+
+        var activeCat = 'all';
+        var activeTag = '';
+        var searchQuery = '';
+
+        function applyFilters() {
+          var visibleCount = 0;
+          var q = searchQuery.trim().toLowerCase();
+
+          posts.forEach(function (post) {
+            var cat = post.getAttribute('data-cat') || '';
+            var postTags = (post.getAttribute('data-tags') || '').toLowerCase();
+            var title = (post.getAttribute('data-title') || '').toLowerCase();
+            var text = (post.textContent || '').toLowerCase();
+
+            var matchCat = activeCat === 'all' || cat === activeCat;
+            var matchTag = !activeTag || postTags.indexOf(activeTag.toLowerCase()) !== -1;
+            var matchSearch = !q || title.indexOf(q) !== -1 || text.indexOf(q) !== -1;
+
+            if (matchCat && matchTag && matchSearch) {
+              post.style.display = '';
+              visibleCount++;
+            } else {
+              post.style.display = 'none';
+            }
+          });
+
+          if (emptyState) {
+            emptyState.classList.toggle('is-visible', visibleCount === 0);
+          }
+        }
+
+        function setCategory(cat) {
+          activeCat = cat;
+          chips.forEach(function (c) {
+            c.classList.toggle('is-active', c.getAttribute('data-cat') === cat);
+          });
+          sideCats.forEach(function (c) {
+            c.classList.toggle('is-active', c.getAttribute('data-cat') === cat);
+          });
+          applyFilters();
+        }
+
+        chips.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            setCategory(btn.getAttribute('data-cat') || 'all');
+          });
+        });
+
+        sideCats.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            setCategory(btn.getAttribute('data-cat') || 'all');
+          });
+        });
+
+        tags.forEach(function (tagBtn) {
+          tagBtn.addEventListener('click', function () {
+            var clicked = tagBtn.getAttribute('data-tag') || '';
+            activeTag = activeTag === clicked ? '' : clicked;
+            tags.forEach(function (t) {
+              t.classList.toggle('is-active', t.getAttribute('data-tag') === activeTag);
+            });
+            applyFilters();
+          });
+        });
+
+        if (searchInput) {
+          searchInput.addEventListener('input', function () {
+            searchQuery = searchInput.value || '';
+            applyFilters();
+          });
+        }
+
+        if (resetBtn) {
+          resetBtn.addEventListener('click', function () {
+            activeTag = '';
+            searchQuery = '';
+            if (searchInput) searchInput.value = '';
+            tags.forEach(function (t) { t.classList.remove('is-active'); });
+            setCategory('all');
+          });
+        }
+
+        // Article Reader Modal
+        var modal = document.getElementById('blogModal');
+        var modalClose = document.getElementById('blogModalClose');
+        var modalBackdrop = document.getElementById('blogModalBackdrop');
+        var modalTitle = document.getElementById('blogModalTitle');
+        var modalMeta = document.getElementById('blogModalMeta');
+        var modalImg = document.getElementById('blogModalImg');
+        var modalLead = document.getElementById('blogModalLead');
+
+        function openArticle(postEl) {
+          if (!modal || !postEl) return;
+          var title = postEl.getAttribute('data-title') || '';
+          var catLabel = postEl.getAttribute('data-category-label') || '';
+          var date = postEl.getAttribute('data-date') || '';
+          var read = postEl.getAttribute('data-read') || '';
+          var img = postEl.getAttribute('data-img') || '';
+          var excerptEl = postEl.querySelector('.blog-card-excerpt, .blog-featured-body p');
+
+          if (modalTitle) modalTitle.textContent = title;
+          if (modalMeta) modalMeta.textContent = catLabel + ' • ' + date + ' • ' + read;
+          if (modalImg && img) {
+            modalImg.src = img;
+            modalImg.alt = title;
+          }
+          if (modalLead && excerptEl) modalLead.textContent = excerptEl.textContent.trim();
+
+          modal.classList.add('is-open');
+          modal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeArticle() {
+          if (!modal) return;
+          modal.classList.remove('is-open');
+          modal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.js-open-article').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            openArticle(btn.closest('.js-blog-post'));
+          });
+        });
+
+        document.querySelectorAll('.js-sidebar-pick').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var idx = parseInt(btn.getAttribute('data-target-idx'), 10);
+            if (!isNaN(idx) && posts[idx]) openArticle(posts[idx]);
+          });
+        });
+
+        if (modalClose) modalClose.addEventListener('click', closeArticle);
+        if (modalBackdrop) modalBackdrop.addEventListener('click', closeArticle);
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) {
+            closeArticle();
+          }
+        });
+
+        // Subtle GSAP animations for decorative shapes
+        if (window.gsap) {
+          window.gsap.utils.toArray('.js-shape-spin').forEach(function (el) {
+            window.gsap.to(el, { rotation: 360, duration: 55, repeat: -1, ease: 'none' });
+          });
+          window.gsap.utils.toArray('.js-shape-float').forEach(function (el) {
+            window.gsap.to(el, { y: -12, duration: 3.4, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

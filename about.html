@@ -1,0 +1,1204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Our Atelier | Best Jewelry Retouching</title>
+    <meta
+      name="description"
+      content="Discover BJR Haute Atelier — our 100% human-crafted jewelry post-production heritage, zero-AI manifesto, 400% bench standards, and encrypted NDA vault serving New York, Paris, Geneva, London & Antwerp."
+    />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Bespoke Jewelry Typography: Marcellus & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Local Font Awesome 6 Pro/Free Icons -->
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css" />
+    <!-- Compiled Luxury Studio Stylesheet (Tailwind CSS) -->
+    <link rel="stylesheet" href="assets/css/style.css?v=20261125i" />
+
+    <style>
+      /* ── About Page Luxury Editorial Styles (1440px Architecture) ── */
+      .about-hero {
+        position: relative;
+        padding: 4.5rem 0 4rem;
+        overflow: hidden;
+      }
+      @media (min-width: 640px) { .about-hero { padding: 5.5rem 0 4.5rem; } }
+      @media (min-width: 1024px) { .about-hero { padding: 7.5rem 0 5.5rem; } }
+
+      .about-hero::before {
+        content: '';
+        position: absolute;
+        top: -45%;
+        right: -12%;
+        width: 680px;
+        height: 680px;
+        background: radial-gradient(circle, rgba(181,144,84,0.1) 0%, transparent 70%);
+        pointer-events: none;
+      }
+
+      .about-split {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.75rem;
+        align-items: center;
+      }
+      .about-split > * {
+        min-width: 0;
+      }
+      @media (min-width: 1024px) {
+        .about-split {
+          grid-template-columns: 1.02fr 0.98fr;
+          gap: 4.5rem;
+        }
+      }
+
+      /* Architectural Luxury Showcase Frame */
+      .about-showcase {
+        position: relative;
+        padding: 1rem;
+      }
+      @media (min-width: 640px) {
+        .about-showcase { padding: 1.5rem; }
+      }
+      .about-showcase-glow {
+        position: absolute;
+        inset: 8%;
+        background: radial-gradient(circle, rgba(181,144,84,0.18) 0%, transparent 72%);
+        filter: blur(24px);
+        pointer-events: none;
+        z-index: 0;
+      }
+      .about-frame {
+        position: relative;
+        z-index: 1;
+        border-radius: 14px;
+        padding: 0.75rem;
+        background: linear-gradient(145deg, #ffffff 0%, #FAF8F4 100%);
+        border: 1px solid rgba(181,144,84,0.32);
+        box-shadow: 0 28px 68px -12px rgba(14,13,12,0.14), inset 0 1px 0 rgba(255,255,255,0.9);
+      }
+      .about-frame::before,
+      .about-frame::after {
+        content: '';
+        position: absolute;
+        width: 28px;
+        height: 28px;
+        border-color: #B59054;
+        pointer-events: none;
+        opacity: 0.65;
+      }
+      .about-frame::before {
+        top: -6px;
+        left: -6px;
+        border-top: 2px solid #B59054;
+        border-left: 2px solid #B59054;
+        border-top-left-radius: 4px;
+      }
+      .about-frame::after {
+        bottom: -6px;
+        right: -6px;
+        border-bottom: 2px solid #B59054;
+        border-right: 2px solid #B59054;
+        border-bottom-right-radius: 4px;
+      }
+
+      .about-frame-media {
+        position: relative;
+        overflow: hidden;
+        border-radius: 9px;
+        background: #0E0D0C;
+      }
+      .about-frame-media img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+        transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .about-frame:hover .about-frame-media img {
+        transform: scale(1.03);
+      }
+
+      /* Top-Right Floating Seal */
+      .about-seal-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 3;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.45rem 0.85rem;
+        border-radius: 9999px;
+        background: rgba(14,13,12,0.82);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(217,186,130,0.4);
+        color: #FAF8F4;
+        font-size: 0.68rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+
+      /* Bottom-Left Glassmorphic Spec Card */
+      .about-glass-badge {
+        position: absolute;
+        left: 1rem;
+        bottom: 1rem;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        border-radius: 10px;
+        background: rgba(250,248,244,0.92);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(181,144,84,0.35);
+        box-shadow: 0 12px 32px rgba(14,13,12,0.16);
+      }
+      .about-glass-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #0E0D0C;
+        color: #D9BA82;
+        font-size: 0.85rem;
+        flex-shrink: 0;
+      }
+      .about-glass-title {
+        font-family: 'Marcellus', serif;
+        font-size: 0.88rem;
+        color: #141311;
+        line-height: 1.2;
+      }
+      .about-glass-sub {
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #8E6B36;
+        font-weight: 600;
+      }
+
+      /* Secondary Macro Inset Card (Desktop) */
+      .about-macro-inset {
+        display: none;
+      }
+      @media (min-width: 768px) {
+        .about-macro-inset {
+          display: block;
+          position: absolute;
+          right: -0.5rem;
+          bottom: -1.25rem;
+          width: 148px;
+          padding: 0.45rem;
+          border-radius: 10px;
+          background: #fff;
+          border: 1px solid rgba(181,144,84,0.38);
+          box-shadow: 0 18px 42px rgba(14,13,12,0.18);
+          z-index: 4;
+        }
+        .about-macro-inset img {
+          width: 100%;
+          height: 108px;
+          object-fit: cover;
+          border-radius: 6px;
+          display: block;
+        }
+        .about-macro-inset span {
+          display: block;
+          text-align: center;
+          font-size: 0.62rem;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          color: #8E6B36;
+          font-weight: 700;
+          padding-top: 0.35rem;
+        }
+      }
+
+      /* Metrics Strip */
+      .about-metrics {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      @media (min-width: 768px) {
+        .about-metrics {
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1.5rem;
+        }
+      }
+      .about-metric-card {
+        padding: 2rem 1.5rem;
+        border: 1px solid rgba(181,144,84,0.2);
+        border-radius: 8px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(250,248,244,0.7) 100%);
+        text-align: center;
+        transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .about-metric-card:hover {
+        border-color: rgba(181,144,84,0.48);
+        transform: translateY(-3px);
+        box-shadow: 0 14px 36px rgba(181,144,84,0.1);
+      }
+      .about-metric-val {
+        font-family: 'Marcellus', serif;
+        font-size: 2.15rem;
+        line-height: 1.1;
+        color: #141311;
+        margin-bottom: 0.5rem;
+      }
+      @media (min-width: 640px) {
+        .about-metric-val { font-size: 2.6rem; }
+      }
+      .about-metric-label {
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #8E6B36;
+        font-weight: 600;
+        margin-bottom: 0.35rem;
+      }
+      .about-metric-sub {
+        font-size: 0.82rem;
+        color: #524E47;
+        line-height: 1.55;
+      }
+
+      /* Disciplines Grid */
+      .about-disciplines {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      @media (min-width: 768px) {
+        .about-disciplines {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+        }
+      }
+      .about-discipline-card {
+        position: relative;
+        padding: 2.25rem 2rem;
+        border: 1px solid rgba(181,144,84,0.2);
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 10px 32px rgba(14,13,12,0.045);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+      }
+      .about-discipline-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 2rem;
+        right: 2rem;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, rgba(181,144,84,0.55), transparent);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .about-discipline-card:hover {
+        border-color: rgba(181,144,84,0.48);
+        box-shadow: 0 18px 44px rgba(181,144,84,0.12);
+        transform: translateY(-3px);
+      }
+      .about-discipline-card:hover::before {
+        opacity: 1;
+      }
+      .about-discipline-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+      }
+      .about-discipline-num {
+        font-family: 'Marcellus', serif;
+        font-size: 2rem;
+        color: rgba(181,144,84,0.5);
+        line-height: 1;
+      }
+      .about-discipline-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(181,144,84,0.1);
+        color: #8E6B36;
+        font-size: 0.95rem;
+      }
+      .about-discipline-title {
+        font-family: 'Marcellus', serif;
+        font-size: 1.4rem;
+        color: #141311;
+        margin-bottom: 0.65rem;
+        line-height: 1.3;
+      }
+      .about-discipline-desc {
+        font-size: 0.92rem;
+        color: #524E47;
+        line-height: 1.72;
+      }
+
+      /* Dark Vault Section */
+      .about-vault-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        background: #0E0D0C;
+        color: #FAF8F4;
+        padding: 2.75rem 1.75rem;
+        border: 1px solid rgba(181,144,84,0.3);
+        box-shadow: 0 28px 72px rgba(14,13,12,0.24);
+      }
+      @media (min-width: 768px) {
+        .about-vault-card { padding: 4rem 4rem; }
+      }
+      .about-vault-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        align-items: center;
+      }
+      @media (min-width: 1024px) {
+        .about-vault-grid {
+          grid-template-columns: 1.15fr 0.85fr;
+          gap: 4rem;
+        }
+      }
+      .about-hubs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      .about-hub {
+        padding: 1.1rem 0.9rem;
+        border: 1px solid rgba(181,144,84,0.25);
+        border-radius: 6px;
+        background: rgba(255,255,255,0.03);
+        text-align: center;
+        transition: border-color 0.3s ease, background-color 0.3s ease;
+      }
+      .about-hub:hover {
+        border-color: rgba(217,186,130,0.55);
+        background: rgba(181,144,84,0.08);
+      }
+      .about-hub-city {
+        font-family: 'Marcellus', serif;
+        font-size: 1rem;
+        color: #FAF8F4;
+        margin-bottom: 0.15rem;
+      }
+      .about-hub-tz {
+        font-size: 0.68rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #D9BA82;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-ivory text-ink-primary font-sans antialiased selection:bg-gold/20 selection:text-ink-primary"
+  >
+    <!-- Luxury Atelier Jewelry SVG Preloader -->
+    <div id="bjrPreloader" class="bjr-preloader" aria-hidden="false" role="status" aria-label="Loading BJR Atelier">
+      <div class="preloader-bg"></div>
+      <div class="preloader-content">
+        <div class="preloader-gem-wrap">
+          <svg class="preloader-svg" viewBox="0 0 200 200" width="200" height="200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="preloaderGoldBand" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FAF8F4" />
+                <stop offset="25%" stop-color="#E5C483" />
+                <stop offset="55%" stop-color="#B59054" />
+                <stop offset="85%" stop-color="#8E6B36" />
+                <stop offset="100%" stop-color="#4A3515" />
+              </linearGradient>
+              <linearGradient id="diamondFacetGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.96" />
+                <stop offset="40%" stop-color="#E0F2FE" stop-opacity="0.82" />
+                <stop offset="80%" stop-color="#BAE6FD" stop-opacity="0.65" />
+                <stop offset="100%" stop-color="#7DD3FC" stop-opacity="0.5" />
+              </linearGradient>
+              <linearGradient id="diamondFacetGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.98" />
+                <stop offset="35%" stop-color="#F0FDFA" stop-opacity="0.85" />
+                <stop offset="70%" stop-color="#CFFAFE" stop-opacity="0.7" />
+                <stop offset="100%" stop-color="#93C5FD" stop-opacity="0.45" />
+              </linearGradient>
+              <linearGradient id="diamondPavilionGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.92" />
+                <stop offset="30%" stop-color="#E0F2FE" stop-opacity="0.75" />
+                <stop offset="65%" stop-color="#38BDF8" stop-opacity="0.5" />
+                <stop offset="100%" stop-color="#0284C7" stop-opacity="0.25" />
+              </linearGradient>
+              <linearGradient id="diamondStrokeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="25%" stop-color="#E0F2FE" />
+                <stop offset="50%" stop-color="#FDF4FF" />
+                <stop offset="75%" stop-color="#BAE6FD" />
+                <stop offset="100%" stop-color="#FFFFFF" />
+              </linearGradient>
+              <linearGradient id="platinumGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="50%" stop-color="#E2E8F0" />
+                <stop offset="100%" stop-color="#94A3B8" />
+              </linearGradient>
+              <radialGradient id="diamondAura" cx="50%" cy="32%" r="50%">
+                <stop offset="0%" stop-color="rgba(224, 242, 254, 0.75)" />
+                <stop offset="30%" stop-color="rgba(186, 230, 253, 0.35)" />
+                <stop offset="65%" stop-color="rgba(181, 144, 84, 0.15)" />
+                <stop offset="100%" stop-color="transparent" />
+              </radialGradient>
+              <linearGradient id="anamorphicFlare" x1="0%" y1="50%" x2="100%" y2="50%">
+                <stop offset="0%" stop-color="transparent" />
+                <stop offset="35%" stop-color="rgba(186, 230, 253, 0.5)" />
+                <stop offset="50%" stop-color="#FFFFFF" />
+                <stop offset="65%" stop-color="rgba(253, 244, 255, 0.5)" />
+                <stop offset="100%" stop-color="transparent" />
+              </linearGradient>
+            </defs>
+            <circle cx="100" cy="54" r="54" fill="url(#diamondAura)" class="preloader-diamond-aura" />
+            <line x1="26" y1="54" x2="174" y2="54" stroke="url(#anamorphicFlare)" stroke-width="2" class="preloader-anamorphic" stroke-linecap="round" />
+            <path d="M 52 112 C 52 176, 148 176, 148 112" class="preloader-path preloader-band-outer" stroke="url(#preloaderGoldBand)" stroke-width="2.6" stroke-linecap="round" />
+            <path d="M 64 114 C 64 162, 136 162, 136 114" class="preloader-path preloader-band-inner" stroke="url(#preloaderGoldBand)" stroke-width="1.4" stroke-linecap="round" opacity="0.75" />
+            <path d="M 52 112 C 52 86, 64 68, 72 54" class="preloader-path preloader-band-shoulder" stroke="url(#preloaderGoldBand)" stroke-width="2" stroke-linecap="round" />
+            <path d="M 148 112 C 148 86, 136 68, 128 54" class="preloader-path preloader-band-shoulder" stroke="url(#preloaderGoldBand)" stroke-width="2" stroke-linecap="round" />
+            <path d="M 68 88 C 84 96, 116 96, 132 88" class="preloader-path preloader-bridge" stroke="url(#preloaderGoldBand)" stroke-width="1.2" opacity="0.65" stroke-linecap="round" />
+            <polygon points="100,54 100,96 82,54" class="preloader-diamond-facet" fill="url(#diamondPavilionGrad)" />
+            <polygon points="100,54 118,54 100,96" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="56,54 82,54 100,96" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="144,54 100,96 118,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="88,40 112,40 100,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="78,28 88,40 100,54 68,46" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="122,28 132,46 100,54 112,40" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="78,28 68,46 56,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="122,28 144,54 132,46" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="68,46 100,54 56,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="132,46 144,54 100,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="78,28 122,28 112,40 88,40" class="preloader-diamond-table" fill="#FFFFFF" opacity="0.95" />
+            <line x1="78" y1="28" x2="122" y2="28" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.8" stroke-linecap="round" />
+            <line x1="78" y1="28" x2="56" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.6" />
+            <line x1="122" y1="28" x2="144" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.6" />
+            <line x1="78" y1="28" x2="88" y2="40" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="122" y1="28" x2="112" y2="40" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="88" y1="40" x2="112" y2="40" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="88" y1="40" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="112" y1="40" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="68" y1="46" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
+            <line x1="132" y1="46" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
+            <line x1="54" y1="54" x2="146" y2="54" class="preloader-path preloader-diamond-girdle" stroke="url(#diamondStrokeGrad)" stroke-width="2" stroke-linecap="round" />
+            <path d="M 56 54 L 100 96 L 144 54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.8" stroke-linejoin="round" />
+            <line x1="100" y1="54" x2="100" y2="96" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.3" />
+            <line x1="82" y1="54" x2="100" y2="96" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
+            <line x1="118" y1="54" x2="100" y2="96" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
+            <line x1="56" y1="56" x2="56" y2="50" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.6" stroke-linecap="round" />
+            <line x1="144" y1="56" x2="144" y2="50" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.6" stroke-linecap="round" />
+            <line x1="80" y1="56" x2="80" y2="51" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.2" stroke-linecap="round" />
+            <line x1="120" y1="56" x2="120" y2="51" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.2" stroke-linecap="round" />
+            <path d="M 78 18 Q 78 28 88 28 Q 78 28 78 38 Q 78 28 68 28 Q 78 28 78 18 Z" class="preloader-sparkle preloader-sparkle--main" fill="#FFFFFF" />
+            <circle cx="78" cy="28" r="2.2" fill="#E0F2FE" class="preloader-sparkle" />
+            <path d="M 144 48 Q 144 54 150 54 Q 144 54 144 60 Q 144 54 138 54 Q 144 54 144 48 Z" class="preloader-sparkle preloader-sparkle--secondary" fill="#BAE6FD" />
+            <circle cx="144" cy="54" r="1.5" fill="#FFFFFF" class="preloader-sparkle" />
+            <path d="M 100 90 Q 100 94 104 94 Q 100 94 100 98 Q 100 94 96 94 Q 100 94 100 90 Z" class="preloader-sparkle preloader-sparkle--culet" fill="#F472B6" />
+          </svg>
+        </div>
+        <div class="preloader-percent-display">
+          <span id="preloaderBigCount" class="preloader-big-num">00</span>
+          <span class="preloader-pct-symbol">%</span>
+        </div>
+        <div id="preloaderStatusText" class="preloader-status">Initializing Optical Calibration...</div>
+        <div class="preloader-progress-wrap">
+          <div class="preloader-track">
+            <div class="preloader-bar" id="preloaderBar"></div>
+          </div>
+        </div>
+        <div class="preloader-meta mt-3">
+          <div class="preloader-title">BJR ATELIER</div>
+          <div class="preloader-tagline">Fine Jewelry Retouching Protocol</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Announcement Bar -->
+    <div
+      class="top-bar"
+      role="region"
+      aria-label="Atelier Discretion & Service Coverage"
+    >
+      Haute Joaillerie Post-Production &bull; Serving Maisons &amp; Studios in
+      <strong>New York &bull; Paris &bull; Geneva &bull; London &bull; Antwerp</strong> &bull;
+      Confidential 24h Turnaround
+    </div>
+
+    <!-- Sticky Architectural Luxury Header -->
+    <header class="site-header" id="siteHeader">
+      <div class="container header-inner">
+        <a
+          href="index.html"
+          class="brand-logo group"
+          aria-label="BJR Haute Joaillerie Post-Production Atelier"
+        >
+          <div class="brand-logo-wrap">
+            <img
+              src="assets/images/logo.svg"
+              alt="BJR Atelier Logo"
+              class="brand-logo-img"
+              width="36"
+              height="36"
+              loading="eager"
+              decoding="async"
+              onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden');"
+            />
+            <span class="brand-mark hidden" aria-hidden="true">
+              <span>BJR</span>
+            </span>
+          </div>
+          <span class="brand-wordmark">
+            <span class="brand-name">BJR</span>
+            <span class="brand-sub">Haute Atelier</span>
+          </span>
+        </a>
+
+        <nav class="primary-nav" aria-label="Primary Editorial Navigation">
+          <ul class="nav-list">
+            <li><a href="index.html#services" class="nav-link">Services</a></li>
+            <li><a href="index.html#macro-loupe" class="nav-link">Precision Loupe</a></li>
+            <li><a href="index.html#colorways" class="nav-link">Alloy Atelier</a></li>
+            <li><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
+            <li><a href="index.html#jrw-workflow" class="nav-link">Our Process</a></li>
+            <li><a href="index.html#pricing" class="nav-link">Pricing &amp; SLA</a></li>
+            <li><a href="about.html" class="nav-link active text-gold-deep">About</a></li>
+            <li><a href="blog.html" class="nav-link">Blog</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a
+            href="index.html#free-trial-home"
+            class="btn-haute hidden lg:inline-flex"
+            aria-label="Request a Trial & Private Consultation"
+          >
+            <span>Private Inquiry</span>
+            <i class="fa-solid fa-arrow-right-long text-xs ml-2 opacity-80" aria-hidden="true"></i>
+          </a>
+          <button
+            type="button"
+            class="mobile-menu-btn"
+            id="mobileMenuOpen"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="mobileDrawer"
+          >
+            <i class="fa-solid fa-bars text-lg" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Architectural Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+      <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop"></div>
+      <div
+        class="mobile-drawer-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Atelier Navigation Menu"
+      >
+        <div>
+          <div class="mobile-drawer-top">
+            <div class="flex items-center gap-2.5">
+              <img src="assets/images/logo.svg" alt="BJR Atelier" class="w-7 h-7 object-contain" width="28" height="28" />
+              <span class="font-serif text-lg tracking-[0.22em] text-ink-primary font-normal">BJR</span>
+              <span class="text-[9px] uppercase tracking-[0.24em] text-gold-deep font-semibold pl-2 border-l border-stone-200">Atelier</span>
+            </div>
+            <button type="button" class="mobile-menu-btn" style="display: inline-flex" id="mobileMenuClose" aria-label="Close navigation menu">
+              <i class="fa-solid fa-xmark text-lg" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <ul class="mobile-nav-list">
+            <li><a href="index.html" class="mobile-nav-link"><span>Atelier Home</span><span class="mobile-nav-idx">00</span></a></li>
+            <li><a href="index.html#services" class="mobile-nav-link"><span>Four Pillars of Retouching</span><span class="mobile-nav-idx">01</span></a></li>
+            <li><a href="index.html#portfolio" class="mobile-nav-link"><span>Curated Portfolio</span><span class="mobile-nav-idx">02</span></a></li>
+            <li><a href="index.html#jrw-workflow" class="mobile-nav-link"><span>Craftsmanship Protocol</span><span class="mobile-nav-idx">03</span></a></li>
+            <li><a href="index.html#pricing" class="mobile-nav-link"><span>Investment &amp; SLA Tiers</span><span class="mobile-nav-idx">04</span></a></li>
+            <li><a href="about.html" class="mobile-nav-link active"><span>About Atelier</span><span class="mobile-nav-idx">05</span></a></li>
+            <li><a href="blog.html" class="mobile-nav-link"><span>Atelier Journal</span><span class="mobile-nav-idx">06</span></a></li>
+            <li><a href="contact.html" class="mobile-nav-link"><span>Contact Atelier</span><span class="mobile-nav-idx">07</span></a></li>
+            <li><a href="privacy.html" class="mobile-nav-link"><span>Privacy Policy</span><span class="mobile-nav-idx">08</span></a></li>
+            <li><a href="terms.html" class="mobile-nav-link"><span>Terms &amp; Conditions</span><span class="mobile-nav-idx">09</span></a></li>
+          </ul>
+
+          <div class="mobile-drawer-ctas">
+            <a href="index.html#free-trial-home" class="btn-haute w-full px-4 py-3.5 text-center flex items-center justify-center gap-2 whitespace-normal leading-snug">
+              <span>Request Free Test Images</span>
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true" class="shrink-0">
+                <path d="M4 10H16M11 5L16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="pt-6 mt-6 border-t border-stone-200">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="text-[10px] uppercase tracking-[0.22em] text-ink-muted font-semibold">Paris &bull; NY &bull; Geneva &bull; Active Desk</span>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--ink-muted)">
+            Private Desk:
+            <a href="mailto:studio@bestjewelryretouching.com" style="color: var(--gold-deep); text-decoration: underline">studio@bestjewelryretouching.com</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <!-- 1. Editorial Hero & Brand Story (1440px Container) -->
+      <section class="about-hero">
+        <!-- Decorative Luxury Diamond Facet & Orbital Rings -->
+        <div class="hidden lg:block absolute -left-24 top-12 w-72 h-72 rounded-full border border-gold/15 pointer-events-none select-none js-shape-spin" aria-hidden="true"></div>
+        <div class="hidden lg:block absolute -left-16 top-20 w-56 h-56 rounded-full border border-gold/10 border-dashed pointer-events-none select-none" aria-hidden="true"></div>
+        <div class="hidden md:block absolute right-8 top-10 w-32 h-32 text-gold/15 pointer-events-none select-none js-shape-float" aria-hidden="true">
+          <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1">
+            <polygon points="60,8 106,36 106,84 60,112 14,84 14,36" />
+            <polygon points="60,24 90,42 90,78 60,96 30,78 30,42" />
+            <line x1="60" y1="8" x2="60" y2="112" />
+            <line x1="14" y1="36" x2="106" y2="84" />
+            <line x1="106" y1="36" x2="14" y2="84" />
+          </svg>
+        </div>
+        <div class="container relative z-10">
+          <div class="about-split">
+            <div>
+              <div class="js-hero-item inline-flex items-center gap-3.5 mb-5">
+                <span class="w-8 h-px bg-gold opacity-70"></span>
+                <span class="text-[11px] font-semibold tracking-[0.28em] uppercase text-gold">The Atelier Heritage</span>
+              </div>
+              <h1 class="js-hero-item font-serif text-4xl sm:text-5xl lg:text-[56px] font-normal text-ink-primary leading-[1.1] tracking-[-0.015em] mb-6">
+                Precision Crafted for Fine Jewelry &amp; Horology Maisons
+              </h1>
+              <p class="js-hero-item text-ink-secondary text-base sm:text-lg leading-relaxed mb-5 max-w-2xl">
+                BestJewelryRetouching.com (&ldquo;BJR Haute Atelier&rdquo;) was built with a singular obsession:
+                honoring the geometry, fire, and precious metallurgy of fine jewelry in every final frame.
+              </p>
+              <p class="js-hero-item text-ink-secondary text-[15px] leading-[1.78] mb-8 max-w-2xl">
+                Unlike generalist photo-editing agencies, our bench specialists work exclusively with
+                luxury jewelers, diamond houses, bridal ateliers, and Swiss watchmakers across the USA and
+                Europe. Every highlight, facet, and hallmark is sculpted manually at 400% magnification.
+              </p>
+              <div class="js-hero-item flex flex-wrap items-center gap-4">
+                <a href="index.html#free-trial-home" class="btn btn-obsidian">Claim 2 Free Test Images</a>
+                <a href="contact.html" class="btn btn-outline">Speak With Our Desk</a>
+              </div>
+            </div>
+
+            <!-- Luxury Layered Editorial Frame -->
+            <div class="about-showcase js-hero-media">
+              <div class="about-showcase-glow"></div>
+              <div class="about-frame">
+                <div class="about-frame-media">
+                  <span class="about-seal-badge">
+                    <i class="fa-solid fa-gem text-gold-light"></i>
+                    <span>16-Bit Master PSD</span>
+                  </span>
+                  <img
+                    src="assets/images/hero-after.jpg"
+                    alt="Hand-retouched luxury diamond jewelry centerpiece by BJR Haute Atelier"
+                    class="js-about-parallax"
+                    width="900"
+                    height="900"
+                    loading="eager"
+                  />
+                  <div class="about-glass-badge">
+                    <div class="about-glass-icon">
+                      <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    </div>
+                    <div>
+                      <div class="about-glass-title">400% Bench Protocol</div>
+                      <div class="about-glass-sub">100% Human Wacom Craft</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="about-macro-inset js-about-float">
+                <img
+                  src="assets/images/service-3-after.jpg"
+                  alt="400% macro diamond facet fire restoration"
+                  width="300"
+                  height="220"
+                  loading="eager"
+                />
+                <span>Facet Fire QC</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Studio Proof Metrics Strip -->
+      <section class="py-8 sm:py-12">
+        <div class="container">
+          <div class="about-metrics">
+            <div class="about-metric-card js-hero-metric">
+              <div class="about-metric-val">100%</div>
+              <div class="about-metric-label">Manual Wacom Craft</div>
+              <p class="about-metric-sub">Zero generative AI or automated facet filters on any piece.</p>
+            </div>
+            <div class="about-metric-card js-hero-metric">
+              <div class="about-metric-val">400%</div>
+              <div class="about-metric-label">Microscopic QC</div>
+              <p class="about-metric-sub">Pixel-level inspection of prongs, pav&eacute;, and engravings.</p>
+            </div>
+            <div class="about-metric-card js-hero-metric">
+              <div class="about-metric-val">24h</div>
+              <div class="about-metric-label">Overnight SLA</div>
+              <p class="about-metric-sub">Synchronized delivery for NY, London, Paris, and Geneva.</p>
+            </div>
+            <div class="about-metric-card js-hero-metric">
+              <div class="about-metric-val">256-Bit</div>
+              <div class="about-metric-label">Encrypted NDA Vault</div>
+              <p class="about-metric-sub">Air-gapped workstations protecting unreleased collections.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Why Zero-AI & Craftsmanship Philosophy -->
+      <section class="relative overflow-hidden py-16 sm:py-24">
+        <!-- Decorative Facet & Sparkle Geometry -->
+        <div class="hidden md:block absolute -right-20 top-1/2 -translate-y-1/2 w-80 h-80 text-gold/10 pointer-events-none select-none js-shape-spin" aria-hidden="true">
+          <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="0.9">
+            <circle cx="100" cy="100" r="88" stroke-dasharray="4 6" />
+            <polygon points="100,20 172,62 172,138 100,180 28,138 28,62" />
+            <polygon points="100,45 148,73 148,127 100,155 52,127 52,73" />
+          </svg>
+        </div>
+        <div class="container relative z-10">
+          <div class="about-split">
+            <div class="about-showcase order-2 lg:order-1 js-reveal">
+              <div class="about-showcase-glow"></div>
+              <div class="about-frame">
+                <div class="about-frame-media">
+                  <span class="about-seal-badge">
+                    <i class="fa-solid fa-shield-halved text-gold-light"></i>
+                    <span>Zero AI Guarantee</span>
+                  </span>
+                  <img
+                    src="assets/images/watch-after.jpg"
+                    alt="Precision luxury timepiece and gemstone macro retouching finish"
+                    class="js-about-parallax"
+                    width="900"
+                    height="750"
+                    loading="lazy"
+                  />
+                  <div class="about-glass-badge">
+                    <div class="about-glass-icon">
+                      <i class="fa-solid fa-pen-nib"></i>
+                    </div>
+                    <div>
+                      <div class="about-glass-title">True-to-Carat Fidelity</div>
+                      <div class="about-glass-sub">Calibrated sRGB &amp; P3</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="order-1 lg:order-2 js-reveal">
+              <div class="inline-flex items-center gap-3.5 mb-4">
+                <span class="w-8 h-px bg-gold opacity-70"></span>
+                <span class="text-[11px] font-semibold tracking-[0.28em] uppercase text-gold">Our Philosophy</span>
+              </div>
+              <h2 class="font-serif text-3xl sm:text-4xl lg:text-[42px] text-ink-primary leading-tight mb-6">
+                Why We Never Trust Jewelry to Automated AI
+              </h2>
+              <div class="space-y-4 text-ink-secondary text-[15px] leading-[1.8] max-w-2xl">
+                <p>
+                  Automated retouching tools flatten metallic transitions, warp prong symmetry, blur
+                  artisan hallmarks, and invent artificial stone facets that misrepresent the true piece.
+                </p>
+                <p>
+                  For a collector or bride evaluating a high-value ring or timepiece online, authenticity is
+                  everything. Our specialists preserve every genuine hallmark and stone cut while removing
+                  only studio dust, micro-scratches, harsh tripod reflections, and wax residues.
+                </p>
+                <p>
+                  Every deliverable arrives in calibrated 16-bit layered PSD and web-ready formats matched
+                  strictly to your house color profile (sRGB, Adobe RGB, or Display P3).
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Inside the Atelier — 4 Specialist Disciplines -->
+      <section class="relative overflow-hidden py-16 sm:py-24 border-t border-stone-200/80">
+        <!-- Subtle Left Diamond Crest Shape -->
+        <div class="hidden lg:block absolute -left-16 bottom-12 w-56 h-56 text-gold/10 pointer-events-none select-none js-shape-float" aria-hidden="true">
+          <svg viewBox="0 0 160 160" fill="none" stroke="currentColor" stroke-width="1">
+            <path d="M80 12 L138 56 L80 148 L22 56 Z" />
+            <line x1="22" y1="56" x2="138" y2="56" />
+            <line x1="50" y1="12" x2="110" y2="12" />
+            <polyline points="50,12 36,56 80,148 124,56 110,12" />
+            <line x1="80" y1="12" x2="80" y2="148" />
+          </svg>
+        </div>
+        <div class="container relative z-10">
+          <div class="text-center max-w-2xl mx-auto mb-14 js-reveal">
+            <div class="inline-flex items-center gap-3.5 mb-4">
+              <span class="w-8 h-px bg-gold opacity-70"></span>
+              <span class="text-[11px] font-semibold tracking-[0.28em] uppercase text-gold">Bench Specialists</span>
+              <span class="w-8 h-px bg-gold opacity-70"></span>
+            </div>
+            <h2 class="font-serif text-3xl sm:text-4xl lg:text-[42px] text-ink-primary leading-tight mb-4">
+              Four Disciplines Inside Every Frame
+            </h2>
+            <p class="text-ink-secondary text-[15px] leading-relaxed">
+              Rather than passing files through a single generalist, your imagery moves across four
+              dedicated finishing benches.
+            </p>
+          </div>
+
+          <div class="about-disciplines js-about-stagger">
+            <article class="about-discipline-card js-about-stagger-item">
+              <div class="about-discipline-top">
+                <div class="about-discipline-num">01</div>
+                <div class="about-discipline-icon"><i class="fa-solid fa-vector-square"></i></div>
+              </div>
+              <h3 class="about-discipline-title">400% Vector &amp; Pathing Masters</h3>
+              <p class="about-discipline-desc">
+                Hand-drawn Pen Tool clipping paths isolate delicate chains, filigree galleries, and
+                pav&eacute; edges onto pure RGB 255 white or custom editorial backdrops while preserving
+                natural contact shadows.
+              </p>
+            </article>
+
+            <article class="about-discipline-card js-about-stagger-item">
+              <div class="about-discipline-top">
+                <div class="about-discipline-num">02</div>
+                <div class="about-discipline-icon"><i class="fa-solid fa-gem"></i></div>
+              </div>
+              <h3 class="about-discipline-title">Gemstone &amp; Facet Fire Artists</h3>
+              <p class="about-discipline-desc">
+                Micro-contrast calibration restores diamond scintillation, emerald depth, and sapphire
+                color fidelity without synthetic over-saturation or unnatural sparkle overlays.
+              </p>
+            </article>
+
+            <article class="about-discipline-card js-about-stagger-item">
+              <div class="about-discipline-top">
+                <div class="about-discipline-num">03</div>
+                <div class="about-discipline-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+              </div>
+              <h3 class="about-discipline-title">Metallic Luster Sculptors</h3>
+              <p class="about-discipline-desc">
+                Custom dodge-and-burn gradient sculpting eliminates camera reflections and enables
+                true-to-assay digital recasting across 18K Yellow Gold, Rose Gold, Platinum, and Black
+                Rhodium.
+              </p>
+            </article>
+
+            <article class="about-discipline-card js-about-stagger-item">
+              <div class="about-discipline-top">
+                <div class="about-discipline-num">04</div>
+                <div class="about-discipline-icon"><i class="fa-solid fa-cubes"></i></div>
+              </div>
+              <h3 class="about-discipline-title">CAD &amp; Horology Finishers</h3>
+              <p class="about-discipline-desc">
+                Raw MatrixGold and KeyShot 3D renders, alongside Swiss timepiece dials and bezels, are
+                refined with authentic micro-textures and studio-grade specular balance.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Confidentiality, Vault Security & Global Presence -->
+      <section class="py-12 sm:py-16">
+        <div class="container">
+          <div class="about-vault-card js-reveal">
+            <!-- Background Watermark Facet Geometry & Concentric Rings -->
+            <div class="absolute -right-16 -top-16 w-72 h-72 rounded-full border border-gold/15 pointer-events-none select-none" aria-hidden="true"></div>
+            <div class="absolute -right-8 -top-8 w-56 h-56 rounded-full border border-gold/10 border-dashed pointer-events-none select-none js-shape-spin" aria-hidden="true"></div>
+            <div class="absolute -left-16 -bottom-16 w-72 h-72 opacity-15 pointer-events-none select-none text-gold" aria-hidden="true">
+              <svg class="w-full h-full" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="0.8">
+                <polygon points="100,15 185,70 185,130 100,185 15,130 15,70" />
+                <polygon points="100,40 160,75 160,125 100,160 40,125 40,75" />
+                <line x1="100" y1="15" x2="100" y2="185" />
+                <line x1="15" y1="70" x2="185" y2="130" />
+                <line x1="15" y1="130" x2="185" y2="70" />
+              </svg>
+            </div>
+            <div class="about-vault-grid relative z-10">
+              <div>
+                <div class="inline-flex items-center gap-3 mb-4">
+                  <span class="w-8 h-px bg-gold opacity-70"></span>
+                  <span class="text-[11px] font-semibold tracking-[0.26em] uppercase text-gold-light">Discretion &amp; Global Desk</span>
+                </div>
+                <h2 class="font-serif text-3xl sm:text-4xl text-ivory leading-tight mb-4">
+                  Built for Unreleased Collections &amp; High-Jewelry Launches
+                </h2>
+                <p class="text-ink-light-muted text-[15px] leading-[1.75] mb-6">
+                  Every file transfer, test retouch, and seasonal campaign is automatically protected
+                  under our mutual Non-Disclosure Agreement. Assets live inside 256-bit encrypted,
+                  air-gapped workstations and are permanently purged 30 days after final delivery.
+                </p>
+                <div class="flex flex-wrap gap-5 text-xs text-stone-300">
+                  <span class="inline-flex items-center gap-2"><i class="fa-solid fa-lock text-gold"></i> Automatic Mutual NDA</span>
+                  <span class="inline-flex items-center gap-2"><i class="fa-solid fa-shield-halved text-gold"></i> Zero Cloud AI Exposure</span>
+                  <span class="inline-flex items-center gap-2"><i class="fa-solid fa-trash-can text-gold"></i> 30-Day Auto Purge</span>
+                </div>
+              </div>
+
+              <div class="about-hubs js-about-hubs">
+                <div class="about-hub js-about-hub">
+                  <div class="about-hub-city">New York</div>
+                  <div class="about-hub-tz">EST / UTC&minus;5</div>
+                </div>
+                <div class="about-hub js-about-hub">
+                  <div class="about-hub-city">Los Angeles</div>
+                  <div class="about-hub-tz">PST / UTC&minus;8</div>
+                </div>
+                <div class="about-hub js-about-hub">
+                  <div class="about-hub-city">London</div>
+                  <div class="about-hub-tz">GMT / UTC+0</div>
+                </div>
+                <div class="about-hub js-about-hub">
+                  <div class="about-hub-city">Paris</div>
+                  <div class="about-hub-tz">CET / UTC+1</div>
+                </div>
+                <div class="about-hub js-about-hub">
+                  <div class="about-hub-city">Antwerp</div>
+                  <div class="about-hub-tz">CET / UTC+1</div>
+                </div>
+                <div class="about-hub js-about-hub">
+                  <div class="about-hub-city">Geneva</div>
+                  <div class="about-hub-tz">CET / UTC+1</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Bottom Luxury CTA -->
+      <section class="py-14 sm:py-20">
+        <div class="container text-center">
+          <div class="max-w-3xl mx-auto pt-12 border-t border-stone-200 js-reveal">
+            <span class="text-[11px] font-semibold tracking-[0.28em] uppercase text-gold inline-block mb-3">Experience Our Craft</span>
+            <h2 class="font-serif text-3xl sm:text-4xl text-ink-primary mb-4">
+              Evaluate Our Bench on Your Own Jewelry
+            </h2>
+            <p class="text-ink-secondary text-[15px] max-w-xl mx-auto leading-relaxed mb-8">
+              Send us two raw studio shots or 3D renders and receive museum-grade retouched masters
+              within 12&ndash;24 hours &mdash; completely complimentary under mutual NDA.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+              <a href="index.html#free-trial-home" class="btn btn-obsidian">Claim 2 Free Test Images</a>
+              <a href="contact.html" class="btn btn-outline">Contact Our Atelier</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Site Footer (Same as Homepage) -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="brand-logo" aria-label="Best Jewelry Retouching — Home">
+              <span class="brand-mark" aria-hidden="true"><span>B</span></span>
+              <span class="brand-wordmark">
+                <span class="brand-name">Best Jewelry Retouching</span>
+                <span class="brand-sub">Bespoke Post-Production</span>
+              </span>
+            </a>
+            <p>
+              Precision hand-crafted jewelry photo editing and diamond
+              restoration studio serving luxury brands across the USA and
+              Europe.
+            </p>
+            <div class="flex items-center gap-3.5 mt-4 text-stone-400">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="BJR Instagram" class="hover:text-gold-deep transition-colors"><i class="fa-brands fa-instagram text-base"></i></a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="BJR LinkedIn" class="hover:text-gold-deep transition-colors"><i class="fa-brands fa-linkedin-in text-base"></i></a>
+              <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="BJR Pinterest" class="hover:text-gold-deep transition-colors"><i class="fa-brands fa-pinterest-p text-base"></i></a>
+              <a href="mailto:studio@bestjewelryretouching.com" aria-label="Contact Studio" class="hover:text-gold-deep transition-colors"><i class="fa-solid fa-envelope text-base"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Core Services</h4>
+            <ul class="footer-links">
+              <li><a href="index.html#service-1">High-End Jewelry Retouching</a></li>
+              <li><a href="index.html#service-2">Hybrid E-Commerce Editing</a></li>
+              <li><a href="index.html#service-3">Diamond Fire Restoration</a></li>
+              <li><a href="index.html#service-4">3D Render Enhancement</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Atelier Studio</h4>
+            <ul class="footer-links">
+              <li><a href="about.html">About Atelier</a></li>
+              <li><a href="blog.html">Atelier Journal (Blog)</a></li>
+              <li><a href="index.html#macro-loupe">Precision 400% Loupe</a></li>
+              <li><a href="index.html#colorways">Alloy Recasting Studio</a></li>
+              <li><a href="index.html#jrw-workflow">Bench Standards Protocol</a></li>
+              <li><a href="index.html#pricing">Pricing &amp; SLA Tiers</a></li>
+              <li><a href="index.html#free-trial-home">Free Trial (2 Test Images)</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Authenticity &amp; Care</h4>
+            <ul class="footer-links">
+              <li><a href="index.html#authenticity">Anti-AI Artisan Manifesto</a></li>
+              <li><a href="contact.html">Contact Atelier</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms &amp; Conditions</a></li>
+              <li><a href="index.html#faq">Turnaround &amp; Delivery FAQ</a></li>
+              <li><a href="mailto:studio@bestjewelryretouching.com">Email Studio Desk</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; 2026 BestJewelryRetouching.com &mdash; All Rights Reserved.</span>
+          <span>Serving New York &bull; Los Angeles &bull; London &bull; Paris &bull; Antwerp &bull; Geneva</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Vendor Scripts (Local — GSAP + ScrollTrigger + Core Interactions) -->
+    <script src="assets/js/gsap.min.js"></script>
+    <script src="assets/js/ScrollTrigger.min.js"></script>
+    <script src="assets/js/main.js?v=20261125e"></script>
+
+    <!-- Bespoke About Page GSAP Animations -->
+    <script>
+      (function () {
+        'use strict';
+        if (!window.gsap || !window.ScrollTrigger) return;
+        var gsap = window.gsap;
+        var ScrollTrigger = window.ScrollTrigger;
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Gentle float & slow orbital spin for decorative luxury shapes
+        gsap.utils.toArray('.js-shape-spin').forEach(function (el) {
+          gsap.to(el, {
+            rotation: 360,
+            duration: 55,
+            repeat: -1,
+            ease: 'none'
+          });
+        });
+        gsap.utils.toArray('.js-shape-float').forEach(function (el) {
+          gsap.to(el, {
+            y: -12,
+            duration: 3.4,
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut'
+          });
+        });
+
+        // Subtle floating motion on secondary macro inset
+        var macroInset = document.querySelector('.js-about-float');
+        if (macroInset) {
+          gsap.fromTo(
+            macroInset,
+            { y: 24, opacity: 0, scale: 0.94 },
+            { y: 0, opacity: 1, scale: 1, duration: 0.9, delay: 0.45, ease: 'power3.out' }
+          );
+          gsap.to(macroInset, {
+            y: -6,
+            duration: 2.8,
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut',
+            delay: 1.4
+          });
+        }
+
+        // Gentle scroll-scrubbed parallax on showcase images
+        gsap.utils.toArray('.js-about-parallax').forEach(function (img) {
+          gsap.fromTo(
+            img,
+            { scale: 1.06, yPercent: -3 },
+            {
+              scale: 1.06,
+              yPercent: 3,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: img.closest('.about-showcase'),
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true
+              }
+            }
+          );
+        });
+
+        // Staggered reveal for 4 Specialist Disciplines
+        var disciplineItems = gsap.utils.toArray('.js-about-stagger-item');
+        if (disciplineItems.length) {
+          gsap.fromTo(
+            disciplineItems,
+            { y: 26, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.65,
+              stagger: 0.12,
+              ease: 'power3.out',
+              clearProps: 'transform,opacity',
+              scrollTrigger: {
+                trigger: '.js-about-stagger',
+                start: 'top 88%',
+                once: true
+              }
+            }
+          );
+        }
+
+        // Staggered reveal for 6 Global Hubs
+        var hubItems = gsap.utils.toArray('.js-about-hub');
+        if (hubItems.length) {
+          gsap.fromTo(
+            hubItems,
+            { y: 18, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.55,
+              stagger: 0.08,
+              ease: 'power2.out',
+              clearProps: 'transform,opacity',
+              scrollTrigger: {
+                trigger: '.js-about-hubs',
+                start: 'top 90%',
+                once: true
+              }
+            }
+          );
+        }
+      })();
+    </script>
+  </body>
+</html>
