@@ -1318,7 +1318,7 @@ window.STUDIO_API = {
       window.triggerHeroEntrance();
     }
 
-    // Section Reveals
+    // Section Reveals (fast trigger so anchor jumps & fast scroll never leave cards faded)
     gsap.utils.toArray('.js-reveal').forEach((el) => {
       gsap.fromTo(
         el,
@@ -1326,10 +1326,10 @@ window.STUDIO_API = {
         {
           y: 0,
           opacity: 1,
-          duration: 0.8,
+          duration: 0.55,
           ease: 'power3.out',
           clearProps: 'transform,opacity',
-          scrollTrigger: { trigger: el, start: 'top 88%', once: true, immediateRender: false }
+          scrollTrigger: { trigger: el, start: 'top 98%', once: true, immediateRender: false }
         }
       );
     });
