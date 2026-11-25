@@ -20,29 +20,49 @@
   }
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const progressItems = Array.from(root.querySelectorAll('.jrw-progress-item'));
-  const cards = Array.from(root.querySelectorAll('.jrw-card'));
-  const anchors = Array.from(root.querySelectorAll('.jrw-anchor'));
+  const runway = root.querySelector('#jrwRunway');
+  const fixedCard = root.querySelector('#jrwFixedCard');
+  const copySlides = Array.from(root.querySelectorAll('.jrw-copy-slide'));
+  const stagePanels = Array.from(root.querySelectorAll('.jrw-stage'));
+  let activeStep = 0;
+  let pulseTimer = null;
+  const stageControllers = [];
 
-  // Active step sync for desktop progress rail
-  function setActive(index) {
-    progressItems.forEach((item, itemIndex) => {
-      item.classList.toggle('is-active', itemIndex === index);
+  if (!fixedCard) return;
+
+  function setActiveStep(index) {
+    const nextIdx = Math.max(0, Math.min(5, index));
+    if (nextIdx === activeStep && copySlides[nextIdx]?.classList.contains('is-active')) return;
+    const isDown = nextIdx >= activeStep;
+    activeStep = nextIdx;
+
+    fixedCard.setAttribute('data-dir', isDown ? 'down' : 'up');
+    fixedCard.classList.remove('is-switching');
+    void fixedCard.offsetWidth;
+    fixedCard.classList.add('is-switching');
+    if (pulseTimer) window.clearTimeout(pulseTimer);
+    pulseTimer = window.setTimeout(() => {
+      fixedCard.classList.remove('is-switching');
+    }, 660);
+
+    copySlides.forEach((slide, i) => {
+      slide.classList.toggle('is-active', i === nextIdx);
     });
-  }
+    stagePanels.forEach((stage, i) => {
+      stage.classList.toggle('is-active', i === nextIdx);
+    });
 
-  // Progress rail click smooth scroll
-  progressItems.forEach((item) => {
-    item.addEventListener('click', () => {
-      const target = root.querySelector(`#${item.dataset.target}`);
-      if (target) {
-        target.scrollIntoView({
-          behavior: reduceMotion ? 'auto' : 'smooth',
-          block: 'start'
-        });
+    // Play/restart active stage animation and pause hidden stages
+    stageControllers.forEach((ctrl, i) => {
+      if (!ctrl) return;
+      if (i === nextIdx) {
+        if (typeof ctrl.restart === 'function') ctrl.restart();
+        else if (typeof ctrl.play === 'function') ctrl.play();
+      } else if (typeof ctrl.pause === 'function') {
+        ctrl.pause();
       }
     });
-  });
+  }
 
   if (typeof gsap === 'undefined') return;
 
@@ -65,87 +85,35 @@
         }
       });
 
-      // Card entrance on all screens
-      cards.forEach((card) => {
-        gsap.from(card, {
-          y: 35,
-          opacity: 0,
-          duration: 0.9,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: card,
-            start: 'top 88%',
-            once: true
-          }
-        });
-      });
-    });
-
-    // Sticky Stacking Depth Compression & Scrim Overlay (Desktop >= 1024px only)
-    mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', () => {
-      cards.forEach((card, index) => {
-        const shell = card.querySelector('.jrw-card-shell');
-        const scrim = card.querySelector('.jrw-card-scrim');
-        const nextAnchor = anchors[index + 1];
-
-        if (nextAnchor && index < cards.length - 1) {
-          gsap.timeline({
-            scrollTrigger: {
-              trigger: nextAnchor,
-              start: 'top 90%',
-              end: 'top 130px',
-              scrub: 0.45
-            }
-          })
-            .to(shell, {
-              scale: 0.955,
-              transformOrigin: 'center top',
-              force3D: true,
-              ease: 'none'
-            }, 0)
-            .to(scrim, {
-              opacity: 0.075,
-              ease: 'none'
-            }, 0);
+      // Fixed Card entrance reveal
+      gsap.from(fixedCard, {
+        y: 30,
+        opacity: 0,
+        duration: 0.85,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: fixedCard,
+          start: 'top 88%',
+          once: true
         }
       });
     });
 
-    // Sync progress rail accurately on scroll (both directions)
-    anchors.forEach((anchor, index) => {
+    // Scroll-Driven Auto-Swap on Fixed Card (Desktop, Tablet & Mobile)
+    if (runway) {
       ScrollTrigger.create({
-        trigger: anchor,
-        start: 'top 55%',
-        end: 'bottom 45%',
-        onEnter: () => setActive(index),
-        onEnterBack: () => setActive(index)
-      });
-    });
-
-    // Desktop Progress Rail Visibility: strictly visible only while in #jrw-workflow
-    const progressRail = root.querySelector('.jrw-progress');
-    if (progressRail) {
-      const railTrigger = ScrollTrigger.create({
-        trigger: root,
-        start: 'top 55%',
-        end: 'bottom 55%',
-        onEnter: () => progressRail.classList.add('is-visible'),
-        onLeave: () => progressRail.classList.remove('is-visible'),
-        onEnterBack: () => progressRail.classList.add('is-visible'),
-        onLeaveBack: () => progressRail.classList.remove('is-visible'),
-        onToggle: (self) => {
-          progressRail.classList.toggle('is-visible', self.isActive);
+        trigger: runway,
+        start: 'top 120px',
+        end: 'bottom bottom',
+        onUpdate: (self) => {
+          const stepIndex = Math.min(5, Math.max(0, Math.floor(self.progress * 6)));
+          setActiveStep(stepIndex);
         }
       });
-      if (railTrigger.isActive) {
-        progressRail.classList.add('is-visible');
-      } else {
-        progressRail.classList.remove('is-visible');
-      }
     }
   }, root);
 
-  // Viewport Observer helper (plays animation in view, pauses off-screen)
+  // Viewport Observer helper (plays active stage in view, pauses off-screen)
   function createViewportTimeline(stage, build) {
     let timeline = null;
     if (!reduceMotion) timeline = build();
@@ -153,7 +121,8 @@
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!timeline) return;
-        if (entry.isIntersecting) {
+        const isCurrent = stage.classList.contains('is-active');
+        if (entry.isIntersecting && isCurrent) {
           timeline.play();
         } else {
           timeline.pause();
@@ -161,7 +130,7 @@
       });
     }, { threshold: 0.05, rootMargin: '120px 0px' });
 
-    observer.observe(stage);
+    observer.observe(fixedCard);
     return timeline;
   }
 
@@ -578,8 +547,7 @@
         yTo(e.clientY);
 
         const stage = e.target.closest('.jrw-stage');
-        const card = e.target.closest('.jrw-card');
-        const progress = e.target.closest('.jrw-progress');
+        const card = e.target.closest('.jrw-fixed-card');
 
         if (stage) {
           cursor.classList.add('is-hovering-stage');
@@ -589,10 +557,9 @@
           }
         } else {
           cursor.classList.remove('is-hovering-stage');
-          if (progress) {
-            if (cursorText) cursorText.textContent = 'JUMP TO STEP';
-          } else if (card) {
-            const stepNum = card.getAttribute('data-step');
+          if (card) {
+            const activeCopy = card.querySelector('.jrw-copy-slide.is-active');
+            const stepNum = activeCopy ? activeCopy.getAttribute('data-step') : String(activeStep + 1);
             if (cursorText) cursorText.textContent = `STEP 0${stepNum} PROTOCOL`;
           } else {
             if (cursorText) cursorText.textContent = 'CRAFTSMANSHIP PROTOCOL';
@@ -612,16 +579,14 @@
     }
   }
 
-  // Initialize all 6 stages (infinite automated motion)
-  cards.forEach((card) => {
-    const id = Number(card.dataset.step);
-    if (id === 1) stage1(card);
-    else if (id === 2) stage2(card);
-    else if (id === 3) stage3(card);
-    else if (id === 4) stage4(card);
-    else if (id === 5) stage5(card);
-    else if (id === 6) stage6(card);
-  });
+  // Initialize all 6 stages inside the Fixed Card and track controllers
+  stageControllers[0] = stage1(fixedCard);
+  stageControllers[1] = stage2(fixedCard);
+  stageControllers[2] = stage3(fixedCard);
+  stageControllers[3] = stage4(fixedCard);
+  stageControllers[4] = stage5(fixedCard);
+  stageControllers[5] = stage6(fixedCard);
+  setActiveStep(0);
 
   // Initialize interactive workflow cursor
   initWorkflowCursor();

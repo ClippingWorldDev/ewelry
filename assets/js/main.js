@@ -162,12 +162,12 @@ window.STUDIO_API = {
             <img src="${oldSrc || ''}" class="ba-img ba-img--old" alt="Old Raw Capture: ${altText}" loading="lazy" decoding="async" />
           </div>
           <div class="ba-divider" aria-hidden="true"></div>
+          <span class="ba-hover-label ba-hover-before" aria-hidden="true">Before</span>
+          <span class="ba-hover-label ba-hover-after" aria-hidden="true">After</span>
           <button type="button" class="ba-handle" role="slider" aria-label="Compare ${oldLabel} and ${newLabel} for ${altText}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-            <span class="ba-flank-badge ba-flank-before">BEFORE</span>
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
               <path d="M6.5 4.5L2.5 9L6.5 13.5M11.5 4.5L15.5 9L11.5 13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span class="ba-flank-badge ba-flank-after">AFTER</span>
           </button>
         `;
       } else {
@@ -188,19 +188,8 @@ window.STUDIO_API = {
       const handle = slider.querySelector('.ba-handle');
       if (!handle) return;
 
-      // Ensure handle has BEFORE and AFTER flank badges for dynamic cursor tracking
-      if (!handle.querySelector('.ba-flank-before')) {
-        const beforeFlank = document.createElement('span');
-        beforeFlank.className = 'ba-flank-badge ba-flank-before';
-        beforeFlank.textContent = 'BEFORE';
-        handle.insertBefore(beforeFlank, handle.firstChild);
-      }
-      if (!handle.querySelector('.ba-flank-after')) {
-        const afterFlank = document.createElement('span');
-        afterFlank.className = 'ba-flank-badge ba-flank-after';
-        afterFlank.textContent = 'AFTER';
-        handle.appendChild(afterFlank);
-      }
+      // Remove any stale flank badges from handle so center arrow stays crisp
+      handle.querySelectorAll('.ba-flank-badge').forEach((el) => el.remove());
 
       const parentCard = slider.closest('.pf-card, [data-tilt]');
       let pct = 50;
@@ -214,16 +203,6 @@ window.STUDIO_API = {
         rafId = requestAnimationFrame(() => {
           slider.style.setProperty('--pos', pct + '%');
           handle.setAttribute('aria-valuenow', String(Math.round(pct)));
-          if (pct < 16) {
-            handle.classList.add('is-near-left');
-          } else {
-            handle.classList.remove('is-near-left');
-          }
-          if (pct > 84) {
-            handle.classList.add('is-near-right');
-          } else {
-            handle.classList.remove('is-near-right');
-          }
         });
       };
 
@@ -668,7 +647,14 @@ window.STUDIO_API = {
 
           const beforeSrc = btn.getAttribute('data-before');
           const afterSrc = btn.getAttribute('data-after');
+          const serviceName = btn.getAttribute('data-service') || btn.textContent.trim();
           if (!beforeSrc || !afterSrc) return;
+
+          // Update active service pill text shown when hovering over image
+          const serviceTextEl = slider.querySelector('.ba-service-text');
+          if (serviceTextEl && serviceName) {
+            serviceTextEl.textContent = serviceName;
+          }
 
           const beforeImg = slider.querySelector('.ba-layer--before img');
           const afterImg = slider.querySelector('.ba-layer--after img');
