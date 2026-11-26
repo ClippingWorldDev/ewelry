@@ -21,7 +21,7 @@
     <!-- Local Font Awesome 6 Pro/Free Icons -->
     <link rel="stylesheet" href="assets/css/fontawesome.min.css" />
     <!-- Compiled Luxury Studio Stylesheet (Tailwind CSS) -->
-    <link rel="stylesheet" href="assets/css/style.css?v=20261126p" />
+    <link rel="stylesheet" href="assets/css/style.css?v=20261126r" />
 
     <style>
       /* ── Contact Page Bespoke Styles ── */
@@ -40,7 +40,7 @@
         right: -20%;
         width: 600px;
         height: 600px;
-        background: radial-gradient(circle, rgba(201,162,77,0.08) 0%, transparent 70%);
+        background: radial-gradient(circle, rgba(201,162,77,0.22) 0%, transparent 70%);
         pointer-events: none;
       }
 
@@ -204,11 +204,11 @@
       .contact-form-error {
         display: none;
         padding: 0.75rem 1rem;
-        border: 1px solid rgba(185,28,28,0.25);
-        background: #fef2f2;
-        color: #991b1b;
+        border: 1px solid rgba(248, 113, 113, 0.4);
+        background: rgba(127, 29, 29, 0.35);
+        color: #fecaca;
         font-size: 0.8125rem;
-        border-radius: 3px;
+        border-radius: 10px;
       }
       .contact-form-error.is-visible {
         display: block;
@@ -234,11 +234,10 @@
         border: 1px solid rgba(201,162,77,0.14);
         border-radius: 14px;
         background: rgba(20, 20, 22, 0.8);
-        transition: border-color 0.3s, transform 0.3s;
+        transition: border-color 0.3s;
       }
       .studio-location:hover {
         border-color: rgba(201,162,77,0.35);
-        transform: translateY(-2px);
       }
       .studio-location .city {
         font-family: 'Marcellus', serif;
@@ -670,7 +669,7 @@
             <div class="contact-form-card" id="contactFormCard">
               <div class="mb-6" id="contactFormHeader">
                 <h2 class="font-serif text-2xl sm:text-[28px] text-ink-primary leading-snug mb-1.5">
-                  Send a Private Brief
+                  Send a <span class="split-gold">Private Brief</span>
                 </h2>
                 <p class="text-sm text-ink-secondary">
                   Fill in the details below and our studio team will respond within hours.
@@ -824,7 +823,7 @@
               restoration studio serving luxury brands across the USA and
               Europe.
             </p>
-            <div class="flex items-center gap-3.5 mt-4 text-stone-400">
+            <div class="flex items-center gap-3.5 mt-4 text-zinc-400">
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="BJR Instagram" class="hover:text-gold-deep transition-colors"><i class="fa-brands fa-instagram text-base"></i></a>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="BJR LinkedIn" class="hover:text-gold-deep transition-colors"><i class="fa-brands fa-linkedin-in text-base"></i></a>
               <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="BJR Pinterest" class="hover:text-gold-deep transition-colors"><i class="fa-brands fa-pinterest-p text-base"></i></a>

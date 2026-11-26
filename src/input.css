@@ -180,12 +180,20 @@
     position: absolute !important;
   }
 
+  .bjr-3d-card {
+    transition-property: border-color, box-shadow !important;
+  }
+
   /* Unified Luxury Card Depth Shadows & 50% Warm-Gold Ambient Glow */
   .service-row,
   .pf-card,
   .pricing-card,
   .testimonial-card,
+  .testimonials-swiper .testimonial-card,
   .step-card,
+  .wwc-col,
+  .form-card,
+  .portfolio-cta-bar,
   .fast-track-card,
   .about-metric-card,
   .about-discipline-card,
@@ -210,7 +218,6 @@
       0 0 32px rgba(201, 162, 77, 0.2),
       inset 0 1px 0 rgba(247, 231, 196, 0.22) !important;
     transition:
-      transform 0.35s var(--ease-luxury),
       border-color 0.32s var(--ease-luxury),
       box-shadow 0.38s var(--ease-luxury) !important;
   }
@@ -219,7 +226,11 @@
   .pf-card:hover,
   .pricing-card:hover,
   .testimonial-card:hover,
+  .testimonials-swiper .testimonial-card:hover,
   .step-card:hover,
+  .wwc-col:hover,
+  .portfolio-cta-bar:hover,
+  .fast-track-card:hover,
   .about-metric-card:hover,
   .about-discipline-card:hover,
   .about-vault-card:hover,
@@ -551,7 +562,7 @@
   }
 
   .hero-video-modal-close {
-    @apply w-9 h-9 rounded-full bg-white/5 border border-white/10 text-stone-300 flex items-center justify-center hover:bg-gold hover:border-gold hover:text-obsidian transition-all duration-200 cursor-pointer;
+    @apply w-9 h-9 rounded-full bg-white/5 border border-white/10 text-zinc-300 flex items-center justify-center hover:bg-gold hover:border-gold hover:text-obsidian transition-all duration-200 cursor-pointer;
   }
 
   .hero-video-modal-frame {
@@ -602,7 +613,7 @@
   }
 
   .hero-v-arrow {
-    @apply w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-gold/35 bg-charcoal hover:bg-white text-ink-primary hover:text-[#C9A24D] flex items-center justify-center transition-all duration-300 shadow-xs hover:shadow-sm cursor-pointer shrink-0;
+    @apply w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-gold/35 bg-charcoal hover:bg-gold/15 hover:border-gold text-ink-primary hover:text-gold-light flex items-center justify-center transition-all duration-300 shadow-xs hover:shadow-sm cursor-pointer shrink-0;
   }
 
   .hero-v-window {
@@ -970,7 +981,7 @@
   }
 
   .pf-body {
-    @apply p-5 sm:p-6 flex flex-col flex-1 bg-gradient-to-b from-[#1B1B1E] to-[#141416] border-t border-white/[0.06];
+    @apply p-5 sm:p-6 flex flex-col flex-1 bg-gradient-to-b from-[#2A241A]/30 to-[#141416]/55 backdrop-blur-md border-t border-white/[0.08];
   }
 
   .pf-tag {
@@ -1023,8 +1034,8 @@
   }
 
   .pf-view-btn.is-active {
-    @apply bg-obsidian text-gold-light border-obsidian font-semibold;
-    box-shadow: 0 3px 10px rgba(10, 10, 11, 0.22), 0 0 0 1px rgba(201, 162, 77, 0.55);
+    @apply bg-gold/20 text-gold-light border-gold font-semibold;
+    box-shadow: 0 3px 12px rgba(201, 162, 77, 0.25), 0 0 0 1px rgba(201, 162, 77, 0.55);
   }
 
   .pf-edits {
@@ -1160,21 +1171,23 @@
   .testimonials-swiper .testimonial-card,
   .testimonial-card {
     @apply w-full h-full rounded-2xl p-8 sm:p-9 flex flex-col justify-between transition-all duration-300;
-    background: linear-gradient(165deg, rgba(38, 35, 30, 0.9) 0%, rgba(22, 22, 26, 0.97) 100%) !important;
-    border: 1px solid rgba(201, 162, 77, 0.32) !important;
+    background: linear-gradient(165deg, rgba(42, 36, 26, 0.78) 0%, rgba(20, 20, 24, 0.85) 100%) !important;
+    backdrop-filter: blur(28px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(160%) !important;
+    border: 1px solid rgba(201, 162, 77, 0.38) !important;
     box-shadow:
-      0 20px 50px -10px rgba(0, 0, 0, 0.7),
-      0 0 24px rgba(201, 162, 77, 0.12),
-      inset 0 1px 0 rgba(247, 231, 196, 0.18) !important;
+      0 24px 60px -12px rgba(0, 0, 0, 0.75),
+      0 0 32px rgba(201, 162, 77, 0.2),
+      inset 0 1px 0 rgba(247, 231, 196, 0.22) !important;
   }
 
   .testimonials-swiper .testimonial-card:hover,
   .testimonial-card:hover {
-    border-color: rgba(201, 162, 77, 0.75) !important;
+    border-color: rgba(201, 162, 77, 0.85) !important;
     box-shadow:
-      0 28px 65px -10px rgba(0, 0, 0, 0.85),
-      0 0 36px rgba(201, 162, 77, 0.26),
-      inset 0 1px 0 rgba(247, 231, 196, 0.28) !important;
+      0 32px 75px -10px rgba(0, 0, 0, 0.88),
+      0 0 48px rgba(201, 162, 77, 0.35),
+      inset 0 1px 0 rgba(247, 231, 196, 0.35) !important;
   }
 
   /* Luxury Swiper Pagination */
@@ -1332,11 +1345,11 @@
   }
 
   .form-status--error {
-    @apply bg-red-50 text-red-800 border border-red-200;
+    @apply bg-red-950/60 text-red-200 border border-red-500/40;
   }
 
   .form-status--success {
-    @apply bg-green-50 text-green-800 border border-green-200;
+    @apply bg-emerald-950/60 text-emerald-200 border border-emerald-500/40;
   }
 
   .form-status--info {
@@ -1359,7 +1372,7 @@
   }
 
   .faq-list {
-    @apply border-t border-gold/25;
+    @apply pt-1;
   }
 
   .faq-item {
@@ -1701,9 +1714,9 @@
     @apply text-xs font-medium px-3.5 py-1.5 rounded-full border border-gold/35 bg-charcoal text-ink-secondary transition-all duration-300 shadow-xs flex items-center gap-1.5 cursor-pointer;
   }
   .loupe-preset-btn:hover {
-    @apply border-gold text-ink-primary -translate-y-0.5;
-    background-color: #F8F8FA;
-    box-shadow: 0 4px 12px -2px rgba(201, 162, 77, 0.2);
+    @apply border-gold text-gold-light -translate-y-0.5;
+    background-color: rgba(201, 162, 77, 0.16);
+    box-shadow: 0 4px 14px -2px rgba(201, 162, 77, 0.25);
   }
   .loupe-preset-btn.is-active,
   .loupe-preset-btn:active {
@@ -2005,17 +2018,20 @@
       inset 0 1px 0 rgba(247, 231, 196, 0.3) !important;
   }
   .pricing-card--featured {
-    border-color: #C9A24D !important;
-    background: linear-gradient(180deg, #24221E 0%, #171614 100%) !important;
+    border-color: rgba(201, 162, 77, 0.85) !important;
+    background: linear-gradient(165deg, rgba(64, 50, 26, 0.86) 0%, rgba(22, 20, 18, 0.92) 100%) !important;
     color: #F8F8FA !important;
     box-shadow:
-      0 24px 60px -12px rgba(201, 162, 77, 0.35),
-      0 0 0 1px rgba(201, 162, 77, 0.45) !important;
+      0 28px 70px -12px rgba(0, 0, 0, 0.82),
+      0 0 44px rgba(201, 162, 77, 0.34),
+      inset 0 1px 0 rgba(247, 231, 196, 0.32) !important;
   }
   .pricing-card--featured:hover {
+    border-color: #E5C483 !important;
     box-shadow:
-      0 32px 75px -10px rgba(201, 162, 77, 0.45),
-      0 0 0 1.5px #C9A24D !important;
+      0 34px 80px -10px rgba(0, 0, 0, 0.9),
+      0 0 56px rgba(201, 162, 77, 0.45),
+      inset 0 1px 0 rgba(247, 231, 196, 0.4) !important;
   }
   .pricing-tier-tag {
     @apply inline-block text-[11px] font-semibold uppercase tracking-[0.16em] text-gold-deep mb-2;
@@ -2039,11 +2055,7 @@
 
   /* VIP Fast-Track Free Trial (Streamlined) */
   .fast-track-card {
-    @apply max-w-4xl mx-auto p-8 sm:p-12 lg:p-14 rounded-3xl bg-gradient-to-br from-[#16161A] via-[#121215] to-[#0E0E10] border border-gold/40 relative overflow-hidden text-center;
-    box-shadow:
-      0 24px 65px -15px rgba(0, 0, 0, 0.55),
-      0 0 30px -10px rgba(201, 162, 77, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    @apply max-w-4xl mx-auto p-8 sm:p-12 lg:p-14 rounded-3xl relative overflow-hidden text-center;
   }
   .fast-track-card::before {
     content: "";
@@ -2066,54 +2078,12 @@
     box-shadow: 0 0 0 3px rgba(201, 162, 77, 0.2);
   }
 
-  .service-row,
-  .pf-card,
-  .pricing-card,
-  .pricing-card--featured,
-  .testimonial-card,
-  .testimonials-swiper .testimonial-card,
-  .fast-track-card,
-  .faq-item,
   .hero-v-card,
   .colorway-display,
   .macro-loupe-wrap {
-    box-shadow:
-      0 24px 60px -12px rgba(0, 0, 0, 0.72),
-      0 8px 24px -4px rgba(0, 0, 0, 0.45),
-      inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
     transition:
-      transform 0.35s var(--ease-luxury),
-      translate 0.35s var(--ease-luxury),
       border-color 0.32s var(--ease-luxury),
       box-shadow 0.38s var(--ease-luxury) !important;
-  }
-
-  .service-row:hover,
-  .pf-card:hover,
-  .pricing-card:hover,
-  .pricing-card--featured:hover,
-  .testimonial-card:hover,
-  .testimonials-swiper .testimonial-card:hover,
-  .fast-track-card:hover,
-  .faq-item:hover,
-  .hero-v-card:hover,
-  .colorway-display:hover,
-  .macro-loupe-wrap:hover {
-    translate: 0 -6px !important;
-    box-shadow:
-      0 24px 60px -12px rgba(0, 0, 0, 0.72),
-      0 8px 24px -4px rgba(0, 0, 0, 0.45),
-      0 0 35px rgba(201, 162, 77, 0.22),
-      inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
-  }
-
-  .faq-item.is-active,
-  .faq-item[aria-expanded="true"] {
-    box-shadow:
-      0 24px 60px -12px rgba(0, 0, 0, 0.72),
-      0 8px 24px -4px rgba(0, 0, 0, 0.45),
-      0 0 35px rgba(201, 162, 77, 0.22),
-      inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
   }
 }
 
