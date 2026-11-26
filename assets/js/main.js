@@ -508,9 +508,10 @@ window.STUDIO_API = {
 
         // Highlight active preset button
         document.querySelectorAll('.loupe-preset-btn').forEach((b) => {
-          b.classList.toggle('border-gold', b === btn);
-          b.classList.toggle('text-gold', b === btn);
-          b.classList.toggle('bg-stone-50', b === btn);
+          const isActive = b === btn;
+          b.classList.toggle('border-gold', isActive);
+          b.classList.toggle('text-gold-light', isActive);
+          b.classList.toggle('is-active', isActive);
         });
 
         if (touchTimeout) clearTimeout(touchTimeout);

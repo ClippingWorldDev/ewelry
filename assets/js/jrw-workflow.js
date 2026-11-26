@@ -114,40 +114,50 @@
       });
     });
 
-    // Scroll-Driven Auto-Swap on Fixed Card (Desktop, Tablet & Mobile)
+    // Scroll-Driven Instant Live Swap on Fixed Card (Desktop, Tablet & Mobile)
     if (runway && stepCount > 1) {
       const lastStep = stepCount - 1;
-      let settledStep = activeStep;
-      let targetStep = activeStep;
+      const getStickyTop = () => (window.innerWidth >= 1024 ? 96 : 78);
 
-      ScrollTrigger.create({
+      const workflowTrigger = ScrollTrigger.create({
         trigger: runway,
-        start: 'top 120px',
-        end: 'bottom bottom',
-        onRefresh: (self) => {
-          settledStep = Math.max(0, Math.min(lastStep, Math.round(self.progress * lastStep)));
-          targetStep = settledStep;
-          setActiveStep(settledStep);
+        start: () => `top ${getStickyTop()}px`,
+        end: () => {
+          const cardH = fixedCard.offsetHeight || 520;
+          const scrollable = Math.max(400, runway.offsetHeight - cardH - getStickyTop());
+          return `+=${scrollable}`;
         },
-        snap: {
-          snapTo: (progress) => {
-            const settledProgress = settledStep / lastStep;
-            const direction = Math.sign(progress - settledProgress);
-            targetStep = Math.max(0, Math.min(lastStep, settledStep + direction));
-            return targetStep / lastStep;
-          },
-          duration: reduceMotion ? 0 : { min: 0.3, max: 0.55 },
-          delay: 0.12,
-          ease: 'power2.inOut',
-          inertia: false,
-          onComplete: () => {
-            settledStep = targetStep;
-            setActiveStep(settledStep);
-          },
-          onInterrupt: () => {
-            targetStep = settledStep;
-          }
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          const nextStep = Math.max(0, Math.min(lastStep, Math.floor(self.progress * stepCount)));
+          setActiveStep(nextStep);
+        },
+        onRefresh: (self) => {
+          const nextStep = Math.max(0, Math.min(lastStep, Math.floor(self.progress * stepCount)));
+          setActiveStep(nextStep);
         }
+      });
+
+      // Allow clicking any progress bar segment to jump directly to that step
+      progressSegments.forEach((segment, idx) => {
+        segment.setAttribute('role', 'button');
+        segment.setAttribute('tabindex', '0');
+        segment.setAttribute('aria-label', `Jump to Step ${idx + 1}`);
+        const jumpToStep = () => {
+          const startY = workflowTrigger.start;
+          const endY = workflowTrigger.end;
+          const targetProgress = (idx + 0.15) / stepCount;
+          const targetY = startY + (endY - startY) * targetProgress;
+          window.scrollTo({ top: targetY, behavior: 'smooth' });
+          setActiveStep(idx);
+        };
+        segment.addEventListener('click', jumpToStep);
+        segment.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            jumpToStep();
+          }
+        });
       });
     }
   }, root);
@@ -429,13 +439,16 @@
       button.addEventListener('click', () => selectFinish(index, true));
     });
 
+    let isStageVisible = false;
+
     // Auto-cycle finishes every 3.6s when visible
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+        isStageVisible = entry.isIntersecting;
+        if (entry.isIntersecting && stage.classList.contains('is-active')) {
           if (!timer) {
             timer = window.setInterval(() => {
-              if (!reduceMotion && Date.now() > pausedUntil) {
+              if (!reduceMotion && Date.now() > pausedUntil && stage.classList.contains('is-active')) {
                 selectFinish((active + 1) % layers.length);
               }
             }, 3600);
@@ -450,7 +463,21 @@
     observer.observe(stage);
 
     return {
-      restart: () => selectFinish(0, true)
+      restart: () => {
+        if (!timer && isStageVisible) {
+          timer = window.setInterval(() => {
+            if (!reduceMotion && Date.now() > pausedUntil && stage.classList.contains('is-active')) {
+              selectFinish((active + 1) % layers.length);
+            }
+          }, 3600);
+        }
+      },
+      pause: () => {
+        if (timer) {
+          window.clearInterval(timer);
+          timer = null;
+        }
+      }
     };
   }
 
@@ -550,6 +577,9 @@
         setPos(50);
         if (hint) gsap.set(hint, { opacity: 1, y: 0 });
         startAuto();
+      },
+      pause: () => {
+        if (autoTween) autoTween.pause();
       }
     };
   }

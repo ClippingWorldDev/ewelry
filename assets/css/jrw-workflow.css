@@ -81,7 +81,7 @@
 /* Sticky six-step runway with a visual progress indicator */
 #jrw-workflow .jrw-scroll-runway {
   position: relative;
-  min-height: 600vh;
+  min-height: 360vh;
 }
 
 #jrw-workflow .jrw-sticky-viewport {
@@ -133,10 +133,16 @@
 }
 
 #jrw-workflow .jrw-progress-segment {
-  height: 3px;
+  height: 5px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(255, 255, 255, 0.14);
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+#jrw-workflow .jrw-progress-segment:hover {
+  background: rgba(201, 162, 77, 0.55);
+  transform: scaleY(1.35);
 }
 
 #jrw-workflow .jrw-progress-segment.is-complete {
@@ -168,12 +174,12 @@
 
 @keyframes jrw-card-pulse {
   0% {
-    border-color: var(--jrw-gold);
-    box-shadow: 0 24px 60px -24px rgba(28, 27, 25, 0.12), 0 0 0 2px rgba(201, 162, 77, 0.28);
+    border-color: var(--jrw-gold-deep);
+    box-shadow: 0 26px 70px -15px rgba(0, 0, 0, 0.8), 0 0 42px rgba(201, 162, 77, 0.32), inset 0 1px 0 rgba(247, 231, 196, 0.28);
   }
   100% {
-    border-color: var(--jrw-hairline);
-    box-shadow: 0 24px 60px -24px rgba(28, 27, 25, 0.12), 0 0 0 0 rgba(201, 162, 77, 0);
+    border-color: rgba(201, 162, 77, 0.38);
+    box-shadow: 0 26px 70px -15px rgba(0, 0, 0, 0.8), 0 0 32px rgba(201, 162, 77, 0.2), inset 0 1px 0 rgba(247, 231, 196, 0.22);
   }
 }
 
@@ -186,7 +192,7 @@
   display: grid;
   grid-template-columns: 1fr;
   position: relative;
-  background: var(--jrw-white);
+  background: transparent;
 }
 
 #jrw-workflow .jrw-copy {
@@ -197,7 +203,7 @@
   flex-direction: column;
   justify-content: flex-start;
   padding: 18px 16px;
-  background: var(--jrw-white);
+  background: transparent;
   border-color: var(--jrw-hairline);
   opacity: 0;
   visibility: hidden;
@@ -212,11 +218,11 @@
   visibility: visible;
   pointer-events: auto;
   z-index: 2;
-  animation: jrw-slide-up 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: jrw-slide-up 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 #jrw-workflow .jrw-fixed-card[data-dir="up"] .jrw-copy.is-active {
-  animation: jrw-slide-down 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: jrw-slide-down 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes jrw-slide-up {

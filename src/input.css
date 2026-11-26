@@ -449,11 +449,11 @@
   }
 
   .hero-bg-stage {
-    @apply absolute inset-0 pointer-events-none overflow-hidden z-0 select-none opacity-20 sm:opacity-35 lg:opacity-75 transition-opacity duration-500;
+    @apply absolute inset-0 pointer-events-none overflow-hidden z-0 select-none opacity-20 sm:opacity-35 lg:opacity-100 transition-opacity duration-500;
   }
 
   .hero-large-image-wrap {
-    @apply absolute right-[-14%] sm:right-[-6%] md:right-[-2%] lg:right-[6%] xl:right-[14%] top-1/2 -translate-y-1/2 w-[300px] sm:w-[400px] md:w-[480px] lg:w-[560px] xl:w-[640px] aspect-square flex items-center justify-center pointer-events-none;
+    @apply absolute right-[-14%] sm:right-[-6%] md:right-[-2%] lg:right-[6%] xl:right-[14%] top-1/2 -translate-y-1/2 w-[300px] sm:w-[440px] md:w-[540px] lg:w-[680px] xl:w-[860px] aspect-square flex items-center justify-center pointer-events-none;
   }
 
   .hero-bg-slide {
@@ -470,10 +470,10 @@
     @apply w-full h-full object-contain select-none transition-transform duration-700;
     -webkit-mask-image: radial-gradient(
       ellipse at 50% 50%,
-      black 38%,
-      transparent 62%
+      black 50%,
+      transparent 72%
     );
-    mask-image: radial-gradient(ellipse at 50% 50%, black 38%, transparent 62%);
+    mask-image: radial-gradient(ellipse at 50% 50%, black 50%, transparent 72%);
   }
 
   .hero-copy {
@@ -688,7 +688,7 @@
 
   /* Four Pillars Stacking Glass Cards */
   .services-section {
-    @apply relative pb-24 sm:pb-32 lg:pb-40 border-b border-white/[0.08] overflow-hidden;
+    @apply relative pb-24 sm:pb-32 lg:pb-40 border-b border-white/[0.08] overflow-x-clip;
     background-color: #151518;
     background-image:
       radial-gradient(ellipse 80% 65% at 50% 35%, rgba(201, 162, 77, 0.35) 0%, rgba(140, 105, 38, 0.2) 30%, rgba(36, 28, 18, 0.65) 55%, transparent 75%),
@@ -1720,7 +1720,9 @@
   }
   .loupe-preset-btn.is-active,
   .loupe-preset-btn:active {
-    @apply border-gold text-gold-deep ring-1 ring-gold/40 bg-stone-50;
+    @apply border-gold text-gold-light ring-1 ring-gold/40;
+    background-color: rgba(201, 162, 77, 0.22) !important;
+    box-shadow: 0 0 16px rgba(201, 162, 77, 0.25);
   }
 
   /* Digital Alloy Recasting Studio (Colorways) */
@@ -2431,7 +2433,7 @@
 /* Stacking Cards Desktop Overrides */
 @media (min-width: 1024px) {
   .service-row {
-    position: sticky;
+    position: sticky !important;
     top: calc(96px + var(--card-index, 1) * 20px);
   }
 }
