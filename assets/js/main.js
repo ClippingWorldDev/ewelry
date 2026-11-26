@@ -316,78 +316,93 @@ window.STUDIO_API = {
   };
 
   /* ----------------------------------------------------------------------
-     3B. GSAP 3D IMAGE TILT ON HOVER (LUXURY HOLOGRAPHIC SPECULAR DEPTH)
+     3B. GSAP 3D INTERACTIVE CARD TILT, LIFT & LIGHT REFLECTION
      ---------------------------------------------------------------------- */
   function init3DImageTilt() {
     const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || window.matchMedia('(hover: none)').matches;
-    if (isTouch) return;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (isTouch || prefersReduced) return;
     if (!window.gsap) return;
 
-    // Apply tilt to outer cards/frames, but NOT directly to .ba-slider
+    const gsap = window.gsap;
     const tiltElements = document.querySelectorAll(
-      '.hero-frame, .service-media, .pf-card, [data-tilt]'
+      '.hero-frame, .service-row, .service-media, .swatch-btn, .pf-card, .pricing-card, .testimonial-card, .step-card, .fast-track-card, .artisan-pledge-card, .about-metric-card, .about-discipline-card, .about-vault-card, .blog-featured-card, .blog-card, .sidebar-widget, .sidebar-cta-widget, .contact-info-card, .contact-form-card, .studio-location, .single-author-card, .single-nav-card, [data-tilt]'
     );
 
     tiltElements.forEach((el) => {
-      // Do not tilt the slider element itself
       if (el.classList.contains('ba-slider')) return;
 
+      el.classList.add('bjr-3d-card');
+      const isMediaFrame = el.classList.contains('hero-frame') || el.classList.contains('service-media');
+      if (!isMediaFrame && !el.querySelector(':scope > .bjr-card-glare')) {
+        const glare = document.createElement('span');
+        glare.className = 'bjr-card-glare';
+        glare.setAttribute('aria-hidden', 'true');
+        el.prepend(glare);
+      }
+
+      gsap.set(el, { transformPerspective: 1100, transformStyle: 'preserve-3d' });
+
+      const rotXTo = gsap.quickTo(el, 'rotateX', { duration: 0.45, ease: 'power3.out' });
+      const rotYTo = gsap.quickTo(el, 'rotateY', { duration: 0.45, ease: 'power3.out' });
+      const yTo = gsap.quickTo(el, 'y', { duration: 0.45, ease: 'power3.out' });
+      const scaleTo = gsap.quickTo(el, 'scale', { duration: 0.45, ease: 'power3.out' });
+
+      const innerAccent = !isMediaFrame
+        ? el.querySelector('.about-discipline-icon, .contact-info-icon, .blog-card-media img, .blog-featured-media img, .pricing-badge')
+        : null;
+      const innerXTo = innerAccent ? gsap.quickTo(innerAccent, 'x', { duration: 0.5, ease: 'power3.out' }) : null;
+      const innerYTo = innerAccent ? gsap.quickTo(innerAccent, 'y', { duration: 0.5, ease: 'power3.out' }) : null;
+
       let bounds = null;
+
+      const resetTilt = () => {
+        rotXTo(0);
+        rotYTo(0);
+        yTo(0);
+        scaleTo(1);
+        if (innerXTo) innerXTo(0);
+        if (innerYTo) innerYTo(0);
+        el.style.setProperty('--glare-opacity', '0');
+      };
 
       const onMouseEnter = () => {
         bounds = el.getBoundingClientRect();
       };
 
       const onMouseMove = (e) => {
-        // When cursor is interacting inside Before/After slider or Loupe inspector,
-        // keep the element perfectly planar so the divider and circle are 100% straight and razor-sharp!
         if (e.target.closest('.ba-slider') || e.target.closest('.macro-loupe-wrap')) {
-          window.gsap.to(el, {
-            rotateX: 0,
-            rotateY: 0,
-            scale: 1,
-            ease: 'power2.out',
-            duration: 0.35,
-            overwrite: 'auto'
-          });
+          resetTilt();
           return;
         }
-
         if (el.classList.contains('is-dragging')) return;
         if (!bounds) bounds = el.getBoundingClientRect();
         if (!bounds.width || !bounds.height) return;
 
         const mouseX = e.clientX - bounds.left;
         const mouseY = e.clientY - bounds.top;
-
-        const xRel = (mouseX / bounds.width) - 0.5; // -0.5 to 0.5
+        const xPct = (mouseX / bounds.width) * 100;
+        const yPct = (mouseY / bounds.height) * 100;
+        const xRel = (mouseX / bounds.width) - 0.5;
         const yRel = (mouseY / bounds.height) - 0.5;
 
-        const maxTilt = 4.5; // subtle, refined luxury 3D tilt
-        const rotY = xRel * maxTilt;
-        const rotX = -yRel * maxTilt;
+        const maxTilt = isMediaFrame ? 4.5 : 5.5;
+        rotYTo(xRel * maxTilt);
+        rotXTo(-yRel * maxTilt);
+        yTo(isMediaFrame ? 0 : -5);
+        scaleTo(1.012);
 
-        window.gsap.to(el, {
-          rotateX: rotX,
-          rotateY: rotY,
-          scale: 1.015,
-          transformPerspective: 1200,
-          ease: 'power1.out',
-          duration: 0.3,
-          overwrite: 'auto'
-        });
+        if (innerXTo) innerXTo(xRel * 8);
+        if (innerYTo) innerYTo(yRel * 8);
+
+        el.style.setProperty('--glare-x', xPct.toFixed(1) + '%');
+        el.style.setProperty('--glare-y', yPct.toFixed(1) + '%');
+        el.style.setProperty('--glare-opacity', '1');
       };
 
       const onMouseLeave = () => {
         bounds = null;
-        window.gsap.to(el, {
-          rotateX: 0,
-          rotateY: 0,
-          scale: 1,
-          ease: 'power2.out',
-          duration: 0.5,
-          overwrite: 'auto'
-        });
+        resetTilt();
       };
 
       el.addEventListener('mouseenter', onMouseEnter);
@@ -1301,6 +1316,26 @@ window.STUDIO_API = {
     const ScrollTrigger = window.ScrollTrigger;
     gsap.registerPlugin(ScrollTrigger);
 
+    // Top 18K Gold Scroll Progress Bar
+    if (!document.getElementById('bjrScrollProgress')) {
+      const progressBar = document.createElement('div');
+      progressBar.id = 'bjrScrollProgress';
+      progressBar.className = 'bjr-scroll-progress';
+      progressBar.setAttribute('aria-hidden', 'true');
+      document.body.prepend(progressBar);
+
+      gsap.to(progressBar, {
+        scaleX: 1,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: document.documentElement,
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 0.2
+        }
+      });
+    }
+
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
     const yDist = isMobile ? 18 : 30;
 
@@ -1330,6 +1365,25 @@ window.STUDIO_API = {
           ease: 'power3.out',
           clearProps: 'transform,opacity',
           scrollTrigger: { trigger: el, start: 'top 98%', once: true, immediateRender: false }
+        }
+      );
+    });
+
+    // Staggered Card Grid Reveals
+    gsap.utils.toArray('.js-stagger-grid').forEach((grid) => {
+      const items = grid.querySelectorAll('.js-stagger-item');
+      if (!items.length) return;
+      gsap.fromTo(
+        items,
+        { y: yDist, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.65,
+          stagger: 0.1,
+          ease: 'power3.out',
+          clearProps: 'transform,opacity',
+          scrollTrigger: { trigger: grid, start: 'top 94%', once: true, immediateRender: false }
         }
       );
     });

@@ -20,16 +20,16 @@
  */
 
 #jrw-workflow {
-  --jrw-ivory: #0A0A0B;
-  --jrw-champagne: #141416;
-  --jrw-white: #141416;
-  --jrw-hairline: rgba(201, 162, 77, 0.25);
-  --jrw-charcoal: #FFFFFF;
-  --jrw-stone: #D4D4D8;
+  --jrw-ivory: #141414;
+  --jrw-champagne: #1B1B1E;
+  --jrw-white: #1B1B1E;
+  --jrw-hairline: rgba(255, 255, 255, 0.09);
+  --jrw-charcoal: #F5F4F0;
+  --jrw-stone: #B8B8C0;
   --jrw-gold: #C9A24D;
   --jrw-gold-deep: #E5C483;
   --jrw-pos: 50%;
-  background: var(--jrw-ivory);
+  background: transparent;
   color: var(--jrw-charcoal);
   font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   overflow-x: clip;
@@ -93,10 +93,13 @@
 #jrw-workflow .jrw-fixed-card {
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--jrw-hairline);
+  border: 1px solid rgba(201, 162, 77, 0.35);
   border-radius: 20px;
-  background: var(--jrw-white);
-  box-shadow: 0 24px 60px -24px rgba(28, 27, 25, 0.12);
+  background: linear-gradient(165deg, rgba(38, 35, 30, 0.9) 0%, rgba(22, 22, 26, 0.97) 100%);
+  box-shadow:
+    0 26px 70px -15px rgba(0, 0, 0, 0.8),
+    0 0 32px rgba(201, 162, 77, 0.16),
+    inset 0 1px 0 rgba(247, 231, 196, 0.2);
   transition: border-color 0.35s ease, box-shadow 0.45s ease;
 }
 
@@ -372,12 +375,12 @@
 }
 
 /* Distinct Stage Tints & Unified Single-Ring Visual Passes */
-#jrw-workflow .jrw-stage-1 { background: #0A0A0B; }
-#jrw-workflow .jrw-stage-2 { background: #111114; }
-#jrw-workflow .jrw-stage-3 { background: #EFE6D8; }
-#jrw-workflow .jrw-stage-4 { background: #F8F5EE; }
-#jrw-workflow .jrw-stage-5 { background: #F3EBDD; }
-#jrw-workflow .jrw-stage-6 { background: #141416; }
+#jrw-workflow .jrw-stage-1 { background: #151518; }
+#jrw-workflow .jrw-stage-2 { background: #16161A; }
+#jrw-workflow .jrw-stage-3 { background: #18181D; }
+#jrw-workflow .jrw-stage-4 { background: #17171B; }
+#jrw-workflow .jrw-stage-5 { background: #19191E; }
+#jrw-workflow .jrw-stage-6 { background: #151518; }
 
 #jrw-workflow .jrw-stage-2 .jrw-photo-base {
   transform: scale(1.18);
@@ -1089,7 +1092,7 @@
 
 .jrw-cursor.is-hovering-stage .jrw-cursor-dot {
   transform: scale(1.4);
-  background: #0A0A0B;
+  background: #151518;
 }
 
 .jrw-cursor.is-grabbing .jrw-cursor-ring {
