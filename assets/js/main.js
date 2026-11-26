@@ -191,7 +191,6 @@ window.STUDIO_API = {
       // Remove any stale flank badges from handle so center arrow stays crisp
       handle.querySelectorAll('.ba-flank-badge').forEach((el) => el.remove());
 
-      const parentCard = slider.closest('.pf-card, [data-tilt]');
       let pct = 50;
       let isDragging = false;
       let activePointerId = null;
@@ -226,9 +225,6 @@ window.STUDIO_API = {
       slider.addEventListener('pointerenter', (e) => {
         if (e.pointerType === 'mouse') {
           slider.classList.add('is-hovered');
-          if (parentCard && window.gsap) {
-            window.gsap.to(parentCard, { rotateX: 0, rotateY: 0, scale: 1, duration: 0.25, overwrite: 'auto' });
-          }
           updateFromClientX(e.clientX);
           updateGlare(e.clientX, e.clientY);
         }
@@ -326,7 +322,7 @@ window.STUDIO_API = {
 
     const gsap = window.gsap;
     const tiltElements = document.querySelectorAll(
-      '.hero-frame, .service-row, .service-media, .swatch-btn, .pf-card, .pricing-card, .testimonial-card, .step-card, .fast-track-card, .artisan-pledge-card, .about-metric-card, .about-discipline-card, .about-vault-card, .blog-featured-card, .blog-card, .sidebar-widget, .sidebar-cta-widget, .contact-info-card, .contact-form-card, .studio-location, .single-author-card, .single-nav-card, [data-tilt]'
+      '.hero-frame, .hero-v-card, .service-row, .service-media, .swatch-btn, .pf-card, .pricing-card, .testimonial-card, .step-card, .fast-track-card, .artisan-pledge-card, .about-metric-card, .about-discipline-card, .about-vault-card, .blog-featured-card, .blog-card, .sidebar-widget, .sidebar-cta-widget, .contact-info-card, .contact-form-card, .studio-location, .single-author-card, .single-nav-card, .colorway-display, .macro-loupe-wrap, [data-tilt]'
     );
 
     tiltElements.forEach((el) => {
@@ -342,11 +338,11 @@ window.STUDIO_API = {
       }
 
       gsap.set(el, { transformPerspective: 1100, transformStyle: 'preserve-3d' });
+      if (el.classList.contains('hero-v-card')) el.style.removeProperty('scale');
 
-      const rotXTo = gsap.quickTo(el, 'rotateX', { duration: 0.45, ease: 'power3.out' });
-      const rotYTo = gsap.quickTo(el, 'rotateY', { duration: 0.45, ease: 'power3.out' });
+      const rotXTo = gsap.quickTo(el, 'rotationX', { duration: 0.45, ease: 'power3.out' });
+      const rotYTo = gsap.quickTo(el, 'rotationY', { duration: 0.45, ease: 'power3.out' });
       const yTo = gsap.quickTo(el, 'y', { duration: 0.45, ease: 'power3.out' });
-      const scaleTo = gsap.quickTo(el, 'scale', { duration: 0.45, ease: 'power3.out' });
 
       const innerAccent = !isMediaFrame
         ? el.querySelector('.about-discipline-icon, .contact-info-icon, .blog-card-media img, .blog-featured-media img, .pricing-badge')
@@ -360,7 +356,6 @@ window.STUDIO_API = {
         rotXTo(0);
         rotYTo(0);
         yTo(0);
-        scaleTo(1);
         if (innerXTo) innerXTo(0);
         if (innerYTo) innerYTo(0);
         el.style.setProperty('--glare-opacity', '0');
@@ -371,10 +366,6 @@ window.STUDIO_API = {
       };
 
       const onMouseMove = (e) => {
-        if (e.target.closest('.ba-slider') || e.target.closest('.macro-loupe-wrap')) {
-          resetTilt();
-          return;
-        }
         if (el.classList.contains('is-dragging')) return;
         if (!bounds) bounds = el.getBoundingClientRect();
         if (!bounds.width || !bounds.height) return;
@@ -390,7 +381,6 @@ window.STUDIO_API = {
         rotYTo(xRel * maxTilt);
         rotXTo(-yRel * maxTilt);
         yTo(isMediaFrame ? 0 : -5);
-        scaleTo(1.012);
 
         if (innerXTo) innerXTo(xRel * 8);
         if (innerYTo) innerYTo(yRel * 8);
