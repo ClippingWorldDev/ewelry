@@ -21,7 +21,7 @@
     <!-- Local Font Awesome 6 Pro/Free Icons -->
     <link rel="stylesheet" href="assets/css/fontawesome.min.css" />
     <!-- Compiled Luxury Studio Stylesheet (Tailwind CSS) -->
-    <link rel="stylesheet" href="assets/css/style.css?v=20261125i" />
+    <link rel="stylesheet" href="assets/css/style.css?v=20261125k" />
 
     <style>
       /* ── Blog Page Luxury Editorial Styles (1440px Architecture) ── */
@@ -29,7 +29,7 @@
         position: relative;
         padding: 3.75rem 0 2.75rem;
         overflow: hidden;
-        border-bottom: 1px solid rgba(181,144,84,0.16);
+        border-bottom: 1px solid rgba(201,162,77,0.16);
       }
       @media (min-width: 640px) { .blog-hero { padding: 4.75rem 0 3.25rem; } }
       @media (min-width: 1024px) { .blog-hero { padding: 5.5rem 0 3.5rem; } }
@@ -41,7 +41,7 @@
         right: -10%;
         width: 620px;
         height: 620px;
-        background: radial-gradient(circle, rgba(181,144,84,0.09) 0%, transparent 70%);
+        background: radial-gradient(circle, rgba(201,162,77,0.09) 0%, transparent 70%);
         pointer-events: none;
       }
 
@@ -62,13 +62,13 @@
       .blog-chip {
         padding: 0.45rem 0.9rem;
         border-radius: 9999px;
-        border: 1px solid rgba(181,144,84,0.3);
-        background: rgba(255,255,255,0.85);
+        border: 1px solid rgba(201,162,77,0.3);
+        background: rgba(20, 20, 22, 0.9);
         font-size: 0.67rem;
         font-weight: 600;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: #524E47;
+        color: #D4D4D8;
         cursor: pointer;
         white-space: nowrap;
         transition: all 0.25s ease;
@@ -81,14 +81,14 @@
         }
       }
       .blog-chip:hover {
-        border-color: #B59054;
-        color: #141311;
+        border-color: #C9A24D;
+        color: #FFFFFF;
       }
       .blog-chip.is-active {
-        background: #0E0D0C;
-        border-color: #0E0D0C;
-        color: #FAF8F4;
-        box-shadow: 0 8px 20px rgba(14,13,12,0.14);
+        background: #0A0A0B;
+        border-color: #FFFFFF;
+        color: #F8F8FA;
+        box-shadow: 0 8px 20px rgba(10,10,11,0.14);
       }
 
       /* 2-Column Blog Layout: Left Posts + Right Sticky Sidebar */
@@ -125,17 +125,17 @@
       .blog-featured-card {
         display: grid;
         grid-template-columns: 1fr;
-        border: 1px solid rgba(181,144,84,0.24);
+        border: 1px solid rgba(201,162,77,0.24);
         border-radius: 10px;
-        background: #fff;
+        background: #141416;
         overflow: hidden;
-        box-shadow: 0 18px 48px rgba(14,13,12,0.06);
+        box-shadow: 0 18px 48px rgba(10,10,11,0.06);
         transition: border-color 0.3s ease, box-shadow 0.3s ease;
         margin-bottom: 2.25rem;
       }
       .blog-featured-card:hover {
-        border-color: rgba(181,144,84,0.48);
-        box-shadow: 0 24px 56px rgba(181,144,84,0.12);
+        border-color: rgba(201,162,77,0.48);
+        box-shadow: 0 24px 56px rgba(201,162,77,0.12);
       }
       @media (min-width: 768px) {
         .blog-featured-card {
@@ -145,7 +145,7 @@
       .blog-featured-media {
         position: relative;
         overflow: hidden;
-        background: #0E0D0C;
+        background: #0A0A0B;
         min-height: 240px;
       }
       .blog-featured-media img {
@@ -169,9 +169,9 @@
         gap: 0.4rem;
         padding: 0.4rem 0.85rem;
         border-radius: 9999px;
-        background: rgba(14,13,12,0.88);
+        background: rgba(10,10,11,0.88);
         backdrop-filter: blur(8px);
-        border: 1px solid rgba(217,186,130,0.45);
+        border: 1px solid rgba(229,196,131,0.45);
         color: #E5C483;
         font-size: 0.65rem;
         letter-spacing: 0.16em;
@@ -203,23 +203,23 @@
       .blog-card {
         display: flex;
         flex-direction: column;
-        border: 1px solid rgba(181,144,84,0.18);
+        border: 1px solid rgba(201,162,77,0.18);
         border-radius: 8px;
-        background: #fff;
+        background: #141416;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgba(14,13,12,0.04);
+        box-shadow: 0 10px 30px rgba(10,10,11,0.04);
         transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
       }
       .blog-card:hover {
-        border-color: rgba(181,144,84,0.45);
-        box-shadow: 0 18px 44px rgba(181,144,84,0.1);
+        border-color: rgba(201,162,77,0.45);
+        box-shadow: 0 18px 44px rgba(201,162,77,0.1);
         transform: translateY(-3px);
       }
       .blog-card-media {
         position: relative;
         aspect-ratio: 16 / 10;
         overflow: hidden;
-        background: #F5F1E9;
+        background: #1A1A1E;
       }
       .blog-card-media img {
         width: 100%;
@@ -239,13 +239,13 @@
         left: 0.85rem;
         padding: 0.36rem 0.8rem;
         border-radius: 9999px;
-        background: rgba(14,13,12,0.84);
+        background: rgba(10,10,11,0.84);
         backdrop-filter: blur(8px);
-        border: 1px solid rgba(217,186,130,0.45);
+        border: 1px solid rgba(229,196,131,0.45);
         font-size: 0.62rem;
         letter-spacing: 0.14em;
         text-transform: uppercase;
-        color: #FAF8F4;
+        color: #F8F8FA;
         font-weight: 600;
       }
       .blog-card-body {
@@ -260,7 +260,7 @@
         align-items: center;
         gap: 0.35rem 0.65rem;
         font-size: 0.72rem;
-        color: #7C766C;
+        color: #A1A1AA;
         letter-spacing: 0.05em;
         margin-bottom: 0.75rem;
       }
@@ -271,16 +271,16 @@
         font-family: 'Marcellus', serif;
         font-size: 1.28rem;
         line-height: 1.32;
-        color: #141311;
+        color: #FFFFFF;
         margin-bottom: 0.65rem;
         transition: color 0.25s ease;
       }
       .blog-card:hover .blog-card-title {
-        color: #8E6B36;
+        color: #E5C483;
       }
       .blog-card-excerpt {
         font-size: 0.88rem;
-        color: #524E47;
+        color: #D4D4D8;
         line-height: 1.68;
         margin-bottom: 1.25rem;
         flex: 1;
@@ -293,7 +293,7 @@
         font-weight: 700;
         letter-spacing: 0.16em;
         text-transform: uppercase;
-        color: #8E6B36;
+        color: #E5C483;
         background: none;
         border: none;
         padding: 0;
@@ -301,7 +301,7 @@
         transition: gap 0.25s ease, color 0.25s ease;
       }
       .blog-read-btn:hover {
-        color: #141311;
+        color: #FFFFFF;
         gap: 0.75rem;
       }
 
@@ -314,14 +314,14 @@
         gap: 1rem;
         margin-top: 2.75rem;
         padding-top: 2rem;
-        border-top: 1px solid rgba(181,144,84,0.22);
+        border-top: 1px solid rgba(201,162,77,0.22);
       }
       .blog-pagination.is-hidden {
         display: none;
       }
       .blog-page-info {
         font-size: 0.78rem;
-        color: #7C766C;
+        color: #A1A1AA;
         letter-spacing: 0.08em;
         text-transform: uppercase;
         font-weight: 600;
@@ -336,14 +336,14 @@
         height: 42px;
         padding: 0 0.9rem;
         border-radius: 6px;
-        border: 1px solid rgba(181,144,84,0.28);
-        background: #fff;
+        border: 1px solid rgba(201,162,77,0.28);
+        background: #141416;
         font-family: 'Plus Jakarta Sans', sans-serif;
         font-size: 0.75rem;
         font-weight: 600;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: #141311;
+        color: #FFFFFF;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -352,14 +352,14 @@
         transition: all 0.22s ease;
       }
       .blog-page-btn:hover:not(:disabled) {
-        border-color: #B59054;
-        color: #8E6B36;
+        border-color: #C9A24D;
+        color: #E5C483;
       }
       .blog-page-btn.is-active {
-        background: #0E0D0C;
-        border-color: #0E0D0C;
+        background: #0A0A0B;
+        border-color: #FFFFFF;
         color: #E5C483;
-        box-shadow: 0 8px 20px rgba(14,13,12,0.14);
+        box-shadow: 0 8px 20px rgba(10,10,11,0.14);
       }
       .blog-page-btn:disabled {
         opacity: 0.38;
@@ -380,18 +380,18 @@
       }
       .sidebar-widget {
         padding: 1.6rem 1.5rem;
-        border: 1px solid rgba(181,144,84,0.18);
+        border: 1px solid rgba(201,162,77,0.18);
         border-radius: 8px;
-        background: #fff;
-        box-shadow: 0 8px 28px rgba(14,13,12,0.035);
+        background: #141416;
+        box-shadow: 0 8px 28px rgba(10,10,11,0.035);
       }
       .sidebar-title {
         font-family: 'Marcellus', serif;
         font-size: 1.15rem;
-        color: #141311;
+        color: #FFFFFF;
         padding-bottom: 0.75rem;
         margin-bottom: 1.1rem;
-        border-bottom: 1px solid #E8E1D3;
+        border-bottom: 1px solid rgba(201, 162, 77, 0.22);
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -400,7 +400,7 @@
         content: '';
         width: 24px;
         height: 1px;
-        background: #B59054;
+        background: #C9A24D;
       }
 
       .sidebar-search-wrap {
@@ -410,24 +410,24 @@
         width: 100%;
         height: 46px;
         padding: 0 2.75rem 0 1rem;
-        border: 1px solid #E8E1D3;
+        border: 1px solid rgba(201, 162, 77, 0.25);
         border-radius: 6px;
-        background: #FAF8F4;
+        background: #0A0A0B;
         font-size: 0.85rem;
-        color: #141311;
+        color: #FFFFFF;
         outline: none;
         transition: border-color 0.25s, box-shadow 0.25s;
       }
       .sidebar-search-wrap input:focus {
-        border-color: #B59054;
-        box-shadow: 0 0 0 3px rgba(181,144,84,0.12);
+        border-color: #C9A24D;
+        box-shadow: 0 0 0 3px rgba(201,162,77,0.12);
       }
       .sidebar-search-wrap i {
         position: absolute;
         right: 1rem;
         top: 50%;
         transform: translateY(-50%);
-        color: #8E6B36;
+        color: #E5C483;
         font-size: 0.85rem;
         pointer-events: none;
       }
@@ -447,21 +447,21 @@
         border: none;
         background: transparent;
         font-size: 0.86rem;
-        color: #524E47;
+        color: #D4D4D8;
         cursor: pointer;
         text-align: left;
         transition: background-color 0.2s, color 0.2s;
       }
       .sidebar-cat-btn:hover,
       .sidebar-cat-btn.is-active {
-        background: #FAF8F4;
-        color: #141311;
+        background: #0A0A0B;
+        color: #E5C483;
         font-weight: 600;
       }
       .sidebar-cat-count {
         font-size: 0.72rem;
-        color: #8E6B36;
-        background: rgba(181,144,84,0.12);
+        color: #E5C483;
+        background: rgba(201,162,77,0.12);
         padding: 0.15rem 0.5rem;
         border-radius: 9999px;
         font-weight: 600;
@@ -490,7 +490,7 @@
         border-radius: 6px;
         overflow: hidden;
         flex-shrink: 0;
-        border: 1px solid rgba(181,144,84,0.2);
+        border: 1px solid rgba(201,162,77,0.2);
       }
       .sidebar-popular-thumb img {
         width: 100%;
@@ -502,16 +502,16 @@
         font-family: 'Marcellus', serif;
         font-size: 0.92rem;
         line-height: 1.35;
-        color: #141311;
+        color: #FFFFFF;
         margin-bottom: 0.2rem;
         transition: color 0.2s;
       }
       .sidebar-popular-item:hover .sidebar-popular-title {
-        color: #8E6B36;
+        color: #E5C483;
       }
       .sidebar-popular-date {
         font-size: 0.7rem;
-        color: #7C766C;
+        color: #A1A1AA;
         letter-spacing: 0.06em;
       }
 
@@ -521,10 +521,10 @@
         overflow: hidden;
         padding: 2rem 1.6rem;
         border-radius: 8px;
-        background: #0E0D0C;
-        color: #FAF8F4;
-        border: 1px solid rgba(181,144,84,0.34);
-        box-shadow: 0 20px 48px rgba(14,13,12,0.18);
+        background: #0A0A0B;
+        color: #F8F8FA;
+        border: 1px solid rgba(201,162,77,0.34);
+        box-shadow: 0 20px 48px rgba(10,10,11,0.18);
       }
 
       /* Tag Pills */
@@ -536,18 +536,18 @@
       .sidebar-tag {
         padding: 0.38rem 0.75rem;
         border-radius: 4px;
-        border: 1px solid #E8E1D3;
-        background: #FAF8F4;
+        border: 1px solid rgba(201, 162, 77, 0.25);
+        background: #0A0A0B;
         font-size: 0.72rem;
-        color: #524E47;
+        color: #D4D4D8;
         cursor: pointer;
         transition: all 0.2s ease;
       }
       .sidebar-tag:hover,
       .sidebar-tag.is-active {
-        border-color: #B59054;
-        color: #141311;
-        background: rgba(181,144,84,0.12);
+        border-color: #C9A24D;
+        color: #FFFFFF;
+        background: rgba(201,162,77,0.12);
       }
 
       /* Empty Filter State */
@@ -555,9 +555,9 @@
         display: none;
         padding: 3rem 2rem;
         text-align: center;
-        border: 1px dashed rgba(181,144,84,0.35);
+        border: 1px dashed rgba(201,162,77,0.35);
         border-radius: 8px;
-        background: rgba(255,255,255,0.65);
+        background: rgba(20, 20, 22, 0.8);
       }
       .blog-empty.is-visible { display: block; }
     </style>
@@ -573,9 +573,9 @@
           <svg class="preloader-svg" viewBox="0 0 200 200" width="200" height="200" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="preloaderGoldBand" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#FAF8F4" />
+                <stop offset="0%" stop-color="#F8F8FA" />
                 <stop offset="25%" stop-color="#E5C483" />
-                <stop offset="55%" stop-color="#B59054" />
+                <stop offset="55%" stop-color="#C9A24D" />
                 <stop offset="85%" stop-color="#8E6B36" />
                 <stop offset="100%" stop-color="#4A3515" />
               </linearGradient>
@@ -612,7 +612,7 @@
               <radialGradient id="diamondAura" cx="50%" cy="32%" r="50%">
                 <stop offset="0%" stop-color="rgba(224, 242, 254, 0.75)" />
                 <stop offset="30%" stop-color="rgba(186, 230, 253, 0.35)" />
-                <stop offset="65%" stop-color="rgba(181, 144, 84, 0.15)" />
+                <stop offset="65%" stop-color="rgba(201, 162, 77, 0.15)" />
                 <stop offset="100%" stop-color="transparent" />
               </radialGradient>
               <linearGradient id="anamorphicFlare" x1="0%" y1="50%" x2="100%" y2="50%">
@@ -776,7 +776,7 @@
             <div class="flex items-center gap-2.5">
               <img src="assets/images/logo.svg" alt="BJR Atelier" class="w-7 h-7 object-contain" width="28" height="28" />
               <span class="font-serif text-lg tracking-[0.22em] text-ink-primary font-normal">BJR</span>
-              <span class="text-[9px] uppercase tracking-[0.24em] text-gold-deep font-semibold pl-2 border-l border-stone-200">Atelier</span>
+              <span class="text-[9px] uppercase tracking-[0.24em] text-gold-deep font-semibold pl-2 border-l border-gold/25">Atelier</span>
             </div>
             <button type="button" class="mobile-menu-btn" style="display: inline-flex" id="mobileMenuClose" aria-label="Close navigation menu">
               <i class="fa-solid fa-xmark text-lg" aria-hidden="true"></i>
@@ -806,7 +806,7 @@
           </div>
         </div>
 
-        <div class="pt-6 mt-6 border-t border-stone-200">
+        <div class="pt-6 mt-6 border-t border-gold/25">
           <div class="flex items-center gap-2 mb-2">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             <span class="text-[10px] uppercase tracking-[0.22em] text-ink-muted font-semibold">Paris &bull; NY &bull; Geneva &bull; Active Desk</span>
@@ -1331,7 +1331,7 @@
                   <i class="fa-solid fa-lock"></i>
                   <span>256-Bit Mutual NDA</span>
                 </div>
-                <h3 class="font-serif text-2xl text-ivory leading-snug mb-3">
+                <h3 class="font-serif text-2xl text-white leading-snug mb-3">
                   Test Our Bench With 2 Free Images
                 </h3>
                 <p class="text-xs text-[#D6D1C7] leading-relaxed mb-5">
