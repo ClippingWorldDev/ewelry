@@ -24,6 +24,10 @@
   const fixedCard = root.querySelector('#jrwFixedCard');
   const copySlides = Array.from(root.querySelectorAll('.jrw-copy-slide'));
   const stagePanels = Array.from(root.querySelectorAll('.jrw-stage'));
+  const progressBar = root.querySelector('.jrw-progress');
+  const progressCurrent = root.querySelector('#jrwProgressCurrent');
+  const progressSegments = Array.from(root.querySelectorAll('.jrw-progress-segment'));
+  const stepCount = copySlides.length;
   let activeStep = 0;
   let pulseTimer = null;
   const stageControllers = [];
@@ -31,7 +35,7 @@
   if (!fixedCard) return;
 
   function setActiveStep(index) {
-    const nextIdx = Math.max(0, Math.min(5, index));
+    const nextIdx = Math.max(0, Math.min(stepCount - 1, index));
     if (nextIdx === activeStep && copySlides[nextIdx]?.classList.contains('is-active')) return;
     const isDown = nextIdx >= activeStep;
     activeStep = nextIdx;
@@ -50,6 +54,17 @@
     });
     stagePanels.forEach((stage, i) => {
       stage.classList.toggle('is-active', i === nextIdx);
+    });
+    if (progressBar) {
+      progressBar.setAttribute('aria-valuenow', String(nextIdx + 1));
+      progressBar.setAttribute('aria-valuetext', `Step ${nextIdx + 1} of ${stepCount}`);
+    }
+    if (progressCurrent) {
+      progressCurrent.textContent = String(nextIdx + 1).padStart(2, '0');
+    }
+    progressSegments.forEach((segment, i) => {
+      segment.classList.toggle('is-complete', i <= nextIdx);
+      segment.classList.toggle('is-current', i === nextIdx);
     });
 
     // Play/restart active stage animation and pause hidden stages
@@ -100,14 +115,38 @@
     });
 
     // Scroll-Driven Auto-Swap on Fixed Card (Desktop, Tablet & Mobile)
-    if (runway) {
+    if (runway && stepCount > 1) {
+      const lastStep = stepCount - 1;
+      let settledStep = activeStep;
+      let targetStep = activeStep;
+
       ScrollTrigger.create({
         trigger: runway,
         start: 'top 120px',
         end: 'bottom bottom',
-        onUpdate: (self) => {
-          const stepIndex = Math.min(5, Math.max(0, Math.floor(self.progress * 6)));
-          setActiveStep(stepIndex);
+        onRefresh: (self) => {
+          settledStep = Math.max(0, Math.min(lastStep, Math.round(self.progress * lastStep)));
+          targetStep = settledStep;
+          setActiveStep(settledStep);
+        },
+        snap: {
+          snapTo: (progress) => {
+            const settledProgress = settledStep / lastStep;
+            const direction = Math.sign(progress - settledProgress);
+            targetStep = Math.max(0, Math.min(lastStep, settledStep + direction));
+            return targetStep / lastStep;
+          },
+          duration: reduceMotion ? 0 : { min: 0.3, max: 0.55 },
+          delay: 0.12,
+          ease: 'power2.inOut',
+          inertia: false,
+          onComplete: () => {
+            settledStep = targetStep;
+            setActiveStep(settledStep);
+          },
+          onInterrupt: () => {
+            targetStep = settledStep;
+          }
         }
       });
     }

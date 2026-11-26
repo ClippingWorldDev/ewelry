@@ -77,8 +77,8 @@
     <!-- Swiper Carousel Stylesheet (Local) -->
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
     <!-- Compiled Luxury Studio Stylesheet (Tailwind CSS) -->
-    <link rel="stylesheet" href="assets/css/style.css?v=20261126l" />
-    <link rel="stylesheet" href="assets/css/jrw-workflow.css?v=20261126i" />
+    <link rel="stylesheet" href="assets/css/style.css?v=20261126p" />
+    <link rel="stylesheet" href="assets/css/jrw-workflow.css?v=20261126j" />
   </head>
   <body
     class="bg-ivory text-ink-primary font-sans antialiased selection:bg-gold/20 selection:text-ink-primary"
@@ -1666,6 +1666,20 @@
             <div class="jrw-scroll-runway" id="jrwRunway">
               <div class="jrw-sticky-viewport">
                 <article class="jrw-fixed-card" id="jrwFixedCard" aria-live="polite">
+                  <div class="jrw-progress" role="progressbar" aria-label="Jewelry retouching workflow progress" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-valuetext="Step 1 of 6">
+                    <div class="jrw-progress-meta">
+                      <span class="jrw-progress-label">WORKFLOW PROGRESS</span>
+                      <span class="jrw-progress-count"><strong id="jrwProgressCurrent">01</strong><span> / 06</span></span>
+                    </div>
+                    <div class="jrw-progress-track" aria-hidden="true">
+                      <span class="jrw-progress-segment is-complete is-current"></span>
+                      <span class="jrw-progress-segment"></span>
+                      <span class="jrw-progress-segment"></span>
+                      <span class="jrw-progress-segment"></span>
+                      <span class="jrw-progress-segment"></span>
+                      <span class="jrw-progress-segment"></span>
+                    </div>
+                  </div>
                   <div class="jrw-grid-copy grid grid-cols-1 lg:grid-cols-2">
                     <!-- LEFT COLUMN: 6 Overlaid Editorial Copy Panels (Fixed Card, Content Swaps) -->
                     <div class="jrw-copy-deck order-2 lg:order-1">
@@ -3445,7 +3459,7 @@
     <script src="assets/js/lenis.min.js"></script>
     <script src="assets/js/gsap.min.js"></script>
     <script src="assets/js/ScrollTrigger.min.js"></script>
-    <script src="assets/js/jrw-workflow.js?v=20261125h"></script>
+    <script src="assets/js/jrw-workflow.js?v=20261126i"></script>
     <!-- Studio Core Interaction Script (Local) -->
     <script src="assets/js/main.js?v=20261126c"></script>
   </body>
