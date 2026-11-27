@@ -346,11 +346,11 @@
   }
 
   .brand-logo-full {
-    @apply h-12 sm:h-[52px] lg:h-[46px] xl:h-[58px] w-auto max-w-[215px] sm:max-w-[235px] lg:max-w-[165px] xl:max-w-[245px] object-contain transition-all duration-300 group-hover:scale-[1.03];
+    @apply h-10 sm:h-11 lg:h-[42px] xl:h-[50px] w-auto max-w-[165px] sm:max-w-[185px] lg:max-w-[145px] xl:max-w-[180px] object-contain transition-all duration-300 group-hover:scale-[1.03];
   }
 
   .site-header.scrolled .brand-logo-full {
-    @apply h-10 sm:h-11 lg:h-10 xl:h-[48px];
+    @apply h-9 sm:h-10 lg:h-[38px] xl:h-[44px];
   }
 
   .brand-mark {
