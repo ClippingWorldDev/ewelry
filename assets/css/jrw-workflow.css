@@ -5,17 +5,12 @@
  * WordPress Enqueue Guide (add to functions.php):
  * 
  *   function enqueue_jrw_workflow_assets() {
- *       wp_enqueue_style('jrw-workflow-css', get_template_directory_uri() . '/assets/css/jrw-workflow.css', array(), '1.0.0');
+ *       wp_enqueue_style('jrw-workflow-css', get_template_directory_uri() . '/assets/css/jrw-workflow.css', array(), '2.0.0');
  *       wp_enqueue_script('gsap', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js', array(), '3.12.5', true);
  *       wp_enqueue_script('gsap-scrolltrigger', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js', array('gsap'), '3.12.5', true);
- *       wp_enqueue_script('jrw-workflow-js', get_template_directory_uri() . '/assets/js/jrw-workflow.js', array('gsap', 'gsap-scrolltrigger'), '1.0.0', true);
+ *       wp_enqueue_script('jrw-workflow-js', get_template_directory_uri() . '/assets/js/jrw-workflow.js', array('gsap', 'gsap-scrolltrigger'), '2.0.0', true);
  *   }
  *   add_action('wp_enqueue_scripts', 'enqueue_jrw_workflow_assets');
- *
- * CRITICAL STICKY STACKING COMPATIBILITY RULE:
- * Ensure that no parent theme container, body wrapper, or Elementor section has
- * `overflow: hidden` applied to it. Sticky positioning requires `overflow: visible`
- * or `overflow-x: clip`.
  * ============================================================================
  */
 
@@ -78,125 +73,45 @@
   font-weight: 300;
 }
 
-/* Sticky six-step runway with a visual progress indicator */
-#jrw-workflow .jrw-scroll-runway {
+/* Ultra-Luxury Six-Slide Swiper Shell */
+#jrw-workflow .jrw-swiper-shell {
   position: relative;
-  min-height: 360vh;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-#jrw-workflow .jrw-sticky-viewport {
-  position: sticky;
-  top: 78px;
-  z-index: 10;
-}
-
-#jrw-workflow .jrw-progress {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-  padding: 14px 16px 12px;
-  border-bottom: 1px solid var(--jrw-hairline);
-  background: linear-gradient(90deg, rgba(201, 162, 77, 0.07), transparent 70%);
-}
-
-#jrw-workflow .jrw-progress-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: var(--jrw-stone);
-  font-size: 9px;
-  line-height: 1;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-#jrw-workflow .jrw-progress-label {
-  color: var(--jrw-gold-deep);
-  font-weight: 700;
-}
-
-#jrw-workflow .jrw-progress-count {
-  color: var(--jrw-stone);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.12em;
-}
-
-#jrw-workflow .jrw-progress-count strong {
-  color: var(--jrw-gold-deep);
-  font-size: 11px;
-}
-
-#jrw-workflow .jrw-progress-track {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 5px;
-}
-
-#jrw-workflow .jrw-progress-segment {
-  height: 5px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.14);
-  cursor: pointer;
-  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-}
-
-#jrw-workflow .jrw-progress-segment:hover {
-  background: rgba(201, 162, 77, 0.55);
-  transform: scaleY(1.35);
-}
-
-#jrw-workflow .jrw-progress-segment.is-complete {
-  background: linear-gradient(90deg, #8E6B36, #C9A24D, #F7E7C4);
-}
-
-#jrw-workflow .jrw-progress-segment.is-current {
-  box-shadow: 0 0 12px rgba(201, 162, 77, 0.45);
-}
-
-#jrw-workflow .jrw-fixed-card {
+#jrw-workflow .jrw-swiper {
   position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 10px 4px 26px;
+  box-sizing: border-box;
+}
+
+#jrw-workflow .jrw-slide-card {
+  position: relative;
+  height: auto;
   overflow: hidden;
   border: 1px solid rgba(201, 162, 77, 0.38);
   border-radius: 20px;
-  background: linear-gradient(165deg, rgba(42, 36, 26, 0.78) 0%, rgba(20, 20, 24, 0.85) 100%);
+  background: linear-gradient(165deg, rgba(42, 36, 26, 0.78) 0%, rgba(20, 20, 24, 0.88) 100%);
   backdrop-filter: blur(28px) saturate(160%);
   -webkit-backdrop-filter: blur(28px) saturate(160%);
   box-shadow:
-    0 26px 70px -15px rgba(0, 0, 0, 0.8),
-    0 0 32px rgba(201, 162, 77, 0.2),
+    0 24px 60px -15px rgba(0, 0, 0, 0.8),
+    0 0 28px rgba(201, 162, 77, 0.16),
     inset 0 1px 0 rgba(247, 231, 196, 0.22);
+  box-sizing: border-box;
   transition: border-color 0.35s ease, box-shadow 0.45s ease;
-}
-
-#jrw-workflow .jrw-fixed-card.is-switching {
-  animation: jrw-card-pulse 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-@keyframes jrw-card-pulse {
-  0% {
-    border-color: var(--jrw-gold-deep);
-    box-shadow: 0 26px 70px -15px rgba(0, 0, 0, 0.8), 0 0 42px rgba(201, 162, 77, 0.32), inset 0 1px 0 rgba(247, 231, 196, 0.28);
-  }
-  100% {
-    border-color: rgba(201, 162, 77, 0.38);
-    box-shadow: 0 26px 70px -15px rgba(0, 0, 0, 0.8), 0 0 32px rgba(201, 162, 77, 0.2), inset 0 1px 0 rgba(247, 231, 196, 0.22);
-  }
 }
 
 #jrw-workflow .jrw-grid-copy {
   min-height: auto;
 }
 
-/* Overlaid Copy Deck inside Fixed Card */
-#jrw-workflow .jrw-copy-deck {
-  display: grid;
-  grid-template-columns: 1fr;
-  position: relative;
-  background: transparent;
-}
-
+/* Editorial Copy Column inside Slide Card */
 #jrw-workflow .jrw-copy {
-  grid-area: 1 / 1;
   position: relative;
   display: flex;
   min-height: 240px;
@@ -205,46 +120,10 @@
   padding: 18px 16px;
   background: transparent;
   border-color: var(--jrw-hairline);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  z-index: 1;
-  transition: none;
-  animation: none;
-}
-
-#jrw-workflow .jrw-copy.is-active {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  z-index: 2;
-  animation: jrw-slide-up 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-#jrw-workflow .jrw-fixed-card[data-dir="up"] .jrw-copy.is-active {
-  animation: jrw-slide-down 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-@keyframes jrw-slide-up {
-  from {
-    opacity: 0;
-    transform: translateY(28px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes jrw-slide-down {
-  from {
-    opacity: 0;
-    transform: translateY(-28px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  box-sizing: border-box;
 }
 
 #jrw-workflow .jrw-watermark {
@@ -376,67 +255,21 @@
   color: var(--jrw-charcoal);
 }
 
-/* Overlaid Stage Deck & Individual Step Stages */
-#jrw-workflow .jrw-stage-deck {
-  display: grid;
-  grid-template-columns: 1fr;
-  position: relative;
-  min-height: 240px;
-  overflow: hidden;
-  background: var(--jrw-champagne);
-  border-bottom: 1px solid var(--jrw-hairline);
-}
-
+/* Individual Step Stage inside Slide Card */
 #jrw-workflow .jrw-stage {
-  grid-area: 1 / 1;
   position: relative;
   width: 100%;
   height: 100%;
   min-height: 240px;
   overflow: hidden;
   background: var(--jrw-champagne);
+  border-bottom: 1px solid var(--jrw-hairline);
   border-color: var(--jrw-hairline);
   touch-action: pan-y;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  z-index: 1;
-  transition: none;
-  animation: none;
-}
-
-#jrw-workflow .jrw-stage.is-active {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  z-index: 2;
-  animation: jrw-stage-up 0.44s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-#jrw-workflow .jrw-fixed-card[data-dir="up"] .jrw-stage.is-active {
-  animation: jrw-stage-down 0.44s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-@keyframes jrw-stage-up {
-  from {
-    opacity: 0;
-    transform: translateY(18px) scale(0.965);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes jrw-stage-down {
-  from {
-    opacity: 0;
-    transform: translateY(-18px) scale(0.965);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  box-sizing: border-box;
 }
 
 /* Distinct Stage Tints & Unified Single-Ring Visual Passes */
@@ -808,8 +641,9 @@
 }
 
 #jrw-workflow .jrw-s5-swatches button.is-active {
-  background: var(--jrw-charcoal);
-  color: #FFFFFF;
+  background: linear-gradient(135deg, #C9A24D, #E5C483);
+  color: #141414;
+  font-weight: 700;
 }
 
 #jrw-workflow .jrw-s5-swatches i {
@@ -869,7 +703,7 @@
   border: 1.5px solid var(--jrw-gold);
   border-radius: 50%;
   background: #141416;
-  color: var(--jrw-charcoal);
+  color: var(--jrw-gold);
   box-shadow: 0 4px 18px rgba(28, 27, 25, 0.15);
   pointer-events: auto;
 }
@@ -924,7 +758,6 @@
    RESPONSIVE LAYOUT & BREAKPOINTS
    ========================================================================== */
 @media (max-width: 639px) {
-  #jrw-workflow .jrw-stage-deck,
   #jrw-workflow .jrw-stage {
     min-height: 235px;
   }
@@ -1002,7 +835,6 @@
 }
 
 @media (min-width: 640px) and (max-width: 1023px) {
-  #jrw-workflow .jrw-stage-deck,
   #jrw-workflow .jrw-stage {
     min-height: 320px;
   }
@@ -1015,30 +847,18 @@
     font-size: 96px;
   }
 
-  #jrw-workflow .jrw-sticky-viewport {
-    top: 96px;
-  }
-
   #jrw-workflow .jrw-grid-copy {
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: 490px;
   }
 
-  #jrw-workflow .jrw-copy-deck {
-    border-right: 1px solid var(--jrw-hairline);
-  }
-
   #jrw-workflow .jrw-copy {
     padding: 38px 42px;
     min-height: 490px;
+    border-right: 1px solid var(--jrw-hairline);
   }
 
-  #jrw-workflow .jrw-progress {
-    padding: 17px 42px 13px;
-  }
-
-  #jrw-workflow .jrw-stage-deck,
   #jrw-workflow .jrw-stage {
     min-height: 490px;
     border-bottom: 0;

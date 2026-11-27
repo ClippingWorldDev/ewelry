@@ -77,8 +77,8 @@
     <!-- Swiper Carousel Stylesheet (Local) -->
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
     <!-- Compiled Luxury Studio Stylesheet (Tailwind CSS) -->
-    <link rel="stylesheet" href="assets/css/style.css?v=20261126v" />
-    <link rel="stylesheet" href="assets/css/jrw-workflow.css?v=20261126t" />
+    <link rel="stylesheet" href="assets/css/style.css?v=20261127a" />
+    <link rel="stylesheet" href="assets/css/jrw-workflow.css?v=20261127a" />
   </head>
   <body
     class="bg-ivory text-ink-primary font-sans antialiased selection:bg-gold/20 selection:text-ink-primary"
@@ -1638,8 +1638,7 @@
           </div>
         </section>
 
-        <!-- 4. THE SIX STEPS OF JEWELRY RETOUCHING (FIXED CARD · SCROLL-AUTO-SWAP) -->
-        <!-- Ensure parent containers have overflow: visible or overflow-x: clip (never overflow: hidden) -->
+        <!-- 4. THE SIX STEPS OF JEWELRY RETOUCHING (ULTRA-LUXURY SWIPER CAROUSEL) -->
         <section id="jrw-workflow" class="jrw-section relative w-full bg-[#141414] overflow-x-clip">
           <!-- Interactive Luxury Studio Workflow Cursor Follower -->
           <div id="jrw-cursor" class="jrw-cursor" aria-hidden="true">
@@ -1662,29 +1661,14 @@
               <p class="jrw-subtitle max-w-2xl mx-auto">From raw macro capture to museum-grade commercial imagery—six disciplined hand-finished stages calibrated for luxury maisons and fine jewelry houses.</p>
             </header>
 
-            <!-- Scroll Runway holding ONE Fixed/Sticky Card whose Content & Stage auto-swap on scroll -->
-            <div class="jrw-scroll-runway" id="jrwRunway">
-              <div class="jrw-sticky-viewport">
-                <article class="jrw-fixed-card" id="jrwFixedCard" aria-live="polite">
-                  <div class="jrw-progress" role="progressbar" aria-label="Jewelry retouching workflow progress" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-valuetext="Step 1 of 6">
-                    <div class="jrw-progress-meta">
-                      <span class="jrw-progress-label">WORKFLOW PROGRESS</span>
-                      <span class="jrw-progress-count"><strong id="jrwProgressCurrent">01</strong><span> / 06</span></span>
-                    </div>
-                    <div class="jrw-progress-track" aria-hidden="true">
-                      <span class="jrw-progress-segment is-complete is-current"></span>
-                      <span class="jrw-progress-segment"></span>
-                      <span class="jrw-progress-segment"></span>
-                      <span class="jrw-progress-segment"></span>
-                      <span class="jrw-progress-segment"></span>
-                      <span class="jrw-progress-segment"></span>
-                    </div>
-                  </div>
-                  <div class="jrw-grid-copy grid grid-cols-1 lg:grid-cols-2">
-                    <!-- LEFT COLUMN: 6 Overlaid Editorial Copy Panels (Fixed Card, Content Swaps) -->
-                    <div class="jrw-copy-deck order-2 lg:order-1">
-                      <!-- Copy 01 -->
-                      <div class="jrw-copy jrw-copy-slide is-active" data-step="1">
+            <!-- Ultra-Luxury 6-Slide Swiper Workflow Showcase -->
+            <div class="jrw-swiper-shell" id="jrwSwiperShell">
+              <div class="swiper jrw-swiper" id="jrwSwiper" aria-roledescription="carousel" aria-label="The Six Steps of Jewelry Retouching">
+                <div class="swiper-wrapper">
+                  <!-- Step 01 -->
+                  <article class="swiper-slide jrw-slide-card" data-step="1">
+                    <div class="jrw-grid-copy grid grid-cols-1 lg:grid-cols-2">
+                      <div class="jrw-copy is-active order-2 lg:order-1">
                         <span class="jrw-watermark" aria-hidden="true">01</span>
                         <div class="jrw-meta"><span class="jrw-number">01</span><i></i><span>Vector Isolation</span><span class="jrw-step-count">Step 01 of 06</span></div>
                         <h3>Background Removal</h3>
@@ -1699,9 +1683,27 @@
                           <span class="jrw-status"><i></i><b id="jrw-status-01">Vector Path Cutout</b></span>
                         </div>
                       </div>
+                      <div class="jrw-stage jrw-stage-1 order-1 lg:order-2" data-step="1" data-stage="1" data-cursor="VECTOR PEN · 400%">
+                        <img src="assets/images/service-1-before.jpg" class="jrw-photo jrw-photo-base" alt="Raw luxury floral ring shot before background isolation" width="1400" height="1050" loading="eager">
+                        <div class="jrw-s1-reveal">
+                          <img src="assets/images/service-1-after.jpg" class="jrw-photo" alt="Luxury floral ring with background cleanly isolated" width="1400" height="1050" loading="eager">
+                        </div>
+                        <div class="jrw-s1-wipe"></div>
+                        <svg class="jrw-s1-outline" viewBox="0 0 1400 1050" aria-hidden="true">
+                          <ellipse cx="700" cy="525" rx="340" ry="310" class="jrw-s1-pen-path" />
+                          <ellipse cx="700" cy="525" rx="190" ry="175" class="jrw-s1-pen-path" />
+                        </svg>
+                        <span class="jrw-stage-badge jrw-stage-badge-raw">Raw Capture</span>
+                        <span class="jrw-stage-badge jrw-stage-badge-master">Pure White (RGB 255)</span>
+                        <span class="jrw-pass">Pass 01 · Vector Cut</span>
+                      </div>
+                    </div>
+                  </article>
 
-                      <!-- Copy 02 -->
-                      <div class="jrw-copy jrw-copy-slide" data-step="2">
+                  <!-- Step 02 -->
+                  <article class="swiper-slide jrw-slide-card" data-step="2">
+                    <div class="jrw-grid-copy grid grid-cols-1 lg:grid-cols-2">
+                      <div class="jrw-copy is-active order-2 lg:order-1">
                         <span class="jrw-watermark" aria-hidden="true">02</span>
                         <div class="jrw-meta"><span class="jrw-number">02</span><i></i><span>Basic Retouching</span><span class="jrw-step-count">Step 02 of 06</span></div>
                         <h3>Dust &amp; Surface Flaw Removal</h3>
@@ -1716,9 +1718,24 @@
                           <span class="jrw-status"><i></i><b id="jrw-status-02">Healing Surface Flaws</b></span>
                         </div>
                       </div>
+                      <div class="jrw-stage jrw-stage-2 order-1 lg:order-2" data-step="2" data-stage="2" data-cursor="400% LOUPE · CLEANUP">
+                        <img src="assets/images/service-1-before.jpg" class="jrw-photo jrw-photo-base" alt="Macro floral ring view showing surface dullness and flaws" width="1400" height="1050" loading="eager">
+                        <div class="jrw-s2-after">
+                          <img src="assets/images/service-1-after.jpg" class="jrw-photo" alt="Macro floral ring after 400% surface flaws cleaned" width="1400" height="1050" loading="eager">
+                        </div>
+                        <div class="jrw-s2-loupe"><span>400% LOUPE</span></div>
+                        <div class="jrw-s2-line"></div>
+                        <span class="jrw-stage-badge jrw-stage-badge-raw">Micro-Dust &amp; Flaws</span>
+                        <span class="jrw-stage-badge jrw-stage-badge-master">400% Grain Restored</span>
+                        <span class="jrw-pass">Pass 02 · 400% Cleanup</span>
+                      </div>
+                    </div>
+                  </article>
 
-                      <!-- Copy 03 -->
-                      <div class="jrw-copy jrw-copy-slide" data-step="3">
+                  <!-- Step 03 -->
+                  <article class="swiper-slide jrw-slide-card" data-step="3">
+                    <div class="jrw-grid-copy grid grid-cols-1 lg:grid-cols-2">
+                      <div class="jrw-copy is-active order-2 lg:order-1">
                         <span class="jrw-watermark" aria-hidden="true">03</span>
                         <div class="jrw-meta"><span class="jrw-number">03</span><i></i><span>Hand Retouching</span><span class="jrw-step-count">Step 03 of 06</span></div>
                         <h3>Sculpting 3D Luster</h3>
@@ -1733,9 +1750,24 @@
                           <span class="jrw-status"><i></i><b id="jrw-status-03">Sculpting 3D Luster</b></span>
                         </div>
                       </div>
+                      <div class="jrw-stage jrw-stage-3 order-1 lg:order-2" data-step="3" data-stage="3" data-cursor="DODGE &amp; BURN · 3D LUSTER">
+                        <img src="assets/images/service-1-before.jpg" class="jrw-photo jrw-photo-base" alt="Flat-lit floral ring before hand retouching" width="1400" height="1050" loading="eager">
+                        <div class="jrw-s3-sculpted">
+                          <img src="assets/images/service-1-after.jpg" class="jrw-photo" alt="Hand sculpted floral ring with 3D dimensional luster" width="1400" height="1050" loading="eager">
+                        </div>
+                        <div class="jrw-s3-brush"><i></i><span>DODGE &amp; BURN</span></div>
+                        <div class="jrw-s3-sheen"></div>
+                        <span class="jrw-stage-badge jrw-stage-badge-raw">Flat Studio Lighting</span>
+                        <span class="jrw-stage-badge jrw-stage-badge-master">3D Specular Luster</span>
+                        <span class="jrw-pass">Pass 03 · Dodge &amp; Burn</span>
+                      </div>
+                    </div>
+                  </article>
 
-                      <!-- Copy 04 -->
-                      <div class="jrw-copy jrw-copy-slide" data-step="4">
+                  <!-- Step 04 -->
+                  <article class="swiper-slide jrw-slide-card" data-step="4">
+                    <div class="jrw-grid-copy grid grid-cols-1 lg:grid-cols-2">
+                      <div class="jrw-copy is-active order-2 lg:order-1">
                         <span class="jrw-watermark" aria-hidden="true">04</span>
                         <div class="jrw-meta"><span class="jrw-number">04</span><i></i><span>Grid &amp; Alignment</span><span class="jrw-step-count">Step 04 of 06</span></div>
                         <h3>Geometric Symmetry</h3>
@@ -1750,93 +1782,12 @@
                           <span class="jrw-status"><i></i><b id="jrw-status-04">Drawing Symmetry Grid</b></span>
                         </div>
                       </div>
-
-                      <!-- Copy 05 -->
-                      <div class="jrw-copy jrw-copy-slide" data-step="5">
-                        <span class="jrw-watermark" aria-hidden="true">05</span>
-                        <div class="jrw-meta"><span class="jrw-number">05</span><i></i><span>Metal Plating</span><span class="jrw-step-count">Step 05 of 06</span></div>
-                        <h3>Digital Gilding &amp; Tone</h3>
-                        <p>Accurate yellow gold, rose gold and platinum finishes are matched to the original casting and product specification.</p>
-                        <ul>
-                          <li>Calibrated alloy warmth matching 18K Yellow, Rose Gold and Platinum</li>
-                          <li>Pure metallic luminosity and gemstone pavilion contrast preserved</li>
-                          <li>Non-destructive adjustment layer stacks ready for multi-colorway exports</li>
-                          <li>Eliminates physical prototyping costs for unreleased metal variants</li>
-                        </ul>
-                        <div class="jrw-card-controls">
-                          <span class="jrw-status"><i></i><b id="jrw-status-05">18K Yellow Gold</b></span>
-                        </div>
-                      </div>
-
-                      <!-- Copy 06 -->
-                      <div class="jrw-copy jrw-copy-slide" data-step="6">
-                        <span class="jrw-watermark" aria-hidden="true">06</span>
-                        <div class="jrw-meta"><span class="jrw-number">06</span><i></i><span>Final Master</span><span class="jrw-step-count">Step 06 of 06</span></div>
-                        <h3>Raw to Museum-Grade</h3>
-                        <p>The completed work is inspected, calibrated and exported for consistent commercial presentation across print and digital channels.</p>
-                        <ul>
-                          <li>Multi-monitor color inspection calibrated to sRGB, Adobe RGB and DCI-P3</li>
-                          <li>Layered 16-bit master PSD archives with organized, non-destructive groups</li>
-                          <li>High-resolution 300 DPI CMYK ready for luxury lookbooks and billboards</li>
-                          <li>Web-optimized progressive JPG &amp; WebP exports tailored for e-commerce</li>
-                        </ul>
-                        <div class="jrw-card-controls">
-                          <span class="jrw-status"><i></i><b id="jrw-status-06">Auto-Compare Active</b></span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- RIGHT COLUMN: 6 Overlaid Animated Stages (Unified Single Ring, Visuals Swap) -->
-                    <div class="jrw-stage-deck order-1 lg:order-2">
-                      <!-- Stage 01 -->
-                      <div class="jrw-stage jrw-stage-1 is-active" data-step="1" data-stage="1" data-cursor="VECTOR PEN · 400%">
-                        <img src="assets/images/service-1-before.jpg" class="jrw-photo jrw-photo-base" alt="Raw luxury floral ring shot before background isolation" width="1400" height="1050" loading="eager">
-                        <div class="jrw-s1-reveal">
-                          <img src="assets/images/service-1-after.jpg" class="jrw-photo" alt="Luxury floral ring with background cleanly isolated" width="1400" height="1050" loading="eager">
-                        </div>
-                        <div class="jrw-s1-wipe"></div>
-                        <svg class="jrw-s1-outline" viewBox="0 0 1400 1050" aria-hidden="true">
-                          <ellipse cx="700" cy="525" rx="340" ry="310" class="jrw-s1-pen-path" />
-                          <ellipse cx="700" cy="525" rx="190" ry="175" class="jrw-s1-pen-path" />
-                        </svg>
-                        <span class="jrw-stage-badge jrw-stage-badge-raw">Raw Capture</span>
-                        <span class="jrw-stage-badge jrw-stage-badge-master">Pure White (RGB 255)</span>
-                        <span class="jrw-pass">Pass 01 · Vector Cut</span>
-                      </div>
-
-                      <!-- Stage 02 -->
-                      <div class="jrw-stage jrw-stage-2" data-step="2" data-stage="2" data-cursor="400% LOUPE · CLEANUP">
-                        <img src="assets/images/service-1-before.jpg" class="jrw-photo jrw-photo-base" alt="Macro floral ring view showing surface dullness and flaws" width="1400" height="1050" loading="lazy">
-                        <div class="jrw-s2-after">
-                          <img src="assets/images/service-1-after.jpg" class="jrw-photo" alt="Macro floral ring after 400% surface flaws cleaned" width="1400" height="1050" loading="lazy">
-                        </div>
-                        <div class="jrw-s2-loupe"><span>400% LOUPE</span></div>
-                        <div class="jrw-s2-line"></div>
-                        <span class="jrw-stage-badge jrw-stage-badge-raw">Micro-Dust &amp; Flaws</span>
-                        <span class="jrw-stage-badge jrw-stage-badge-master">400% Grain Restored</span>
-                        <span class="jrw-pass">Pass 02 · 400% Cleanup</span>
-                      </div>
-
-                      <!-- Stage 03 -->
-                      <div class="jrw-stage jrw-stage-3" data-step="3" data-stage="3" data-cursor="DODGE &amp; BURN · 3D LUSTER">
-                        <img src="assets/images/service-1-before.jpg" class="jrw-photo jrw-photo-base" alt="Flat-lit floral ring before hand retouching" width="1400" height="1050" loading="lazy">
-                        <div class="jrw-s3-sculpted">
-                          <img src="assets/images/service-1-after.jpg" class="jrw-photo" alt="Hand sculpted floral ring with 3D dimensional luster" width="1400" height="1050" loading="lazy">
-                        </div>
-                        <div class="jrw-s3-brush"><i></i><span>DODGE &amp; BURN</span></div>
-                        <div class="jrw-s3-sheen"></div>
-                        <span class="jrw-stage-badge jrw-stage-badge-raw">Flat Studio Lighting</span>
-                        <span class="jrw-stage-badge jrw-stage-badge-master">3D Specular Luster</span>
-                        <span class="jrw-pass">Pass 03 · Dodge &amp; Burn</span>
-                      </div>
-
-                      <!-- Stage 04 -->
-                      <div class="jrw-stage jrw-stage-4" data-step="4" data-stage="4" data-cursor="AXIS LOCK · 0.0°">
+                      <div class="jrw-stage jrw-stage-4 order-1 lg:order-2" data-step="4" data-stage="4" data-cursor="AXIS LOCK · 0.0°">
                         <div class="jrw-s4-grid"></div>
                         <div class="jrw-s4-subject">
-                          <img src="assets/images/service-1-before.jpg" class="jrw-photo jrw-s4-raw" alt="Raw floral ring capture showing physical casting tilt and off-center axis" width="1400" height="1050" loading="lazy">
+                          <img src="assets/images/service-1-before.jpg" class="jrw-photo jrw-s4-raw" alt="Raw floral ring capture showing physical casting tilt and off-center axis" width="1400" height="1050" loading="eager">
                           <div class="jrw-s4-aligned-wrap">
-                            <img src="assets/images/service-1-after.jpg" class="jrw-photo jrw-s4-aligned" alt="Master floral ring perfectly leveled with 0.0° geometric symmetry" width="1400" height="1050" loading="lazy">
+                            <img src="assets/images/service-1-after.jpg" class="jrw-photo jrw-s4-aligned" alt="Master floral ring perfectly leveled with 0.0° geometric symmetry" width="1400" height="1050" loading="eager">
                           </div>
                         </div>
                         <svg class="jrw-s4-guide-svg" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1855,13 +1806,32 @@
                         <span class="jrw-s4-angle" id="jrw-angle-pill">+5.2° OFFSET</span>
                         <span class="jrw-pass">Pass 04 · Axis Lock</span>
                       </div>
+                    </div>
+                  </article>
 
-                      <!-- Stage 05 -->
-                      <div class="jrw-stage jrw-stage-5" data-step="5" data-stage="5" data-cursor="SELECT ALLOY FINISH">
-                        <img src="assets/images/colorway-yellow-gold.jpg" class="jrw-s5-layer is-active" data-finish="yellow" alt="Floral ring digitally finished in 18K yellow gold" width="1400" height="1050" loading="lazy">
-                        <img src="assets/images/colorway-rose-gold.jpg" class="jrw-s5-layer" data-finish="rose" alt="Floral ring digitally finished in rose gold" width="1400" height="1050" loading="lazy">
-                        <img src="assets/images/colorway-white-gold.jpg" class="jrw-s5-layer" data-finish="platinum" alt="Floral ring digitally finished in platinum" width="1400" height="1050" loading="lazy">
-                        <div class="jrw-s5-swatches" role="tablist" aria-label="Metal finish selection">
+                  <!-- Step 05 -->
+                  <article class="swiper-slide jrw-slide-card" data-step="5">
+                    <div class="jrw-grid-copy grid grid-cols-1 lg:grid-cols-2">
+                      <div class="jrw-copy is-active order-2 lg:order-1">
+                        <span class="jrw-watermark" aria-hidden="true">05</span>
+                        <div class="jrw-meta"><span class="jrw-number">05</span><i></i><span>Metal Plating</span><span class="jrw-step-count">Step 05 of 06</span></div>
+                        <h3>Digital Gilding &amp; Tone</h3>
+                        <p>Accurate yellow gold, rose gold and platinum finishes are matched to the original casting and product specification.</p>
+                        <ul>
+                          <li>Calibrated alloy warmth matching 18K Yellow, Rose Gold and Platinum</li>
+                          <li>Pure metallic luminosity and gemstone pavilion contrast preserved</li>
+                          <li>Non-destructive adjustment layer stacks ready for multi-colorway exports</li>
+                          <li>Eliminates physical prototyping costs for unreleased metal variants</li>
+                        </ul>
+                        <div class="jrw-card-controls">
+                          <span class="jrw-status"><i></i><b id="jrw-status-05">18K Yellow Gold</b></span>
+                        </div>
+                      </div>
+                      <div class="jrw-stage jrw-stage-5 order-1 lg:order-2" data-step="5" data-stage="5" data-cursor="SELECT ALLOY FINISH">
+                        <img src="assets/images/colorway-yellow-gold.jpg" class="jrw-s5-layer is-active" data-finish="yellow" alt="Floral ring digitally finished in 18K yellow gold" width="1400" height="1050" loading="eager">
+                        <img src="assets/images/colorway-rose-gold.jpg" class="jrw-s5-layer" data-finish="rose" alt="Floral ring digitally finished in rose gold" width="1400" height="1050" loading="eager">
+                        <img src="assets/images/colorway-white-gold.jpg" class="jrw-s5-layer" data-finish="platinum" alt="Floral ring digitally finished in platinum" width="1400" height="1050" loading="eager">
+                        <div class="jrw-s5-swatches swiper-no-swiping" role="tablist" aria-label="Metal finish selection">
                           <button type="button" class="is-active" role="tab" aria-selected="true" data-finish="yellow"><i class="jrw-swatch-yellow"></i>18K Gold</button>
                           <button type="button" role="tab" aria-selected="false" data-finish="rose"><i class="jrw-swatch-rose"></i>Rose Gold</button>
                           <button type="button" role="tab" aria-selected="false" data-finish="platinum"><i class="jrw-swatch-white"></i>Platinum</button>
@@ -1869,19 +1839,38 @@
                         <span class="jrw-stage-badge jrw-stage-badge-master">100% Metallurgical Match</span>
                         <span class="jrw-pass">Pass 05 · Digital Gilding</span>
                       </div>
+                    </div>
+                  </article>
 
-                      <!-- Stage 06 -->
-                      <div class="jrw-stage jrw-stage-6" data-step="6" data-stage="6" data-cursor="HOLD &amp; DRAG ◄►" tabindex="0" role="slider" aria-label="Compare raw and final jewelry images" aria-valuemin="5" aria-valuemax="95" aria-valuenow="50">
-                        <img src="assets/images/service-1-after.jpg" class="jrw-photo jrw-s6-after" alt="Final retouched luxury floral ring masterpiece" width="1400" height="1050" loading="lazy">
+                  <!-- Step 06 -->
+                  <article class="swiper-slide jrw-slide-card" data-step="6">
+                    <div class="jrw-grid-copy grid grid-cols-1 lg:grid-cols-2">
+                      <div class="jrw-copy is-active order-2 lg:order-1">
+                        <span class="jrw-watermark" aria-hidden="true">06</span>
+                        <div class="jrw-meta"><span class="jrw-number">06</span><i></i><span>Final Master</span><span class="jrw-step-count">Step 06 of 06</span></div>
+                        <h3>Raw to Museum-Grade</h3>
+                        <p>The completed work is inspected, calibrated and exported for consistent commercial presentation across print and digital channels.</p>
+                        <ul>
+                          <li>Multi-monitor color inspection calibrated to sRGB, Adobe RGB and DCI-P3</li>
+                          <li>Layered 16-bit master PSD archives with organized, non-destructive groups</li>
+                          <li>High-resolution 300 DPI CMYK ready for luxury lookbooks and billboards</li>
+                          <li>Web-optimized progressive JPG &amp; WebP exports tailored for e-commerce</li>
+                        </ul>
+                        <div class="jrw-card-controls">
+                          <span class="jrw-status"><i></i><b id="jrw-status-06">Auto-Compare Active</b></span>
+                        </div>
+                      </div>
+                      <div class="jrw-stage jrw-stage-6 order-1 lg:order-2 swiper-no-swiping" data-step="6" data-stage="6" data-cursor="HOLD &amp; DRAG ◄►" tabindex="0" role="slider" aria-label="Compare raw and final jewelry images" aria-valuemin="5" aria-valuemax="95" aria-valuenow="50">
+                        <img src="assets/images/service-1-after.jpg" class="jrw-photo jrw-s6-after" alt="Final retouched luxury floral ring masterpiece" width="1400" height="1050" loading="eager">
                         <div class="jrw-s6-before-wrap">
-                          <img src="assets/images/service-1-before.jpg" class="jrw-photo jrw-s6-before" alt="Unedited raw floral ring photograph" width="1400" height="1050" loading="lazy">
+                          <img src="assets/images/service-1-before.jpg" class="jrw-photo jrw-s6-before" alt="Unedited raw floral ring photograph" width="1400" height="1050" loading="eager">
                         </div>
                         <div class="jrw-s6-divider">
                           <button type="button" tabindex="-1" aria-hidden="true">
-                            <svg class="w-3.5 h-3.5 text-charcoal shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="w-3.5 h-3.5 text-gold shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                               <polyline points="15 18 9 12 15 6"></polyline>
                             </svg>
-                            <svg class="w-3.5 h-3.5 text-charcoal shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="w-3.5 h-3.5 text-gold shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                               <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
                           </button>
@@ -1892,8 +1881,8 @@
                         <span class="jrw-pass">Pass 06 · Final Master</span>
                       </div>
                     </div>
-                  </div>
-                </article>
+                  </article>
+                </div>
               </div>
             </div>
           </div>
@@ -3459,7 +3448,7 @@
     <script src="assets/js/lenis.min.js"></script>
     <script src="assets/js/gsap.min.js"></script>
     <script src="assets/js/ScrollTrigger.min.js"></script>
-    <script src="assets/js/jrw-workflow.js?v=20261126t"></script>
+    <script src="assets/js/jrw-workflow.js?v=20261127a"></script>
     <!-- Studio Core Interaction Script (Local) -->
     <script src="assets/js/main.js?v=20261126c"></script>
   </body>
