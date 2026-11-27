@@ -22,6 +22,7 @@ window.STUDIO_API = {
 
   let lenis = null;
   let testimonialsSwiper = null;
+  let pricingSwiper = null;
   let artisanManifestoSwiper = null;
 
   function parseHash(rawHash) {
@@ -32,6 +33,9 @@ window.STUDIO_API = {
 
   function refreshMotion() {
     if (lenis && typeof lenis.resize === 'function') lenis.resize();
+    if (pricingSwiper && typeof pricingSwiper.update === 'function') {
+      pricingSwiper.update();
+    }
     if (testimonialsSwiper && typeof testimonialsSwiper.update === 'function') {
       testimonialsSwiper.update();
     }
@@ -730,6 +734,52 @@ window.STUDIO_API = {
         });
       });
     });
+  }
+
+  /* ----------------------------------------------------------------------
+     5B. PRICING TIERS RESPONSIVE TOUCH SWIPER (1 Mobile / 2 Tablet / 3 Desktop)
+     ---------------------------------------------------------------------- */
+  function initPricingSwiper() {
+    if (typeof window.Swiper !== 'function') return;
+    const container = document.querySelector('.pricing-swiper');
+    if (!container) return;
+
+    try {
+      pricingSwiper = new window.Swiper(container, {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        grabCursor: true,
+        speed: 600,
+        watchOverflow: true,
+        allowTouchMove: true,
+        keyboard: {
+          enabled: true,
+          onlyInViewport: true
+        },
+        pagination: {
+          el: '.pricing-pagination',
+          clickable: true
+        },
+        navigation: {
+          nextEl: '.pricing-next',
+          prevEl: '.pricing-prev'
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 24,
+            allowTouchMove: true
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 28,
+            allowTouchMove: false
+          }
+        }
+      });
+    } catch (err) {
+      console.warn('Pricing Swiper initialization skipped:', err);
+    }
   }
 
   /* ----------------------------------------------------------------------
@@ -2249,6 +2299,7 @@ window.STUDIO_API = {
     initColorwayStudio();
     initPortfolioFilters();
     initPortfolioViews();
+    initPricingSwiper();
     initTestimonialsSwiper();
     initArtisanManifestoSlider();
     initFaq();
@@ -2274,6 +2325,9 @@ window.STUDIO_API = {
     }
     if (lenis && typeof lenis.resize === 'function') {
       lenis.resize();
+    }
+    if (pricingSwiper && typeof pricingSwiper.update === 'function') {
+      pricingSwiper.update();
     }
     if (testimonialsSwiper && typeof testimonialsSwiper.update === 'function') {
       testimonialsSwiper.update();

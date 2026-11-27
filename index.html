@@ -77,8 +77,8 @@
     <!-- Swiper Carousel Stylesheet (Local) -->
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
     <!-- Compiled Luxury Studio Stylesheet (Tailwind CSS) -->
-    <link rel="stylesheet" href="assets/css/style.css?v=20261127p" />
-    <link rel="stylesheet" href="assets/css/jrw-workflow.css?v=20261127p" />
+    <link rel="stylesheet" href="assets/css/style.css?v=20261127r" />
+    <link rel="stylesheet" href="assets/css/jrw-workflow.css?v=20261127r" />
   </head>
   <body
     class="bg-ivory text-ink-primary font-sans antialiased selection:bg-gold/20 selection:text-ink-primary"
@@ -272,7 +272,7 @@
         >
           <!-- Logo Image Container (Transparent PNG Lockup at assets/images/logo-aurelia.png) -->
           <img
-            src="assets/images/logo-header.png?v=20261127p"
+            src="assets/images/logo-header.png?v=20261127r"
             alt="Aurelia Haute Atelier"
             class="brand-logo-full"
             width="727"
@@ -355,7 +355,7 @@
           <div class="mobile-drawer-top">
             <div class="flex items-center gap-2.5">
               <img
-                src="assets/images/logo-header.png?v=20261127p"
+                src="assets/images/logo-header.png?v=20261127r"
                 alt="Aurelia Haute Atelier"
                 class="h-10 w-auto object-contain"
                 width="727"
@@ -2542,7 +2542,7 @@
 
                 <!-- RIGHT COLUMN: VERTICAL INFINITE SWIPER (3 ITEMS VISIBLE, CENTER ACTIVE) -->
                 <div class="artisan-right-column relative">
-                  <div class="artisan-swiper-container swiper-container h-[410px] sm:h-[430px] lg:h-[450px] overflow-hidden relative" id="artisanSwiper">
+                  <div class="artisan-swiper-container swiper-container h-[465px] sm:h-[440px] lg:h-[450px] overflow-hidden relative" id="artisanSwiper">
                     <div class="swiper-wrapper">
                       <!-- Slide 1 -->
                       <div class="swiper-slide cursor-pointer" data-index="0">
@@ -2706,116 +2706,175 @@
               </p>
             </div>
 
-            <div class="pricing-grid js-stagger-grid">
-              <!-- Tier 1 -->
-              <article class="pricing-card js-stagger-item">
-                <div>
-                  <span class="pricing-tier-tag"
-                    >Catalog &amp; Marketplace</span
-                  >
-                  <h3 class="text-2xl font-serif text-ink-primary mb-2">
-                    E-Commerce Volume
-                  </h3>
-                  <div class="pricing-price">
-                    $4.50<span
-                      class="text-lg font-sans font-normal text-ink-muted"
-                    >
-                      / image</span
-                    >
+            <div class="pricing-slider-wrap js-reveal">
+              <div
+                class="swiper pricing-swiper"
+                aria-roledescription="carousel"
+                aria-label="Jewelry Retouching Pricing Tiers"
+              >
+                <div class="swiper-wrapper">
+                  <!-- Tier 1 -->
+                  <div class="swiper-slide">
+                    <article class="pricing-card">
+                      <div>
+                        <span class="pricing-tier-tag"
+                          >Catalog &amp; Marketplace</span
+                        >
+                        <h3 class="text-2xl font-serif text-ink-primary mb-2">
+                          E-Commerce Volume
+                        </h3>
+                        <div class="pricing-price">
+                          $4.50<span
+                            class="text-lg font-sans font-normal text-ink-muted"
+                          >
+                            / image</span
+                          >
+                        </div>
+                        <span class="pricing-unit"
+                          >Min. 20 Images &bull; 24h Delivery</span
+                        >
+                        <ul class="pricing-features">
+                          <li>Pure RGB (255, 255, 255) Background Cutout</li>
+                          <li>Micro-Dust &amp; Fingerprint Removal</li>
+                          <li>Natural Contact Shadow Creation</li>
+                          <li>Focus Stacking Composite Alignment</li>
+                          <li>Catalog Color Consistency Across 100+ SKUs</li>
+                        </ul>
+                      </div>
+                      <a
+                        href="#free-trial-home"
+                        class="btn btn-outline w-full text-center justify-center mt-6"
+                        data-preselect-trial="E-Commerce Volume"
+                        >Start Free Test Images</a
+                      >
+                    </article>
                   </div>
-                  <span class="pricing-unit"
-                    >Min. 20 Images &bull; 24h Delivery</span
-                  >
-                  <ul class="pricing-features">
-                    <li>Pure RGB (255, 255, 255) Background Cutout</li>
-                    <li>Micro-Dust &amp; Fingerprint Removal</li>
-                    <li>Natural Contact Shadow Creation</li>
-                    <li>Focus Stacking Composite Alignment</li>
-                    <li>Catalog Color Consistency Across 100+ SKUs</li>
-                  </ul>
-                </div>
-                <a
-                  href="#free-trial-home"
-                  class="btn btn-outline w-full text-center justify-center mt-6"
-                  data-preselect-trial="E-Commerce Volume"
-                  >Start Free Test Images</a
-                >
-              </article>
 
-              <!-- Tier 2 (Featured) -->
-              <article class="pricing-card pricing-card--featured js-stagger-item">
-                <div
-                  class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#C9A24D] text-[#141416] px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-md"
-                >
-                  Most Commissioned
-                </div>
-                <div>
-                  <span class="pricing-tier-tag text-[#C9A24D]">Campaign &amp; Lookbook</span>
-                  <h3 class="text-2xl font-serif text-[#F8F8FA] mb-2">
-                    Editorial &amp; Macro
-                  </h3>
-                  <div class="pricing-price text-[#F8F8FA]">
-                    $28.00<span
-                      class="text-lg font-sans font-normal text-zinc-400"
-                    >
-                      / image</span
-                    >
+                  <!-- Tier 2 (Featured) -->
+                  <div class="swiper-slide">
+                    <article class="pricing-card pricing-card--featured">
+                      <div
+                        class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#C9A24D] text-[#141416] px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-md whitespace-nowrap"
+                      >
+                        Most Commissioned
+                      </div>
+                      <div>
+                        <span class="pricing-tier-tag text-[#C9A24D]">Campaign &amp; Lookbook</span>
+                        <h3 class="text-2xl font-serif text-[#F8F8FA] mb-2">
+                          Editorial &amp; Macro
+                        </h3>
+                        <div class="pricing-price text-[#F8F8FA]">
+                          $28.00<span
+                            class="text-lg font-sans font-normal text-zinc-400"
+                          >
+                            / image</span
+                          >
+                        </div>
+                        <span class="pricing-unit text-[#C9A24D]"
+                          >No Minimum &bull; 12–24h Turnaround</span
+                        >
+                        <ul class="pricing-features text-zinc-300">
+                          <li>Extreme 400% Macro Precision Scrutiny</li>
+                          <li>Seamless Metallic Gradient Polish (18K/Plat)</li>
+                          <li>Diamond &amp; Gemstone Fire Scintillation Boost</li>
+                          <li>Prong Symmetry &amp; Hallmark Preservation</li>
+                          <li>300 DPI CMYK Print + sRGB Web Ready</li>
+                          <li>Dedicated Senior Lead Retoucher</li>
+                        </ul>
+                      </div>
+                      <a
+                        href="#free-trial-home"
+                        class="btn btn-gold w-full text-center justify-center mt-6 shadow-md"
+                        data-preselect-trial="Editorial & Campaign"
+                        ><span>Order Editorial Trial</span><i class="fa-solid fa-arrow-right text-xs ml-2" aria-hidden="true"></i></a
+                      >
+                    </article>
                   </div>
-                  <span class="pricing-unit text-[#C9A24D]"
-                    >No Minimum &bull; 12–24h Turnaround</span
-                  >
-                  <ul class="pricing-features text-zinc-300">
-                    <li>Extreme 400% Macro Precision Scrutiny</li>
-                    <li>Seamless Metallic Gradient Polish (18K/Plat)</li>
-                    <li>Diamond &amp; Gemstone Fire Scintillation Boost</li>
-                    <li>Prong Symmetry &amp; Hallmark Preservation</li>
-                    <li>300 DPI CMYK Print + sRGB Web Ready</li>
-                    <li>Dedicated Senior Lead Retoucher</li>
-                  </ul>
-                </div>
-                <a
-                  href="#free-trial-home"
-                  class="btn btn-gold w-full text-center justify-center mt-6 shadow-md"
-                  data-preselect-trial="Editorial & Campaign"
-                  ><span>Order Editorial Trial</span><i class="fa-solid fa-arrow-right text-xs ml-2" aria-hidden="true"></i></a
-                >
-              </article>
 
-              <!-- Tier 3 -->
-              <article class="pricing-card js-stagger-item">
-                <div>
-                  <span class="pricing-tier-tag">Bespoke Masterpiece</span>
-                  <h3 class="text-2xl font-serif text-ink-primary mb-2">
-                    High Jewelry
-                  </h3>
-                  <div class="pricing-price">
-                    $65.00<span
-                      class="text-lg font-sans font-normal text-ink-muted"
-                    >
-                      / image</span
-                    >
+                  <!-- Tier 3 -->
+                  <div class="swiper-slide">
+                    <article class="pricing-card">
+                      <div>
+                        <span class="pricing-tier-tag">Bespoke Masterpiece</span>
+                        <h3 class="text-2xl font-serif text-ink-primary mb-2">
+                          High Jewelry
+                        </h3>
+                        <div class="pricing-price">
+                          $65.00<span
+                            class="text-lg font-sans font-normal text-ink-muted"
+                          >
+                            / image</span
+                          >
+                        </div>
+                        <span class="pricing-unit"
+                          >Single Piece or Collection &bull; 24–48h</span
+                        >
+                        <ul class="pricing-features">
+                          <li>
+                            Complex Multi-Stone Pav&eacute; &amp; Cluster Restoration
+                          </li>
+                          <li>True-to-Grade Color Matching (Sapphire/Emerald)</li>
+                          <li>3D CAD Render to Photorealistic Conversion</li>
+                          <li>Full Digital Recasting (Yellow/Rose/Platinum)</li>
+                          <li>Layered 16-Bit Master PSD Delivery</li>
+                          <li>Unlimited Complimentary Revisions</li>
+                        </ul>
+                      </div>
+                      <a
+                        href="#pricing"
+                        class="btn btn-outline w-full text-center justify-center mt-6"
+                        data-preselect-quote="All-In-One"
+                        >Request Custom Brief</a
+                      >
+                    </article>
                   </div>
-                  <span class="pricing-unit"
-                    >Single Piece or Collection &bull; 24–48h</span
-                  >
-                  <ul class="pricing-features">
-                    <li>
-                      Complex Multi-Stone Pav&eacute; &amp; Cluster Restoration
-                    </li>
-                    <li>True-to-Grade Color Matching (Sapphire/Emerald)</li>
-                    <li>3D CAD Render to Photorealistic Conversion</li>
-                    <li>Full Digital Recasting (Yellow/Rose/Platinum)</li>
-                    <li>Layered 16-Bit Master PSD Delivery</li>
-                    <li>Unlimited Complimentary Revisions</li>
-                  </ul>
                 </div>
-                <a
-                  href="#pricing"
-                  class="btn btn-outline w-full text-center justify-center mt-6"
-                  data-preselect-quote="All-In-One"
-                  >Request Custom Brief</a
+
+                <!-- Pagination Dots (Mobile & Tablet) -->
+                <div class="swiper-pagination pricing-pagination lg:hidden"></div>
+              </div>
+
+              <!-- Prev/Next Navigation Controls (Mobile & Tablet) -->
+              <div class="pricing-nav-wrap lg:hidden">
+                <button
+                  type="button"
+                  class="swiper-btn-prev pricing-prev"
+                  aria-label="Previous pricing tier"
                 >
-              </article>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M15 18l-6-6 6-6" />
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  class="swiper-btn-next pricing-next"
+                  aria-label="Next pricing tier"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M9 18l6-6-6-6" />
+                  </svg>
+                </button>
+              </div>
             </div>
 
             <!-- Guarantee Trust Bar -->
@@ -3293,7 +3352,7 @@
               aria-label="Aurelia Haute Atelier — Home"
             >
               <img
-                src="assets/images/logo-footer.png?v=20261127p"
+                src="assets/images/logo-footer.png?v=20261127r"
                 alt="Aurelia Haute Atelier"
                 class="brand-logo-full"
                 width="1042"
@@ -3436,8 +3495,8 @@
     <script src="assets/js/lenis.min.js"></script>
     <script src="assets/js/gsap.min.js"></script>
     <script src="assets/js/ScrollTrigger.min.js"></script>
-    <script src="assets/js/jrw-workflow.js?v=20261127p"></script>
+    <script src="assets/js/jrw-workflow.js?v=20261127r"></script>
     <!-- Studio Core Interaction Script (Local) -->
-    <script src="assets/js/main.js?v=20261127p"></script>
+    <script src="assets/js/main.js?v=20261127r"></script>
   </body>
 </html>

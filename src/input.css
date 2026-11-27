@@ -1892,11 +1892,15 @@
 
   /* Inactive Commandment Cards (Top & Bottom slides in view) */
   .artisan-commandment {
-    @apply w-full h-full p-3.5 sm:p-4 rounded-xl bg-white/[0.025] border border-white/10 text-left cursor-pointer flex flex-col justify-center relative overflow-hidden transition-all duration-300;
+    @apply w-full h-full px-3.5 py-3.5 sm:p-4 rounded-xl bg-white/[0.025] border border-white/10 text-left cursor-pointer flex flex-col justify-center relative overflow-hidden transition-all duration-300;
     opacity: 0.38;
     transform: scale(0.96);
     border-left: 3.5px solid transparent;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  .artisan-commandment p {
+    @apply text-ink-light-muted/70 transition-colors duration-300 !leading-snug sm:!leading-relaxed;
   }
 
   .artisan-commandment:hover {
@@ -1915,10 +1919,6 @@
 
   .artisan-commandment strong {
     @apply text-ink-light/80 transition-colors duration-300;
-  }
-
-  .artisan-commandment p {
-    @apply text-ink-light-muted/70 transition-colors duration-300;
   }
 
   /* ACTIVE MIDDLE COMMANDMENT CARD (LUMINOUS & FOCUSED IN THE CENTER) */
@@ -2046,11 +2046,44 @@
       linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
     background-size: 100% 100%, 56px 56px, 56px 56px;
   }
+  .pricing-slider-wrap {
+    @apply relative mt-8 sm:mt-12;
+  }
+
+  .pricing-swiper {
+    @apply pt-7 pb-12 px-1 sm:px-2 lg:pb-4;
+  }
+
+  .pricing-swiper .swiper-slide {
+    @apply h-auto flex;
+  }
+
+  .pricing-pagination {
+    @apply !bottom-0 flex justify-center items-center gap-2;
+  }
+
+  .pricing-pagination .swiper-pagination-bullet {
+    @apply w-2.5 h-2.5 rounded-full bg-stone-300 opacity-60 transition-all duration-300 cursor-pointer m-0 inline-block;
+  }
+
+  .pricing-pagination .swiper-pagination-bullet-active {
+    @apply !w-8 !rounded-full !bg-gold !opacity-100;
+  }
+
+  .pricing-nav-wrap {
+    @apply flex justify-center items-center gap-4 mt-4 lg:hidden;
+  }
+
+  .pricing-prev,
+  .pricing-next {
+    @apply w-11 h-11 rounded-full border border-gold/35 bg-charcoal text-ink-primary flex items-center justify-center transition-all duration-300 cursor-pointer hover:border-gold hover:bg-gold hover:text-white hover:scale-105 active:scale-95 disabled:opacity-30 disabled:pointer-events-none shadow-sm;
+  }
+
   .pricing-grid {
     @apply grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch mt-12 sm:mt-16 max-w-xl mx-auto lg:max-w-none;
   }
   .pricing-card {
-    @apply relative p-7 sm:p-9 lg:p-10 rounded-2xl flex flex-col justify-between transition-all duration-300;
+    @apply relative w-full h-full p-7 sm:p-8 lg:p-9 xl:p-10 rounded-2xl flex flex-col justify-between transition-all duration-300;
     background: linear-gradient(165deg, rgba(42, 36, 26, 0.76) 0%, rgba(20, 20, 24, 0.84) 100%) !important;
     backdrop-filter: blur(28px) saturate(160%) !important;
     -webkit-backdrop-filter: blur(28px) saturate(160%) !important;
