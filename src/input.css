@@ -345,6 +345,14 @@
     @apply h-8 w-8 sm:h-9 sm:w-9 max-w-[140px] object-contain transition-transform duration-300 group-hover:scale-105;
   }
 
+  .brand-logo-full {
+    @apply h-12 sm:h-[52px] lg:h-[46px] xl:h-[58px] w-auto max-w-[215px] sm:max-w-[235px] lg:max-w-[165px] xl:max-w-[245px] object-contain transition-all duration-300 group-hover:scale-[1.03];
+  }
+
+  .site-header.scrolled .brand-logo-full {
+    @apply h-10 sm:h-11 lg:h-10 xl:h-[48px];
+  }
+
   .brand-mark {
     @apply w-8 h-8 sm:w-9 sm:h-9 border border-gold/70 rounded-[2px] grid place-items-center bg-obsidian text-ink-light transition-all duration-300;
   }
@@ -1568,26 +1576,30 @@
     @apply text-ink-light text-base sm:text-lg lg:text-base xl:text-lg tracking-[0.14em] leading-snug;
   }
 
+  .footer-brand .brand-logo-full {
+    @apply h-[62px] sm:h-[68px] lg:h-[72px] xl:h-[76px] w-auto max-w-[210px] sm:max-w-[235px] lg:max-w-[245px] xl:max-w-[260px] object-contain;
+  }
+
   .footer-brand .brand-mark span {
     @apply text-gold-light;
   }
 
   .footer-brand p {
-    @apply text-ink-light-muted text-xs leading-relaxed mt-4 max-w-xs;
+    @apply text-ink-light-muted text-[11px] leading-relaxed mt-3.5 max-w-[290px];
   }
 
   .footer-col h4 {
-    @apply font-sans text-xs font-semibold tracking-[0.2em] uppercase text-gold-light mb-5;
+    @apply font-sans text-[11px] font-semibold tracking-[0.18em] uppercase text-gold-light mb-4;
   }
 
   .footer-col ul,
   .footer-links {
-    @apply grid gap-2.5 list-none text-xs text-ink-light-muted;
+    @apply grid gap-2 list-none text-[11px] text-ink-light-muted;
   }
 
   .footer-col a,
   .footer-links a {
-    @apply text-xs text-ink-light-muted transition-colors duration-200 hover:text-white;
+    @apply text-[11px] text-ink-light-muted transition-colors duration-200 hover:text-white;
   }
 
   .footer-col a:hover,
@@ -1596,7 +1608,7 @@
   }
 
   .footer-bottom {
-    @apply pt-8 border-t border-white/10 flex flex-wrap justify-between items-center gap-4 text-xs text-ink-light-muted;
+    @apply pt-7 border-t border-white/10 flex flex-wrap justify-between items-center gap-4 text-[11px] text-ink-light-muted;
   }
 
 
