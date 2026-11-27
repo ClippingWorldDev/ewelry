@@ -85,8 +85,14 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 10px 4px 26px;
+  padding: 16px 4px 32px;
+  perspective: 1500px;
+  perspective-origin: 50% 50%;
   box-sizing: border-box;
+}
+
+#jrw-workflow .jrw-swiper .swiper-wrapper {
+  transform-style: preserve-3d;
 }
 
 #jrw-workflow .jrw-slide-card {
@@ -103,11 +109,38 @@
     0 0 28px rgba(201, 162, 77, 0.16),
     inset 0 1px 0 rgba(247, 231, 196, 0.22);
   box-sizing: border-box;
+  will-change: transform, opacity;
   transition: border-color 0.35s ease, box-shadow 0.45s ease;
+}
+
+#jrw-workflow .jrw-slide-card.swiper-slide-active {
+  border-color: rgba(201, 162, 77, 0.55);
+  box-shadow:
+    0 28px 70px -14px rgba(0, 0, 0, 0.85),
+    0 0 36px rgba(201, 162, 77, 0.22),
+    inset 0 1px 0 rgba(247, 231, 196, 0.26);
+}
+
+#jrw-workflow .jrw-card-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 25;
+  opacity: var(--jrw-glare-opacity, 0);
+  transition: opacity 0.28s ease;
+  background: radial-gradient(
+    440px circle at var(--jrw-glare-x, 50%) var(--jrw-glare-y, 50%),
+    rgba(229, 196, 131, 0.16),
+    rgba(247, 231, 196, 0.04) 42%,
+    transparent 72%
+  );
 }
 
 #jrw-workflow .jrw-grid-copy {
   min-height: auto;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 /* Editorial Copy Column inside Slide Card */
@@ -899,7 +932,7 @@
   will-change: transform;
 }
 
-@media (hover: none), (pointer: coarse) {
+@media (hover: none), (pointer: coarse), (max-width: 1023px) {
   .jrw-cursor {
     display: none !important;
   }

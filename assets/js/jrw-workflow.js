@@ -34,6 +34,7 @@
   let swiper = null;
   let edgeCooldownActive = false;
   let edgeCooldownTimer = null;
+  let isStage6Dragging = false;
   const stageControllers = [];
 
   function setActiveStep(index) {
@@ -543,6 +544,7 @@
     // Pointer Dragging (Mouse & Touch)
     stage.addEventListener('pointerdown', (event) => {
       interacting = true;
+      isStage6Dragging = true;
       if (autoTween) autoTween.pause();
       stage.setPointerCapture(event.pointerId);
       if (hint) {
@@ -557,15 +559,18 @@
       if (interacting) updateFromPointer(event);
     });
 
-    stage.addEventListener('pointerup', (event) => {
+    const endStage6Drag = (event) => {
       interacting = false;
-      if (stage.hasPointerCapture(event.pointerId)) {
+      isStage6Dragging = false;
+      if (event && event.pointerId !== undefined && stage.hasPointerCapture(event.pointerId)) {
         stage.releasePointerCapture(event.pointerId);
       }
       if (hasGsap && !reduceMotion) {
         gsap.delayedCall(1.4, startAuto);
       }
-    });
+    };
+    stage.addEventListener('pointerup', endStage6Drag);
+    stage.addEventListener('pointercancel', endStage6Drag);
 
     // Keyboard Accessibility (Left/Right Arrows)
     stage.addEventListener('keydown', (event) => {
@@ -708,12 +713,158 @@
     }
   }, { capture: true, passive: false });
 
+  // ==========================================================================
+  // 3D PERSPECTIVE CAROUSEL, INNER Z-PARALLAX & GSAP CURSOR TILT ENGINE
+  // ==========================================================================
+  const slideLayers = slideCards.map((card) => {
+    let glare = card.querySelector(':scope > .jrw-card-glare');
+    if (!glare) {
+      glare = document.createElement('span');
+      glare.className = 'jrw-card-glare';
+      glare.setAttribute('aria-hidden', 'true');
+      card.prepend(glare);
+    }
+    return {
+      card,
+      gridCopy: card.querySelector('.jrw-grid-copy'),
+      copy: card.querySelector('.jrw-copy'),
+      wm: card.querySelector('.jrw-watermark'),
+      stage: card.querySelector('.jrw-stage'),
+      glare
+    };
+  });
+
+  function apply3DSlides(instance) {
+    if (!instance || reduceMotion) return;
+    const isDesktopParallax = (window.innerWidth || document.documentElement.clientWidth) >= 640;
+    const fmt = (val, decimals = 1) => (Math.abs(val) < 0.05 ? (0).toFixed(decimals) : val.toFixed(decimals));
+
+    slideLayers.forEach((layer, idx) => {
+      const slideEl = layer.card;
+      const rawProgress = typeof slideEl.progress === 'number' ? slideEl.progress : (idx - (instance.activeIndex || 0));
+      const p = Math.max(-1.4, Math.min(1.4, rawProgress));
+      const absP = Math.abs(p);
+
+      // Mode 1: 3D Perspective Slide Turn (slides sweep along curved luxury 3D arc)
+      const ry = -p * (isDesktopParallax ? 14 : 9);
+      const tz = -absP * (isDesktopParallax ? 110 : 60);
+      const sc = Math.max(0.86, 1 - absP * 0.095);
+      const op = Math.max(0.18, 1 - absP * 0.58);
+
+      slideEl.style.transform = `perspective(1500px) translateZ(${fmt(tz)}px) rotateY(${fmt(ry, 2)}deg) scale(${sc.toFixed(3)})`;
+      slideEl.style.opacity = op.toFixed(3);
+
+      // Mode 2: Internal Z-Depth Parallax separating watermark, copy, and jewelry stage
+      if (isDesktopParallax) {
+        if (layer.copy) layer.copy.style.transform = `perspective(1400px) translate3d(${fmt(-p * 30)}px, 0px, 14px)`;
+        if (layer.wm) layer.wm.style.transform = `perspective(1400px) translate3d(${fmt(-p * 64)}px, 0px, -24px)`;
+        if (layer.stage) layer.stage.style.transform = `perspective(1400px) translate3d(${fmt(p * 22)}px, 0px, 22px) rotateY(${fmt(p * 4.5, 2)}deg)`;
+      } else {
+        if (layer.copy) layer.copy.style.transform = '';
+        if (layer.wm) layer.wm.style.transform = '';
+        if (layer.stage) layer.stage.style.transform = '';
+      }
+    });
+  }
+
+  function apply3DTransitions(duration) {
+    if (reduceMotion) return;
+    const dur = `${Math.max(0, Number(duration) || 0)}ms`;
+    const ease = 'cubic-bezier(0.22, 1, 0.36, 1)';
+
+    slideLayers.forEach((layer) => {
+      layer.card.style.transitionProperty = 'transform, opacity, border-color, box-shadow';
+      layer.card.style.transitionDuration = `${dur}, ${dur}, 350ms, 450ms`;
+      layer.card.style.transitionTimingFunction = `${ease}, ${ease}, ease, ease`;
+
+      [layer.copy, layer.wm, layer.stage].forEach((innerEl) => {
+        if (!innerEl) return;
+        innerEl.style.transitionProperty = 'transform';
+        innerEl.style.transitionDuration = dur;
+        innerEl.style.transitionTimingFunction = ease;
+      });
+    });
+  }
+
+  function animateSlideTextReveal(index) {
+    if (!hasGsap || reduceMotion) return;
+    const layer = slideLayers[index];
+    if (!layer || !layer.copy) return;
+
+    const targets = layer.copy.querySelectorAll('.jrw-meta, h3, :scope > p, li, .jrw-card-controls');
+    if (!targets.length) return;
+
+    gsap.fromTo(
+      targets,
+      { y: 12, opacity: 0.45, rotationX: -8, transformPerspective: 900 },
+      {
+        y: 0,
+        opacity: 1,
+        rotationX: 0,
+        duration: 0.46,
+        stagger: 0.03,
+        ease: 'power3.out',
+        overwrite: 'auto',
+        clearProps: 'transform,opacity'
+      }
+    );
+  }
+
+  function initSlideHoverTilt() {
+    if (!hasGsap || reduceMotion) return;
+    const canHoverFine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!canHoverFine) return;
+
+    slideLayers.forEach((layer) => {
+      if (!layer.gridCopy) return;
+      gsap.set(layer.gridCopy, { transformPerspective: 1400, transformStyle: 'preserve-3d' });
+      const rxTo = gsap.quickTo(layer.gridCopy, 'rotationX', { duration: 0.42, ease: 'power3.out' });
+      const ryTo = gsap.quickTo(layer.gridCopy, 'rotationY', { duration: 0.42, ease: 'power3.out' });
+
+      const resetTilt = () => {
+        rxTo(0);
+        ryTo(0);
+        layer.card.style.setProperty('--jrw-glare-opacity', '0');
+      };
+
+      layer.resetTilt = resetTilt;
+
+      layer.card.addEventListener('pointermove', (e) => {
+        if ((window.innerWidth || document.documentElement.clientWidth) < 1024) {
+          resetTilt();
+          return;
+        }
+        if (isStage6Dragging || !layer.card.classList.contains('swiper-slide-active')) {
+          resetTilt();
+          return;
+        }
+        const rect = layer.card.getBoundingClientRect();
+        if (!rect.width || !rect.height) return;
+
+        const px = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        const py = Math.max(0, Math.min(1, (e.clientY - rect.top) / rect.height));
+        const nx = (px - 0.5) * 2;
+        const ny = (py - 0.5) * 2;
+
+        rxTo(-ny * 3.4);
+        ryTo(nx * 4.2);
+
+        layer.card.style.setProperty('--jrw-glare-x', `${(px * 100).toFixed(1)}%`);
+        layer.card.style.setProperty('--jrw-glare-y', `${(py * 100).toFixed(1)}%`);
+        layer.card.style.setProperty('--jrw-glare-opacity', '1');
+      });
+
+      layer.card.addEventListener('pointerleave', resetTilt);
+    });
+  }
+
   // Initialize Horizontal Swiper Carousel (guarded cleanly)
   if (typeof Swiper !== 'undefined') {
     swiper = new Swiper(swiperEl, {
       slidesPerView: 1,
       spaceBetween: 28,
       speed: reduceMotion ? 0 : 700,
+      watchSlidesProgress: true,
       grabCursor: true,
       noSwiping: true,
       noSwipingClass: 'swiper-no-swiping',
@@ -734,16 +885,33 @@
       on: {
         init(instance) {
           setActiveStep(instance.activeIndex || 0);
+          apply3DSlides(instance);
+        },
+        setTranslate(instance) {
+          apply3DSlides(instance);
+        },
+        setTransition(instance, duration) {
+          apply3DTransitions(duration);
         },
         slideChange(instance) {
-          setActiveStep(instance.activeIndex || 0);
+          const nextIndex = instance.activeIndex || 0;
+          setActiveStep(nextIndex);
           handleEdgeCooldownOnSlideChange(instance);
+          slideLayers.forEach((l) => {
+            if (typeof l.resetTilt === 'function') l.resetTilt();
+          });
+        },
+        slideChangeTransitionStart(instance) {
+          animateSlideTextReveal(instance.activeIndex || 0);
         },
         slideChangeTransitionEnd(instance) {
           scheduleEdgeCooldownRelease(instance);
+          apply3DSlides(instance);
         }
       }
     });
+
+    initSlideHoverTilt();
 
     // Bubble-phase Edge Inertia Cooldown propagation guard:
     // Blocks Lenis vertical scroll during slide transition and 380ms edge settle window
