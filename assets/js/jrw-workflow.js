@@ -620,73 +620,6 @@
     };
   }
 
-  // ==========================================================================
-  // BESPOKE LUXURY WORKFLOW INTERACTIVE CURSOR FOLLOWER
-  // ==========================================================================
-  function initWorkflowCursor() {
-    if (!hasGsap) return;
-    const cursor = root.querySelector('#jrw-cursor');
-    if (!cursor || window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
-
-    const cursorText = cursor.querySelector('.jrw-cursor-text');
-    let isInside = false;
-
-    // High performance smooth tracking using GSAP quickTo (120fps fluid lag-free)
-    const xTo = gsap.quickTo(cursor, 'x', { duration: 0.15, ease: 'power2.out' });
-    const yTo = gsap.quickTo(cursor, 'y', { duration: 0.15, ease: 'power2.out' });
-
-    window.addEventListener('pointermove', (e) => {
-      const rect = root.getBoundingClientRect();
-      const inSection = (
-        e.clientX >= rect.left &&
-        e.clientX <= rect.right &&
-        e.clientY >= rect.top &&
-        e.clientY <= rect.bottom
-      );
-
-      if (inSection) {
-        if (!isInside) {
-          isInside = true;
-          cursor.classList.add('is-active');
-        }
-        xTo(e.clientX);
-        yTo(e.clientY);
-
-        const targetEl = e.target && typeof e.target.closest === 'function' ? e.target : null;
-        const stage = targetEl ? targetEl.closest('.jrw-stage') : null;
-        const card = targetEl ? targetEl.closest('.jrw-slide-card') : null;
-
-        if (stage) {
-          cursor.classList.add('is-hovering-stage');
-          const customText = stage.getAttribute('data-cursor');
-          if (customText && cursorText) {
-            cursorText.textContent = customText;
-          }
-        } else {
-          cursor.classList.remove('is-hovering-stage');
-          if (card) {
-            const rawStep = card.getAttribute('data-step') || String(activeStep + 1);
-            const stepNum = rawStep.padStart(2, '0');
-            if (cursorText) cursorText.textContent = `STEP ${stepNum} PROTOCOL`;
-          } else if (cursorText) {
-            cursorText.textContent = 'CRAFTSMANSHIP PROTOCOL';
-          }
-        }
-      } else if (isInside) {
-        isInside = false;
-        cursor.classList.remove('is-active');
-      }
-    });
-
-    // Grab state on stage 6 slider
-    const stage6El = root.querySelector('.jrw-stage-6');
-    if (stage6El) {
-      stage6El.addEventListener('pointerdown', () => cursor.classList.add('is-grabbing'));
-      window.addEventListener('pointerup', () => cursor.classList.remove('is-grabbing'));
-      window.addEventListener('pointercancel', () => cursor.classList.remove('is-grabbing'));
-    }
-  }
-
   // Initialize all 6 stage controllers scoped to each slide card
   const getCardForStep = (idx) => slideCards[idx] || root;
   stageControllers[0] = stage1(getCardForStep(0));
@@ -745,6 +678,16 @@
       const p = Math.max(-1.4, Math.min(1.4, rawProgress));
       const absP = Math.abs(p);
 
+      // Keep the settled active card untransformed so perspective Z-depth never clips borders
+      if (absP < 0.01) {
+        slideEl.style.transform = '';
+        slideEl.style.opacity = '1';
+        if (layer.copy) layer.copy.style.transform = '';
+        if (layer.wm) layer.wm.style.transform = '';
+        if (layer.stage) layer.stage.style.transform = '';
+        return;
+      }
+
       // Mode 1: 3D Perspective Slide Turn (slides sweep along curved luxury 3D arc)
       const ry = -p * (isDesktopParallax ? 14 : 9);
       const tz = -absP * (isDesktopParallax ? 110 : 60);
@@ -754,11 +697,11 @@
       slideEl.style.transform = `perspective(1500px) translateZ(${fmt(tz)}px) rotateY(${fmt(ry, 2)}deg) scale(${sc.toFixed(3)})`;
       slideEl.style.opacity = op.toFixed(3);
 
-      // Mode 2: Internal Z-Depth Parallax separating watermark, copy, and jewelry stage
+      // Mode 2: Internal parallax on transitioning/adjacent slides only (never positive translateZ scaling past bounds)
       if (isDesktopParallax) {
-        if (layer.copy) layer.copy.style.transform = `perspective(1400px) translate3d(${fmt(-p * 30)}px, 0px, 14px)`;
-        if (layer.wm) layer.wm.style.transform = `perspective(1400px) translate3d(${fmt(-p * 64)}px, 0px, -24px)`;
-        if (layer.stage) layer.stage.style.transform = `perspective(1400px) translate3d(${fmt(p * 22)}px, 0px, 22px) rotateY(${fmt(p * 4.5, 2)}deg)`;
+        if (layer.copy) layer.copy.style.transform = `translate3d(${fmt(-p * 24)}px, 0px, 0px)`;
+        if (layer.wm) layer.wm.style.transform = `translate3d(${fmt(-p * 52)}px, 0px, 0px)`;
+        if (layer.stage) layer.stage.style.transform = `perspective(1400px) translate3d(${fmt(p * 18)}px, 0px, 0px) rotateY(${fmt(p * 4.5, 2)}deg)`;
       } else {
         if (layer.copy) layer.copy.style.transform = '';
         if (layer.wm) layer.wm.style.transform = '';
@@ -927,9 +870,6 @@
   } else {
     setActiveStep(0);
   }
-
-  // Initialize interactive workflow cursor
-  initWorkflowCursor();
 
   // Cleanup on unload
   window.addEventListener('beforeunload', () => {

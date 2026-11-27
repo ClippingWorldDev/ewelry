@@ -21,7 +21,7 @@
     <!-- Local Font Awesome 6 Pro/Free Icons -->
     <link rel="stylesheet" href="assets/css/fontawesome.min.css" />
     <!-- Compiled Luxury Studio Stylesheet (Tailwind CSS) -->
-    <link rel="stylesheet" href="assets/css/style.css?v=20261126u" />
+    <link rel="stylesheet" href="assets/css/style.css?v=20261127j" />
 
     <style>
       /* ── Contact Page Bespoke Styles ── */
@@ -112,6 +112,25 @@
         transition: text-decoration-color 0.3s;
         overflow-wrap: anywhere;
         word-break: break-word;
+      }
+      .contact-info-value a[href^="mailto:"] {
+        display: inline-block;
+        font-size: clamp(0.75rem, 3.3vw, 0.875rem);
+        white-space: nowrap;
+        overflow-wrap: normal;
+        word-break: normal;
+      }
+      @media (max-width: 479px) {
+        .contact-info-card {
+          gap: 0.875rem;
+          padding: 1.2rem 1rem;
+        }
+        .contact-info-icon {
+          width: 40px;
+          height: 40px;
+          min-width: 40px;
+          font-size: 0.95rem;
+        }
       }
       .contact-info-value a:hover {
         text-decoration-color: #C9A24D;
@@ -877,7 +896,7 @@
     <script src="assets/js/lenis.min.js"></script>
     <script src="assets/js/gsap.min.js"></script>
     <script src="assets/js/ScrollTrigger.min.js"></script>
-    <script src="assets/js/main.js?v=20261126c"></script>
+    <script src="assets/js/main.js?v=20261127j"></script>
 
     <!-- Contact Form Handler -->
     <script>

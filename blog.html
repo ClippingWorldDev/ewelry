@@ -21,7 +21,7 @@
     <!-- Local Font Awesome 6 Pro/Free Icons -->
     <link rel="stylesheet" href="assets/css/fontawesome.min.css" />
     <!-- Compiled Luxury Studio Stylesheet (Tailwind CSS) -->
-    <link rel="stylesheet" href="assets/css/style.css?v=20261126u" />
+    <link rel="stylesheet" href="assets/css/style.css?v=20261127j" />
 
     <style>
       /* ── Blog Page Luxury Editorial Styles (1440px Architecture) ── */
@@ -853,7 +853,7 @@
             <button type="button" class="blog-chip" data-cat="diamond">Diamond Retouching</button>
             <button type="button" class="blog-chip" data-cat="alloy">Alloy Recasting</button>
             <button type="button" class="blog-chip" data-cat="cad">3D CAD &amp; Craft</button>
-            <button type="button" class="blog-chip" data-cat="ecommerce">Workflow</button>
+            <button type="button" class="blog-chip" data-cat="ecommerce">Workflow &amp; NDA</button>
           </div>
         </div>
       </section>
@@ -1076,13 +1076,13 @@
                   data-date="Oct 28, 2026"
                   data-read="4 min read"
                   data-img="assets/images/service-2-after.jpg"
-                  data-category-label="Workflow"
+                  data-category-label="Workflow &amp; NDA"
                 >
                   <div class="blog-card-media">
                     <a href="blog-single.html?post=rgb-255-isolation-vs-contact-shadows" class="block w-full h-full">
                       <img src="assets/images/service-2-after.jpg" alt="E-commerce jewelry isolation and contact shadow" width="640" height="400" loading="lazy" />
                     </a>
-                    <span class="blog-card-cat">Workflow</span>
+                    <span class="blog-card-cat">Workflow &amp; NDA</span>
                   </div>
                   <div class="blog-card-body">
                     <div class="blog-meta">
@@ -1113,13 +1113,13 @@
                   data-date="Oct 21, 2026"
                   data-read="5 min read"
                   data-img="assets/images/portfolio-6-v1-after.jpg"
-                  data-category-label="Workflow"
+                  data-category-label="Workflow &amp; NDA"
                 >
                   <div class="blog-card-media">
                     <a href="blog-single.html?post=protecting-collections-mutual-nda" class="block w-full h-full">
                       <img src="assets/images/portfolio-6-v1-after.jpg" alt="Gold bangle high jewelry confidential retouching" width="640" height="400" loading="lazy" />
                     </a>
-                    <span class="blog-card-cat">Workflow</span>
+                    <span class="blog-card-cat">Workflow &amp; NDA</span>
                   </div>
                   <div class="blog-card-body">
                     <div class="blog-meta">
@@ -1430,7 +1430,7 @@
     <script src="assets/js/lenis.min.js"></script>
     <script src="assets/js/gsap.min.js"></script>
     <script src="assets/js/ScrollTrigger.min.js"></script>
-    <script src="assets/js/main.js?v=20261126c"></script>
+    <script src="assets/js/main.js?v=20261127j"></script>
 
     <!-- Blog Filter, Search, Pagination, Reader Modal & GSAP Animations -->
     <script>
@@ -1490,9 +1490,34 @@
           gridPosts.forEach(function (p) {
             p.style.display = 'none';
           });
-          filteredGrid.slice(startIdx, endIdx).forEach(function (p) {
+          var visibleGridCards = filteredGrid.slice(startIdx, endIdx);
+          visibleGridCards.forEach(function (p) {
             p.style.display = '';
           });
+
+          if (window.gsap) {
+            var animTargets = showFeatured && featuredPost ? [featuredPost].concat(visibleGridCards) : visibleGridCards;
+            if (animTargets.length) {
+              window.gsap.to(animTargets, {
+                opacity: 1,
+                y: 0,
+                duration: 0.35,
+                stagger: 0.05,
+                ease: 'power2.out',
+                overwrite: 'auto',
+                clearProps: 'transform,opacity'
+              });
+            }
+          } else {
+            visibleGridCards.forEach(function (p) {
+              p.style.opacity = '1';
+              p.style.transform = '';
+            });
+          }
+
+          if (window.ScrollTrigger && typeof window.ScrollTrigger.refresh === 'function') {
+            window.ScrollTrigger.refresh();
+          }
 
           if (emptyState) {
             emptyState.classList.toggle('is-visible', totalMatching === 0);

@@ -868,8 +868,14 @@
 }
 
 @media (min-width: 640px) and (max-width: 1023px) {
+  #jrw-workflow .jrw-copy {
+    padding: 24px 24px;
+    min-width: 0;
+  }
+
   #jrw-workflow .jrw-stage {
     min-height: 320px;
+    min-width: 0;
   }
 }
 
@@ -882,19 +888,27 @@
 
   #jrw-workflow .jrw-grid-copy {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     min-height: 490px;
   }
 
   #jrw-workflow .jrw-copy {
-    padding: 38px 42px;
+    padding: 36px 34px;
+    min-width: 0;
     min-height: 490px;
     border-right: 1px solid var(--jrw-hairline);
   }
 
   #jrw-workflow .jrw-stage {
+    min-width: 0;
     min-height: 490px;
     border-bottom: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  #jrw-workflow .jrw-copy {
+    padding: 38px 42px;
   }
 }
 
@@ -911,147 +925,6 @@
   }
 }
 
-/* ==========================================================================
-   INTERACTIVE LUXURY WORKFLOW BESPOKE CURSOR FOLLOWER
-   ========================================================================== */
-.jrw-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99999;
-  pointer-events: none;
-  opacity: 0;
-  visibility: hidden;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  transition: opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-              visibility 0.28s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform;
-}
-
-@media (hover: none), (pointer: coarse), (max-width: 1023px) {
-  .jrw-cursor {
-    display: none !important;
-  }
-}
-
-.jrw-cursor.is-active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.jrw-cursor-ring {
-  position: relative;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(201, 162, 77, 0.85);
-  background: rgba(28, 27, 25, 0.18);
-  backdrop-filter: blur(4px);
-  box-shadow: 0 0 16px rgba(201, 162, 77, 0.35), inset 0 0 10px rgba(201, 162, 77, 0.18);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: width 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-              height 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-              border-color 0.3s ease,
-              background 0.3s ease,
-              transform 0.3s ease;
-}
-
-.jrw-cursor-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #C9A24D;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.95), 0 0 4px #C9A24D;
-  transition: transform 0.25s ease;
-}
-
-.jrw-cursor-crosshair {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.jrw-cursor-crosshair::before,
-.jrw-cursor-crosshair::after {
-  content: "";
-  position: absolute;
-  background: rgba(201, 162, 77, 0.45);
-}
-
-.jrw-cursor-crosshair::before {
-  left: 50%;
-  top: 4px;
-  bottom: 4px;
-  width: 1px;
-  transform: translateX(-50%);
-}
-
-.jrw-cursor-crosshair::after {
-  top: 50%;
-  left: 4px;
-  right: 4px;
-  height: 1px;
-  transform: translateY(-50%);
-}
-
-.jrw-cursor.is-hovering-stage .jrw-cursor-ring {
-  width: 58px;
-  height: 58px;
-  border-color: #E5C483;
-  background: rgba(28, 27, 25, 0.38);
-  box-shadow: 0 0 24px rgba(229, 196, 131, 0.6), inset 0 0 14px rgba(229, 196, 131, 0.3);
-}
-
-.jrw-cursor.is-hovering-stage .jrw-cursor-dot {
-  transform: scale(1.4);
-  background: #151518;
-}
-
-.jrw-cursor.is-grabbing .jrw-cursor-ring {
-  transform: scale(0.9);
-  border-color: #FFFFFF;
-  background: rgba(201, 162, 77, 0.55);
-}
-
-.jrw-cursor-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px 12px;
-  border-radius: 999px;
-  background: rgba(28, 27, 25, 0.92);
-  border: 1px solid rgba(201, 162, 77, 0.65);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  white-space: nowrap;
-  pointer-events: none;
-  transform: translateY(0);
-  transition: transform 0.25s ease, border-color 0.25s ease;
-}
-
-.jrw-cursor.is-hovering-stage .jrw-cursor-badge {
-  border-color: #E5C483;
-  transform: translateY(2px);
-}
-
-.jrw-cursor-text {
-  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
-  font-size: 8.5px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #FFFFFF;
-  line-height: 1;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  #jrw-workflow .jrw-stage {
-    cursor: none;
-  }
+#jrw-workflow .jrw-stage-6 {
+  cursor: ew-resize;
 }

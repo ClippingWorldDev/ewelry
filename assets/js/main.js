@@ -322,7 +322,7 @@ window.STUDIO_API = {
 
     const gsap = window.gsap;
     const tiltElements = document.querySelectorAll(
-      '.hero-frame, .hero-v-card, .service-row, .service-media, .swatch-btn, .pf-card, .pricing-card, .testimonial-card, .step-card, .fast-track-card, .artisan-pledge-card, .about-metric-card, .about-discipline-card, .about-vault-card, .blog-featured-card, .blog-card, .sidebar-widget, .sidebar-cta-widget, .contact-info-card, .contact-form-card, .studio-location, .single-author-card, .single-nav-card, .colorway-display, .macro-loupe-wrap, [data-tilt]'
+      '.hero-frame, .hero-v-card, .service-row, .service-media, .swatch-btn, .pf-card, .pricing-card, .testimonial-card, .step-card, .fast-track-card, .artisan-pledge-card, .about-metric-card, .about-discipline-card, .about-vault-card, .blog-featured-card, .blog-card, .sidebar-widget, .sidebar-cta-widget, .contact-info-card, .contact-form-card, .studio-location, .single-author-card, .single-nav-card, .colorway-display, [data-tilt]'
     );
 
     tiltElements.forEach((el) => {
@@ -412,10 +412,10 @@ window.STUDIO_API = {
     const baseImg = wrap.querySelector('.macro-loupe-img');
     if (!lens || !baseImg) return;
 
-    const imgSrc = baseImg.getAttribute('src') || 'assets/images/macro-loupe-base.jpg';
+    const imgSrc = baseImg.currentSrc || baseImg.getAttribute('src') || 'assets/images/macro-loupe-base.jpg';
     lens.style.backgroundImage = `url("${imgSrc}")`;
 
-    const zoomFactor = 3.8; // Exact 380%–400% crisp luxury optical magnification
+    const zoomFactor = 4.0; // Exact 400% optical magnification matching 4.0X precision reticle
     let touchTimeout = null;
 
     const updateLoupe = (clientX, clientY, isTouch = false) => {
@@ -426,6 +426,8 @@ window.STUDIO_API = {
       const lensHeight = lens.offsetHeight || 210;
       const radiusX = lensWidth / 2;
       const radiusY = lensHeight / 2;
+      const innerRadiusX = (lens.clientWidth || lensWidth) / 2;
+      const innerRadiusY = (lens.clientHeight || lensHeight) / 2;
 
       let x = clientX - rect.left;
       let y = clientY - rect.top;
@@ -439,7 +441,7 @@ window.STUDIO_API = {
         lensCenterY = Math.max(radiusY, y - 75);
       }
 
-      // Lens physical position centered on (x, lensCenterY)
+      // Lens physical position centered exactly on cursor (x, lensCenterY)
       lens.style.left = `${x - radiusX}px`;
       lens.style.top = `${lensCenterY - radiusY}px`;
 
@@ -447,9 +449,9 @@ window.STUDIO_API = {
       const bgW = rect.width * zoomFactor;
       const bgH = rect.height * zoomFactor;
 
-      // Position background so that (x, y) on base image is EXACTLY centered under the crosshair
-      const bgX = radiusX - (x * zoomFactor);
-      const bgY = radiusY - (y * zoomFactor);
+      // Position background so that (x, y) on base image aligns to inner padding-box center under crosshair
+      const bgX = innerRadiusX - (x * zoomFactor);
+      const bgY = innerRadiusY - (y * zoomFactor);
 
       lens.style.backgroundSize = `${bgW}px ${bgH}px`;
       lens.style.backgroundPosition = `${bgX}px ${bgY}px`;
@@ -552,15 +554,12 @@ window.STUDIO_API = {
         swatchBtns.forEach((b) => {
           const isCurrent = b === btn;
           b.setAttribute('aria-selected', String(isCurrent));
-          b.classList.toggle('ring-1', isCurrent);
-          b.classList.toggle('ring-gold', isCurrent);
-          b.classList.toggle('bg-stone-50', isCurrent);
           const statusSpan = b.querySelector('.swatch-status');
           if (statusSpan) {
             statusSpan.textContent = isCurrent ? 'Active' : 'Select';
             statusSpan.className = isCurrent
               ? 'text-[10px] sm:text-xs text-gold uppercase tracking-wider font-medium swatch-status'
-              : 'text-[10px] sm:text-xs text-stone-400 uppercase tracking-wider font-medium swatch-status';
+              : 'text-[10px] sm:text-xs text-zinc-400 uppercase tracking-wider font-medium swatch-status';
           }
         });
 
@@ -569,28 +568,45 @@ window.STUDIO_API = {
           badgeText.textContent = alloyTitles[targetAlloy];
         }
 
+        const outgoingImg = images[activeAlloy];
+        const incomingImg = images[targetAlloy];
+        activeAlloy = targetAlloy;
+
         // GSAP Cross-fade transition
         if (window.gsap) {
-          window.gsap.to(images[activeAlloy], {
-            opacity: 0,
-            duration: 0.45,
-            ease: 'power2.out',
-            onComplete: () => {
-              images[activeAlloy].classList.remove('active');
+          Object.values(images).forEach((imgEl) => {
+            if (imgEl && imgEl !== incomingImg && imgEl !== outgoingImg) {
+              imgEl.classList.remove('active');
+              window.gsap.set(imgEl, { opacity: 0 });
             }
           });
 
-          images[targetAlloy].classList.add('active');
-          window.gsap.fromTo(images[targetAlloy],
+          if (outgoingImg) {
+            window.gsap.killTweensOf(outgoingImg);
+            window.gsap.to(outgoingImg, {
+              opacity: 0,
+              duration: 0.45,
+              ease: 'power2.out',
+              onComplete: () => {
+                outgoingImg.classList.remove('active');
+              }
+            });
+          }
+
+          window.gsap.killTweensOf(incomingImg);
+          incomingImg.classList.add('active');
+          window.gsap.fromTo(incomingImg,
             { opacity: 0, scale: 1.015 },
             { opacity: 1, scale: 1, duration: 0.45, ease: 'power2.out' }
           );
         } else {
-          images[activeAlloy].style.opacity = '0';
-          images[targetAlloy].style.opacity = '1';
+          if (outgoingImg) {
+            outgoingImg.style.opacity = '0';
+            outgoingImg.classList.remove('active');
+          }
+          incomingImg.style.opacity = '1';
+          incomingImg.classList.add('active');
         }
-
-        activeAlloy = targetAlloy;
       });
     });
   }
@@ -793,7 +809,7 @@ window.STUDIO_API = {
         tag: 'Authenticity Protocol · Pillar 02',
         headline: 'Sub-Pixel Vector Bézier Isolation at 400% Magnification.',
         quote: '“Automated background erasers and machine masks ruthlessly clip delicate claw tips and flatten intricate platinum filigree. Every single bezel opening, hollow earring cavity, and tennis link is isolated by hand with precision Bézier pen paths on 4K Wacom displays.”',
-        authorName: 'Elena Rostova',
+        authorName: 'Clarisse Moreau',
         authorTitle: 'Senior Vector Clipping & Masking Specialist',
         authorMeta: 'Atelier Bench Master • Member #214',
         sealText: '400%<br />VECTOR<br />PEN'
@@ -829,9 +845,9 @@ window.STUDIO_API = {
         tag: 'Authenticity Protocol · Pillar 06',
         headline: 'Strict D50/D65 Proofing from OLED Screens to Luxury Lookbooks.',
         quote: '“From 5th Avenue flagship window billboards to mobile e-commerce zoom, our color outputs undergo multi-display calibration across EIZO ColorEdge hardware. What your creative director approves on screen matches the physical print lookbook exactly.”',
-        authorName: 'Elena Rostova',
+        authorName: 'Henrik Lindqvist',
         authorTitle: 'Color Grading & Proofing Supervisor',
-        authorMeta: 'Atelier Bench Master • Member #214',
+        authorMeta: 'Atelier Bench Master • Member #308',
         sealText: 'GIA<br />COLOR<br />PROOF'
       }
     ];
@@ -1344,39 +1360,58 @@ window.STUDIO_API = {
       window.triggerHeroEntrance();
     }
 
-    // Section Reveals (fast trigger so anchor jumps & fast scroll never leave cards faded)
+    // Section Reveals (instant entrance when already above fold; fast trigger below fold)
+    const vh = window.innerHeight || document.documentElement.clientHeight || 900;
     gsap.utils.toArray('.js-reveal').forEach((el) => {
-      gsap.fromTo(
-        el,
-        { y: yDist, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.55,
-          ease: 'power3.out',
-          clearProps: 'transform,opacity',
-          scrollTrigger: { trigger: el, start: 'top 98%', once: true, immediateRender: false }
-        }
-      );
+      const rect = el.getBoundingClientRect();
+      if (rect.top < vh * 0.96) {
+        gsap.fromTo(
+          el,
+          { y: Math.min(16, yDist), opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out', clearProps: 'transform,opacity' }
+        );
+      } else {
+        gsap.fromTo(
+          el,
+          { y: yDist, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.55,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity',
+            scrollTrigger: { trigger: el, start: 'top 98%', once: true, immediateRender: false }
+          }
+        );
+      }
     });
 
     // Staggered Card Grid Reveals
     gsap.utils.toArray('.js-stagger-grid').forEach((grid) => {
       const items = grid.querySelectorAll('.js-stagger-item');
       if (!items.length) return;
-      gsap.fromTo(
-        items,
-        { y: yDist, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.65,
-          stagger: 0.1,
-          ease: 'power3.out',
-          clearProps: 'transform,opacity',
-          scrollTrigger: { trigger: grid, start: 'top 94%', once: true, immediateRender: false }
-        }
-      );
+      const rect = grid.getBoundingClientRect();
+      if (rect.top < vh * 0.96) {
+        gsap.fromTo(
+          items,
+          { y: Math.min(16, yDist), opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.5, stagger: 0.06, ease: 'power3.out', clearProps: 'transform,opacity' }
+        );
+      } else {
+        gsap.fromTo(
+          items,
+          { y: yDist, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.65,
+            stagger: 0.1,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity',
+            scrollTrigger: { trigger: grid, start: 'top 94%', once: true, immediateRender: false }
+          }
+        );
+      }
     });
 
     // Four Pillars Stacking Glass Cards Deck Animation
@@ -1628,7 +1663,7 @@ window.STUDIO_API = {
 
     function restartTimer() {
       if (timer) window.clearInterval(timer);
-      timer = window.setInterval(() => showSlide(current + 1), 4500);
+      timer = window.setInterval(() => showSlide(current + 1), 3000);
     }
 
     cards.forEach((card, index) => {
@@ -1659,11 +1694,12 @@ window.STUDIO_API = {
       });
     }
 
-    heroSection.addEventListener('mouseenter', () => {
+    const hoverPauseTarget = heroSection.querySelector('.hero-vertical-carousel') || heroSection;
+    hoverPauseTarget.addEventListener('mouseenter', () => {
       if (timer) window.clearInterval(timer);
     });
 
-    heroSection.addEventListener('mouseleave', restartTimer);
+    hoverPauseTarget.addEventListener('mouseleave', restartTimer);
 
     // Initial setup
     showSlide(current);
@@ -1906,6 +1942,303 @@ window.STUDIO_API = {
     }
   }
 
+  /* ----------------------------------------------------------------------
+     11. GLOBAL DIAMOND SPARKLE AURA & LUXURY CASCADE CURSOR
+     ---------------------------------------------------------------------- */
+  function initGlobalDiamondCursor() {
+    const fineHoverQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const reducedQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const canActivate = () => fineHoverQuery.matches && !reducedQuery.matches && (window.innerWidth || 0) >= 1024;
+
+    if (!fineHoverQuery.matches || reducedQuery.matches) return;
+
+    // Mode 2: Luxury Cascade configuration
+    const CASCADE = {
+      distStep: 13,
+      perSpawn: 1,
+      burstCount: 8,
+      gravity: 0.052,
+      life: 62
+    };
+
+    const COLORS = [
+      { fill: '#FFFFFF', stroke: '#E0F2FE' },
+      { fill: '#F7E7C4', stroke: '#C9A24D' },
+      { fill: '#E5C483', stroke: '#FFFFFF' },
+      { fill: '#E0F2FE', stroke: '#FFFFFF' }
+    ];
+
+    const INTERACTIVE_SELECTOR = [
+      'a',
+      'button',
+      '[role="button"]',
+      '[role="slider"]',
+      '[role="tab"]',
+      'label[for]',
+      'summary',
+      '.ba-slider',
+      '.ba-handle',
+      '.pf-card',
+      '.swatch-btn',
+      '.hero-v-card',
+      '.loupe-preset-btn',
+      '.faq-trigger',
+      '.blog-card',
+      '.swiper-slide-active .jrw-stage'
+    ].join(', ');
+
+    const SUSPEND_SELECTOR = 'input, textarea, select, [contenteditable="true"], iframe, .macro-loupe-wrap';
+
+    const canvas = document.createElement('canvas');
+    canvas.className = 'bjr-cursor-canvas';
+    canvas.setAttribute('aria-hidden', 'true');
+    const ctx = canvas.getContext('2d');
+
+    const layer = document.createElement('div');
+    layer.className = 'bjr-cursor-layer';
+    layer.setAttribute('aria-hidden', 'true');
+
+    const auraEl = document.createElement('div');
+    auraEl.className = 'bjr-cursor-aura';
+
+    const gemEl = document.createElement('div');
+    gemEl.className = 'bjr-cursor-gem';
+    gemEl.innerHTML =
+      '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+      '<path d="M12 1L14.8 9.2L23 12L14.8 14.8L12 23L9.2 14.8L1 12L9.2 9.2Z" fill="#FFFFFF"/>' +
+      '<path d="M12 4.5L13.7 10.3L19.5 12L13.7 13.7L12 19.5L10.3 13.7L4.5 12L10.3 10.3Z" fill="#F7E7C4" opacity="0.85"/>' +
+      '</svg>';
+
+    layer.appendChild(auraEl);
+    layer.appendChild(gemEl);
+    document.body.appendChild(canvas);
+    document.body.appendChild(layer);
+
+    let enabled = false;
+    let visible = false;
+    let suspended = false;
+    let hovering = false;
+    let clicking = false;
+    let rafId = null;
+
+    let mx = window.innerWidth * 0.5;
+    let my = window.innerHeight * 0.5;
+    let ox = mx;
+    let oy = my;
+    let lastSpawnX = mx;
+    let lastSpawnY = my;
+    const particles = [];
+
+    const resizeCanvas = () => {
+      if (!ctx) return;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const w = window.innerWidth || document.documentElement.clientWidth;
+      const h = window.innerHeight || document.documentElement.clientHeight;
+      canvas.width = Math.max(1, Math.floor(w * dpr));
+      canvas.height = Math.max(1, Math.floor(h * dpr));
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+
+    const syncEnabledState = () => {
+      enabled = canActivate();
+      document.documentElement.classList.toggle('has-bjr-cursor', enabled);
+      canvas.style.display = enabled ? 'block' : 'none';
+      layer.style.display = enabled ? 'block' : 'none';
+      if (enabled) resizeCanvas();
+      else {
+        particles.length = 0;
+        layer.classList.remove('is-visible');
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+      }
+    };
+
+    function spawnDiamond(x, y, burst = false) {
+      const palette = COLORS[Math.floor(Math.random() * COLORS.length)];
+      const size = burst ? (3.2 + Math.random() * 3.4) : (2.4 + Math.random() * 2.8);
+      const angle = burst ? Math.random() * Math.PI * 2 : (Math.PI * 0.5 + (Math.random() - 0.5) * 1.1);
+      const speed = burst ? (1.2 + Math.random() * 2.1) : (0.2 + Math.random() * 0.65);
+
+      particles.push({
+        x: x + (Math.random() - 0.5) * 6,
+        y: y + (Math.random() - 0.5) * 4,
+        vx: Math.cos(angle) * speed * (burst ? 1 : 0.75),
+        vy: burst ? Math.sin(angle) * speed - 0.6 : (0.35 + Math.random() * 0.55),
+        size,
+        rot: Math.random() * Math.PI,
+        vRot: (Math.random() - 0.5) * 0.08,
+        age: 0,
+        maxAge: CASCADE.life + Math.random() * 18,
+        twinklePhase: Math.random() * Math.PI * 2,
+        color: palette,
+        isSparkle: Math.random() > 0.45
+      });
+
+      if (particles.length > 90) particles.shift();
+    }
+
+    function drawDiamond(p) {
+      if (!ctx) return;
+      const progress = p.age / p.maxAge;
+      const fadeOut = 1 - Math.pow(progress, 1.8);
+      const twinkle = 0.65 + 0.35 * Math.sin(p.age * 0.28 + p.twinklePhase);
+      const alpha = Math.max(0, fadeOut * twinkle);
+
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot);
+      ctx.globalAlpha = alpha;
+
+      const r = p.size;
+      ctx.beginPath();
+      if (p.isSparkle) {
+        const inner = r * 0.32;
+        ctx.moveTo(0, -r * 1.3);
+        ctx.lineTo(inner, -inner);
+        ctx.lineTo(r * 1.3, 0);
+        ctx.lineTo(inner, inner);
+        ctx.lineTo(0, r * 1.3);
+        ctx.lineTo(-inner, inner);
+        ctx.lineTo(-r * 1.3, 0);
+        ctx.lineTo(-inner, -inner);
+      } else {
+        ctx.moveTo(0, -r * 1.15);
+        ctx.lineTo(r * 0.78, 0);
+        ctx.lineTo(0, r * 1.15);
+        ctx.lineTo(-r * 0.78, 0);
+      }
+      ctx.closePath();
+      ctx.fillStyle = p.color.fill;
+      ctx.fill();
+      ctx.lineWidth = 0.6;
+      ctx.strokeStyle = p.color.stroke;
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function ensureLoop() {
+      if (!enabled || rafId) return;
+      rafId = requestAnimationFrame(tick);
+    }
+
+    function tick() {
+      rafId = null;
+      if (!enabled) return;
+
+      ox += (mx - ox) * 0.17;
+      oy += (my - oy) * 0.17;
+
+      const gemScale = clicking ? 0.78 : (hovering ? 1.28 : 1);
+      const auraScale = clicking ? 0.84 : 1;
+      gemEl.style.transform = `translate3d(${mx.toFixed(1)}px, ${my.toFixed(1)}px, 0) translate(-50%, -50%) scale(${gemScale})`;
+      auraEl.style.transform = `translate3d(${ox.toFixed(1)}px, ${oy.toFixed(1)}px, 0) translate(-50%, -50%) scale(${auraScale})`;
+
+      if (ctx) {
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const p = particles[i];
+          p.age += 1;
+          if (p.age >= p.maxAge) {
+            particles.splice(i, 1);
+            continue;
+          }
+          p.vy += CASCADE.gravity;
+          p.vx *= 0.985;
+          p.x += p.vx;
+          p.y += p.vy;
+          p.rot += p.vRot;
+          drawDiamond(p);
+        }
+      }
+
+      const auraSettled = Math.abs(mx - ox) < 0.15 && Math.abs(my - oy) < 0.15;
+      if (particles.length > 0 || !auraSettled) {
+        rafId = requestAnimationFrame(tick);
+      }
+    }
+
+    window.addEventListener('pointermove', (e) => {
+      if (!enabled) return;
+      mx = e.clientX;
+      my = e.clientY;
+
+      if (!visible) {
+        visible = true;
+        ox = mx;
+        oy = my;
+        lastSpawnX = mx;
+        lastSpawnY = my;
+        layer.classList.add('is-visible');
+      }
+
+      const targetEl = e.target && typeof e.target.closest === 'function' ? e.target : null;
+      const shouldSuspend = Boolean(targetEl && targetEl.closest(SUSPEND_SELECTOR));
+      if (shouldSuspend !== suspended) {
+        suspended = shouldSuspend;
+        layer.classList.toggle('is-suspended', suspended);
+      }
+
+      const isInteractive = !suspended && Boolean(targetEl && targetEl.closest(INTERACTIVE_SELECTOR));
+      if (isInteractive !== hovering) {
+        hovering = isInteractive;
+        layer.classList.toggle('is-hovering', hovering);
+      }
+
+      if (!suspended) {
+        const dist = Math.hypot(mx - lastSpawnX, my - lastSpawnY);
+        if (dist >= CASCADE.distStep) {
+          for (let i = 0; i < CASCADE.perSpawn; i++) {
+            spawnDiamond(mx, my, false);
+          }
+          lastSpawnX = mx;
+          lastSpawnY = my;
+        }
+      }
+
+      ensureLoop();
+    }, { passive: true });
+
+    window.addEventListener('pointerdown', (e) => {
+      if (!enabled || suspended) return;
+      clicking = true;
+      mx = e.clientX;
+      my = e.clientY;
+      for (let i = 0; i < CASCADE.burstCount; i++) {
+        spawnDiamond(mx, my, true);
+      }
+      ensureLoop();
+    }, { passive: true });
+
+    window.addEventListener('pointerup', () => {
+      if (!enabled) return;
+      clicking = false;
+      ensureLoop();
+    }, { passive: true });
+
+    document.addEventListener('mouseleave', () => {
+      visible = false;
+      hovering = false;
+      layer.classList.remove('is-visible', 'is-hovering');
+    });
+
+    window.addEventListener('blur', () => {
+      visible = false;
+      hovering = false;
+      clicking = false;
+      layer.classList.remove('is-visible', 'is-hovering');
+    });
+
+    window.addEventListener('resize', syncEnabledState, { passive: true });
+    if (typeof fineHoverQuery.addEventListener === 'function') {
+      fineHoverQuery.addEventListener('change', syncEnabledState);
+      reducedQuery.addEventListener('change', syncEnabledState);
+    }
+
+    syncEnabledState();
+  }
+
   function start() {
     initLuxuryPreloader();
     initHeroShowcase();
@@ -1923,6 +2256,7 @@ window.STUDIO_API = {
     initFastTrackTrial();
     initHeaderScroll();
     initAnimationsAndScroll();
+    initGlobalDiamondCursor();
 
     navigateRoute(window.location.hash || '#home', Boolean(window.location.hash && window.location.hash !== '#home'));
     window.addEventListener('hashchange', () => navigateRoute(window.location.hash || '#home', true));
