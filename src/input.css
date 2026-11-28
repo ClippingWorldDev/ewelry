@@ -692,12 +692,12 @@
 
   /* Marquee */
   .marquee-section {
-    @apply bg-obsidian py-4 sm:py-5 overflow-hidden border-y border-gold/30 select-none;
+    @apply bg-obsidian py-3.5 sm:py-4 overflow-hidden border-y border-gold/30 select-none;
   }
 
   .marquee-track {
     @apply flex w-max items-center;
-    animation: marqueeLoop 40s linear infinite;
+    animation: marqueeLoop 46s linear infinite;
   }
 
   .marquee-section:hover .marquee-track {
@@ -705,15 +705,31 @@
   }
 
   .marquee-group {
-    @apply flex items-center gap-6 sm:gap-9 pr-6 sm:pr-9 text-xs sm:text-[13px] font-semibold tracking-[0.18em] uppercase whitespace-nowrap;
+    @apply flex items-center gap-6 sm:gap-8 pr-6 sm:pr-8 text-[11px] sm:text-[12.5px] font-semibold tracking-[0.16em] uppercase whitespace-nowrap;
+  }
+
+  .marquee-item {
+    @apply inline-flex items-center gap-3 shrink-0 cursor-default;
+  }
+
+  .marquee-badge-icon {
+    @apply inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gold/[0.08] border border-gold/30 text-gold-light shrink-0 shadow-[0_0_12px_rgba(201,162,77,0.16)] transition-all duration-300;
+  }
+
+  .marquee-item:hover .marquee-badge-icon {
+    @apply scale-110 border-gold/75 bg-gold/[0.16] shadow-[0_0_18px_rgba(229,196,131,0.34)];
   }
 
   .marquee-text {
-    @apply text-ink-light transition-colors duration-200 hover:text-gold cursor-default;
+    @apply text-ink-light transition-colors duration-200;
   }
 
-  .marquee-icon-divider {
-    @apply inline-flex items-center justify-center text-gold text-lg sm:text-2xl transition-transform duration-300 hover:scale-125 select-none shrink-0 drop-shadow-[0_0_8px_rgba(209,160,84,0.35)];
+  .marquee-item:hover .marquee-text {
+    @apply text-gold-light;
+  }
+
+  .marquee-sep {
+    @apply text-gold/55 text-[10px] select-none shrink-0;
   }
 
   /* Four Pillars Stacking Glass Cards */
@@ -1610,8 +1626,6 @@
   .footer-bottom {
     @apply pt-7 border-t border-white/10 flex flex-wrap justify-between items-center gap-4 text-[11px] text-ink-light-muted;
   }
-
-
 
   /* 400% Macro Loupe Inspector */
   .macro-loupe-section {
@@ -2822,6 +2836,3 @@
 .bjr-cursor-layer.is-suspended .bjr-cursor-gem {
   opacity: 0 !important;
 }
-
-
-

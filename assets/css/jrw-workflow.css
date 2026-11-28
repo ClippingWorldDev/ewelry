@@ -3,7 +3,7 @@
  * LUXURY EDITORIAL "THE SIX STEPS OF JEWELRY RETOUCHING" (SCOPED STYLES)
  * ============================================================================
  * WordPress Enqueue Guide (add to functions.php):
- * 
+ *
  *   function enqueue_jrw_workflow_assets() {
  *       wp_enqueue_style('jrw-workflow-css', get_template_directory_uri() . '/assets/css/jrw-workflow.css', array(), '2.0.0');
  *       wp_enqueue_script('gsap', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js', array(), '3.12.5', true);
