@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      2-Image Free Trial — Aurelia Haute Atelier | Jewelry Retouching
+    </title>
+    <meta
+      name="description"
+      content="Get 2 free jewelry retouching trial images. Upload your photos or paste a link and receive hand-retouched files within 12–24 hours under NDA."
+    />
+    <meta property="og:title" content="2-Image Free Trial — Aurelia Haute Atelier" />
+    <meta
+      property="og:description"
+      content="Upload up to 2 jewelry images and test our 300% zoom hand-retouching for free under automatic NDA."
+    />
+    <meta property="og:type" content="website" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- FontAwesome (Local) -->
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css" />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css?v=20261128a" />
+
+    <style>
+      .trial-portal-section {
+        position: relative;
+        overflow: hidden;
+        padding-top: clamp(7rem, 11vw, 9rem);
+        padding-bottom: clamp(4rem, 7vw, 5.5rem);
+        background: radial-gradient(ellipse at 50% 0%, rgba(201, 162, 77, 0.12) 0%, transparent 60%), #0A0A0B;
+      }
+
+      .trial-portal-card {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 2rem 1.35rem;
+        border: 1px solid rgba(201, 162, 77, 0.24);
+        border-radius: 18px;
+        background: #161619;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+        position: relative;
+      }
+      @media (min-width: 640px) {
+        .trial-portal-card {
+          padding: 2.5rem 2.5rem;
+        }
+      }
+      .trial-portal-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #C9A24D, #E5C483, #C9A24D);
+        border-radius: 18px 18px 0 0;
+      }
+
+      .trial-row-2 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      @media (min-width: 640px) {
+        .trial-row-2 {
+          grid-template-columns: 1fr 1fr;
+          gap: 1.15rem;
+        }
+      }
+
+      .trial-field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        min-width: 0;
+      }
+      .trial-field label {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #D4D4D8;
+      }
+      .trial-req {
+        color: #E5C483;
+        margin-left: 2px;
+      }
+      .trial-field input[type="text"],
+      .trial-field input[type="email"],
+      .trial-field input[type="url"],
+      .trial-field select,
+      .trial-field textarea {
+        width: 100%;
+        padding: 0.72rem 1rem;
+        border: 1px solid rgba(201, 162, 77, 0.24);
+        border-radius: 12px;
+        background: #0E0E10;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 0.875rem;
+        color: #FFFFFF;
+        transition: border-color 0.25s, box-shadow 0.25s;
+        outline: none;
+      }
+      .trial-field input[type="text"],
+      .trial-field input[type="email"],
+      .trial-field input[type="url"],
+      .trial-field select {
+        height: 46px;
+      }
+      .trial-field textarea {
+        resize: vertical;
+        min-height: 82px;
+      }
+      .trial-field input::placeholder,
+      .trial-field textarea::placeholder {
+        color: #7E8594;
+      }
+      .trial-field input:focus,
+      .trial-field select:focus,
+      .trial-field textarea:focus {
+        border-color: #C9A24D;
+        box-shadow: 0 0 0 3px rgba(201, 162, 77, 0.14);
+      }
+      .trial-field input.is-error,
+      .trial-field select.is-error,
+      .trial-field textarea.is-error,
+      .trial-dropzone.is-error {
+        border-color: #ef4444;
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.14);
+      }
+
+      /* Compact Dropzone */
+      .trial-dropzone {
+        position: relative;
+        border: 1.5px dashed rgba(201, 162, 77, 0.45);
+        border-radius: 14px;
+        background: rgba(14, 14, 16, 0.85);
+        padding: 1.6rem 1.25rem;
+        text-align: center;
+        cursor: pointer;
+        transition: border-color 0.25s, background-color 0.25s;
+      }
+      .trial-dropzone:hover,
+      .trial-dropzone.is-dragover {
+        border-color: #E5C483;
+        background: rgba(201, 162, 77, 0.07);
+      }
+      .trial-dropzone input[type="file"] {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+      }
+      .trial-upload-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, rgba(201, 162, 77, 0.2), rgba(201, 162, 77, 0.06));
+        border: 1px solid rgba(201, 162, 77, 0.4);
+        color: #E5C483;
+        font-size: 1.75rem;
+        margin-bottom: 0.85rem;
+        transition: transform 0.25s ease, border-color 0.25s ease;
+      }
+      .trial-dropzone:hover .trial-upload-badge,
+      .trial-dropzone.is-dragover .trial-upload-badge {
+        transform: scale(1.06);
+        border-color: #E5C483;
+      }
+      .trial-file-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+        margin-top: 0.75rem;
+      }
+      @media (min-width: 640px) {
+        .trial-file-list {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .trial-file-chip {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding: 0.6rem 0.85rem;
+        border-radius: 10px;
+        background: rgba(201, 162, 77, 0.1);
+        border: 1px solid rgba(201, 162, 77, 0.3);
+        font-size: 0.8rem;
+        color: #FFFFFF;
+      }
+      .trial-file-chip button {
+        color: #E5C483;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0.15rem 0.35rem;
+      }
+      .trial-file-chip button:hover {
+        color: #FFFFFF;
+      }
+
+      /* Error & Success */
+      .trial-form-error {
+        display: none;
+        padding: 0.75rem 1rem;
+        margin-bottom: 1rem;
+        border: 1px solid rgba(248, 113, 113, 0.45);
+        background: rgba(127, 29, 29, 0.35);
+        color: #fecaca;
+        font-size: 0.825rem;
+        border-radius: 10px;
+      }
+      .trial-form-error.is-visible {
+        display: block;
+      }
+      .trial-success {
+        display: none;
+        text-align: center;
+        padding: 2.5rem 1.25rem;
+      }
+      .trial-success.is-visible {
+        display: block;
+      }
+      .trial-success .success-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, rgba(201, 162, 77, 0.2), rgba(201, 162, 77, 0.06));
+        border: 1px solid rgba(201, 162, 77, 0.35);
+        color: #C9A24D;
+        font-size: 2rem;
+        margin-bottom: 1.25rem;
+      }
+
+      /* Bottom Trust Strip */
+      .trial-trust-strip {
+        max-width: 720px;
+        margin: 2rem auto 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem 2rem;
+        padding-top: 1.75rem;
+        border-top: 1px solid rgba(201, 162, 77, 0.16);
+      }
+      .trial-trust-strip span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        font-size: 0.84rem;
+        font-weight: 500;
+        color: #E4E4E7;
+      }
+      .trial-trust-strip i {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: rgba(201, 162, 77, 0.12);
+        border: 1px solid rgba(201, 162, 77, 0.3);
+        color: #E5C483;
+        font-size: 0.95rem;
+        flex-shrink: 0;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-ivory text-ink-primary font-sans antialiased selection:bg-gold/20 selection:text-ink-primary"
+  >
+    <!-- Luxury Atelier Jewelry SVG Preloader -->
+    <div id="bjrPreloader" class="bjr-preloader" aria-hidden="false" role="status" aria-label="Loading BJR Atelier">
+      <div class="preloader-bg"></div>
+      <div class="preloader-content">
+        <div class="preloader-gem-wrap">
+          <svg class="preloader-svg" viewBox="0 0 200 200" width="200" height="200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="preloaderGoldBand" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F8F8FA" />
+                <stop offset="25%" stop-color="#E5C483" />
+                <stop offset="55%" stop-color="#C9A24D" />
+                <stop offset="85%" stop-color="#8E6B36" />
+                <stop offset="100%" stop-color="#4A3515" />
+              </linearGradient>
+              <linearGradient id="diamondFacetGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.96" />
+                <stop offset="40%" stop-color="#E0F2FE" stop-opacity="0.82" />
+                <stop offset="80%" stop-color="#BAE6FD" stop-opacity="0.65" />
+                <stop offset="100%" stop-color="#7DD3FC" stop-opacity="0.5" />
+              </linearGradient>
+              <linearGradient id="diamondFacetGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.98" />
+                <stop offset="35%" stop-color="#F0FDFA" stop-opacity="0.85" />
+                <stop offset="70%" stop-color="#CFFAFE" stop-opacity="0.7" />
+                <stop offset="100%" stop-color="#93C5FD" stop-opacity="0.45" />
+              </linearGradient>
+              <linearGradient id="diamondPavilionGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.92" />
+                <stop offset="30%" stop-color="#E0F2FE" stop-opacity="0.75" />
+                <stop offset="65%" stop-color="#38BDF8" stop-opacity="0.5" />
+                <stop offset="100%" stop-color="#0284C7" stop-opacity="0.25" />
+              </linearGradient>
+              <linearGradient id="diamondStrokeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="25%" stop-color="#E0F2FE" />
+                <stop offset="50%" stop-color="#FDF4FF" />
+                <stop offset="75%" stop-color="#BAE6FD" />
+                <stop offset="100%" stop-color="#FFFFFF" />
+              </linearGradient>
+              <linearGradient id="platinumGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="50%" stop-color="#E2E8F0" />
+                <stop offset="100%" stop-color="#94A3B8" />
+              </linearGradient>
+              <radialGradient id="diamondAura" cx="50%" cy="32%" r="50%">
+                <stop offset="0%" stop-color="rgba(224, 242, 254, 0.75)" />
+                <stop offset="30%" stop-color="rgba(186, 230, 253, 0.35)" />
+                <stop offset="65%" stop-color="rgba(201, 162, 77, 0.15)" />
+                <stop offset="100%" stop-color="transparent" />
+              </radialGradient>
+              <linearGradient id="anamorphicFlare" x1="0%" y1="50%" x2="100%" y2="50%">
+                <stop offset="0%" stop-color="transparent" />
+                <stop offset="35%" stop-color="rgba(186, 230, 253, 0.5)" />
+                <stop offset="50%" stop-color="#FFFFFF" />
+                <stop offset="65%" stop-color="rgba(253, 244, 255, 0.5)" />
+                <stop offset="100%" stop-color="transparent" />
+              </linearGradient>
+            </defs>
+            <circle cx="100" cy="54" r="54" fill="url(#diamondAura)" class="preloader-diamond-aura" />
+            <line x1="26" y1="54" x2="174" y2="54" stroke="url(#anamorphicFlare)" stroke-width="2" class="preloader-anamorphic" stroke-linecap="round" />
+            <path d="M 52 112 C 52 176, 148 176, 148 112" class="preloader-path preloader-band-outer" stroke="url(#preloaderGoldBand)" stroke-width="2.6" stroke-linecap="round" />
+            <path d="M 64 114 C 64 162, 136 162, 136 114" class="preloader-path preloader-band-inner" stroke="url(#preloaderGoldBand)" stroke-width="1.4" stroke-linecap="round" opacity="0.75" />
+            <path d="M 52 112 C 52 86, 64 68, 72 54" class="preloader-path preloader-band-shoulder" stroke="url(#preloaderGoldBand)" stroke-width="2" stroke-linecap="round" />
+            <path d="M 148 112 C 148 86, 136 68, 128 54" class="preloader-path preloader-band-shoulder" stroke="url(#preloaderGoldBand)" stroke-width="2" stroke-linecap="round" />
+            <path d="M 68 88 C 84 96, 116 96, 132 88" class="preloader-path preloader-bridge" stroke="url(#preloaderGoldBand)" stroke-width="1.2" opacity="0.65" stroke-linecap="round" />
+            <polygon points="100,54 100,96 82,54" class="preloader-diamond-facet" fill="url(#diamondPavilionGrad)" />
+            <polygon points="100,54 118,54 100,96" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="56,54 82,54 100,96" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="144,54 100,96 118,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="88,40 112,40 100,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="78,28 88,40 100,54 68,46" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="122,28 132,46 100,54 112,40" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="78,28 68,46 56,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="122,28 144,54 132,46" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="68,46 100,54 56,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad1)" />
+            <polygon points="132,46 144,54 100,54" class="preloader-diamond-facet" fill="url(#diamondFacetGrad2)" />
+            <polygon points="78,28 122,28 112,40 88,40" class="preloader-diamond-table" fill="#FFFFFF" opacity="0.95" />
+            <line x1="78" y1="28" x2="122" y2="28" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.8" stroke-linecap="round" />
+            <line x1="78" y1="28" x2="56" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.6" />
+            <line x1="122" y1="28" x2="144" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.6" />
+            <line x1="78" y1="28" x2="88" y2="40" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="122" y1="28" x2="112" y2="40" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="88" y1="40" x2="112" y2="40" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="88" y1="40" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="112" y1="40" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.2" />
+            <line x1="68" y1="46" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
+            <line x1="132" y1="46" x2="100" y2="54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
+            <line x1="54" y1="54" x2="146" y2="54" class="preloader-path preloader-diamond-girdle" stroke="url(#diamondStrokeGrad)" stroke-width="2" stroke-linecap="round" />
+            <path d="M 56 54 L 100 96 L 144 54" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.8" stroke-linejoin="round" />
+            <line x1="100" y1="54" x2="100" y2="96" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.3" />
+            <line x1="82" y1="54" x2="100" y2="96" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
+            <line x1="118" y1="54" x2="100" y2="96" class="preloader-path preloader-diamond-stroke" stroke="url(#diamondStrokeGrad)" stroke-width="1.1" />
+            <line x1="56" y1="56" x2="56" y2="50" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.6" stroke-linecap="round" />
+            <line x1="144" y1="56" x2="144" y2="50" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.6" stroke-linecap="round" />
+            <line x1="80" y1="56" x2="80" y2="51" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.2" stroke-linecap="round" />
+            <line x1="120" y1="56" x2="120" y2="51" class="preloader-path preloader-prong" stroke="url(#platinumGrad)" stroke-width="2.2" stroke-linecap="round" />
+            <path d="M 78 18 Q 78 28 88 28 Q 78 28 78 38 Q 78 28 68 28 Q 78 28 78 18 Z" class="preloader-sparkle preloader-sparkle--main" fill="#FFFFFF" />
+            <circle cx="78" cy="28" r="2.2" fill="#E0F2FE" class="preloader-sparkle" />
+            <path d="M 144 48 Q 144 54 150 54 Q 144 54 144 60 Q 144 54 138 54 Q 144 54 144 48 Z" class="preloader-sparkle preloader-sparkle--secondary" fill="#BAE6FD" />
+            <circle cx="144" cy="54" r="1.5" fill="#FFFFFF" class="preloader-sparkle" />
+            <path d="M 100 90 Q 100 94 104 94 Q 100 94 100 98 Q 100 94 96 94 Q 100 94 100 90 Z" class="preloader-sparkle preloader-sparkle--culet" fill="#F472B6" />
+          </svg>
+        </div>
+        <div class="preloader-percent-display">
+          <span id="preloaderBigCount" class="preloader-big-num">00</span>
+          <span class="preloader-pct-symbol">%</span>
+        </div>
+        <div id="preloaderStatusText" class="preloader-status">Initializing Optical Calibration...</div>
+        <div class="preloader-progress-wrap">
+          <div class="preloader-track">
+            <div class="preloader-bar" id="preloaderBar"></div>
+          </div>
+        </div>
+        <div class="preloader-meta mt-3">
+          <div class="preloader-title">BJR ATELIER</div>
+          <div class="preloader-tagline">Fine Jewelry Retouching Protocol</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Announcement Bar -->
+    <div
+      class="top-bar"
+      role="region"
+      aria-label="Atelier Discretion & Service Coverage"
+    >
+      Haute Joaillerie Post-Production &bull; Serving Maisons &amp; Studios in
+      <strong>New York &bull; Paris &bull; Geneva &bull; London &bull; Antwerp</strong> &bull;
+      Confidential 24h Turnaround
+    </div>
+
+    <!-- Sticky Architectural Luxury Header -->
+    <header class="site-header" id="siteHeader">
+      <div class="container header-inner">
+        <a
+          href="index.html"
+          class="brand-logo group"
+          aria-label="Aurelia Haute Atelier — Luxury Jewelry Post-Production"
+        >
+          <img
+            src="assets/images/logo-header.png?v=20261128a"
+            alt="Aurelia Haute Atelier"
+            class="brand-logo-full"
+            width="727"
+            height="224"
+            loading="eager"
+            decoding="async"
+            onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden');"
+          />
+          <span class="brand-wordmark hidden">
+            <span class="brand-name">Aurelia</span>
+            <span class="brand-sub">Haute Atelier</span>
+          </span>
+        </a>
+
+        <nav class="primary-nav" aria-label="Primary Editorial Navigation">
+          <ul class="nav-list">
+            <li><a href="index.html#services" class="nav-link">Services</a></li>
+            <li><a href="index.html#macro-loupe" class="nav-link">Loupe</a></li>
+            <li><a href="index.html#colorways" class="nav-link">Alloy Atelier</a></li>
+            <li><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
+            <li><a href="index.html#jrw-workflow" class="nav-link">Process</a></li>
+            <li><a href="index.html#pricing" class="nav-link">Pricing</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="blog.html" class="nav-link">Blog</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="free-trial.html" class="nav-link active text-gold-deep">Free Trial</a></li>
+            <li><a href="get-quote.html" class="nav-link">Get Quote</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a
+            href="#trialPortalForm"
+            class="btn-haute hidden lg:inline-flex"
+            aria-label="Start 2-Image Free Trial"
+          >
+            <span>2 Free Images</span>
+            <i class="fa-solid fa-arrow-right-long text-xs ml-2 opacity-80" aria-hidden="true"></i>
+          </a>
+          <button
+            type="button"
+            class="mobile-menu-btn"
+            id="mobileMenuOpen"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="mobileDrawer"
+          >
+            <i class="fa-solid fa-bars text-lg" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Architectural Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+      <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop"></div>
+      <div
+        class="mobile-drawer-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Atelier Navigation Menu"
+      >
+        <div>
+          <div class="mobile-drawer-top">
+            <div class="flex items-center gap-2.5">
+              <img src="assets/images/logo-header.png?v=20261128a" alt="Aurelia Haute Atelier" class="h-10 w-auto object-contain" width="727" height="224" />
+            </div>
+            <button type="button" class="mobile-menu-btn" style="display: inline-flex" id="mobileMenuClose" aria-label="Close navigation menu">
+              <i class="fa-solid fa-xmark text-lg" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <ul class="mobile-nav-list">
+            <li><a href="index.html" class="mobile-nav-link"><span>Atelier Home</span><span class="mobile-nav-idx">00</span></a></li>
+            <li><a href="index.html#services" class="mobile-nav-link"><span>Four Pillars of Retouching</span><span class="mobile-nav-idx">01</span></a></li>
+            <li><a href="index.html#portfolio" class="mobile-nav-link"><span>Curated Portfolio</span><span class="mobile-nav-idx">02</span></a></li>
+            <li><a href="index.html#jrw-workflow" class="mobile-nav-link"><span>Craftsmanship Protocol</span><span class="mobile-nav-idx">03</span></a></li>
+            <li><a href="index.html#pricing" class="mobile-nav-link"><span>Investment &amp; SLA Tiers</span><span class="mobile-nav-idx">04</span></a></li>
+            <li><a href="about.html" class="mobile-nav-link"><span>About Atelier</span><span class="mobile-nav-idx">05</span></a></li>
+            <li><a href="blog.html" class="mobile-nav-link"><span>Atelier Journal</span><span class="mobile-nav-idx">06</span></a></li>
+            <li><a href="contact.html" class="mobile-nav-link"><span>Contact Atelier</span><span class="mobile-nav-idx">07</span></a></li>
+            <li><a href="free-trial.html" class="mobile-nav-link active"><span>Free Trial (2 Images)</span><span class="mobile-nav-idx">08</span></a></li>
+            <li><a href="get-quote.html" class="mobile-nav-link"><span>Get Custom Quote</span><span class="mobile-nav-idx">09</span></a></li>
+          </ul>
+
+          <div class="mobile-drawer-ctas">
+            <a href="#trialPortalForm" class="btn-haute w-full px-4 py-3.5 text-center flex items-center justify-center gap-2 whitespace-normal leading-snug">
+              <span>Send My 2 Free Images</span>
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true" class="shrink-0">
+                <path d="M4 10H16M11 5L16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="pt-6 mt-6 border-t border-gold/25">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-envelope text-gold text-xs"></i>
+            <span class="text-[11px] uppercase tracking-[0.2em] text-ink-muted font-semibold">Studio Desk</span>
+          </div>
+          <a href="mailto:studio@bestjewelryretouching.com" class="text-sm text-gold-deep underline">studio@bestjewelryretouching.com</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page Content -->
+    <main>
+      <section class="trial-portal-section">
+        <div class="container relative z-10">
+          <!-- Centered Header -->
+          <div class="text-center max-w-xl mx-auto mb-9">
+            <div class="inline-flex items-center gap-3 mb-3.5">
+              <span class="w-8 h-px bg-gold opacity-70"></span>
+              <span class="text-[11px] font-semibold tracking-[0.26em] uppercase text-gold">2 Images Free Trial</span>
+              <span class="w-8 h-px bg-gold opacity-70"></span>
+            </div>
+            <h1 class="font-serif text-4xl sm:text-5xl font-normal text-ink-primary leading-[1.12] tracking-[-0.02em] mb-3.5">
+              Get <span class="split-gold">2 Free</span> Test Images
+            </h1>
+            <p class="text-ink-secondary text-sm sm:text-base leading-relaxed">
+              Send 2 jewelry photos below. We retouch them by hand and send them back in 12–24 hours &mdash; zero obligation, no credit card.
+            </p>
+          </div>
+
+          <!-- Compact, Easy Free Trial Card -->
+          <div class="trial-portal-card" id="trialPortalCard">
+            <form id="trialPortalForm" class="space-y-4" novalidate>
+              <div class="trial-form-error" id="trialFormError" role="alert"></div>
+
+              <!-- Row 1: Name & Email -->
+              <div class="trial-row-2">
+                <div class="trial-field">
+                  <label for="tr-name">Your Name <span class="trial-req">*</span></label>
+                  <input type="text" id="tr-name" name="name" placeholder="e.g. Claire Laurent" required />
+                </div>
+                <div class="trial-field">
+                  <label for="tr-email">Work Email <span class="trial-req">*</span></label>
+                  <input type="email" id="tr-email" name="email" placeholder="studio@yourbrand.com" required />
+                </div>
+              </div>
+
+              <!-- Row 2: Service & Output Format -->
+              <div class="trial-row-2">
+                <div class="trial-field">
+                  <label for="tr-service">What Do You Need?</label>
+                  <select id="tr-service" name="service">
+                    <option value="Full Jewelry Retouching">Full Jewelry Retouching (Cutout + Polish + Shine)</option>
+                    <option value="Background Removal">Background Removal / White Background</option>
+                    <option value="Diamond & Gemstone Polish">Diamond &amp; Gemstone Polish</option>
+                    <option value="Metal Recoloring">Metal Recoloring (Gold / Silver / Rose)</option>
+                    <option value="3D CAD Enhancement">3D CAD Render Enhancement</option>
+                  </select>
+                </div>
+                <div class="trial-field">
+                  <label for="tr-format">Preferred Output</label>
+                  <select id="tr-format" name="format">
+                    <option value="Web-Ready JPG (White BG)">Web-Ready JPG (Pure White BG)</option>
+                    <option value="Transparent PNG">Transparent PNG</option>
+                    <option value="Layered PSD + JPG">Layered PSD + Web JPG</option>
+                    <option value="300 DPI Print TIFF">300 DPI Print TIFF</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Row 3: Upload 2 Images -->
+              <div class="trial-field">
+                <label for="tr-files">Upload Up to 2 Photos <span class="trial-req">*</span></label>
+                <div class="trial-dropzone" id="trialDropzone">
+                  <input
+                    type="file"
+                    id="tr-files"
+                    name="files"
+                    multiple
+                    accept="image/*,.tif,.tiff,.psd,.raw,.cr2,.nef,.arw,.dng"
+                  />
+                  <div class="trial-upload-badge">
+                    <i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i>
+                  </div>
+                  <p class="text-sm font-medium text-ink-primary mb-0.5">
+                    Drop up to 2 photos here, or <span class="text-gold underline underline-offset-2">click to browse</span>
+                  </p>
+                  <p class="text-xs text-ink-muted">
+                    JPG, PNG, TIFF, PSD, or RAW
+                  </p>
+                </div>
+                <div class="trial-file-list" id="trialFileList"></div>
+              </div>
+
+              <!-- Optional Cloud Link -->
+              <div class="trial-field">
+                <label for="tr-link">Or Paste a Cloud Link <span class="text-ink-muted font-normal normal-case tracking-normal">(Dropbox, Drive, WeTransfer)</span></label>
+                <input
+                  type="url"
+                  id="tr-link"
+                  name="cloudLink"
+                  placeholder="https://drive.google.com/... (optional if files uploaded above)"
+                />
+              </div>
+
+              <!-- Short Note -->
+              <div class="trial-field">
+                <label for="tr-notes">Quick Instructions <span class="text-ink-muted font-normal normal-case tracking-normal">(Optional)</span></label>
+                <textarea
+                  id="tr-notes"
+                  name="notes"
+                  rows="3"
+                  placeholder="e.g. Clean dust, brighten diamonds, keep natural shadow on white..."
+                ></textarea>
+              </div>
+
+              <!-- Submit -->
+              <div class="pt-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <button type="submit" class="btn btn-gold w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8">
+                  <span>Send My 2 Free Images</span>
+                  <i class="fa-solid fa-arrow-right text-sm" aria-hidden="true"></i>
+                </button>
+                <span class="text-xs sm:text-sm text-ink-muted text-center sm:text-right inline-flex items-center justify-center sm:justify-end gap-1.5">
+                  <i class="fa-solid fa-lock text-gold text-sm" aria-hidden="true"></i>
+                  <span>Protected by automatic <a href="terms.html" class="text-gold-deep underline">NDA</a></span>
+                </span>
+              </div>
+            </form>
+
+            <!-- Success Message -->
+            <div class="trial-success" id="trialSuccess">
+              <div class="success-icon">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <h2 class="font-serif text-2xl sm:text-3xl text-ink-primary mb-2.5">Free Trial Received!</h2>
+              <p class="text-ink-secondary text-sm sm:text-base leading-relaxed max-w-md mx-auto mb-6" id="trialSuccessSummary">
+                Thank you. Our senior jewelry retouching desk has received your 2-image free trial under mutual NDA.
+                We will email your finished files within 12–24 hours.
+              </p>
+              <div class="flex flex-wrap justify-center gap-3">
+                <button type="button" id="trialResetBtn" class="btn btn-outline">
+                  Submit Another Trial
+                </button>
+                <a href="index.html#portfolio" class="btn btn-gold">
+                  View Portfolio
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Compact Trust Strip -->
+          <div class="trial-trust-strip">
+            <span><i class="fa-solid fa-hand-sparkles"></i> 100% Hand-Retouched</span>
+            <span><i class="fa-solid fa-clock"></i> 12–24h Delivery</span>
+            <span><i class="fa-solid fa-file-shield"></i> Mutual NDA</span>
+            <span><i class="fa-solid fa-credit-card"></i> No Card Required</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="brand-logo" aria-label="Aurelia Haute Atelier — Home">
+              <img
+                src="assets/images/logo-footer.png?v=20261128a"
+                alt="Aurelia Haute Atelier"
+                class="brand-logo-full"
+                width="1042"
+                height="374"
+                loading="lazy"
+                decoding="async"
+                onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden');"
+              />
+              <span class="brand-wordmark hidden">
+                <span class="brand-name">Aurelia</span>
+                <span class="brand-sub">Haute Atelier</span>
+              </span>
+            </a>
+            <p>
+              Precision hand-crafted jewelry photo editing and diamond
+              restoration studio serving luxury brands across the USA and
+              Europe.
+            </p>
+            <div class="flex items-center gap-3.5 mt-4 text-zinc-400">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="BJR Instagram" class="hover:text-gold-deep transition-colors"><i class="fa-brands fa-instagram text-base"></i></a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="BJR LinkedIn" class="hover:text-gold-deep transition-colors"><i class="fa-brands fa-linkedin-in text-base"></i></a>
+              <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="BJR Pinterest" class="hover:text-gold-deep transition-colors"><i class="fa-brands fa-pinterest-p text-base"></i></a>
+              <a href="mailto:studio@bestjewelryretouching.com" aria-label="Contact Studio" class="hover:text-gold-deep transition-colors"><i class="fa-solid fa-envelope text-base"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Core Services</h4>
+            <ul class="footer-links">
+              <li><a href="index.html#service-1">High-End Jewelry Retouching</a></li>
+              <li><a href="index.html#service-2">Hybrid E-Commerce Editing</a></li>
+              <li><a href="index.html#service-3">Diamond Fire Restoration</a></li>
+              <li><a href="index.html#service-4">3D Render Enhancement</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Atelier Studio</h4>
+            <ul class="footer-links">
+              <li><a href="about.html">About Atelier</a></li>
+              <li><a href="blog.html">Atelier Journal (Blog)</a></li>
+              <li><a href="index.html#macro-loupe">Precision 400% Loupe</a></li>
+              <li><a href="index.html#colorways">Alloy Recasting Studio</a></li>
+              <li><a href="index.html#jrw-workflow">Bench Standards Protocol</a></li>
+              <li><a href="index.html#pricing">Pricing &amp; SLA Tiers</a></li>
+              <li><a href="get-quote.html">Get Custom Quote</a></li>
+              <li><a href="free-trial.html">Free Trial (2 Test Images)</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Authenticity &amp; Care</h4>
+            <ul class="footer-links">
+              <li><a href="index.html#authenticity">Anti-AI Artisan Manifesto</a></li>
+              <li><a href="contact.html">Contact Atelier</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms &amp; Conditions</a></li>
+              <li><a href="index.html#faq">Turnaround &amp; Delivery FAQ</a></li>
+              <li><a href="mailto:studio@bestjewelryretouching.com">Email Studio Desk</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; 2026 BestJewelryRetouching.com &mdash; All Rights Reserved.</span>
+          <span>Serving New York &bull; Los Angeles &bull; London &bull; Paris &bull; Antwerp &bull; Geneva</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Vendor Scripts -->
+    <script src="assets/js/lenis.min.js"></script>
+    <script src="assets/js/gsap.min.js"></script>
+    <script src="assets/js/ScrollTrigger.min.js"></script>
+    <script src="assets/js/main.js?v=20261128b"></script>
+
+    <!-- Free Trial Portal Handler -->
+    <script>
+      (function () {
+        'use strict';
+        var form = document.getElementById('trialPortalForm');
+        var card = document.getElementById('trialPortalCard');
+        var success = document.getElementById('trialSuccess');
+        var summaryEl = document.getElementById('trialSuccessSummary');
+        var errorBox = document.getElementById('trialFormError');
+        var resetBtn = document.getElementById('trialResetBtn');
+        var dropzone = document.getElementById('trialDropzone');
+        var fileInput = document.getElementById('tr-files');
+        var fileListEl = document.getElementById('trialFileList');
+        if (!form || !success) return;
+
+        var selectedFiles = [];
+
+        function formatBytes(bytes) {
+          if (!bytes) return '0 KB';
+          var kb = bytes / 1024;
+          if (kb < 1024) return Math.round(kb) + ' KB';
+          return (kb / 1024).toFixed(1) + ' MB';
+        }
+
+        function renderFiles() {
+          if (!fileListEl) return;
+          fileListEl.innerHTML = '';
+          selectedFiles.forEach(function (file, idx) {
+            var chip = document.createElement('div');
+            chip.className = 'trial-file-chip';
+
+            var nameSpan = document.createElement('span');
+            nameSpan.className = 'truncate';
+            nameSpan.textContent = file.name + ' (' + formatBytes(file.size) + ')';
+
+            var removeBtn = document.createElement('button');
+            removeBtn.type = 'button';
+            removeBtn.setAttribute('aria-label', 'Remove ' + file.name);
+            removeBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+            removeBtn.addEventListener('click', function () {
+              selectedFiles.splice(idx, 1);
+              renderFiles();
+            });
+
+            chip.appendChild(nameSpan);
+            chip.appendChild(removeBtn);
+            fileListEl.appendChild(chip);
+          });
+        }
+
+        function clearErrors() {
+          if (errorBox) {
+            errorBox.textContent = '';
+            errorBox.classList.remove('is-visible');
+          }
+          form.querySelectorAll('.is-error').forEach(function (el) {
+            el.classList.remove('is-error');
+          });
+        }
+
+        function showError(field, msg) {
+          if (field) {
+            field.classList.add('is-error');
+            if (typeof field.focus === 'function') field.focus();
+            field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          if (errorBox) {
+            errorBox.textContent = msg;
+            errorBox.classList.add('is-visible');
+          }
+        }
+
+        function addFiles(fileList) {
+          clearErrors();
+          var incoming = Array.prototype.slice.call(fileList || []);
+          var skipped = false;
+          incoming.forEach(function (file) {
+            if (selectedFiles.length < 2) {
+              selectedFiles.push(file);
+            } else {
+              skipped = true;
+            }
+          });
+          if (skipped && errorBox) {
+            errorBox.textContent = 'Free trial is limited to 2 test images. Only the first 2 files were attached.';
+            errorBox.classList.add('is-visible');
+          }
+          renderFiles();
+        }
+
+        if (fileInput) {
+          fileInput.addEventListener('change', function () {
+            if (fileInput.files && fileInput.files.length) {
+              addFiles(fileInput.files);
+              fileInput.value = '';
+            }
+          });
+        }
+
+        if (dropzone) {
+          ['dragenter', 'dragover'].forEach(function (evtName) {
+            dropzone.addEventListener(evtName, function (e) {
+              e.preventDefault();
+              dropzone.classList.add('is-dragover');
+            });
+          });
+          ['dragleave', 'drop'].forEach(function (evtName) {
+            dropzone.addEventListener(evtName, function (e) {
+              e.preventDefault();
+              dropzone.classList.remove('is-dragover');
+            });
+          });
+          dropzone.addEventListener('drop', function (e) {
+            if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) {
+              addFiles(e.dataTransfer.files);
+            }
+          });
+        }
+
+        form.addEventListener('input', function (e) {
+          if (e.target && e.target.classList.contains('is-error')) {
+            e.target.classList.remove('is-error');
+          }
+          if (errorBox && errorBox.classList.contains('is-visible')) {
+            errorBox.classList.remove('is-visible');
+          }
+        });
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          clearErrors();
+
+          var name = form.querySelector('#tr-name');
+          var email = form.querySelector('#tr-email');
+          var link = form.querySelector('#tr-link');
+
+          var emailVal = email ? email.value.trim() : '';
+          var linkVal = link ? link.value.trim() : '';
+          var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+          if (name && !name.value.trim()) {
+            showError(name, 'Please enter your name.');
+            return;
+          }
+          if (email && (!emailVal || !emailPattern.test(emailVal))) {
+            showError(email, 'Please enter a valid email address.');
+            return;
+          }
+          if (selectedFiles.length === 0 && !linkVal) {
+            showError(dropzone, 'Please upload up to 2 images or paste a cloud link.');
+            return;
+          }
+
+          var api = window.STUDIO_API;
+          if (api && api.trialEndpoint) {
+            var data = new FormData(form);
+            selectedFiles.forEach(function (file, i) {
+              data.append('trial_file_' + (i + 1), file);
+            });
+            fetch(api.trialEndpoint, {
+              method: 'POST',
+              body: data
+            }).catch(function () {});
+          }
+
+          if (summaryEl) {
+            var countText = selectedFiles.length
+              ? selectedFiles.length + ' image(s) attached'
+              : 'cloud link submitted';
+            summaryEl.textContent =
+              'Thank you, ' +
+              name.value.trim() +
+              '. Your 2-image free trial (' +
+              countText +
+              ') has been logged for ' +
+              emailVal +
+              ' under mutual NDA. Expect your retouched files within 12–24 hours.';
+          }
+
+          form.style.display = 'none';
+          success.classList.add('is-visible');
+          if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+
+        if (resetBtn) {
+          resetBtn.addEventListener('click', function () {
+            form.reset();
+            selectedFiles = [];
+            renderFiles();
+            clearErrors();
+            success.classList.remove('is-visible');
+            form.style.display = '';
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
