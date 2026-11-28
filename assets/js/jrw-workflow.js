@@ -76,6 +76,11 @@
     if (!instance) return;
     clearEdgeCooldownTimer();
 
+    if ((window.innerWidth || 0) < 1024) {
+      edgeCooldownActive = false;
+      return;
+    }
+
     if (instance.isBeginning || instance.isEnd) {
       edgeCooldownActive = true;
       if (instance.params && instance.params.mousewheel) {
@@ -809,13 +814,25 @@
       speed: reduceMotion ? 0 : 700,
       watchSlidesProgress: true,
       grabCursor: true,
+      allowTouchMove: true,
+      simulateTouch: true,
+      touchAngle: 45,
+      threshold: 8,
       noSwiping: true,
       noSwipingClass: 'swiper-no-swiping',
       nested: true,
+      navigation: {
+        nextEl: '#jrwNextBtn',
+        prevEl: '#jrwPrevBtn'
+      },
+      pagination: {
+        el: '#jrwPagination',
+        clickable: true
+      },
       mousewheel: {
         enabled: true,
         releaseOnEdges: true,
-        forceToAxis: false,
+        forceToAxis: true,
         sensitivity: 1,
         thresholdDelta: 6,
         thresholdTime: 180,
@@ -855,6 +872,35 @@
     });
 
     initSlideHoverTilt();
+
+    // Mobile & Tablet (< 1024px): drive horizontal slides (Step 01 -> 06) on vertical scroll
+    // and unpin immediately after Step 06 so scrolling continues smoothly to #portfolio
+    const swiperShell = root.querySelector('#jrwSwiperShell') || swiperEl;
+    if (hasGsap && typeof ScrollTrigger !== 'undefined' && swiperShell) {
+      const mobileScrollMm = gsap.matchMedia();
+      mobileScrollMm.add('(max-width: 1023px) and (prefers-reduced-motion: no-preference)', () => {
+        const st = ScrollTrigger.create({
+          trigger: swiperShell,
+          start: 'top 76px',
+          end: () => '+=' + Math.max(900, (stepCount - 1) * 200),
+          pin: true,
+          pinSpacing: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onUpdate(self) {
+            if (!swiper || swiper.destroyed) return;
+            const targetIdx = Math.min(
+              stepCount - 1,
+              Math.max(0, Math.round(self.progress * (stepCount - 1)))
+            );
+            if (targetIdx !== swiper.activeIndex) {
+              swiper.slideTo(targetIdx, 380);
+            }
+          }
+        });
+        return () => st.kill();
+      });
+    }
 
     // Bubble-phase Edge Inertia Cooldown propagation guard:
     // Blocks Lenis vertical scroll during slide transition and 380ms edge settle window

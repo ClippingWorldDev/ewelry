@@ -1010,10 +1010,6 @@ window.STUDIO_API = {
           pauseOnMouseEnter: true
         },
         grabCursor: true,
-        mousewheel: {
-          forceToAxis: true,
-          releaseOnEdges: true
-        },
         on: {
           init: function () {
             highlightActiveCard(this);

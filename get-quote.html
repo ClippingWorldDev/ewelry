@@ -16,6 +16,8 @@
       content="Calculate an instant batch estimate and request a custom jewelry retouching quote within 2 hours."
     />
     <meta property="og:type" content="website" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://bestjewelryretouching.com/get-quote" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,9 +37,19 @@
       .quote-portal-section {
         position: relative;
         overflow: hidden;
-        padding-top: clamp(7rem, 11vw, 9rem);
-        padding-bottom: clamp(4rem, 7vw, 5.5rem);
-        background: radial-gradient(ellipse at 50% 0%, rgba(201, 162, 77, 0.12) 0%, transparent 60%), #0A0A0B;
+        padding: 5rem 0 4rem;
+      }
+      @media (min-width: 640px) { .quote-portal-section { padding: 6rem 0 5rem; } }
+      @media (min-width: 1024px) { .quote-portal-section { padding: 8rem 0 6rem; } }
+      .quote-portal-section::before {
+        content: '';
+        position: absolute;
+        top: -55%;
+        right: -18%;
+        width: 560px;
+        height: 560px;
+        background: radial-gradient(circle, rgba(201,162,77,0.16) 0%, transparent 70%);
+        pointer-events: none;
       }
 
       .quote-portal-card {
@@ -64,55 +76,6 @@
         height: 3px;
         background: linear-gradient(90deg, #C9A24D, #E5C483, #C9A24D);
         border-radius: 18px 18px 0 0;
-      }
-
-      /* Live Estimate Banner */
-      .quote-estimate-bar {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        padding: 1.25rem 1.35rem;
-        margin-bottom: 1.75rem;
-        border-radius: 14px;
-        background: linear-gradient(135deg, rgba(201, 162, 77, 0.12), rgba(20, 20, 22, 0.9));
-        border: 1px solid rgba(201, 162, 77, 0.3);
-      }
-      @media (min-width: 640px) {
-        .quote-estimate-bar {
-          grid-template-columns: 1fr 1fr 1fr;
-          align-items: center;
-        }
-      }
-      .quote-est-item {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-      }
-      .quote-est-icon {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        min-width: 40px;
-        border-radius: 50%;
-        background: rgba(201, 162, 77, 0.14);
-        border: 1px solid rgba(201, 162, 77, 0.32);
-        color: #E5C483;
-        font-size: 1rem;
-      }
-      .quote-est-label {
-        font-size: 0.68rem;
-        text-transform: uppercase;
-        letter-spacing: 0.14em;
-        color: #A1A1AA;
-        font-weight: 600;
-      }
-      .quote-est-val {
-        font-family: 'Marcellus', serif;
-        font-size: 1.15rem;
-        color: #FFFFFF;
-        margin-top: 0.1rem;
       }
 
       .quote-row-2 {
@@ -168,6 +131,13 @@
       .quote-field select {
         height: 46px;
       }
+      .quote-field select {
+        padding-right: 2.25rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
+      }
       .quote-field textarea {
         resize: vertical;
         min-height: 92px;
@@ -184,9 +154,94 @@
       }
       .quote-field input.is-error,
       .quote-field select.is-error,
-      .quote-field textarea.is-error {
+      .quote-field textarea.is-error,
+      .quote-dropzone.is-error {
         border-color: #ef4444;
         box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.14);
+      }
+
+      /* Sample Upload Dropzone */
+      .quote-dropzone {
+        position: relative;
+        border: 1.5px dashed rgba(201, 162, 77, 0.45);
+        border-radius: 14px;
+        background: rgba(14, 14, 16, 0.85);
+        padding: 1.5rem 1.25rem;
+        text-align: center;
+        cursor: pointer;
+        transition: border-color 0.25s, background-color 0.25s;
+      }
+      .quote-dropzone:hover,
+      .quote-dropzone.is-dragover {
+        border-color: #E5C483;
+        background: rgba(201, 162, 77, 0.07);
+      }
+      .quote-dropzone input[type="file"] {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+      }
+      .quote-upload-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, rgba(201, 162, 77, 0.2), rgba(201, 162, 77, 0.06));
+        border: 1px solid rgba(201, 162, 77, 0.4);
+        color: #E5C483;
+        font-size: 1.6rem;
+        margin-bottom: 0.75rem;
+        transition: transform 0.25s ease, border-color 0.25s ease;
+      }
+      .quote-dropzone:hover .quote-upload-badge,
+      .quote-dropzone.is-dragover .quote-upload-badge {
+        transform: scale(1.06);
+        border-color: #E5C483;
+      }
+      .quote-file-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+        margin-top: 0.75rem;
+      }
+      @media (min-width: 640px) {
+        .quote-file-list {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .quote-file-chip {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        min-width: 0;
+        padding: 0.6rem 0.85rem;
+        border-radius: 10px;
+        background: rgba(201, 162, 77, 0.1);
+        border: 1px solid rgba(201, 162, 77, 0.3);
+        font-size: 0.8rem;
+        color: #FFFFFF;
+      }
+      .quote-file-chip span {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .quote-file-chip button {
+        color: #E5C483;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0.15rem 0.35rem;
+      }
+      .quote-file-chip button:hover {
+        color: #FFFFFF;
       }
 
       /* Error & Success */
@@ -232,7 +287,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 1rem 2rem;
+        gap: 0.85rem 1.35rem;
         padding-top: 1.75rem;
         border-top: 1px solid rgba(201, 162, 77, 0.16);
       }
@@ -419,12 +474,7 @@
 
         <nav class="primary-nav" aria-label="Primary Editorial Navigation">
           <ul class="nav-list">
-            <li><a href="index.html#services" class="nav-link">Services</a></li>
-            <li><a href="index.html#macro-loupe" class="nav-link">Loupe</a></li>
-            <li><a href="index.html#colorways" class="nav-link">Alloy Atelier</a></li>
-            <li><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
-            <li><a href="index.html#jrw-workflow" class="nav-link">Process</a></li>
-            <li><a href="index.html#pricing" class="nav-link">Pricing</a></li>
+            <li><a href="index.html" class="nav-link">Home</a></li>
             <li><a href="about.html" class="nav-link">About</a></li>
             <li><a href="blog.html" class="nav-link">Blog</a></li>
             <li><a href="contact.html" class="nav-link">Contact</a></li>
@@ -477,15 +527,13 @@
 
           <ul class="mobile-nav-list">
             <li><a href="index.html" class="mobile-nav-link"><span>Atelier Home</span><span class="mobile-nav-idx">00</span></a></li>
-            <li><a href="index.html#services" class="mobile-nav-link"><span>Four Pillars of Retouching</span><span class="mobile-nav-idx">01</span></a></li>
-            <li><a href="index.html#portfolio" class="mobile-nav-link"><span>Curated Portfolio</span><span class="mobile-nav-idx">02</span></a></li>
-            <li><a href="index.html#jrw-workflow" class="mobile-nav-link"><span>Craftsmanship Protocol</span><span class="mobile-nav-idx">03</span></a></li>
-            <li><a href="index.html#pricing" class="mobile-nav-link"><span>Investment &amp; SLA Tiers</span><span class="mobile-nav-idx">04</span></a></li>
-            <li><a href="about.html" class="mobile-nav-link"><span>About Atelier</span><span class="mobile-nav-idx">05</span></a></li>
-            <li><a href="blog.html" class="mobile-nav-link"><span>Atelier Journal</span><span class="mobile-nav-idx">06</span></a></li>
-            <li><a href="contact.html" class="mobile-nav-link"><span>Contact Atelier</span><span class="mobile-nav-idx">07</span></a></li>
-            <li><a href="free-trial.html" class="mobile-nav-link"><span>Free Trial (2 Images)</span><span class="mobile-nav-idx">08</span></a></li>
-            <li><a href="get-quote.html" class="mobile-nav-link active"><span>Get Custom Quote</span><span class="mobile-nav-idx">09</span></a></li>
+            <li><a href="about.html" class="mobile-nav-link"><span>About Atelier</span><span class="mobile-nav-idx">01</span></a></li>
+            <li><a href="blog.html" class="mobile-nav-link"><span>Atelier Journal</span><span class="mobile-nav-idx">02</span></a></li>
+            <li><a href="contact.html" class="mobile-nav-link"><span>Contact Atelier</span><span class="mobile-nav-idx">03</span></a></li>
+            <li><a href="free-trial.html" class="mobile-nav-link"><span>Free Trial (2 Images)</span><span class="mobile-nav-idx">04</span></a></li>
+            <li><a href="get-quote.html" class="mobile-nav-link active"><span>Get Custom Quote</span><span class="mobile-nav-idx">05</span></a></li>
+            <li><a href="privacy.html" class="mobile-nav-link"><span>Privacy Policy</span><span class="mobile-nav-idx">06</span></a></li>
+            <li><a href="terms.html" class="mobile-nav-link"><span>Terms &amp; Conditions</span><span class="mobile-nav-idx">07</span></a></li>
           </ul>
 
           <div class="mobile-drawer-ctas">
@@ -523,37 +571,12 @@
               Request a <span class="split-gold">Custom Quote</span>
             </h1>
             <p class="text-ink-secondary text-sm sm:text-base leading-relaxed">
-              See an instant per-image estimate for your batch and receive a formal quote within 2 hours &mdash; larger volumes receive lower per-image rates.
+              Tell us your image count, service tier, and turnaround window. Receive a clear per-image quote within 2 hours &mdash; larger batches cost less per image.
             </p>
           </div>
 
           <!-- Quote Card -->
           <div class="quote-portal-card" id="quotePortalCard">
-            <!-- Live Estimator Bar -->
-            <div class="quote-estimate-bar" aria-live="polite">
-              <div class="quote-est-item">
-                <span class="quote-est-icon"><i class="fa-solid fa-gem" aria-hidden="true"></i></span>
-                <div>
-                  <div class="quote-est-label">Est. Per Image</div>
-                  <div class="quote-est-val" id="estPerImage">From $3.50</div>
-                </div>
-              </div>
-              <div class="quote-est-item">
-                <span class="quote-est-icon"><i class="fa-solid fa-layer-group" aria-hidden="true"></i></span>
-                <div>
-                  <div class="quote-est-label">Batch Estimate</div>
-                  <div class="quote-est-val" id="estBatchTotal">$175 (50 imgs)</div>
-                </div>
-              </div>
-              <div class="quote-est-item">
-                <span class="quote-est-icon"><i class="fa-solid fa-clock" aria-hidden="true"></i></span>
-                <div>
-                  <div class="quote-est-label">Est. Turnaround</div>
-                  <div class="quote-est-val" id="estTurnaround">24 Hours</div>
-                </div>
-              </div>
-            </div>
-
             <form id="quotePortalForm" class="space-y-4" novalidate>
               <div class="quote-form-error" id="quoteFormError" role="alert"></div>
 
@@ -572,10 +595,10 @@
                 <div class="quote-field">
                   <label for="qt-service">Service Tier <span class="quote-req">*</span></label>
                   <select id="qt-service" name="service">
-                    <option value="ecommerce" data-rate="3.50">E-Commerce Retouching (From $3.50/img)</option>
-                    <option value="polish" data-rate="6.00">Diamond &amp; Metal Polish (From $6.00/img)</option>
-                    <option value="editorial" data-rate="12.00">High-End Editorial / 3D CAD (From $12.00/img)</option>
-                    <option value="recolor" data-rate="5.00">Metal Recoloring / Alloy Match (From $5.00/img)</option>
+                    <option value="E-Commerce Retouching (From $3.50/img)">E-Commerce (From $3.50/img)</option>
+                    <option value="Diamond & Metal Polish (From $6.00/img)">Diamond &amp; Metal Polish ($6.00+)</option>
+                    <option value="High-End Editorial / 3D CAD (From $12.00/img)">High-End / 3D CAD ($12.00+)</option>
+                    <option value="Jewelry Recoloring">Jewelry Recoloring (Custom)</option>
                   </select>
                 </div>
                 <div class="quote-field">
@@ -596,22 +619,35 @@
                 <div class="quote-field">
                   <label for="qt-format">Delivery Format</label>
                   <select id="qt-format" name="format">
-                    <option value="Web-Ready JPG (White RGB 255)">Web-Ready JPG (Pure White RGB 255)</option>
+                    <option value="Web-Ready JPG (White BG)">Web-Ready JPG (White BG)</option>
                     <option value="Transparent PNG">Transparent PNG</option>
-                    <option value="Layered PSD + Web Files">Layered PSD + Web-Ready Files</option>
+                    <option value="Layered PSD + Web Files">Layered PSD + Web Files</option>
                     <option value="300 DPI Print TIFF">300 DPI Print TIFF</option>
                   </select>
                 </div>
               </div>
 
               <div class="quote-field">
-                <label for="qt-link">Sample Folder Link <span class="text-ink-muted font-normal normal-case tracking-normal">(Optional — Dropbox / Drive / WeTransfer)</span></label>
-                <input
-                  type="url"
-                  id="qt-link"
-                  name="sampleLink"
-                  placeholder="https://drive.google.com/... (helps us give an exact fixed price)"
-                />
+                <label for="qt-files">Upload Sample Photos <span class="text-ink-muted font-normal normal-case tracking-normal">(Optional — helps us give an exact fixed price)</span></label>
+                <div class="quote-dropzone" id="quoteDropzone">
+                  <input
+                    type="file"
+                    id="qt-files"
+                    name="files"
+                    multiple
+                    accept="image/*,.tif,.tiff,.psd,.raw,.cr2,.nef,.arw,.dng"
+                  />
+                  <div class="quote-upload-badge">
+                    <i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i>
+                  </div>
+                  <p class="text-sm font-medium text-ink-primary mb-0.5">
+                    Drop sample photos here, or <span class="text-gold underline underline-offset-2">click to browse</span>
+                  </p>
+                  <p class="text-xs text-ink-muted">
+                    JPG, PNG, TIFF, PSD, or RAW (up to 5 sample files)
+                  </p>
+                </div>
+                <div class="quote-file-list" id="quoteFileList"></div>
               </div>
 
               <div class="quote-field">
@@ -624,14 +660,31 @@
                 ></textarea>
               </div>
 
+              <!-- Terms & Privacy Checkbox -->
+              <div class="flex items-start gap-3 pt-1">
+                <input
+                  type="checkbox"
+                  id="qt-terms"
+                  name="termsConsent"
+                  required
+                  class="mt-1 h-4 w-4 rounded border border-gold/40 bg-obsidian accent-[#C9A24D] cursor-pointer shrink-0"
+                />
+                <label for="qt-terms" class="text-xs sm:text-sm text-ink-secondary leading-relaxed cursor-pointer">
+                  I agree to the
+                  <a href="terms.html" target="_blank" rel="noopener noreferrer" class="text-gold-deep underline underline-offset-2 hover:text-gold transition-colors">Terms &amp; Conditions</a>
+                  and
+                  <a href="privacy.html" target="_blank" rel="noopener noreferrer" class="text-gold-deep underline underline-offset-2 hover:text-gold transition-colors">Privacy Policy</a>.
+                </label>
+              </div>
+
               <div class="pt-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                 <button type="submit" class="btn btn-gold w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8">
                   <span>Request Custom Quote</span>
                   <i class="fa-solid fa-arrow-right text-sm" aria-hidden="true"></i>
                 </button>
                 <span class="text-xs sm:text-sm text-ink-muted text-center sm:text-right inline-flex items-center justify-center sm:justify-end gap-1.5">
-                  <i class="fa-solid fa-lock text-gold text-sm" aria-hidden="true"></i>
-                  <span>Mutual <a href="terms.html" class="text-gold-deep underline">NDA</a> &bull; Reply in ~2h</span>
+                  <i class="fa-solid fa-clock text-gold text-sm" aria-hidden="true"></i>
+                  <span>Formal quote emailed within ~2 hours</span>
                 </span>
               </div>
             </form>
@@ -658,7 +711,7 @@
 
           <!-- Trust Strip -->
           <div class="quote-trust-strip">
-            <span><i class="fa-solid fa-tags"></i> Volume Discounts (50+ Images)</span>
+            <span><i class="fa-solid fa-tags"></i> Bulk Discounts (50+)</span>
             <span><i class="fa-solid fa-hand-sparkles"></i> 100% Hand-Retouched</span>
             <span><i class="fa-solid fa-file-shield"></i> Mutual NDA</span>
             <span><i class="fa-solid fa-clock"></i> 12–24h Turnaround</span>
@@ -719,6 +772,7 @@
               <li><a href="index.html#macro-loupe">Precision 400% Loupe</a></li>
               <li><a href="index.html#colorways">Alloy Recasting Studio</a></li>
               <li><a href="index.html#jrw-workflow">Bench Standards Protocol</a></li>
+              <li><a href="index.html#pricing">Pricing &amp; SLA Tiers</a></li>
               <li><a href="get-quote.html">Get Custom Quote</a></li>
               <li><a href="free-trial.html">Free Trial (2 Test Images)</a></li>
             </ul>
@@ -761,36 +815,90 @@
         var resetBtn = document.getElementById('quoteResetBtn');
         var serviceEl = document.getElementById('qt-service');
         var qtyEl = document.getElementById('qt-qty');
-        var turnaroundEl = document.getElementById('qt-turnaround');
-        var estPerImageEl = document.getElementById('estPerImage');
-        var estBatchTotalEl = document.getElementById('estBatchTotal');
-        var estTurnaroundEl = document.getElementById('estTurnaround');
+        var dropzone = document.getElementById('quoteDropzone');
+        var fileInput = document.getElementById('qt-files');
+        var fileListEl = document.getElementById('quoteFileList');
         if (!form || !success) return;
 
-        function updateEstimate() {
-          if (!serviceEl || !qtyEl) return;
-          var opt = serviceEl.options[serviceEl.selectedIndex];
-          var baseRate = parseFloat(opt && opt.getAttribute('data-rate')) || 3.5;
-          var qty = Math.max(1, parseInt(qtyEl.value, 10) || 1);
-          var discount = qty >= 500 ? 0.8 : qty >= 200 ? 0.85 : qty >= 50 ? 0.92 : 1;
-          var effRate = baseRate * discount;
-          var total = Math.round(effRate * qty);
+        var selectedFiles = [];
 
-          if (estPerImageEl) {
-            estPerImageEl.textContent = 'From $' + effRate.toFixed(2);
-          }
-          if (estBatchTotalEl) {
-            estBatchTotalEl.textContent = '$' + total.toLocaleString() + ' (' + qty + ' imgs)';
-          }
-          if (estTurnaroundEl && turnaroundEl) {
-            estTurnaroundEl.textContent = turnaroundEl.value;
-          }
+        function formatBytes(bytes) {
+          if (!bytes) return '0 KB';
+          var kb = bytes / 1024;
+          if (kb < 1024) return Math.round(kb) + ' KB';
+          return (kb / 1024).toFixed(1) + ' MB';
         }
 
-        if (serviceEl) serviceEl.addEventListener('change', updateEstimate);
-        if (qtyEl) qtyEl.addEventListener('input', updateEstimate);
-        if (turnaroundEl) turnaroundEl.addEventListener('change', updateEstimate);
-        updateEstimate();
+        function renderFiles() {
+          if (!fileListEl) return;
+          fileListEl.innerHTML = '';
+          selectedFiles.forEach(function (file, idx) {
+            var chip = document.createElement('div');
+            chip.className = 'quote-file-chip';
+
+            var nameSpan = document.createElement('span');
+            nameSpan.textContent = file.name + ' (' + formatBytes(file.size) + ')';
+
+            var removeBtn = document.createElement('button');
+            removeBtn.type = 'button';
+            removeBtn.setAttribute('aria-label', 'Remove ' + file.name);
+            removeBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+            removeBtn.addEventListener('click', function () {
+              selectedFiles.splice(idx, 1);
+              renderFiles();
+            });
+
+            chip.appendChild(nameSpan);
+            chip.appendChild(removeBtn);
+            fileListEl.appendChild(chip);
+          });
+        }
+
+        function addFiles(fileList) {
+          var incoming = Array.prototype.slice.call(fileList || []);
+          var skipped = false;
+          incoming.forEach(function (file) {
+            if (selectedFiles.length < 5) {
+              selectedFiles.push(file);
+            } else {
+              skipped = true;
+            }
+          });
+          if (skipped && errorBox) {
+            errorBox.textContent = 'You can attach up to 5 sample files for a quote.';
+            errorBox.classList.add('is-visible');
+          }
+          renderFiles();
+        }
+
+        if (fileInput) {
+          fileInput.addEventListener('change', function () {
+            if (fileInput.files && fileInput.files.length) {
+              addFiles(fileInput.files);
+              fileInput.value = '';
+            }
+          });
+        }
+
+        if (dropzone) {
+          ['dragenter', 'dragover'].forEach(function (evtName) {
+            dropzone.addEventListener(evtName, function (e) {
+              e.preventDefault();
+              dropzone.classList.add('is-dragover');
+            });
+          });
+          ['dragleave', 'drop'].forEach(function (evtName) {
+            dropzone.addEventListener(evtName, function (e) {
+              e.preventDefault();
+              dropzone.classList.remove('is-dragover');
+            });
+          });
+          dropzone.addEventListener('drop', function (e) {
+            if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) {
+              addFiles(e.dataTransfer.files);
+            }
+          });
+        }
 
         function clearErrors() {
           if (errorBox) {
@@ -828,6 +936,7 @@
 
           var name = form.querySelector('#qt-name');
           var email = form.querySelector('#qt-email');
+          var terms = form.querySelector('#qt-terms');
           var qty = Math.max(1, parseInt(qtyEl ? qtyEl.value : '50', 10) || 1);
           var emailVal = email ? email.value.trim() : '';
           var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -840,12 +949,20 @@
             showError(email, 'Please enter a valid work email address.');
             return;
           }
+          if (terms && !terms.checked) {
+            showError(terms, 'Please agree to the Terms & Conditions and Privacy Policy.');
+            return;
+          }
 
           var api = window.STUDIO_API;
           if (api && api.quoteEndpoint) {
+            var data = new FormData(form);
+            selectedFiles.forEach(function (file, i) {
+              data.append('quote_sample_' + (i + 1), file);
+            });
             fetch(api.quoteEndpoint, {
               method: 'POST',
-              body: new FormData(form)
+              body: data
             }).catch(function () {});
           }
 
@@ -871,7 +988,8 @@
         if (resetBtn) {
           resetBtn.addEventListener('click', function () {
             form.reset();
-            updateEstimate();
+            selectedFiles = [];
+            renderFiles();
             clearErrors();
             success.classList.remove('is-visible');
             form.style.display = '';

@@ -16,6 +16,8 @@
       content="Upload up to 2 jewelry images and test our 300% zoom hand-retouching for free under automatic NDA."
     />
     <meta property="og:type" content="website" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://bestjewelryretouching.com/free-trial" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,9 +37,19 @@
       .trial-portal-section {
         position: relative;
         overflow: hidden;
-        padding-top: clamp(7rem, 11vw, 9rem);
-        padding-bottom: clamp(4rem, 7vw, 5.5rem);
-        background: radial-gradient(ellipse at 50% 0%, rgba(201, 162, 77, 0.12) 0%, transparent 60%), #0A0A0B;
+        padding: 5rem 0 4rem;
+      }
+      @media (min-width: 640px) { .trial-portal-section { padding: 6rem 0 5rem; } }
+      @media (min-width: 1024px) { .trial-portal-section { padding: 8rem 0 6rem; } }
+      .trial-portal-section::before {
+        content: '';
+        position: absolute;
+        top: -55%;
+        right: -18%;
+        width: 560px;
+        height: 560px;
+        background: radial-gradient(circle, rgba(201,162,77,0.16) 0%, transparent 70%);
+        pointer-events: none;
       }
 
       .trial-portal-card {
@@ -116,6 +128,13 @@
       .trial-field input[type="url"],
       .trial-field select {
         height: 46px;
+      }
+      .trial-field select {
+        padding-right: 2.25rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
       }
       .trial-field textarea {
         resize: vertical;
@@ -198,12 +217,19 @@
         align-items: center;
         justify-content: space-between;
         gap: 0.75rem;
+        min-width: 0;
         padding: 0.6rem 0.85rem;
         border-radius: 10px;
         background: rgba(201, 162, 77, 0.1);
         border: 1px solid rgba(201, 162, 77, 0.3);
         font-size: 0.8rem;
         color: #FFFFFF;
+      }
+      .trial-file-chip span {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
       .trial-file-chip button {
         color: #E5C483;
@@ -446,12 +472,7 @@
 
         <nav class="primary-nav" aria-label="Primary Editorial Navigation">
           <ul class="nav-list">
-            <li><a href="index.html#services" class="nav-link">Services</a></li>
-            <li><a href="index.html#macro-loupe" class="nav-link">Loupe</a></li>
-            <li><a href="index.html#colorways" class="nav-link">Alloy Atelier</a></li>
-            <li><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
-            <li><a href="index.html#jrw-workflow" class="nav-link">Process</a></li>
-            <li><a href="index.html#pricing" class="nav-link">Pricing</a></li>
+            <li><a href="index.html" class="nav-link">Home</a></li>
             <li><a href="about.html" class="nav-link">About</a></li>
             <li><a href="blog.html" class="nav-link">Blog</a></li>
             <li><a href="contact.html" class="nav-link">Contact</a></li>
@@ -504,15 +525,13 @@
 
           <ul class="mobile-nav-list">
             <li><a href="index.html" class="mobile-nav-link"><span>Atelier Home</span><span class="mobile-nav-idx">00</span></a></li>
-            <li><a href="index.html#services" class="mobile-nav-link"><span>Four Pillars of Retouching</span><span class="mobile-nav-idx">01</span></a></li>
-            <li><a href="index.html#portfolio" class="mobile-nav-link"><span>Curated Portfolio</span><span class="mobile-nav-idx">02</span></a></li>
-            <li><a href="index.html#jrw-workflow" class="mobile-nav-link"><span>Craftsmanship Protocol</span><span class="mobile-nav-idx">03</span></a></li>
-            <li><a href="index.html#pricing" class="mobile-nav-link"><span>Investment &amp; SLA Tiers</span><span class="mobile-nav-idx">04</span></a></li>
-            <li><a href="about.html" class="mobile-nav-link"><span>About Atelier</span><span class="mobile-nav-idx">05</span></a></li>
-            <li><a href="blog.html" class="mobile-nav-link"><span>Atelier Journal</span><span class="mobile-nav-idx">06</span></a></li>
-            <li><a href="contact.html" class="mobile-nav-link"><span>Contact Atelier</span><span class="mobile-nav-idx">07</span></a></li>
-            <li><a href="free-trial.html" class="mobile-nav-link active"><span>Free Trial (2 Images)</span><span class="mobile-nav-idx">08</span></a></li>
-            <li><a href="get-quote.html" class="mobile-nav-link"><span>Get Custom Quote</span><span class="mobile-nav-idx">09</span></a></li>
+            <li><a href="about.html" class="mobile-nav-link"><span>About Atelier</span><span class="mobile-nav-idx">01</span></a></li>
+            <li><a href="blog.html" class="mobile-nav-link"><span>Atelier Journal</span><span class="mobile-nav-idx">02</span></a></li>
+            <li><a href="contact.html" class="mobile-nav-link"><span>Contact Atelier</span><span class="mobile-nav-idx">03</span></a></li>
+            <li><a href="free-trial.html" class="mobile-nav-link active"><span>Free Trial (2 Images)</span><span class="mobile-nav-idx">04</span></a></li>
+            <li><a href="get-quote.html" class="mobile-nav-link"><span>Get Custom Quote</span><span class="mobile-nav-idx">05</span></a></li>
+            <li><a href="privacy.html" class="mobile-nav-link"><span>Privacy Policy</span><span class="mobile-nav-idx">06</span></a></li>
+            <li><a href="terms.html" class="mobile-nav-link"><span>Terms &amp; Conditions</span><span class="mobile-nav-idx">07</span></a></li>
           </ul>
 
           <div class="mobile-drawer-ctas">
@@ -576,10 +595,10 @@
                 <div class="trial-field">
                   <label for="tr-service">What Do You Need?</label>
                   <select id="tr-service" name="service">
-                    <option value="Full Jewelry Retouching">Full Jewelry Retouching (Cutout + Polish + Shine)</option>
-                    <option value="Background Removal">Background Removal / White Background</option>
+                    <option value="Full Jewelry Retouching">Full Jewelry Retouching</option>
+                    <option value="Background Removal">Background Removal / White BG</option>
                     <option value="Diamond & Gemstone Polish">Diamond &amp; Gemstone Polish</option>
-                    <option value="Metal Recoloring">Metal Recoloring (Gold / Silver / Rose)</option>
+                    <option value="Metal Recoloring">Metal Recoloring (Gold / Rose)</option>
                     <option value="3D CAD Enhancement">3D CAD Render Enhancement</option>
                   </select>
                 </div>
@@ -618,17 +637,6 @@
                 <div class="trial-file-list" id="trialFileList"></div>
               </div>
 
-              <!-- Optional Cloud Link -->
-              <div class="trial-field">
-                <label for="tr-link">Or Paste a Cloud Link <span class="text-ink-muted font-normal normal-case tracking-normal">(Dropbox, Drive, WeTransfer)</span></label>
-                <input
-                  type="url"
-                  id="tr-link"
-                  name="cloudLink"
-                  placeholder="https://drive.google.com/... (optional if files uploaded above)"
-                />
-              </div>
-
               <!-- Short Note -->
               <div class="trial-field">
                 <label for="tr-notes">Quick Instructions <span class="text-ink-muted font-normal normal-case tracking-normal">(Optional)</span></label>
@@ -640,6 +648,23 @@
                 ></textarea>
               </div>
 
+              <!-- Terms & Privacy Checkbox -->
+              <div class="flex items-start gap-3 pt-1">
+                <input
+                  type="checkbox"
+                  id="tr-terms"
+                  name="termsConsent"
+                  required
+                  class="mt-1 h-4 w-4 rounded border border-gold/40 bg-obsidian accent-[#C9A24D] cursor-pointer shrink-0"
+                />
+                <label for="tr-terms" class="text-xs sm:text-sm text-ink-secondary leading-relaxed cursor-pointer">
+                  I agree to the
+                  <a href="terms.html" target="_blank" rel="noopener noreferrer" class="text-gold-deep underline underline-offset-2 hover:text-gold transition-colors">Terms &amp; Conditions</a>
+                  and
+                  <a href="privacy.html" target="_blank" rel="noopener noreferrer" class="text-gold-deep underline underline-offset-2 hover:text-gold transition-colors">Privacy Policy</a>.
+                </label>
+              </div>
+
               <!-- Submit -->
               <div class="pt-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                 <button type="submit" class="btn btn-gold w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8">
@@ -647,8 +672,8 @@
                   <i class="fa-solid fa-arrow-right text-sm" aria-hidden="true"></i>
                 </button>
                 <span class="text-xs sm:text-sm text-ink-muted text-center sm:text-right inline-flex items-center justify-center sm:justify-end gap-1.5">
-                  <i class="fa-solid fa-lock text-gold text-sm" aria-hidden="true"></i>
-                  <span>Protected by automatic <a href="terms.html" class="text-gold-deep underline">NDA</a></span>
+                  <i class="fa-solid fa-clock text-gold text-sm" aria-hidden="true"></i>
+                  <span>Delivered in 12–24 hours &bull; No card needed</span>
                 </span>
               </div>
             </form>
@@ -902,10 +927,9 @@
 
           var name = form.querySelector('#tr-name');
           var email = form.querySelector('#tr-email');
-          var link = form.querySelector('#tr-link');
+          var terms = form.querySelector('#tr-terms');
 
           var emailVal = email ? email.value.trim() : '';
-          var linkVal = link ? link.value.trim() : '';
           var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
           if (name && !name.value.trim()) {
@@ -916,8 +940,12 @@
             showError(email, 'Please enter a valid email address.');
             return;
           }
-          if (selectedFiles.length === 0 && !linkVal) {
-            showError(dropzone, 'Please upload up to 2 images or paste a cloud link.');
+          if (selectedFiles.length === 0) {
+            showError(dropzone, 'Please upload up to 2 test images.');
+            return;
+          }
+          if (terms && !terms.checked) {
+            showError(terms, 'Please agree to the Terms & Conditions and Privacy Policy.');
             return;
           }
 

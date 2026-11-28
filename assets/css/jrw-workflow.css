@@ -85,10 +85,67 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 16px 4px 32px;
+  padding: 16px 4px 16px;
   perspective: 1500px;
   perspective-origin: 50% 50%;
   box-sizing: border-box;
+}
+
+#jrw-workflow .jrw-nav-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+#jrw-workflow .jrw-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 162, 77, 0.35);
+  background: rgba(20, 20, 24, 0.9);
+  color: #E5C483;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background-color 0.25s ease, opacity 0.25s ease;
+}
+
+#jrw-workflow .jrw-nav-btn:hover:not(:disabled) {
+  border-color: #E5C483;
+  background: rgba(201, 162, 77, 0.16);
+}
+
+#jrw-workflow .jrw-nav-btn.swiper-button-disabled,
+#jrw-workflow .jrw-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+#jrw-workflow .jrw-pagination {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: auto;
+}
+
+#jrw-workflow .jrw-pagination .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+  opacity: 1;
+  transition: width 0.25s ease, background-color 0.25s ease;
+  cursor: pointer;
+}
+
+#jrw-workflow .jrw-pagination .swiper-pagination-bullet-active {
+  width: 24px;
+  background: #C9A24D;
 }
 
 #jrw-workflow .jrw-swiper .swiper-wrapper {
