@@ -848,8 +848,8 @@ window.STUDIO_API = {
     const manifestoData = [
       {
         tag: 'Authenticity Protocol · Pillar 01',
-        headline: 'Preserving Authentic Diamond Fire & Real GIA Facet Geometry.',
-        quote: '“In an era flooded with generic AI filters that distort diamond fire, melt fine prongs, and blur hallmarks, we make one solemn promise: every facet, reflection, and culet is crafted by senior retouchers with 10+ years of high-jewelry bench experience. We enhance desire—we never fake perfection.”',
+        headline: 'Jewelry-Only Specialists.',
+        quote: '“We work only on jewelry and watches, so our retouchers know how a prong should look, how a facet should catch light, and how gold should read on screen. A general editor learns this in your photos.”',
         authorName: 'Marcello Vance',
         authorTitle: 'Lead Master Jewelry Retoucher & Colorist',
         authorMeta: 'Atelier Bench Master • Member #408',
@@ -857,8 +857,8 @@ window.STUDIO_API = {
       },
       {
         tag: 'Authenticity Protocol · Pillar 02',
-        headline: 'Sub-Pixel Vector Bézier Isolation at 400% Magnification.',
-        quote: '“Automated background erasers and machine masks ruthlessly clip delicate claw tips and flatten intricate platinum filigree. Every single bezel opening, hollow earring cavity, and tennis link is isolated by hand with precision Bézier pen paths on 4K Wacom displays.”',
+        headline: 'Hand-Retouched, No AI Filters.',
+        quote: '“Every image is retouched by a person, not by a filter. Automatic tools often bend prongs, blur hallmarks, and smear facets, and these errors are hard to spot until a customer zooms in.”',
         authorName: 'Clarisse Moreau',
         authorTitle: 'Senior Vector Clipping & Masking Specialist',
         authorMeta: 'Atelier Bench Master • Member #214',
@@ -866,8 +866,8 @@ window.STUDIO_API = {
       },
       {
         tag: 'Authenticity Protocol · Pillar 03',
-        headline: 'Uncompressed 16-Bit ProPhoto Dynamic Color Fidelity.',
-        quote: '“We refuse to smash color depth into 8-bit web artifacts. Clients receive museum-ready 16-bit ProPhoto RGB master archives with separated alloy layer stacks, ensuring color warmth matches real physical 18K Yellow, Rose Gold, and Platinum casting specifications.”',
+        headline: 'Delivery That Fits Your Day.',
+        quote: '“Send your files at the end of your day and find them ready when your team starts work. Our schedule covers US and European business hours, so you do not lose a day to a time-zone gap.”',
         authorName: 'Marcello Vance',
         authorTitle: 'Master Colorist & Colorways Lead',
         authorMeta: 'Certified Color Calibration Fellow • Member #408',
@@ -875,8 +875,8 @@ window.STUDIO_API = {
       },
       {
         tag: 'Authenticity Protocol · Pillar 04',
-        headline: 'Bilateral Confidentiality & Air-Gapped Vault Security.',
-        quote: '“Your unreleased Baselworld collections, high-jewelry one-offs, and secret prototype CAD renders never touch public third-party AI cloud servers. Stored on air-gapped, encrypted on-premise local servers under strict enforceable NDAs with zero public disclosure without consent.”',
+        headline: 'True to the Real Piece.',
+        quote: '“Your customers should receive what they saw. We match metal and stone color to your reference sample, and we never retouch a piece to look better than it is.”',
         authorName: 'Julian Sterling',
         authorTitle: 'Atelier Operations & Security Director',
         authorMeta: 'Executive Studio Officer • Member #102',
@@ -884,8 +884,8 @@ window.STUDIO_API = {
       },
       {
         tag: 'Authenticity Protocol · Pillar 05',
-        headline: 'Tactile Curvature Sculpting Without Plastic Blur Smearing.',
-        quote: '“Plastic frequency separation kills authentic metal luster. Our artists hand-paint micro specular lights along shank edges and volumetric dodge-and-burn curves, restoring genuine 3D tactile luxury presence while respecting the original metal polish.”',
+        headline: 'Confidential by Default.',
+        quote: '“Your unreleased designs stay private. Every project, including the free trial, is covered by an NDA. We never show your work without written permission, and we remove your files 30 days after delivery.”',
         authorName: 'Marcello Vance',
         authorTitle: 'Lead Master Jewelry Retoucher',
         authorMeta: 'Atelier Bench Master • Member #408',
@@ -893,8 +893,8 @@ window.STUDIO_API = {
       },
       {
         tag: 'Authenticity Protocol · Pillar 06',
-        headline: 'Strict D50/D65 Proofing from OLED Screens to Luxury Lookbooks.',
-        quote: '“From 5th Avenue flagship window billboards to mobile e-commerce zoom, our color outputs undergo multi-display calibration across EIZO ColorEdge hardware. What your creative director approves on screen matches the physical print lookbook exactly.”',
+        headline: 'Free Test, Clear Prices.',
+        quote: '“Test our work before you pay. Send 2 photos for free, and see our per-image prices before you place an order, so the invoice holds no surprises.”',
         authorName: 'Henrik Lindqvist',
         authorTitle: 'Color Grading & Proofing Supervisor',
         authorMeta: 'Atelier Bench Master • Member #308',
